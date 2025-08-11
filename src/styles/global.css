@@ -3,100 +3,166 @@
 
 /* Base styles and theme integration */
 html {
-  /* Default theme applied to html element */
-  color-scheme: light;
   /* Smooth theme transitions */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color-scheme: light;
+}
+
+/* Default Theme - Light Mode variables are defined in default-theme.css */
+
+/* Default Theme - Dark Mode */
+[data-theme="default"][data-mode="dark"] {
+  --color-background: rgb(15, 23, 42);
+  --color-foreground: rgb(248, 250, 252);
+  --color-card: rgb(30, 41, 59);
+  --color-card-foreground: rgb(248, 250, 252);
+  --color-primary: rgb(96, 165, 250);
+  --color-primary-foreground: rgb(15, 23, 42);
+  --color-secondary: rgb(71, 85, 105);
+  --color-secondary-foreground: rgb(248, 250, 252);
+  --color-muted: rgb(30, 41, 59);
+  --color-muted-foreground: rgb(148, 163, 184);
+  --color-accent: rgb(56, 189, 248);
+  --color-accent-foreground: rgb(15, 23, 42);
+  --color-border: rgb(51, 65, 85);
+  --color-input: rgb(51, 65, 85);
+}
+
+/* Water Theme - Light Mode */
+[data-theme="water"] {
+  /* Water theme light mode variables */
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-500: 59 130 246;
+  --color-primary-600: 37 99 235;
+  --color-secondary-50: 248 250 252;
+  --color-secondary-100: 241 245 249;
+  --color-secondary-500: 100 116 139;
+  --color-secondary-600: 71 85 105;
+  --color-accent-50: 240 253 250;
+  --color-accent-100: 204 251 241;
+  --color-accent-500: 20 184 166;
+  --color-accent-600: 13 148 136;
+  
+  --color-background: rgb(var(--color-secondary-50));
+  --color-foreground: rgb(var(--color-secondary-900));
+  --color-card: rgb(var(--color-secondary-100));
+  --color-card-foreground: rgb(var(--color-secondary-900));
+  --color-primary: rgb(var(--color-primary-600));
+  --color-primary-foreground: rgb(255, 255, 255);
+  --color-secondary: rgb(var(--color-secondary-600));
+  --color-secondary-foreground: rgb(255, 255, 255);
+  --color-muted: rgb(var(--color-secondary-100));
+  --color-muted-foreground: rgb(var(--color-secondary-500));
+  --color-accent: rgb(var(--color-accent-600));
+  --color-accent-foreground: rgb(255, 255, 255);
+  --color-border: rgb(var(--color-secondary-200));
+  --color-input: rgb(var(--color-secondary-200));
+}
+
+/* Water Theme - Dark Mode */
+[data-theme="water"][data-mode="dark"] {
+  --color-background: rgb(2, 6, 23);
+  --color-foreground: rgb(241, 245, 249);
+  --color-card: rgb(15, 23, 42);
+  --color-card-foreground: rgb(241, 245, 249);
+  --color-primary: rgb(45, 212, 191);
+  --color-primary-foreground: rgb(2, 6, 23);
+  --color-secondary: rgb(71, 85, 105);
+  --color-secondary-foreground: rgb(241, 245, 249);
+  --color-muted: rgb(30, 41, 59);
+  --color-muted-foreground: rgb(148, 163, 184);
+  --color-accent: rgb(45, 212, 191);
+  --color-accent-foreground: rgb(2, 6, 23);
+  --color-border: rgb(30, 58, 138);
+  --color-input: rgb(30, 58, 138);
+}
+
+/* Apply theme colors to elements */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode Styles */
-html[data-mode="dark"] {
+/* Theme-specific button styles */
+button {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Ensure proper contrast in dark mode */
+[data-mode="dark"] {
   color-scheme: dark;
 }
 
-/* Dark mode color inversions - applies to both default and water themes */
-[data-mode="dark"] body {
-  /* Invert background and text colors */
-  background-color: rgb(15 23 42) !important; /* Very dark blue-gray */
-  color: rgb(248 250 252) !important; /* Very light gray */
-}
-
-[data-mode="dark"] .bg-primary-100 {
-  background-color: rgb(30 58 138) !important; /* Dark primary */
-  color: rgb(219 234 254) !important; /* Light primary text */
-}
-
-[data-mode="dark"] .bg-primary-500 {
-  background-color: rgb(29 78 216) !important; /* Darker primary */
-}
-
-[data-mode="dark"] .bg-primary-600 {
-  background-color: rgb(37 99 235) !important; /* Darker primary hover */
-}
-
-[data-mode="dark"] .bg-secondary-100 {
-  background-color: rgb(30 41 59) !important; /* Dark secondary */
-  color: rgb(226 232 240) !important; /* Light secondary text */
-}
-
-[data-mode="dark"] .bg-secondary-500 {
-  background-color: rgb(51 65 85) !important; /* Darker secondary */
-}
-
-[data-mode="dark"] .bg-secondary-600 {
-  background-color: rgb(71 85 105) !important; /* Darker secondary hover */
-}
-
-[data-mode="dark"] .bg-accent-100 {
-  background-color: rgb(22 78 99) !important; /* Dark accent */
-  color: rgb(153 246 228) !important; /* Light accent text */
-}
-
-[data-mode="dark"] .bg-accent-500 {
-  background-color: rgb(14 116 144) !important; /* Darker accent */
-}
-
-[data-mode="dark"] .bg-accent-600 {
-  background-color: rgb(8 145 178) !important; /* Darker accent hover */
-}
-
-[data-mode="dark"] .text-primary-600 {
-  color: rgb(147 197 253) !important; /* Light primary text */
-}
-
-[data-mode="dark"] .text-primary-800 {
-  color: rgb(191 219 254) !important; /* Lighter primary text */
-}
-
-[data-mode="dark"] .text-secondary-800 {
-  color: rgb(203 213 225) !important; /* Light secondary text */
-}
-
-[data-mode="dark"] .text-accent-800 {
-  color: rgb(94 234 212) !important; /* Light accent text */
-}
-
-[data-mode="dark"] .text-white {
-  color: rgb(248 250 252) !important; /* Keep white text white in dark mode */
-}
-
-/* Ensure buttons remain visible and properly styled in dark mode */
-[data-mode="dark"] button {
-  border: 1px solid rgba(148, 163, 184, 0.3) !important; /* Subtle border for visibility */
+/* Theme toggle button styles */
+#theme-toggle,
+#mode-toggle {
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 [data-mode="dark"] #theme-toggle,
 [data-mode="dark"] #mode-toggle {
-  color: rgb(248 250 252) !important; /* Ensure button text is light */
+  border-color: var(--color-border);
 }
 
-/* Additional dark mode overrides for specific Tailwind classes */
-[data-mode="dark"] .bg-secondary-50 {
-  background-color: rgb(15 23 42) !important; /* Override body background */
+/* Apply theme colors to specific elements */
+.bg-primary-100 {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-foreground);
 }
 
-[data-mode="dark"] .text-secondary-900 {
-  color: rgb(248 250 252) !important; /* Override body text */
+.bg-primary-500 {
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-foreground);
+}
+
+.bg-primary-600 {
+  background-color: var(--color-primary-600);
+  color: var(--color-primary-foreground);
+}
+
+.bg-secondary-100 {
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-foreground);
+}
+
+.bg-secondary-500 {
+  background-color: var(--color-secondary-500);
+  color: var(--color-secondary-foreground);
+}
+
+.bg-accent-100 {
+  background-color: var(--color-accent-100);
+  color: var(--color-accent-foreground);
+}
+
+.bg-accent-500 {
+  background-color: var(--color-accent-500);
+  color: var(--color-accent-foreground);
+}
+
+/* Text colors */
+.text-primary-600 {
+  color: var(--color-primary-600);
+}
+
+.text-primary-800 {
+  color: var(--color-primary-800);
+}
+
+.text-secondary-800 {
+  color: var(--color-secondary-800);
+}
+
+.text-accent-800 {
+  color: var(--color-accent-600);
+}
+
+/* Ensure proper contrast for text in dark mode */
+[data-mode="dark"] .text-white {
+  color: var(--color-foreground) !important;
 }
 
 [data-mode="dark"] .text-primary-700,

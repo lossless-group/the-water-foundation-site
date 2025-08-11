@@ -1,12 +1,42 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { JSDOM } from 'jsdom';
-import { themeSwitcher } from '../theme-switcher.js';
-import { modeSwitcher } from '../mode-switcher.js';
+import { themeSwitcher, ThemeSwitcher } from '../theme-switcher.js';
+import { modeSwitcher, ModeSwitcher } from '../mode-switcher.js';
 
 describe('Toggle Integration Tests', () => {
   let dom;
   let document;
   let window;
+
+  // Mock for matchMedia
+  const createMatchMedia = (matches = false) => ({
+    matches,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  });
+
+  // Mock localStorage
+  const localStorageMock = {
+    _store: {},
+    getItem: vi.fn(function(key) {
+      return this._store[key] || null;
+    }),
+    setItem: vi.fn(function(key, value) {
+      this._store[key] = value.toString();
+    }),
+    removeItem: vi.fn(function(key) {
+      delete this._store[key];
+    }),
+    clear: vi.fn(function() {
+      this._store = {};
+    })
+  };
+
+  // Mock window.matchMedia
+  const mockMatchMedia = vi.fn().mockImplementation(createMatchMedia);
 
   beforeEach(() => {
     // Create a fresh DOM for each test
@@ -26,17 +56,28 @@ describe('Toggle Integration Tests', () => {
     
     // Setup globals
     global.document = document;
-    global.window = window;
-    global.localStorage = {
-      getItem: vi.fn(),
-      setItem: vi.fn(),
-      removeItem: vi.fn(),
-      clear: vi.fn(),
+    global.window = {
+      ...window,
+      matchMedia: mockMatchMedia,
+      localStorage: localStorageMock,
+      dispatchEvent: vi.fn(),
+      CustomEvent: class CustomEvent {
+        constructor(type, options) {
+          this.type = type;
+          this.detail = options?.detail;
+        }
+      },
     };
+    
+    // Reset localStorage mock
+    localStorageMock.clear();
     
     // Reset switchers to initial state
     themeSwitcher.currentTheme = 'default';
     modeSwitcher.currentMode = 'light';
+    
+    // Reset mocks
+    vi.clearAllMocks();
   });
 
   describe('Theme Toggle Button Integration', () => {

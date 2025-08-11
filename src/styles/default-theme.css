@@ -78,30 +78,53 @@
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
   --shadow-none: 0 0 #0000;
+
+  /* Default theme colors - Light Mode */
+  --color-background: rgb(var(--color-primary-50));
+  --color-foreground: rgb(var(--color-primary-900));
+  --color-card: rgb(var(--color-primary-50));
+  --color-card-foreground: rgb(var(--color-primary-900));
+  --color-popover: rgb(var(--color-primary-50));
+  --color-popover-foreground: rgb(var(--color-primary-900));
+  --color-primary: rgb(var(--color-secondary-600));
+  --color-primary-foreground: rgb(var(--color-secondary-50));
+  --color-secondary: rgb(var(--color-secondary-500));
+  --color-secondary-foreground: rgb(var(--color-secondary-50));
+  --color-muted: rgb(var(--color-primary-100));
+  --color-muted-foreground: rgb(var(--color-primary-500));
+  --color-accent: rgb(var(--color-accent-600));
+  --color-accent-foreground: rgb(var(--color-accent-50));
+  --color-border: rgb(var(--color-primary-200));
+  --color-input: rgb(var(--color-primary-300));
 }
 
-/* Theme colors */
-:root {
-  /* Default theme colors */
-  --color-background: var(--color-primary-50);
-  --color-foreground: var(--color-primary-900);
-  --color-card: var(--color-primary-50);
-  --color-card-foreground: var(--color-primary-900);
-  --color-popover: var(--color-primary-50);
-  --color-popover-foreground: var(--color-primary-900);
-  --color-primary: var(--color-secondary-600);
-  --color-primary-foreground: var(--color-secondary-50);
-  --color-secondary: var(--color-secondary-500);
-  --color-secondary-foreground: var(--color-secondary-50);
-  --color-muted: var(--color-primary-100);
-  --color-muted-foreground: var(--color-primary-500);
-  --color-accent: var(--color-accent-600);
-  --color-accent-foreground: var(--color-accent-50);
+/* Dark mode overrides for default theme */
+[data-theme="default"][data-mode="dark"] {
+  --color-background: rgb(15, 23, 42);
+  --color-foreground: rgb(248, 250, 252);
+  --color-card: rgb(30, 41, 59);
+  --color-card-foreground: rgb(248, 250, 252);
+  --color-popover: rgb(30, 41, 59);
+  --color-popover-foreground: rgb(248, 250, 252);
+  --color-primary: rgb(253, 186, 116);
+  --color-primary-foreground: rgb(15, 23, 42);
+  --color-secondary: rgb(100, 116, 139);
+  --color-secondary-foreground: rgb(248, 250, 252);
+  --color-muted: rgb(30, 41, 59);
+  --color-muted-foreground: rgb(148, 163, 184);
+  --color-accent: rgb(56, 189, 248);
+  --color-accent-foreground: rgb(15, 23, 42);
+  --color-border: rgb(51, 65, 85);
+  --color-input: rgb(71, 85, 105);
   --color-destructive: 0 84.2% 60.2%;
   --color-destructive-foreground: 0 0% 98%;
-  --color-border: var(--color-primary-200);
-  --color-input: var(--color-primary-200);
   --color-ring: var(--color-secondary-600);
+}
+
+/* Water theme specific styles */
+[data-theme="water"] {
+  /* Water theme colors are defined in global.css */
+  --color-ring: var(--color-accent-600);
 }
 
 /* Dark mode colors */

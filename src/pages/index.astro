@@ -74,47 +74,67 @@ import '../styles/global.css';
 		</div>
 
 		<script>
-			import { themeSwitcher } from '../utils/theme-switcher.js';
-			import { modeSwitcher } from '../utils/mode-switcher.js';
-			
-			const themeToggleButton = document.getElementById('theme-toggle') as HTMLElement;
-			const modeToggleButton = document.getElementById('mode-toggle') as HTMLElement;
-			
-			// Theme toggle functionality
-			if (themeToggleButton) {
+			import { themeSwitcher } from '../utils/theme-switcher';
+			import { modeSwitcher } from '../utils/mode-switcher';
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const themeToggleButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+				const modeToggleButton = document.getElementById('mode-toggle') as HTMLButtonElement | null;
+				
+				// Check if buttons exist
+				if (!themeToggleButton || !modeToggleButton) {
+					console.error('Theme or mode toggle button not found');
+					return;
+				}
+
+				// Theme toggle functionality
 				function updateThemeButtonText() {
+					if (!themeToggleButton) return;
 					const currentTheme = themeSwitcher.getCurrentTheme();
 					themeToggleButton.textContent = currentTheme === 'default' 
 						? 'Toggle to Water Theme' 
 						: 'Toggle to Default Theme';
 				}
 				
-				themeToggleButton.addEventListener('click', () => {
-					themeSwitcher.toggleTheme();
-					updateThemeButtonText();
-				});
-				
-				// Initialize theme button text
-				updateThemeButtonText();
-			}
-			
-			// Mode toggle functionality
-			if (modeToggleButton) {
+				// Mode toggle functionality
 				function updateModeButtonText() {
+					if (!modeToggleButton) return;
 					const currentMode = modeSwitcher.getCurrentMode();
 					modeToggleButton.textContent = currentMode === 'light' 
 						? 'Toggle to Dark Mode' 
 						: 'Toggle to Light Mode';
 				}
+
+				// Theme toggle click handler
+				themeToggleButton.addEventListener('click', () => {
+					themeSwitcher.toggleTheme();
+					updateThemeButtonText();
+				});
 				
+				// Mode toggle click handler
 				modeToggleButton.addEventListener('click', () => {
 					modeSwitcher.toggleMode();
 					updateModeButtonText();
 				});
+
+				// Listen for theme changes to update UI
+				window.addEventListener('theme-change', () => {
+					updateThemeButtonText();
+				});
+
+				// Listen for mode changes to update UI
+				window.addEventListener('mode-change', () => {
+					updateModeButtonText();
+				});
 				
-				// Initialize mode button text
+				// Initialize button texts
+				updateThemeButtonText();
 				updateModeButtonText();
-			}
+
+				// Log current settings for debugging
+				console.log('Initial theme:', themeSwitcher.getCurrentTheme());
+				console.log('Initial mode:', modeSwitcher.getCurrentMode());
+			});
 		</script>
 	</body>
 </html>

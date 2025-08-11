@@ -1,19 +1,58 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ModeSwitcher } from '../mode-switcher.js';
 
+// Mock for matchMedia
+const createMatchMedia = (matches = false) => ({
+  matches,
+  addListener: vi.fn(),
+  removeListener: vi.fn(),
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  dispatchEvent: vi.fn(),
+});
+
 // Mock localStorage
 const localStorageMock = {
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
-  clear: vi.fn(),
+  _store: {},
+  getItem: vi.fn(function(key) {
+    return this._store[key] || null;
+  }),
+  setItem: vi.fn(function(key, value) {
+    this._store[key] = value.toString();
+  }),
+  removeItem: vi.fn(function(key) {
+    delete this._store[key];
+  }),
+  clear: vi.fn(function() {
+    this._store = {};
+  })
 };
 
+// Mock window.matchMedia
+const mockMatchMedia = vi.fn().mockImplementation(createMatchMedia);
+
+// Make sure matchMedia is available in the global scope
+global.matchMedia = mockMatchMedia;
+
 // Mock document
-const documentMock = {
+global.document = {
   documentElement: {
     setAttribute: vi.fn(),
     removeAttribute: vi.fn(),
+  },
+  addEventListener: vi.fn(),
+};
+
+// Mock window
+global.window = {
+  matchMedia: mockMatchMedia,
+  localStorage: localStorageMock,
+  dispatchEvent: vi.fn(),
+  CustomEvent: class CustomEvent {
+    constructor(type, options) {
+      this.type = type;
+      this.detail = options?.detail;
+    }
   },
 };
 
@@ -24,10 +63,18 @@ describe('ModeSwitcher', () => {
     // Reset all mocks
     vi.clearAllMocks();
     
-    // Setup global mocks
-    global.localStorage = localStorageMock;
-    global.document = documentMock;
-    global.window = {};
+    // Reset localStorage mock
+    localStorageMock.clear();
+    
+    // Reset document mocks
+    document.documentElement.setAttribute.mockClear();
+    document.documentElement.removeAttribute.mockClear();
+    
+    // Reset window.matchMedia
+    window.matchMedia.mockImplementation(createMatchMedia);
+    
+    // Reset the store
+    localStorageMock.clear();
     
     // Create fresh instance for each test
     modeSwitcher = new ModeSwitcher();

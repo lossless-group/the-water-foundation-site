@@ -5,8 +5,8 @@
 
 export class ModeSwitcher {
   constructor() {
-    this.currentMode = this.getStoredMode() || 'light';
-    this.applyMode(this.currentMode);
+    this.currentMode = this.getStoredMode() || this.getSystemPreference();
+    this.applyMode(this.currentMode, true);
   }
 
   /**
@@ -20,6 +20,14 @@ export class ModeSwitcher {
   }
 
   /**
+   * Get the system color scheme preference
+   */
+  getSystemPreference() {
+    if (typeof window === 'undefined') return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  /**
    * Store the mode preference in localStorage
    */
   storeMode(mode) {
@@ -30,19 +38,38 @@ export class ModeSwitcher {
 
   /**
    * Apply the mode to the document
+   * @param {string} mode - The mode to apply ('light' or 'dark')
+   * @param {boolean} [initialLoad=false] - Whether this is the initial load
    */
-  applyMode(mode) {
-    if (typeof document !== 'undefined') {
-      const html = document.documentElement;
-      
-      if (mode === 'dark') {
-        html.setAttribute('data-mode', 'dark');
-      } else {
-        html.removeAttribute('data-mode');
-      }
-      
+  applyMode(mode, initialLoad = false) {
+    if (typeof document === 'undefined') return;
+    
+    const html = document.documentElement;
+    
+    if (mode === 'dark') {
+      html.setAttribute('data-mode', 'dark');
+    } else {
+      html.removeAttribute('data-mode');
+    }
+    
+    // Only store the mode if it's not the initial load
+    if (!initialLoad) {
       this.currentMode = mode;
       this.storeMode(mode);
+    }
+    
+    // Dispatch a custom event when mode changes
+    this.dispatchModeChange(mode);
+  }
+  
+  /**
+   * Dispatch a custom event when the mode changes
+   */
+  dispatchModeChange(mode) {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('mode-change', { 
+        detail: { mode } 
+      }));
     }
   }
 
@@ -81,6 +108,7 @@ export const modeSwitcher = new ModeSwitcher();
 // Auto-initialize on DOM content loaded
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    modeSwitcher.applyMode(modeSwitcher.getCurrentMode());
+    // Apply the stored mode or system preference
+    modeSwitcher.applyMode(modeSwitcher.getStoredMode() || modeSwitcher.getSystemPreference());
   });
 }
