@@ -96,8 +96,7 @@ describe('ThemeSwitcher', () => {
   describe('constructor', () => {
     it('should initialize with default theme when no stored theme exists', () => {
       // Clear any stored theme
-      localStorageMock._store = {};
-      localStorageMock.getItem.mockClear();
+      localStorageMock.clear();
       
       const switcher = new ThemeSwitcher();
       
@@ -106,21 +105,24 @@ describe('ThemeSwitcher', () => {
     });
 
     it('should initialize with stored theme when it exists', () => {
-      // Set stored theme to 'water'
-      localStorageMock._store = { theme: 'water' };
+      // Set stored theme to 'water' directly in the mock store
+      localStorageMock._store.theme = 'water';
+      // Reset the getItem mock to track calls
       localStorageMock.getItem.mockClear();
       
       const switcher = new ThemeSwitcher();
       
       expect(switcher.getCurrentTheme()).toBe('water');
-      expect(document.documentElement.setAttribute).toHaveBeenCalledWith('data-theme', 'water');
+      expect(documentMock.documentElement.setAttribute).toHaveBeenCalledWith('data-theme', 'water');
+      expect(documentMock.documentElement.setAttribute).toHaveBeenCalledWith('data-theme-water', '');
     });
   });
 
   describe('getStoredTheme', () => {
     it('should return stored theme from localStorage', () => {
-      // Set stored theme to 'water'
-      localStorageMock._store = { theme: 'water' };
+      // Set stored theme to 'water' directly in the mock
+      localStorageMock._store.theme = 'water';
+      // Reset the mock to track calls
       localStorageMock.getItem.mockClear();
       
       const result = themeSwitcher.getStoredTheme();
@@ -144,15 +146,17 @@ describe('ThemeSwitcher', () => {
   describe('storeTheme', () => {
     it('should store theme in localStorage', () => {
       // Clear stored theme
-      localStorageMock._store = {};
-      localStorageMock.setItem.mockClear();
+      localStorageMock.clear();
       
+      // Store the theme
       themeSwitcher.storeTheme('water');
       
       // Check that setItem was called with the right arguments
       expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'water');
-      // Verify the value was actually stored
-      expect(localStorageMock._store.theme).toBe('water');
+      
+      // Verify the value was actually stored by getting it back
+      const storedValue = localStorageMock.getItem('theme');
+      expect(storedValue).toBe('water');
     });
 
     it('should not throw when window is not available', () => {

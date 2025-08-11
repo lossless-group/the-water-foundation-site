@@ -8,15 +8,19 @@ describe('Toggle Integration Tests', () => {
   let document;
   let window;
 
-  // Mock for matchMedia
-  const createMatchMedia = (matches = false) => ({
-    matches,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  });
+  // Create a matchMedia mock
+  function createMatchMedia(matches = false) {
+    return vi.fn().mockImplementation(query => ({
+      matches: query === '(prefers-color-scheme: dark)' ? matches : false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
+  }
 
   // Mock localStorage
   const localStorageMock = {
@@ -35,8 +39,8 @@ describe('Toggle Integration Tests', () => {
     })
   };
 
-  // Mock window.matchMedia
-  const mockMatchMedia = vi.fn().mockImplementation(createMatchMedia);
+  // Create matchMedia mock
+  const mockMatchMedia = createMatchMedia();
 
   beforeEach(() => {
     // Create a fresh DOM for each test
