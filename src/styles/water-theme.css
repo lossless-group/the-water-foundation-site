@@ -1,0 +1,103 @@
+/* Water Theme CSS Custom Properties */
+
+:root {
+  /* Default Theme - Tailwind Defaults */
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-200: 191 219 254;
+  --color-primary-300: 147 197 253;
+  --color-primary-400: 96 165 250;
+  --color-primary-500: 59 130 246;
+  --color-primary-600: 37 99 235;
+  --color-primary-700: 29 78 216;
+  --color-primary-800: 30 64 175;
+  --color-primary-900: 30 58 138;
+  --color-primary-950: 23 37 84;
+
+  --color-secondary-50: 248 250 252;
+  --color-secondary-100: 241 245 249;
+  --color-secondary-200: 226 232 240;
+  --color-secondary-300: 203 213 225;
+  --color-secondary-400: 148 163 184;
+  --color-secondary-500: 100 116 139;
+  --color-secondary-600: 71 85 105;
+  --color-secondary-700: 51 65 85;
+  --color-secondary-800: 30 41 59;
+  --color-secondary-900: 15 23 42;
+  --color-secondary-950: 2 6 23;
+
+  --color-accent-50: 240 253 250;
+  --color-accent-100: 204 251 241;
+  --color-accent-200: 153 246 228;
+  --color-accent-300: 94 234 212;
+  --color-accent-400: 45 212 191;
+  --color-accent-500: 20 184 166;
+  --color-accent-600: 13 148 136;
+  --color-accent-700: 15 118 110;
+  --color-accent-800: 17 94 89;
+  --color-accent-900: 19 78 74;
+  --color-accent-950: 4 47 46;
+
+  /* Typography */
+  --font-family-primary: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-secondary: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+/* Water Theme Override - EXTREME CONTRAST */
+[data-theme="water"] {
+  /* Deep ocean blues and teals - dramatically different from default */
+  --color-primary-50: 8 47 73;
+  --color-primary-100: 12 74 110;
+  --color-primary-200: 7 89 133;
+  --color-primary-300: 3 105 161;
+  --color-primary-400: 2 132 199;
+  --color-primary-500: 14 165 233;
+  --color-primary-600: 56 189 248;
+  --color-primary-700: 125 211 252;
+  --color-primary-800: 186 230 253;
+  --color-primary-900: 224 242 254;
+  --color-primary-950: 240 249 255;
+
+  /* Dark navy grays */
+  --color-secondary-50: 2 6 23;
+  --color-secondary-100: 15 23 42;
+  --color-secondary-200: 30 41 59;
+  --color-secondary-300: 51 65 85;
+  --color-secondary-400: 71 85 105;
+  --color-secondary-500: 100 116 139;
+  --color-secondary-600: 148 163 184;
+  --color-secondary-700: 203 213 225;
+  --color-secondary-800: 226 232 240;
+  --color-secondary-900: 241 245 249;
+  --color-secondary-950: 248 250 252;
+
+  /* Bright cyan/turquoise accents */
+  --color-accent-50: 8 51 68;
+  --color-accent-100: 22 78 99;
+  --color-accent-200: 21 94 117;
+  --color-accent-300: 14 116 144;
+  --color-accent-400: 8 145 178;
+  --color-accent-500: 6 182 212;
+  --color-accent-600: 34 211 238;
+  --color-accent-700: 103 232 249;
+  --color-accent-800: 165 243 252;
+  --color-accent-900: 207 250 254;
+  --color-accent-950: 236 254 255;
+}

@@ -1,5 +1,5 @@
 ---
-
+import '../styles/global.css';
 ---
 
 <html lang="en">
@@ -8,9 +8,113 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Water Foundation - Theme Test</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
+		<div class="max-w-4xl mx-auto">
+			<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation Theme System</h1>
+			
+			<div class="mb-8 space-y-4">
+				<div>
+					<button 
+						id="theme-toggle" 
+						style="background: blue; color: white; padding: 12px 24px; margin-right: 16px; border: none; border-radius: 8px; cursor: pointer;"
+					>
+						Toggle to Water Theme
+					</button>
+					<button 
+						id="mode-toggle" 
+						style="background: green; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer;"
+					>
+						Toggle to Dark Mode
+					</button>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+				<div class="bg-primary-100 p-6 rounded-xl">
+					<h2 class="text-xl font-semibold text-primary-800 mb-3">Primary Colors</h2>
+					<div class="space-y-2">
+						<div class="bg-primary-500 text-white p-2 rounded text-sm">Primary 500</div>
+						<div class="bg-primary-600 text-white p-2 rounded text-sm">Primary 600</div>
+						<div class="bg-primary-700 text-white p-2 rounded text-sm">Primary 700</div>
+					</div>
+				</div>
+
+				<div class="bg-secondary-100 p-6 rounded-xl">
+					<h2 class="text-xl font-semibold text-secondary-800 mb-3">Secondary Colors</h2>
+					<div class="space-y-2">
+						<div class="bg-secondary-500 text-white p-2 rounded text-sm">Secondary 500</div>
+						<div class="bg-secondary-600 text-white p-2 rounded text-sm">Secondary 600</div>
+						<div class="bg-secondary-700 text-white p-2 rounded text-sm">Secondary 700</div>
+					</div>
+				</div>
+
+				<div class="bg-accent-100 p-6 rounded-xl">
+					<h2 class="text-xl font-semibold text-accent-800 mb-3">Accent Colors</h2>
+					<div class="space-y-2">
+						<div class="bg-accent-500 text-white p-2 rounded text-sm">Accent 500</div>
+						<div class="bg-accent-600 text-white p-2 rounded text-sm">Accent 600</div>
+						<div class="bg-accent-700 text-white p-2 rounded text-sm">Accent 700</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bg-white p-6 rounded-xl shadow-lg">
+				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Typography & Spacing Test</h2>
+				<p class="text-secondary-600 mb-4">
+					This page demonstrates the theme system with CSS custom properties. 
+					Click the toggle button to switch between the default theme and the water theme.
+				</p>
+				<div class="flex gap-md">
+					<span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
+					<span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			import { themeSwitcher } from '../utils/theme-switcher.js';
+			import { modeSwitcher } from '../utils/mode-switcher.js';
+			
+			const themeToggleButton = document.getElementById('theme-toggle') as HTMLElement;
+			const modeToggleButton = document.getElementById('mode-toggle') as HTMLElement;
+			
+			// Theme toggle functionality
+			if (themeToggleButton) {
+				function updateThemeButtonText() {
+					const currentTheme = themeSwitcher.getCurrentTheme();
+					themeToggleButton.textContent = currentTheme === 'default' 
+						? 'Toggle to Water Theme' 
+						: 'Toggle to Default Theme';
+				}
+				
+				themeToggleButton.addEventListener('click', () => {
+					themeSwitcher.toggleTheme();
+					updateThemeButtonText();
+				});
+				
+				// Initialize theme button text
+				updateThemeButtonText();
+			}
+			
+			// Mode toggle functionality
+			if (modeToggleButton) {
+				function updateModeButtonText() {
+					const currentMode = modeSwitcher.getCurrentMode();
+					modeToggleButton.textContent = currentMode === 'light' 
+						? 'Toggle to Dark Mode' 
+						: 'Toggle to Light Mode';
+				}
+				
+				modeToggleButton.addEventListener('click', () => {
+					modeSwitcher.toggleMode();
+					updateModeButtonText();
+				});
+				
+				// Initialize mode button text
+				updateModeButtonText();
+			}
+		</script>
 	</body>
 </html>
