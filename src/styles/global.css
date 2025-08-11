@@ -1,15 +1,12 @@
 @import "tailwindcss";
-@import "./water-theme.css";
+@import "./default-theme.css";
 
 /* Base styles and theme integration */
 html {
   /* Default theme applied to html element */
   color-scheme: light;
-}
-
-html[data-theme="water"] {
-  /* Water theme uses CSS custom properties defined in water-theme.css */
-  color-scheme: light;
+  /* Smooth theme transitions */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Mode Styles */

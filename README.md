@@ -39,6 +39,10 @@ twf-site/
    pnpm install
    ```
 
+   ```bash
+   pnpm add -D vitest @vitest/ui
+   ```
+
 ### Development
 
 Start the development server:

@@ -1,0 +1,349 @@
+/* Default Theme CSS Custom Properties */
+@import "tailwindcss";
+
+:root {
+  /* Primary Colors - Warm grays */
+  --color-primary-50: 250 250 249;
+  --color-primary-100: 245 245 244;
+  --color-primary-200: 231 229 228;
+  --color-primary-300: 214 211 209;
+  --color-primary-400: 168 162 158;
+  --color-primary-500: 120 113 108;
+  --color-primary-600: 87 83 78;
+  --color-primary-700: 68 64 60;
+  --color-primary-800: 41 37 36;
+  --color-primary-900: 28 25 23;
+  --color-primary-950: 12 10 9;
+
+  /* Secondary Colors - Warm accent */
+  --color-secondary-50: 255 247 237;
+  --color-secondary-100: 255 237 213;
+  --color-secondary-200: 254 215 170;
+  --color-secondary-300: 253 186 116;
+  --color-secondary-400: 251 146 60;
+  --color-secondary-500: 249 115 22;
+  --color-secondary-600: 234 88 12;
+  --color-secondary-700: 194 65 12;
+  --color-secondary-800: 154 52 18;
+  --color-secondary-900: 124 45 18;
+  --color-secondary-950: 67 20 7;
+
+  /* Accent Colors - Complementary blue */
+  --color-accent-50: 239 246 255;
+  --color-accent-100: 219 234 254;
+  --color-accent-200: 191 219 254;
+  --color-accent-300: 147 197 253;
+  --color-accent-400: 96 165 250;
+  --color-accent-500: 59 130 246;
+  --color-accent-600: 37 99 235;
+  --color-accent-700: 29 78 216;
+  --color-accent-800: 30 64 175;
+  --color-accent-900: 30 58 138;
+  --color-accent-950: 23 37 84;
+
+  /* Typography */
+  --font-family-primary: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-secondary: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-default: all 0.2s ease-in-out;
+  --transition-slow: all 0.3s ease-in-out;
+  --transition-fast: all 0.1s ease-in-out;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-none: 0 0 #0000;
+}
+
+/* Theme colors */
+:root {
+  /* Default theme colors */
+  --color-background: var(--color-primary-50);
+  --color-foreground: var(--color-primary-900);
+  --color-card: var(--color-primary-50);
+  --color-card-foreground: var(--color-primary-900);
+  --color-popover: var(--color-primary-50);
+  --color-popover-foreground: var(--color-primary-900);
+  --color-primary: var(--color-secondary-600);
+  --color-primary-foreground: var(--color-secondary-50);
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-foreground: var(--color-secondary-50);
+  --color-muted: var(--color-primary-100);
+  --color-muted-foreground: var(--color-primary-500);
+  --color-accent: var(--color-accent-600);
+  --color-accent-foreground: var(--color-accent-50);
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 0 0% 98%;
+  --color-border: var(--color-primary-200);
+  --color-input: var(--color-primary-200);
+  --color-ring: var(--color-secondary-600);
+}
+
+/* Dark mode colors */
+.dark {
+  --color-background: var(--color-primary-900);
+  --color-foreground: var(--color-primary-50);
+  --color-card: var(--color-primary-800);
+  --color-card-foreground: var(--color-primary-50);
+  --color-popover: var(--color-primary-900);
+  --color-popover-foreground: var(--color-primary-50);
+  --color-primary: var(--color-secondary-500);
+  --color-primary-foreground: var(--color-secondary-900);
+  --color-secondary: var(--color-secondary-400);
+  --color-secondary-foreground: var(--color-secondary-900);
+  --color-muted: var(--color-primary-700);
+  --color-muted-foreground: var(--color-primary-300);
+  --color-accent: var(--color-accent-500);
+  --color-accent-foreground: var(--color-accent-900);
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 0 0% 98%;
+  --color-border: var(--color-primary-700);
+  --color-input: var(--color-primary-700);
+  --color-ring: var(--color-secondary-400);
+}
+
+/* Water theme colors */
+[data-theme="water"] {
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-200: 191 219 254;
+  --color-primary-300: 147 197 253;
+  --color-primary-400: 96 165 250;
+  --color-primary-500: 59 130 246;
+  --color-primary-600: 37 99 235;
+  --color-primary-700: 29 78 216;
+  --color-primary-800: 30 64 175;
+  --color-primary-900: 30 58 138;
+  --color-primary-950: 23 37 84;
+
+  --color-secondary-50: 248 250 252;
+  --color-secondary-100: 241 245 249;
+  --color-secondary-200: 226 232 240;
+  --color-secondary-300: 203 213 225;
+  --color-secondary-400: 148 163 184;
+  --color-secondary-500: 100 116 139;
+  --color-secondary-600: 71 85 105;
+  --color-secondary-700: 51 65 85;
+  --color-secondary-800: 30 41 59;
+  --color-secondary-900: 15 23 42;
+  --color-secondary-950: 2 6 23;
+
+  --color-accent-50: 240 253 250;
+  --color-accent-100: 204 251 241;
+  --color-accent-200: 153 246 228;
+  --color-accent-300: 94 234 212;
+  --color-accent-400: 45 212 191;
+  --color-accent-500: 20 184 166;
+  --color-accent-600: 13 148 136;
+  --color-accent-700: 15 118 110;
+  --color-accent-800: 17 94 89;
+  --color-accent-900: 19 78 74;
+  --color-accent-950: 4 47 46;
+}
+
+/* Dark mode for water theme */
+[data-theme="water"].dark {
+  --color-background: var(--color-primary-900);
+  --color-foreground: var(--color-primary-50);
+  --color-card: var(--color-primary-800);
+  --color-card-foreground: var(--color-primary-50);
+  --color-popover: var(--color-primary-900);
+  --color-popover-foreground: var(--color-primary-50);
+  --color-primary: var(--color-accent-400);
+  --color-primary-foreground: var(--color-primary-900);
+  --color-secondary: var(--color-accent-500);
+  --color-secondary-foreground: var(--color-primary-50);
+  --color-muted: var(--color-primary-700);
+  --color-muted-foreground: var(--color-primary-300);
+  --color-accent: var(--color-accent-400);
+  --color-accent-foreground: var(--color-primary-900);
+  --color-border: var(--color-primary-700);
+  --color-input: var(--color-primary-700);
+  --color-ring: var(--color-accent-400);
+}
+
+/* Base styles */
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-family-primary);
+  line-height: 1.6;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-family: var(--font-family-secondary);
+  color: rgb(var(--color-foreground));
+}
+
+/* Links */
+a {
+  color: rgb(var(--color-primary));
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: rgb(var(--color-primary) / 0.8);
+  text-decoration: underline;
+}
+
+/* Buttons */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  outline: none;
+}
+
+button:focus-visible, .btn:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgb(var(--color-ring));
+}
+
+button:disabled, .btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-primary-foreground));
+}
+
+.btn-primary:hover {
+  background-color: rgb(var(--color-primary) / 0.9);
+}
+
+.btn-secondary {
+  background-color: rgb(var(--color-secondary));
+  color: rgb(var(--color-secondary-foreground));
+}
+
+.btn-secondary:hover {
+  background-color: rgb(var(--color-secondary) / 0.8);
+}
+
+.btn-outline {
+  border: 1px solid rgb(var(--color-border));
+  background-color: rgb(var(--color-background));
+}
+
+.btn-outline:hover {
+  background-color: rgb(var(--color-accent));
+  color: rgb(var(--color-accent-foreground));
+}
+
+/* Cards */
+.card {
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--color-border));
+  background-color: rgb(var(--color-card));
+  color: rgb(var(--color-card-foreground));
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Forms */
+input, textarea, select {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(var(--color-border));
+  background-color: rgb(var(--color-background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--color-ring));
+  border-color: rgb(var(--color-ring));
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
