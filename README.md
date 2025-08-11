@@ -2,6 +2,11 @@
 
 A modern web application built with [Astro](https://astro.build) for The Water Foundation.
 
+### Completed
+- [x] Mode System
+- [ ] Theme System
+
+
 ## 🏗️ Project Structure
 
 ```
