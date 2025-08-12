@@ -18,13 +18,14 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 - [x] **State Persistence**: localStorage integration for user preferences
 - [x] **Component Integration**: Theme-aware components with semantic CSS classes
 - [x] **Event System**: Custom events for coordinated UI updates
-- [x] **Comprehensive Testing**: 45 unit and integration tests with 100% pass rate
+- [x] **Comprehensive Testing**: 51 unit and integration tests with 100% pass rate
 
 ### Key Features
 - **Tailwind CSS v4**: Modern `@theme` directive with CSS custom properties
 - **JavaScript Utilities**: `ThemeSwitcher` and `ModeSwitcher` classes
 - **Astro Layouts**: Reusable `BoilerPlateHTML` and `BaseThemeLayout` components
 - **Brand Kit Page**: Interactive demonstration of all theme combinations
+- **Hero Component**: Full-width hero component with background cycling and responsive design
 
 
 ## 🏗️ Project Structure
@@ -89,10 +90,19 @@ pnpm test:run
 ```
 
 ### Test Coverage
-- **45 total tests** across 3 test suites
+- **51 total tests** across 4 test suites
 - **ThemeSwitcher**: 24 unit tests covering initialization, switching, storage, and events
 - **ModeSwitcher**: 7 unit tests for light/dark mode functionality  
 - **Integration**: 14 tests for combined theme/mode operations and state management
+- **Hero Component**: 6 unit tests covering rendering, background cycling, and interactive elements
+
+### Hero Component Features
+- **Background Cycling**: Smooth transitions between multiple background types (image, gradient, video, GIF)
+- **Responsive Design**: Adapts to all screen sizes with proper aspect ratios
+- **Overlay Support**: Configurable color and gradient overlays with opacity control
+- **Content Areas**: Flexible layout for headers, subheaders, and call-to-action buttons
+- **Accessible**: Proper ARIA attributes and semantic HTML structure
+- **Tested**: Comprehensive test coverage for all interactive features
 
 ## 🎨 Theme System
 
@@ -168,7 +178,10 @@ All commands should be run from the root directory:
 - **`src/pages/`** - File-based routing. Each `.astro` or `.md` file becomes a route
   - `index.astro` - Homepage with project overview
   - `brand-kit/index.astro` - Interactive theme system demonstration
+  - `brand-kit/heros.astro` - Hero component examples and documentation
 - **`src/components/`** - Reusable UI components
+  - `basics/` - Core UI components
+    - `Hero.astro` - Full-width hero component with background cycling and responsive design
   - `design-system/` - Theme-aware components (ColorVariableGrid, TextStylePatternsGrid)
 - **`src/layouts/`** - Page layout components
   - `BoilerPlateHTML.astro` - HTML boilerplate with meta tags and fonts
