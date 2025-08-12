@@ -328,29 +328,18 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
   // Interactive dashboard functionality
   document.addEventListener('DOMContentLoaded', function() {
     
-    // Animate counters
-    const animateCounter = (element, target, duration = 2000) => {
-      let start = 0;
-      const increment = target / (duration / 16);
-      
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-          element.textContent = target;
-          clearInterval(timer);
-        } else {
-          element.textContent = Math.floor(start);
-        }
-      }, 16);
-    };
+    // Counter animation utility (if needed for future enhancements)
+    // Currently not used in this dashboard version
     
     // Add click handlers for interactive elements
-    document.querySelectorAll('.opportunity-card, .tech-sector, .vertical-item').forEach(card => {
+    document.querySelectorAll('.opportunity-card, .tech-sector, .vertical-item').forEach(function(card) {
       card.addEventListener('click', function() {
-        this.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 150);
+        if (card instanceof HTMLElement) {
+          card.style.transform = 'scale(0.98)';
+          setTimeout(function() {
+            card.style.transform = '';
+          }, 150);
+        }
       });
     });
     
@@ -360,15 +349,15 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
       rootMargin: '0px 0px -50px 0px'
     };
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
           entry.target.style.animationPlayState = 'running';
         }
       });
     }, observerOptions);
     
-    document.querySelectorAll('.metric-card, .dashboard-panel').forEach(el => {
+    document.querySelectorAll('.metric-card, .dashboard-panel').forEach(function(el) {
       observer.observe(el);
     });
   });

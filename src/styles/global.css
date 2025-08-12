@@ -254,7 +254,7 @@ html {
   --color-accent-900: #134e4a;
   --color-accent-950: #042f2e;
 
-  --font-family-brand: 'ITC Avant Garde Gothic', 'Montserrat', 'Inter', system-ui, sans-serif;
+  --font-family-brand: 'Avenir', 'ITC Avant Garde Gothic', 'Montserrat', 'Inter', system-ui, sans-serif;
   --font-family-primary: 'Nunito', 'Quicksand', -apple-system, sans-serif;
   --font-family-secondary: 'Quicksand', -apple-system, sans-serif;
   --font-family-mono: 'Fira Code', monospace;

@@ -216,20 +216,23 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
   // Counter animation
   document.addEventListener('DOMContentLoaded', function() {
     const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target'));
+    counters.forEach(function(counter) {
+      const targetAttr = counter.getAttribute('data-target');
+      if (!targetAttr) return;
+      
+      const target = parseInt(targetAttr, 10);
       const increment = target / 100;
       let current = 0;
       
-      const updateCounter = () => {
+      function updateCounter() {
         if (current < target) {
           current += increment;
-          counter.textContent = Math.floor(current);
+          counter.textContent = Math.floor(current).toString();
           requestAnimationFrame(updateCounter);
         } else {
-          counter.textContent = target;
+          counter.textContent = target.toString();
         }
-      };
+      }
       
       setTimeout(updateCounter, 500);
     });

@@ -3,6 +3,7 @@
 import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
 import ThemeImage from '../ui/ThemeImage.astro';
 import ModeToggle from '../ui/ModeToggle.astro';
+import InternalLink from '../ui/InternalLinkWrapper.astro';
 
 // Define the logo type
 type LogoProps = {
@@ -108,16 +109,12 @@ const logo = logoProp || defaultLogo;
       <ul class="flex items-center space-x-6">
         {navItems.map((item) => (
           <li>
-            <a 
+            <InternalLink 
               href={item.href}
-              class:list={[
-                'text-sm font-medium hover:text-primary',
-                item.isActive ? 'text-primary' : 'text-foreground/80',
-                'inline-block py-2 transition-colors duration-100'
-              ]}
+              isActive={item.isActive}
             >
               {item.text}
-            </a>
+            </InternalLink>
           </li>
         ))}
       </ul>
@@ -196,17 +193,18 @@ const logo = logoProp || defaultLogo;
     <div class="space-y-1 bg-background pb-3 pt-2">
       <ResponsiveContainer>
         {navItems.map((item) => (
-          <a
+          <InternalLink
             href={item.href}
-            class:list={[
+            isActive={item.isActive}
+            class={[
               'block px-3 py-2 text-base font-medium',
               item.isActive 
                 ? 'bg-accent text-accent-foreground' 
-                : 'text-foreground/80 hover:bg-accent hover:text-accent-foreground'
-            ]}
+                : 'hover:bg-accent hover:text-accent-foreground'
+            ].join(' ')}
           >
             {item.text}
-          </a>
+          </InternalLink>
         ))}
         {cta ? (
           <div class="mt-4">

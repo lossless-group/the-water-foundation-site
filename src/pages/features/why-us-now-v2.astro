@@ -11,7 +11,9 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     
     <!-- Hero - Full Screen Impact -->
     <section class="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-900/20 via-background to-teal-900/20">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23059669" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+      <div class="absolute inset-0 opacity-10">
+        <div class="w-full h-full bg-gradient-to-r from-primary/5 to-blue-600/5 animate-pulse"></div>
+      </div>
       
       <div class="text-center z-10 px-4">
         <div class="mb-8 overflow-hidden">
@@ -328,13 +330,15 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 
 <script>
   // Parallax effect for text elements
-  document.addEventListener('scroll', () => {
+  document.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.parallax-text');
     
-    parallaxElements.forEach(element => {
-      const rate = scrolled * -0.5;
-      element.style.transform = `translateY(${rate}px)`;
+    parallaxElements.forEach(function(element) {
+      if (element instanceof HTMLElement) {
+        const rate = scrolled * -0.5;
+        element.style.transform = 'translateY(' + rate + 'px)';
+      }
     });
   });
   
@@ -344,15 +348,15 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     rootMargin: '0px 0px -50px 0px'
   };
   
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
         entry.target.style.animationPlayState = 'running';
       }
     });
   }, observerOptions);
   
-  document.querySelectorAll('.mission-card, .vertical-card').forEach(el => {
+  document.querySelectorAll('.mission-card, .vertical-card').forEach(function(el) {
     observer.observe(el);
   });
 </script>

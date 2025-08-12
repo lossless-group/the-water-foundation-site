@@ -1,6 +1,7 @@
 ---
 import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
 import SocialIcons from '../ui/SocialIcons.astro';
+import ThemeImage from '../ui/ThemeImage.astro';
 
 // Import SocialLink type from SocialIcons component
 type SocialLink = import('../ui/SocialIcons.astro').SocialLink;
@@ -82,6 +83,7 @@ const currentYear = new Date().getFullYear();
 <footer class:list={[
   'bg-background border-t border-border/10',
   'text-foreground/80',
+  'mt-16 md:mt-20 lg:mt-24',
   className
 ]}>
   <ResponsiveContainer class="py-12 md:py-16 lg:py-20">
@@ -91,10 +93,11 @@ const currentYear = new Date().getFullYear();
         <div class="flex flex-col space-y-4">
           <a href="/" class="inline-block">
             {logo?.src ? (
-              <img 
-                src={logo.src} 
-                alt={logo.alt || siteTitle} 
-                width={logo.width || 180} 
+              <ThemeImage
+                lightSrc="/trademark__The-Water-Foundation.svg"
+                darkSrc="/trademark__The-Water-Foundation--Inverted.svg"
+                alt={logo.alt || siteTitle}
+                width={logo.width || 180}
                 height={logo.height || 40}
                 class="h-10 w-auto"
                 loading="lazy"
@@ -198,14 +201,6 @@ const currentYear = new Date().getFullYear();
   @media (prefers-reduced-motion: reduce) {
     a, button {
       transition: none !important;
-    }
-  }
-  
-  /* Dark mode adjustments */
-  @media (prefers-color-scheme: dark) {
-    footer {
-      background-color: rgba(15, 23, 42, 0.98);
-      border-top-color: rgba(255, 255, 255, 0.1);
     }
   }
 </style>

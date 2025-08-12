@@ -1,0 +1,74 @@
+---
+export interface Props {
+  href: string;
+  class?: string;
+  isActive?: boolean;
+}
+
+const { 
+  href, 
+  class: className = '', 
+  isActive = false 
+} = Astro.props;
+---
+
+<a 
+  href={href}
+  class:list={[
+    'internal-link relative inline-block py-2 text-sm font-medium transition-colors duration-200',
+    isActive ? 'text-primary' : 'text-foreground/80 hover:text-primary',
+    className
+  ]}
+>
+  <slot />
+  <span class="gradient-underline"></span>
+</a>
+
+<style>
+  .internal-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      #1d4ed8 0%, 
+      #3b82f6 50%, 
+      #1d4ed8 100%
+    );
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
+    opacity: 1;
+  }
+
+  .internal-link:hover .gradient-underline {
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Dark mode gradient - lighter for visibility */
+  :global(.dark) .gradient-underline {
+    background: linear-gradient(90deg, 
+      #60a5fa 0%, 
+      #93c5fd 50%, 
+      #60a5fa 100%
+    );
+  }
+
+  /* High contrast mode for better visibility */
+  @media (prefers-contrast: high) {
+    .gradient-underline {
+      background: linear-gradient(90deg, 
+        #000080 0%, 
+        #0066cc 50%, 
+        #000080 100%
+      );
+    }
+  }
+</style>
