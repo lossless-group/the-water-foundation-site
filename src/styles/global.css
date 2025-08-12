@@ -364,6 +364,21 @@ button {
   color: rgb(248 250 252) !important; /* Light text for dark mode */
 }
 
+/* Custom spacing utilities */
+.px-sm { padding-left: 0.5rem; padding-right: 0.5rem; }
+.py-sm { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.px-md { padding-left: 0.75rem; padding-right: 0.75rem; }
+.py-md { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.px-lg { padding-left: 1rem; padding-right: 1rem; }
+.py-lg { padding-top: 1rem; padding-bottom: 1rem; }
+.px-xl { padding-left: 1.25rem; padding-right: 1.25rem; }
+.py-xl { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 0.75rem; }
+.gap-lg { gap: 1rem; }
+.gap-xl { gap: 1.25rem; }
+
 /* Ensure smooth theme transitions */
 * {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;

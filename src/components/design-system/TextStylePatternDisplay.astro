@@ -1,0 +1,30 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+	textClass: string;
+	containerClass?: string;
+	sampleText?: string;
+}
+
+const { 
+	title, 
+	description, 
+	textClass,
+	containerClass = "bg-secondary-50 p-4 rounded-lg border",
+	sampleText = "Sample text to demonstrate this style"
+} = Astro.props;
+---
+
+<div class={containerClass}>
+	<div class="mb-3">
+		<h4 class="text-sm font-semibold text-secondary-900 mb-1">{title}</h4>
+		<p class="text-xs text-secondary-600">{description}</p>
+	</div>
+	<div class={`${textClass} text-secondary-900`}>
+		{sampleText}
+	</div>
+	<div class="mt-2 text-xs font-mono text-secondary-500">
+		{textClass}
+	</div>
+</div>

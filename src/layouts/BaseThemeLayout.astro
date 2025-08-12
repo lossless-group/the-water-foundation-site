@@ -1,0 +1,65 @@
+---
+import BoilerPlateHTML from './BoilerPlateHTML.astro';
+
+export interface Props {
+	title?: string;
+	description?: string;
+	themeClass?: string;
+	containerClass?: string;
+	favicon?: string;
+}
+
+const { 
+	title = "Water Foundation", 
+	description = "Water Foundation Theme System",
+	themeClass = "theme-default",
+	containerClass = "max-w-4xl mx-auto",
+	favicon = "favicon__The-Water-Foundation.svg"
+} = Astro.props;
+
+import '../styles/global.css';
+---
+
+<BoilerPlateHTML 
+	title={title}
+	description={description}
+	themeClass={themeClass}
+	favicon={favicon}
+>
+	<style>
+		/* Default theme styles */
+		.theme-default {
+			--font-sans: var(--font-family-primary);
+			--font-serif: var(--font-family-secondary);
+			--font-mono: var(--font-family-mono);
+			font-family: var(--font-sans);
+		}
+		
+		/* Water theme styles */
+		.theme-water {
+			--font-sans: var(--font-family-primary);
+			--font-serif: var(--font-family-secondary);
+			--font-mono: var(--font-family-mono);
+			font-family: var(--font-sans);
+			font-weight: var(--font-weight-normal);
+			line-height: var(--line-height-relaxed);
+			letter-spacing: var(--letter-spacing-wide);
+		}
+		
+		/* Apply rounded corners to all elements in water theme */
+		.theme-water * {
+			border-radius: var(--border-radius-sm);
+		}
+		
+		/* Smooth transitions for theme changes */
+		html, body, button, input, select, textarea {
+			transition: var(--transition-smooth, all 0.3s ease);
+		}
+	</style>
+
+	<div class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
+		<div class={containerClass}>
+			<slot />
+		</div>
+	</div>
+</BoilerPlateHTML>

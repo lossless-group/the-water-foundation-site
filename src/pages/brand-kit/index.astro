@@ -1,9 +1,10 @@
 ---
-import BoilerPlateHTML from '../../layouts/BoilerPlateHTML.astro';
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import ColorVariableGrid from '../../components/design-system/ColorVariableGrid.astro';
+import TextStylePatternsGrid from '../../components/design-system/TextStylePatternsGrid.astro';
 ---
 
-<BoilerPlateHTML 
+<BaseThemeLayout 
 	title="Water Foundation - Brand Kit & Theme System"
 	description="Interactive theme system demonstration with color variables and mode switching"
 	themeClass="theme-default"
@@ -30,17 +31,7 @@ import ColorVariableGrid from '../../components/design-system/ColorVariableGrid.
 
 		<ColorVariableGrid />
 
-		<div class="bg-white p-6 rounded-xl shadow-lg">
-			<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Typography & Spacing Test</h2>
-			<p class="text-secondary-600 mb-4">
-				This page demonstrates the theme system with CSS custom properties. 
-				Click the toggle button to switch between the default theme and the water theme.
-			</p>
-			<div class="flex gap-md">
-				<span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
-				<span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
-			</div>
-		</div>
+		<TextStylePatternsGrid />
 	</div>
 
 	<script>

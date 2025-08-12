@@ -1,0 +1,103 @@
+---
+import TextStylePatternDisplay from './TextStylePatternDisplay.astro';
+
+// Define typography and spacing patterns for demonstration
+const textStylePatterns = [
+  {
+    title: "Heading Large",
+    description: "Main page headings with bold weight",
+    textClass: "text-3xl font-bold",
+    sampleText: "Typography & Spacing Test"
+  },
+  {
+    title: "Heading Medium", 
+    description: "Section headings with semibold weight",
+    textClass: "text-2xl font-semibold",
+    sampleText: "Section Heading Example"
+  },
+  {
+    title: "Body Text",
+    description: "Standard paragraph text with comfortable line height",
+    textClass: "text-base leading-relaxed",
+    sampleText: "This page demonstrates the theme system with CSS custom properties. Click the toggle button to switch between the default theme and the water theme."
+  },
+  {
+    title: "Small Text",
+    description: "Secondary information and captions",
+    textClass: "text-sm text-secondary-600",
+    sampleText: "Secondary information and helper text"
+  },
+  {
+    title: "Custom Spacing Button",
+    description: "Primary action with custom spacing variables",
+    textClass: "bg-primary-500 text-white px-lg py-sm rounded-md font-medium",
+    sampleText: "Custom Spacing"
+  },
+  {
+    title: "Extended Spacing Button",
+    description: "Secondary action with larger spacing",
+    textClass: "bg-accent-500 text-white px-xl py-md rounded-lg font-medium",
+    sampleText: "More Spacing"
+  }
+];
+
+// Group patterns by category
+const patternCategories = {
+  typography: textStylePatterns.filter(pattern => 
+    pattern.title.includes('Heading') || pattern.title.includes('Body') || pattern.title.includes('Small')
+  ),
+  components: textStylePatterns.filter(pattern => 
+    pattern.title.includes('Button') || pattern.title.includes('Spacing')
+  )
+};
+---
+
+<div class="space-y-8">
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-secondary-900 mb-2">Typography & Spacing Patterns</h2>
+    <p class="text-secondary-600">Text styles and spacing demonstrations using theme variables</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Typography Patterns -->
+    <div class="bg-secondary-50 p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-secondary-900 mb-4">Typography Styles</h3>
+      <div class="space-y-4">
+        {patternCategories.typography.map(pattern => (
+          <TextStylePatternDisplay 
+            title={pattern.title}
+            description={pattern.description}
+            textClass={pattern.textClass}
+            sampleText={pattern.sampleText}
+            containerClass="bg-secondary-50 p-4 rounded-lg border"
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Component Patterns -->
+    <div class="bg-secondary-50 p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-secondary-900 mb-4">Component Spacing</h3>
+      <div class="space-y-4">
+        {patternCategories.components.map(pattern => (
+          <TextStylePatternDisplay 
+            title={pattern.title}
+            description={pattern.description}
+            textClass={pattern.textClass}
+            sampleText={pattern.sampleText}
+            containerClass="bg-secondary-50 p-4 rounded-lg border"
+          />
+        ))}
+      </div>
+      
+      <!-- Interactive spacing demo -->
+      <div class="mt-6 p-4 bg-secondary-100 rounded-lg">
+        <h4 class="text-sm font-semibold text-secondary-900 mb-3">Interactive Demo</h4>
+        <div class="flex gap-md flex-wrap">
+          <span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
+          <span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
