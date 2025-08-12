@@ -1,0 +1,103 @@
+---
+import ColorVariableDisplay from './ColorVariableDisplay.astro';
+
+// Define all the color variables we need for Tailwind theming
+const colorVariables = [
+  // Primary colors
+  { name: 'primary-50', value: 'var(--color-primary-50)', class: 'bg-primary-50' },
+  { name: 'primary-100', value: 'var(--color-primary-100)', class: 'bg-primary-100' },
+  { name: 'primary-200', value: 'var(--color-primary-200)', class: 'bg-primary-200' },
+  { name: 'primary-300', value: 'var(--color-primary-300)', class: 'bg-primary-300' },
+  { name: 'primary-400', value: 'var(--color-primary-400)', class: 'bg-primary-400' },
+  { name: 'primary-500', value: 'var(--color-primary-500)', class: 'bg-primary-500' },
+  { name: 'primary-600', value: 'var(--color-primary-600)', class: 'bg-primary-600' },
+  { name: 'primary-700', value: 'var(--color-primary-700)', class: 'bg-primary-700' },
+  { name: 'primary-800', value: 'var(--color-primary-800)', class: 'bg-primary-800' },
+  { name: 'primary-900', value: 'var(--color-primary-900)', class: 'bg-primary-900' },
+  { name: 'primary-950', value: 'var(--color-primary-950)', class: 'bg-primary-950' },
+  
+  // Secondary colors
+  { name: 'secondary-50', value: 'var(--color-secondary-50)', class: 'bg-secondary-50' },
+  { name: 'secondary-100', value: 'var(--color-secondary-100)', class: 'bg-secondary-100' },
+  { name: 'secondary-200', value: 'var(--color-secondary-200)', class: 'bg-secondary-200' },
+  { name: 'secondary-300', value: 'var(--color-secondary-300)', class: 'bg-secondary-300' },
+  { name: 'secondary-400', value: 'var(--color-secondary-400)', class: 'bg-secondary-400' },
+  { name: 'secondary-500', value: 'var(--color-secondary-500)', class: 'bg-secondary-500' },
+  { name: 'secondary-600', value: 'var(--color-secondary-600)', class: 'bg-secondary-600' },
+  { name: 'secondary-700', value: 'var(--color-secondary-700)', class: 'bg-secondary-700' },
+  { name: 'secondary-800', value: 'var(--color-secondary-800)', class: 'bg-secondary-800' },
+  { name: 'secondary-900', value: 'var(--color-secondary-900)', class: 'bg-secondary-900' },
+  { name: 'secondary-950', value: 'var(--color-secondary-950)', class: 'bg-secondary-950' },
+  
+  // Accent colors
+  { name: 'accent-50', value: 'var(--color-accent-50)', class: 'bg-accent-50' },
+  { name: 'accent-100', value: 'var(--color-accent-100)', class: 'bg-accent-100' },
+  { name: 'accent-200', value: 'var(--color-accent-200)', class: 'bg-accent-200' },
+  { name: 'accent-300', value: 'var(--color-accent-300)', class: 'bg-accent-300' },
+  { name: 'accent-400', value: 'var(--color-accent-400)', class: 'bg-accent-400' },
+  { name: 'accent-500', value: 'var(--color-accent-500)', class: 'bg-accent-500' },
+  { name: 'accent-600', value: 'var(--color-accent-600)', class: 'bg-accent-600' },
+  { name: 'accent-700', value: 'var(--color-accent-700)', class: 'bg-accent-700' },
+  { name: 'accent-800', value: 'var(--color-accent-800)', class: 'bg-accent-800' },
+  { name: 'accent-900', value: 'var(--color-accent-900)', class: 'bg-accent-900' },
+  { name: 'accent-950', value: 'var(--color-accent-950)', class: 'bg-accent-950' },
+];
+
+// Group colors by family
+const colorFamilies = {
+  primary: colorVariables.filter(color => color.name.startsWith('primary')),
+  secondary: colorVariables.filter(color => color.name.startsWith('secondary')),
+  accent: colorVariables.filter(color => color.name.startsWith('accent')),
+};
+---
+
+<div class="space-y-8">
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-secondary-900 mb-2">Color Variable Grid</h2>
+    <p class="text-secondary-600">All color variables used in our Tailwind theme system</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Primary Colors -->
+    <div class="bg-secondary-50 p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-secondary-900 mb-4">Primary Colors</h3>
+      <div class="space-y-2">
+        {colorFamilies.primary.map(color => (
+          <ColorVariableDisplay 
+            colorName={color.name}
+            colorValue={color.value}
+            tailwindClass={color.class}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Secondary Colors -->
+    <div class="bg-secondary-50 p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-secondary-900 mb-4">Secondary Colors</h3>
+      <div class="space-y-2">
+        {colorFamilies.secondary.map(color => (
+          <ColorVariableDisplay 
+            colorName={color.name}
+            colorValue={color.value}
+            tailwindClass={color.class}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Accent Colors -->
+    <div class="bg-secondary-50 p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-secondary-900 mb-4">Accent Colors</h3>
+      <div class="space-y-2">
+        {colorFamilies.accent.map(color => (
+          <ColorVariableDisplay 
+            colorName={color.name}
+            colorValue={color.value}
+            tailwindClass={color.class}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

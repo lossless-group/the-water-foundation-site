@@ -2,139 +2,74 @@
 import '../styles/global.css';
 ---
 
-<html lang="en">
+<html lang="en" class="theme-default">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Water Foundation - Theme Test</title>
+		<title>Water Foundation</title>
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+		
+		<style>
+			/* Basic theme styles */
+			.theme-default {
+				--font-sans: var(--font-family-primary);
+				--font-serif: var(--font-family-secondary);
+				--font-mono: var(--font-family-mono);
+				font-family: var(--font-sans);
+			}
+		</style>
 	</head>
 	<body class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
 		<div class="max-w-4xl mx-auto">
-			<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation Theme System</h1>
+			<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation</h1>
 			
-			<div class="mb-8 space-y-4">
-				<div>
-					<button 
-						id="theme-toggle" 
-						style="background: blue; color: white; padding: 12px 24px; margin-right: 16px; border: none; border-radius: 8px; cursor: pointer;"
-					>
-						Toggle to Water Theme
-					</button>
-					<button 
-						id="mode-toggle" 
-						style="background: green; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer;"
-					>
-						Toggle to Dark Mode
-					</button>
-				</div>
-			</div>
-
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-				<div class="bg-primary-100 p-6 rounded-xl">
-					<h2 class="text-xl font-semibold text-primary-800 mb-3">Primary Colors</h2>
-					<div class="space-y-2">
-						<div class="bg-primary-500 text-white p-2 rounded text-sm">Primary 500</div>
-						<div class="bg-primary-600 text-white p-2 rounded text-sm">Primary 600</div>
-						<div class="bg-primary-700 text-white p-2 rounded text-sm">Primary 700</div>
-					</div>
-				</div>
-
-				<div class="bg-secondary-100 p-6 rounded-xl">
-					<h2 class="text-xl font-semibold text-secondary-800 mb-3">Secondary Colors</h2>
-					<div class="space-y-2">
-						<div class="bg-secondary-500 text-white p-2 rounded text-sm">Secondary 500</div>
-						<div class="bg-secondary-600 text-white p-2 rounded text-sm">Secondary 600</div>
-						<div class="bg-secondary-700 text-white p-2 rounded text-sm">Secondary 700</div>
-					</div>
-				</div>
-
-				<div class="bg-accent-100 p-6 rounded-xl">
-					<h2 class="text-xl font-semibold text-accent-800 mb-3">Accent Colors</h2>
-					<div class="space-y-2">
-						<div class="bg-accent-500 text-white p-2 rounded text-sm">Accent 500</div>
-						<div class="bg-accent-600 text-white p-2 rounded text-sm">Accent 600</div>
-						<div class="bg-accent-700 text-white p-2 rounded text-sm">Accent 700</div>
+			<div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Welcome</h2>
+				<p class="text-secondary-600 mb-4">
+					Welcome to the Water Foundation project. This is a comprehensive theming system built with Astro and Tailwind CSS v4.
+				</p>
+				<div class="space-y-4">
+					<div>
+						<h3 class="text-lg font-medium text-secondary-800 mb-2">Available Pages:</h3>
+						<ul class="space-y-2">
+							<li>
+								<a href="/brand-kit" class="text-primary-600 hover:text-primary-700 underline">
+									Brand Kit & Theme System
+								</a>
+								<span class="text-secondary-500 ml-2">- Interactive theme and color system demo</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="bg-white p-6 rounded-xl shadow-lg">
-				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Typography & Spacing Test</h2>
-				<p class="text-secondary-600 mb-4">
-					This page demonstrates the theme system with CSS custom properties. 
-					Click the toggle button to switch between the default theme and the water theme.
-				</p>
-				<div class="flex gap-md">
-					<span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
-					<span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
+				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Project Features</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div class="p-4 bg-primary-50 rounded-lg">
+						<h3 class="font-medium text-primary-800 mb-2">Theme System</h3>
+						<p class="text-primary-600 text-sm">Dual theme support with default and water themes</p>
+					</div>
+					<div class="p-4 bg-secondary-50 rounded-lg">
+						<h3 class="font-medium text-secondary-800 mb-2">Dark/Light Mode</h3>
+						<p class="text-secondary-600 text-sm">Complete dark and light mode implementation</p>
+					</div>
+					<div class="p-4 bg-accent-50 rounded-lg">
+						<h3 class="font-medium text-accent-800 mb-2">Tailwind CSS v4</h3>
+						<p class="text-accent-600 text-sm">Built with the latest Tailwind CSS v4 features</p>
+					</div>
+					<div class="p-4 bg-primary-50 rounded-lg">
+						<h3 class="font-medium text-primary-800 mb-2">TypeScript Support</h3>
+						<p class="text-primary-600 text-sm">Full TypeScript integration for better DX</p>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<script>
-			import { themeSwitcher } from '../utils/theme-switcher';
-			import { modeSwitcher } from '../utils/mode-switcher';
-
-			document.addEventListener('DOMContentLoaded', () => {
-				const themeToggleButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
-				const modeToggleButton = document.getElementById('mode-toggle') as HTMLButtonElement | null;
-				
-				// Check if buttons exist
-				if (!themeToggleButton || !modeToggleButton) {
-					console.error('Theme or mode toggle button not found');
-					return;
-				}
-
-				// Theme toggle functionality
-				function updateThemeButtonText() {
-					if (!themeToggleButton) return;
-					const currentTheme = themeSwitcher.getCurrentTheme();
-					themeToggleButton.textContent = currentTheme === 'default' 
-						? 'Toggle to Water Theme' 
-						: 'Toggle to Default Theme';
-				}
-				
-				// Mode toggle functionality
-				function updateModeButtonText() {
-					if (!modeToggleButton) return;
-					const currentMode = modeSwitcher.getCurrentMode();
-					modeToggleButton.textContent = currentMode === 'light' 
-						? 'Toggle to Dark Mode' 
-						: 'Toggle to Light Mode';
-				}
-
-				// Theme toggle click handler
-				themeToggleButton.addEventListener('click', () => {
-					themeSwitcher.toggleTheme();
-					updateThemeButtonText();
-				});
-				
-				// Mode toggle click handler
-				modeToggleButton.addEventListener('click', () => {
-					modeSwitcher.toggleMode();
-					updateModeButtonText();
-				});
-
-				// Listen for theme changes to update UI
-				window.addEventListener('theme-change', () => {
-					updateThemeButtonText();
-				});
-
-				// Listen for mode changes to update UI
-				window.addEventListener('mode-change', () => {
-					updateModeButtonText();
-				});
-				
-				// Initialize button texts
-				updateThemeButtonText();
-				updateModeButtonText();
-
-				// Log current settings for debugging
-				console.log('Initial theme:', themeSwitcher.getCurrentTheme());
-				console.log('Initial mode:', modeSwitcher.getCurrentMode());
-			});
-		</script>
 	</body>
 </html>

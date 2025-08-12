@@ -41,10 +41,16 @@
   --color-accent-900: 30 58 138;
   --color-accent-950: 23 37 84;
 
-  /* Typography */
-  --font-family-primary: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-secondary: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  /* Typography - Modern clean sans-serif for default theme */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --letter-spacing-wide: 0.025em;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
 
   /* Spacing */
   --spacing-xs: 0.25rem;

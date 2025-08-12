@@ -1,17 +1,160 @@
 @import "tailwindcss";
-@import "./default-theme.css";
+
+@theme {
+  --color-primary-50: #fafafa;
+  --color-primary-100: #f4f4f5;
+  --color-primary-200: #e4e4e7;
+  --color-primary-300: #d4d4d8;
+  --color-primary-400: #a1a1aa;
+  --color-primary-500: #71717a;
+  --color-primary-600: #52525b;
+  --color-primary-700: #3f3f46;
+  --color-primary-800: #27272a;
+  --color-primary-900: #18181b;
+  --color-primary-950: #09090b;
+
+  --color-secondary-50: #fafafa;
+  --color-secondary-100: #f4f4f5;
+  --color-secondary-200: #e4e4e7;
+  --color-secondary-300: #d4d4d8;
+  --color-secondary-400: #a1a1aa;
+  --color-secondary-500: #71717a;
+  --color-secondary-600: #52525b;
+  --color-secondary-700: #3f3f46;
+  --color-secondary-800: #27272a;
+  --color-secondary-900: #18181b;
+  --color-secondary-950: #09090b;
+
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+  --color-accent-950: #172554;
+}
 
 /* Base styles and theme integration */
+:root {
+  /* Base font and layout variables */
+  --font-family-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-relaxed: 1.625;
+  --letter-spacing-wide: 0.025em;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --transition-smooth: all 0.3s ease;
+}
+
+/* Apply smooth transitions */
 html {
-  /* Smooth theme transitions */
   transition: background-color 0.3s ease, color 0.3s ease;
   color-scheme: light;
 }
 
-/* Default Theme - Light Mode variables are defined in default-theme.css */
+/* Default Theme - Light Mode */
+.theme-default {
+  /* Default theme variables */
+  --color-primary-50: #fafafa;
+  --color-primary-100: #f4f4f5;
+  --color-primary-200: #e4e4e7;
+  --color-primary-300: #d4d4d8;
+  --color-primary-400: #a1a1aa;
+  --color-primary-500: #71717a;
+  --color-primary-600: #52525b;
+  --color-primary-700: #3f3f46;
+  --color-primary-800: #27272a;
+  --color-primary-900: #18181b;
+  --color-primary-950: #09090b;
 
-/* Default Theme - Dark Mode */
-[data-theme="default"][data-mode="dark"] {
+  --color-secondary-50: #fafafa;
+  --color-secondary-100: #f4f4f5;
+  --color-secondary-200: #e4e4e7;
+  --color-secondary-300: #d4d4d8;
+  --color-secondary-400: #a1a1aa;
+  --color-secondary-500: #71717a;
+  --color-secondary-600: #52525b;
+  --color-secondary-700: #3f3f46;
+  --color-secondary-800: #27272a;
+  --color-secondary-900: #18181b;
+  --color-secondary-950: #09090b;
+
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+  --color-accent-950: #172554;
+}
+
+/* Water Theme */
+.theme-water {
+  --color-primary-50: #ecfeff;
+  --color-primary-100: #cffafe;
+  --color-primary-200: #a5f3fc;
+  --color-primary-300: #67e8f9;
+  --color-primary-400: #22d3ee;
+  --color-primary-500: #06b6d4;
+  --color-primary-600: #0891b2;
+  --color-primary-700: #0e7490;
+  --color-primary-800: #155e75;
+  --color-primary-900: #164e63;
+  --color-primary-950: #083344;
+
+  --color-secondary-50: #f0f9ff;
+  --color-secondary-100: #e0f2fe;
+  --color-secondary-200: #bae6fd;
+  --color-secondary-300: #7dd3fc;
+  --color-secondary-400: #38bdf8;
+  --color-secondary-500: #0ea5e9;
+  --color-secondary-600: #0284c7;
+  --color-secondary-700: #0369a1;
+  --color-secondary-800: #075985;
+  --color-secondary-900: #0c4a6e;
+  --color-secondary-950: #082f49;
+
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-800: #115e59;
+  --color-accent-900: #134e4a;
+  --color-accent-950: #042f2e;
+
+  --font-family-primary: 'Nunito', 'Quicksand', -apple-system, sans-serif;
+  --font-family-secondary: 'Quicksand', -apple-system, sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-relaxed: 1.7;
+  --letter-spacing-wide: 0.03em;
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode overrides for default theme */
+.theme-default[data-mode="dark"] {
   --color-background: rgb(15, 23, 42);
   --color-foreground: rgb(248, 250, 252);
   --color-card: rgb(30, 41, 59);
@@ -26,56 +169,103 @@ html {
   --color-accent-foreground: rgb(15, 23, 42);
   --color-border: rgb(51, 65, 85);
   --color-input: rgb(51, 65, 85);
+
+  /* Inverted color scales for dark mode */
+  --color-primary-50: #1e293b;
+  --color-primary-100: #334155;
+  --color-primary-200: #475569;
+  --color-primary-300: #64748b;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #cbd5e1;
+  --color-primary-600: #e2e8f0;
+  --color-primary-700: #f1f5f9;
+  --color-primary-800: #f8fafc;
+  --color-primary-900: #ffffff;
+  --color-primary-950: #ffffff;
+
+  --color-secondary-50: #0f172a;
+  --color-secondary-100: #1e293b;
+  --color-secondary-200: #334155;
+  --color-secondary-300: #475569;
+  --color-secondary-400: #64748b;
+  --color-secondary-500: #94a3b8;
+  --color-secondary-600: #cbd5e1;
+  --color-secondary-700: #e2e8f0;
+  --color-secondary-800: #f1f5f9;
+  --color-secondary-900: #f8fafc;
+  --color-secondary-950: #ffffff;
+
+  --color-accent-50: #1e293b;
+  --color-accent-100: #334155;
+  --color-accent-200: #475569;
+  --color-accent-300: #64748b;
+  --color-accent-400: #94a3b8;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #60a5fa;
+  --color-accent-700: #93c5fd;
+  --color-accent-800: #dbeafe;
+  --color-accent-900: #eff6ff;
+  --color-accent-950: #ffffff;
 }
 
-/* Water Theme - Light Mode */
-[data-theme="water"] {
-  /* Water theme light mode variables */
-  --color-primary-50: 239 246 255;
-  --color-primary-100: 219 234 254;
-  --color-primary-500: 59 130 246;
-  --color-primary-600: 37 99 235;
-  --color-secondary-50: 248 250 252;
-  --color-secondary-100: 241 245 249;
-  --color-secondary-500: 100 116 139;
-  --color-secondary-600: 71 85 105;
-  --color-accent-50: 240 253 250;
-  --color-accent-100: 204 251 241;
-  --color-accent-500: 20 184 166;
-  --color-accent-600: 13 148 136;
-  
-  --color-background: rgb(var(--color-secondary-50));
-  --color-foreground: rgb(var(--color-secondary-900));
-  --color-card: rgb(var(--color-secondary-100));
-  --color-card-foreground: rgb(var(--color-secondary-900));
-  --color-primary: rgb(var(--color-primary-600));
-  --color-primary-foreground: rgb(255, 255, 255);
-  --color-secondary: rgb(var(--color-secondary-600));
-  --color-secondary-foreground: rgb(255, 255, 255);
-  --color-muted: rgb(var(--color-secondary-100));
-  --color-muted-foreground: rgb(var(--color-secondary-500));
-  --color-accent: rgb(var(--color-accent-600));
-  --color-accent-foreground: rgb(255, 255, 255);
-  --color-border: rgb(var(--color-secondary-200));
-  --color-input: rgb(var(--color-secondary-200));
+/* Dark mode overrides for water theme */
+.theme-water[data-mode="dark"] {
+  --color-background: rgb(8, 47, 73);
+  --color-foreground: rgb(248, 250, 252);
+  --color-card: rgb(12, 74, 110);
+  --color-card-foreground: rgb(248, 250, 252);
+  --color-primary: rgb(14, 165, 233);
+  --color-primary-foreground: rgb(8, 47, 73);
+  --color-secondary: rgb(7, 89, 133);
+  --color-secondary-foreground: rgb(248, 250, 252);
+  --color-muted: rgb(12, 74, 110);
+  --color-muted-foreground: rgb(186, 230, 253);
+  --color-accent: rgb(20, 184, 166);
+  --color-accent-foreground: rgb(8, 47, 73);
+  --color-border: rgb(3, 105, 161);
+  --color-input: rgb(3, 105, 161);
+
+  /* Inverted color scales for water theme dark mode */
+  --color-primary-50: #083344;
+  --color-primary-100: #164e63;
+  --color-primary-200: #155e75;
+  --color-primary-300: #0e7490;
+  --color-primary-400: #0891b2;
+  --color-primary-500: #06b6d4;
+  --color-primary-600: #22d3ee;
+  --color-primary-700: #67e8f9;
+  --color-primary-800: #a5f3fc;
+  --color-primary-900: #cffafe;
+  --color-primary-950: #ecfeff;
+
+  --color-secondary-50: #082f49;
+  --color-secondary-100: #0c4a6e;
+  --color-secondary-200: #075985;
+  --color-secondary-300: #0369a1;
+  --color-secondary-400: #0284c7;
+  --color-secondary-500: #0ea5e9;
+  --color-secondary-600: #38bdf8;
+  --color-secondary-700: #7dd3fc;
+  --color-secondary-800: #bae6fd;
+  --color-secondary-900: #e0f2fe;
+  --color-secondary-950: #f0f9ff;
+
+  --color-accent-50: #042f2e;
+  --color-accent-100: #134e4a;
+  --color-accent-200: #115e59;
+  --color-accent-300: #0f766e;
+  --color-accent-400: #0d9488;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #2dd4bf;
+  --color-accent-700: #5eead4;
+  --color-accent-800: #99f6e4;
+  --color-accent-900: #ccfbf1;
+  --color-accent-950: #f0fdfa;
 }
 
-/* Water Theme - Dark Mode */
-[data-theme="water"][data-mode="dark"] {
-  --color-background: rgb(2, 6, 23);
-  --color-foreground: rgb(241, 245, 249);
-  --color-card: rgb(15, 23, 42);
-  --color-card-foreground: rgb(241, 245, 249);
-  --color-primary: rgb(45, 212, 191);
-  --color-primary-foreground: rgb(2, 6, 23);
-  --color-secondary: rgb(71, 85, 105);
-  --color-secondary-foreground: rgb(241, 245, 249);
-  --color-muted: rgb(30, 41, 59);
-  --color-muted-foreground: rgb(148, 163, 184);
-  --color-accent: rgb(45, 212, 191);
-  --color-accent-foreground: rgb(2, 6, 23);
-  --color-border: rgb(30, 58, 138);
-  --color-input: rgb(30, 58, 138);
+/* Utility classes for theme switching */
+.theme-transition * {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Apply theme colors to elements */

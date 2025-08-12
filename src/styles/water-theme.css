@@ -1,47 +1,56 @@
 /* Water Theme CSS Custom Properties */
 
 :root {
-  /* Default Theme - Tailwind Defaults */
-  --color-primary-50: 239 246 255;
-  --color-primary-100: 219 234 254;
-  --color-primary-200: 191 219 254;
-  --color-primary-300: 147 197 253;
-  --color-primary-400: 96 165 250;
-  --color-primary-500: 59 130 246;
-  --color-primary-600: 37 99 235;
-  --color-primary-700: 29 78 216;
-  --color-primary-800: 30 64 175;
-  --color-primary-900: 30 58 138;
-  --color-primary-950: 23 37 84;
+  /* Water Theme - Ocean-inspired colors */
+  --color-primary-50: 236 254 255;  /* Lightest blue */
+  --color-primary-100: 207 250 254;
+  --color-primary-200: 165 243 252;
+  --color-primary-300: 103 232 249;
+  --color-primary-400: 34 211 238;  /* Bright cyan */
+  --color-primary-500: 6 182 212;   /* Primary water blue */
+  --color-primary-600: 8 145 178;   /* Deep water blue */
+  --color-primary-700: 14 116 144;  /* Ocean blue */
+  --color-primary-800: 21 94 117;   /* Deep ocean */
+  --color-primary-900: 22 78 99;    /* Dark ocean */
+  --color-primary-950: 8 47 73;     /* Midnight blue */
 
-  --color-secondary-50: 248 250 252;
-  --color-secondary-100: 241 245 249;
-  --color-secondary-200: 226 232 240;
-  --color-secondary-300: 203 213 225;
-  --color-secondary-400: 148 163 184;
-  --color-secondary-500: 100 116 139;
-  --color-secondary-600: 71 85 105;
-  --color-secondary-700: 51 65 85;
-  --color-secondary-800: 30 41 59;
-  --color-secondary-900: 15 23 42;
-  --color-secondary-950: 2 6 23;
+  --color-secondary-50: 240 249 255;  /* Ice blue */
+  --color-secondary-100: 224 242 254;
+  --color-secondary-200: 186 230 253;
+  --color-secondary-300: 125 211 252;
+  --color-secondary-400: 56 189 248;  /* Sky blue */
+  --color-secondary-500: 14 165 233;  /* Cerulean */
+  --color-secondary-600: 2 132 199;   /* Deep cerulean */
+  --color-secondary-700: 3 105 161;   /* Steel blue */
+  --color-secondary-800: 7 89 133;    /* Dark cerulean */
+  --color-secondary-900: 12 74 110;   /* Prussian blue */
+  --color-secondary-950: 8 47 73;     /* Dark slate blue */
 
-  --color-accent-50: 240 253 250;
-  --color-accent-100: 204 251 241;
-  --color-accent-200: 153 246 228;
-  --color-accent-300: 94 234 212;
-  --color-accent-400: 45 212 191;
-  --color-accent-500: 20 184 166;
-  --color-accent-600: 13 148 136;
-  --color-accent-700: 15 118 110;
-  --color-accent-800: 17 94 89;
-  --color-accent-900: 19 78 74;
-  --color-accent-950: 4 47 46;
+  --color-accent-50: 240 253 250;  /* Mint cream */
+  --color-accent-100: 204 251 241; /* Aquamarine */
+  --color-accent-200: 153 246 228; /* Turquoise */
+  --color-accent-300: 94 234 212;  /* Medium turquoise */
+  --color-accent-400: 45 212 191;  /* Light sea green */
+  --color-accent-500: 20 184 166;  /* Teal */
+  --color-accent-600: 13 148 136;  /* Pine green */
+  --color-accent-700: 15 118 110;  /* Skobeloff */
+  --color-accent-800: 17 94 89;    /* Deep jungle green */
+  --color-accent-900: 19 78 74;    /* Dark slate gray */
+  --color-accent-950: 4 47 46;     /* Dark jungle green */
 
-  /* Typography */
-  --font-family-primary: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-secondary: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  /* Typography - Rounded, fluid font for water theme */
+  --font-family-primary: 'Nunito', 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  --font-family-secondary: 'Nunito', 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  --font-family-mono: 'Fira Code', 'Courier New', monospace;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --letter-spacing-wide: 0.03em;
+  --line-height-relaxed: 1.75;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Spacing */
   --spacing-xs: 0.25rem;

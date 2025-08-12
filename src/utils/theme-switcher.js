@@ -26,18 +26,21 @@ export class ThemeSwitcher {
     
     const html = document.documentElement;
     
-    // Remove all theme classes first
-    ['data-theme', 'data-theme-default', 'data-theme-water'].forEach(attr => {
-      html.removeAttribute(attr);
-    });
+    // Remove existing theme classes
+    html.classList.remove('theme-default', 'theme-water');
+    
+    // Remove theme attributes
+    html.removeAttribute('data-theme');
+    html.removeAttribute('data-theme-default');
+    html.removeAttribute('data-theme-water');
     
     // Apply the selected theme
     if (theme === 'water') {
       html.setAttribute('data-theme', 'water');
-      html.setAttribute('data-theme-water', '');
+      html.classList.add('theme-water');
     } else {
       html.setAttribute('data-theme', 'default');
-      html.setAttribute('data-theme-default', '');
+      html.classList.add('theme-default');
     }
     
     // Only store the theme if it's not the initial load
@@ -65,8 +68,14 @@ export class ThemeSwitcher {
    * Toggle between default and water themes
    */
   toggleTheme() {
-    const newTheme = this.currentTheme === 'default' ? 'water' : 'default';
+    const currentTheme = this.getCurrentTheme();
+    const newTheme = currentTheme === 'water' ? 'default' : 'water';
     this.applyTheme(newTheme);
+    
+    // Dispatch a custom event for any components that need to know about theme changes
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: newTheme } }));
+    }
     return newTheme;
   }
 
@@ -74,9 +83,13 @@ export class ThemeSwitcher {
    * Get the current theme
    */
   getCurrentTheme() {
-    return this.currentTheme;
+    if (typeof document === 'undefined') return 'default';
+    const html = document.documentElement;
+    if (html.classList.contains('theme-water')) return 'water';
+    if (html.classList.contains('theme-default')) return 'default';
+    return 'default';
   }
-  
+
   /**
    * Set a specific theme
    * @param {string} theme - The theme to set ('default' or 'water')
@@ -100,13 +113,12 @@ export const themeSwitcher = new ThemeSwitcher();
 // Initialize on DOM load
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    // Apply the stored theme or default
-    themeSwitcher.applyTheme(themeSwitcher.getStoredTheme());
+    const savedTheme = themeSwitcher.getStoredTheme();
+    themeSwitcher.applyTheme(savedTheme || 'default', true);
     
-    // Listen for mode changes to ensure theme updates are applied correctly
-    window.addEventListener('mode-change', (e) => {
-      // Re-apply the current theme when mode changes
-      themeSwitcher.applyTheme(themeSwitcher.getCurrentTheme());
-    });
+    // Add theme transition class after initial load to prevent flash of unstyled content
+    setTimeout(() => {
+      document.documentElement.classList.add('theme-transition');
+    }, 0);
   });
 }

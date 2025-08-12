@@ -1,0 +1,17 @@
+---
+export interface Props {
+  colorName: string;
+  colorValue: string;
+  tailwindClass: string;
+}
+
+const { colorName, colorValue, tailwindClass } = Astro.props;
+---
+
+<div class="flex items-center gap-3 p-2 rounded-lg bg-secondary-100 border border-secondary-200">
+  <div class={`w-8 h-8 rounded-lg border border-secondary-300 ${tailwindClass}`}></div>
+  <div class="flex-1">
+    <div class="text-sm font-medium text-secondary-900">{colorName}</div>
+    <div class="text-xs text-secondary-500 font-mono">{colorValue}</div>
+  </div>
+</div>
