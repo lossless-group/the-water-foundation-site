@@ -1,16 +1,25 @@
 ---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro';
 
 export interface Props {
     contextSetterTxt?: string;
+    contextSetterClassName?: string;
     headerTxt?: string;
+    headerClassName?: string;
     subHeaderTxt?: string;
+    subHeaderClassName?: string;
     supportingCopyTxt?: string;
+    supportingCopyClassName?: string;
     ctaTxt?: string;
+    ctaClassName?: string;
     cycleInterval?: number;
     targetActionsArray?: Array<{
       text: string;
       href: string;
       variant?: 'primary' | 'secondary' | 'accent';
+      buttonVariant?: 'solid' | 'transparent';
       external?: boolean;
     }>;
     backgroundsArray?: Array<{
@@ -26,10 +35,15 @@ export interface Props {
 
 const {
     contextSetterTxt,
+    contextSetterClassName = "",
     headerTxt = "Welcome to The Water Foundation",
+    headerClassName = "",
     subHeaderTxt,
+    subHeaderClassName = "",
     supportingCopyTxt,
+    supportingCopyClassName = "",
     ctaTxt,
+    ctaClassName = "",
     targetActionsArray = [],
     backgroundsArray = [],
     cycleInterval = 8000 // Default 8 seconds per background
@@ -127,11 +141,11 @@ const getBackgroundClasses = (bg: any) => {
 
 
   <!-- Hero Content -->
-  <div class="relative z-10 max-w-6xl mx-auto text-center space-y-8">
+  <div class="relative z-10 w-full max-w-[98%] mx-auto text-center space-y-8">
     <!-- Context Setter -->
     {contextSetterTxt && (
       <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent-100 border border-accent-200">
-        <span class="text-sm font-medium text-accent-800 tracking-wide uppercase">
+        <span class={`text-sm font-medium text-accent-800 tracking-wide uppercase ${contextSetterClassName}`}>
           {contextSetterTxt}
         </span>
       </div>
@@ -139,12 +153,12 @@ const getBackgroundClasses = (bg: any) => {
 
     <!-- Main Header -->
     <div class="space-y-4">
-      <h1 class="font-brand text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-900 leading-tight">
+      <h1 class={`font-brand text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-900 leading-tight ${headerClassName}`}>
         {headerTxt}
       </h1>
       
       {subHeaderTxt && (
-        <h2 class="text-xl md:text-2xl lg:text-3xl font-medium text-secondary-700 max-w-4xl mx-auto">
+        <h2 class={`text-xl md:text-2xl lg:text-3xl font-medium text-secondary-700 max-w-4xl mx-auto ${subHeaderClassName}`}>
           {subHeaderTxt}
         </h2>
       )}
@@ -153,7 +167,7 @@ const getBackgroundClasses = (bg: any) => {
     <!-- Supporting Copy -->
     {supportingCopyTxt && (
       <div class="max-w-3xl mx-auto">
-        <p class="text-lg md:text-xl text-secondary-600 leading-relaxed">
+        <p class={`text-lg md:text-xl text-secondary-600 leading-relaxed ${supportingCopyClassName}`}>
           {supportingCopyTxt}
         </p>
       </div>
@@ -163,7 +177,7 @@ const getBackgroundClasses = (bg: any) => {
     {(ctaTxt || targetActionsArray.length > 0) && (
       <div class="space-y-6">
         {ctaTxt && (
-          <p class="text-lg font-medium text-secondary-800">
+          <p class={`text-lg font-medium text-secondary-800 ${ctaClassName}`}>
             {ctaTxt}
           </p>
         )}
@@ -171,36 +185,46 @@ const getBackgroundClasses = (bg: any) => {
         {targetActionsArray.length > 0 && (
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {targetActionsArray.map((action, index) => {
-              const baseClasses = "inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+              const buttonVariant = action.buttonVariant || 'solid';
               
-              let variantClasses = "";
               switch (action.variant || 'primary') {
                 case 'primary':
-                  variantClasses = "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl";
-                  break;
+                  return (
+                    <ButtonPrimary
+                      href={action.href}
+                      text={action.text}
+                      external={action.external}
+                      variant={buttonVariant}
+                    />
+                  );
                 case 'secondary':
-                  variantClasses = "bg-secondary-100 text-secondary-900 hover:bg-secondary-200 focus:ring-secondary-500 border border-secondary-300";
-                  break;
+                  return (
+                    <ButtonSecondary
+                      href={action.href}
+                      text={action.text}
+                      external={action.external}
+                      variant={buttonVariant}
+                    />
+                  );
                 case 'accent':
-                  variantClasses = "bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500 shadow-lg hover:shadow-xl";
-                  break;
+                  return (
+                    <ButtonAccent
+                      href={action.href}
+                      text={action.text}
+                      external={action.external}
+                      variant={buttonVariant}
+                    />
+                  );
+                default:
+                  return (
+                    <ButtonPrimary
+                      href={action.href}
+                      text={action.text}
+                      external={action.external}
+                      variant={buttonVariant}
+                    />
+                  );
               }
-
-              return (
-                <a
-                  href={action.href}
-                  class={`${baseClasses} ${variantClasses}`}
-                  target={action.external ? "_blank" : undefined}
-                  rel={action.external ? "noopener noreferrer" : undefined}
-                >
-                  {action.text}
-                  {action.external && (
-                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                  )}
-                </a>
-              );
             })}
           </div>
         )}

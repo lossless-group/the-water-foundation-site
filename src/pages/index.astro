@@ -6,8 +6,9 @@ import Hero from '../components/basics/Hero.astro';
 <BaseThemeLayout
 	title="The Water Foundation - Water Independence for 1 Billion People by 2035"
 	description="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital. Join our mission for global water independence."
+	containerClass="w-full max-w-none p-0"
 >
-	<!-- Main Hero Section -->
+	<!-- Full-Width Hero Section -->
 	<Hero 
 		contextSetterTxt="Global Impact"
 		headerTxt="The Water Foundation"
@@ -15,14 +16,14 @@ import Hero from '../components/basics/Hero.astro';
 		supportingCopyTxt="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital."
 		ctaTxt="The world needs our focus."
 		targetActionsArray={[
-			{ text: "Dive In", href: "/about", variant: "primary" },
-			{ text: "Why Care?", href: "/team", variant: "secondary" },
-			{ text: "Partner with Us", href: "/partner-with-us", variant: "accent", external: false }
+			{ text: "Think with Us", href: "/about", variant: "primary", buttonVariant: "transparent" },
+			{ text: "Invest with Us", href: "/team", variant: "secondary", buttonVariant: "transparent" },
+			{ text: "Partner with Us", href: "/partner-with-us", variant: "accent", external: false, buttonVariant: "transparent" }
 		]}
 		backgroundsArray={[
 			{
 				type: "image",
-				src: "/imageOf__Whale.jpg",
+				src: "/imageOf__Whale--Overlayed-Light.png",
 				overlay: true,
 				overlayOpacity: 0.1,
 				overlayGradient: "linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.6) 50%, rgba(59, 130, 246, 0.4) 100%)"
