@@ -1,0 +1,65 @@
+---
+export interface Props {
+	title?: string;
+	description?: string;
+	themeClass?: string;
+}
+
+const { 
+	title = "Water Foundation", 
+	description = "Water Foundation Theme System",
+	themeClass = "theme-default"
+} = Astro.props;
+
+import '../styles/global.css';
+---
+
+<html lang="en" class={themeClass}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+		
+		<style>
+			/* Default theme styles */
+			.theme-default {
+				--font-sans: var(--font-family-primary);
+				--font-serif: var(--font-family-secondary);
+				--font-mono: var(--font-family-mono);
+				font-family: var(--font-sans);
+			}
+			
+			/* Water theme styles */
+			.theme-water {
+				--font-sans: var(--font-family-primary);
+				--font-serif: var(--font-family-secondary);
+				--font-mono: var(--font-family-mono);
+				font-family: var(--font-sans);
+				font-weight: var(--font-weight-normal);
+				line-height: var(--line-height-relaxed);
+				letter-spacing: var(--letter-spacing-wide);
+			}
+			
+			/* Apply rounded corners to all elements in water theme */
+			.theme-water * {
+				border-radius: var(--border-radius-sm);
+			}
+			
+			/* Smooth transitions for theme changes */
+			html, body, button, input, select, textarea {
+				transition: var(--transition-smooth, all 0.3s ease);
+			}
+		</style>
+	</head>
+	<body class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
+		<slot />
+	</body>
+</html>

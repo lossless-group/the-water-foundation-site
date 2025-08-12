@@ -1,150 +1,109 @@
 ---
+import BoilerPlateHTML from '../../layouts/BoilerPlateHTML.astro';
 import ColorVariableGrid from '../../components/design-system/ColorVariableGrid.astro';
-import '../../styles/global.css';
 ---
 
-<html lang="en" class="theme-default">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Water Foundation - Brand Kit & Theme System</title>
+<BoilerPlateHTML 
+	title="Water Foundation - Brand Kit & Theme System"
+	description="Interactive theme system demonstration with color variables and mode switching"
+	themeClass="theme-default"
+>
+	<div class="max-w-4xl mx-auto">
+		<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation Brand Kit & Theme System</h1>
 		
-		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-		
-		<style>
-			/* Default theme styles */
-			.theme-default {
-				--font-sans: var(--font-family-primary);
-				--font-serif: var(--font-family-secondary);
-				--font-mono: var(--font-family-mono);
-				font-family: var(--font-sans);
-			}
-			
-			/* Water theme styles */
-			.theme-water {
-				--font-sans: var(--font-family-primary);
-				--font-serif: var(--font-family-secondary);
-				--font-mono: var(--font-family-mono);
-				font-family: var(--font-sans);
-				font-weight: var(--font-weight-normal);
-				line-height: var(--line-height-relaxed);
-				letter-spacing: var(--letter-spacing-wide);
-			}
-			
-			/* Apply rounded corners to all elements in water theme */
-			.theme-water * {
-				border-radius: var(--border-radius-sm);
-			}
-			
-			/* Smooth transitions for theme changes */
-			html, body, button, input, select, textarea {
-				transition: var(--transition-smooth, all 0.3s ease);
-			}
-		</style>
-	</head>
-	<body class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
-		<div class="max-w-4xl mx-auto">
-			<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation Brand Kit & Theme System</h1>
-			
-			<div class="mb-8 space-y-4">
-				<div>
-					<button 
-						id="theme-toggle" 
-						style="background: blue; color: white; padding: 12px 24px; margin-right: 16px; border: none; border-radius: 8px; cursor: pointer;"
-					>
-						Toggle to Water Theme
-					</button>
-					<button 
-						id="mode-toggle" 
-						style="background: green; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer;"
-					>
-						Toggle to Dark Mode
-					</button>
-				</div>
-			</div>
-
-			<ColorVariableGrid />
-
-			<div class="bg-white p-6 rounded-xl shadow-lg">
-				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Typography & Spacing Test</h2>
-				<p class="text-secondary-600 mb-4">
-					This page demonstrates the theme system with CSS custom properties. 
-					Click the toggle button to switch between the default theme and the water theme.
-				</p>
-				<div class="flex gap-md">
-					<span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
-					<span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
-				</div>
+		<div class="mb-8 space-y-4">
+			<div>
+				<button 
+					id="theme-toggle" 
+					style="background: blue; color: white; padding: 12px 24px; margin-right: 16px; border: none; border-radius: 8px; cursor: pointer;"
+				>
+					Toggle to Water Theme
+				</button>
+				<button 
+					id="mode-toggle" 
+					style="background: green; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer;"
+				>
+					Toggle to Dark Mode
+				</button>
 			</div>
 		</div>
 
-		<script>
-			import { themeSwitcher } from '../../utils/theme-switcher';
-			import { modeSwitcher } from '../../utils/mode-switcher';
+		<ColorVariableGrid />
 
-			document.addEventListener('DOMContentLoaded', () => {
-				const themeToggleButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
-				const modeToggleButton = document.getElementById('mode-toggle') as HTMLButtonElement | null;
-				
-				// Check if buttons exist
-				if (!themeToggleButton || !modeToggleButton) {
-					console.error('Theme or mode toggle button not found');
-					return;
-				}
+		<div class="bg-white p-6 rounded-xl shadow-lg">
+			<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Typography & Spacing Test</h2>
+			<p class="text-secondary-600 mb-4">
+				This page demonstrates the theme system with CSS custom properties. 
+				Click the toggle button to switch between the default theme and the water theme.
+			</p>
+			<div class="flex gap-md">
+				<span class="bg-primary-500 text-white px-lg py-sm rounded-md">Custom Spacing</span>
+				<span class="bg-accent-500 text-white px-xl py-md rounded-lg">More Spacing</span>
+			</div>
+		</div>
+	</div>
 
-				// Theme toggle functionality
-				function updateThemeButtonText() {
-					if (!themeToggleButton) return;
-					const currentTheme = themeSwitcher.getCurrentTheme();
-					themeToggleButton.textContent = currentTheme === 'default' 
-						? 'Toggle to Water Theme' 
-						: 'Toggle to Default Theme';
-				}
-				
-				// Mode toggle functionality
-				function updateModeButtonText() {
-					if (!modeToggleButton) return;
-					const currentMode = modeSwitcher.getCurrentMode();
-					modeToggleButton.textContent = currentMode === 'light' 
-						? 'Toggle to Dark Mode' 
-						: 'Toggle to Light Mode';
-				}
+	<script>
+		import { themeSwitcher } from '../../utils/theme-switcher';
+		import { modeSwitcher } from '../../utils/mode-switcher';
 
-				// Theme toggle click handler
-				themeToggleButton.addEventListener('click', () => {
-					themeSwitcher.toggleTheme();
-					updateThemeButtonText();
-				});
-				
-				// Mode toggle click handler
-				modeToggleButton.addEventListener('click', () => {
-					modeSwitcher.toggleMode();
-					updateModeButtonText();
-				});
+		document.addEventListener('DOMContentLoaded', () => {
+			const themeToggleButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+			const modeToggleButton = document.getElementById('mode-toggle') as HTMLButtonElement | null;
+			
+			// Check if buttons exist
+			if (!themeToggleButton || !modeToggleButton) {
+				console.error('Theme or mode toggle button not found');
+				return;
+			}
 
-				// Listen for theme changes to update UI
-				window.addEventListener('theme-change', () => {
-					updateThemeButtonText();
-				});
+			// Theme toggle functionality
+			function updateThemeButtonText() {
+				if (!themeToggleButton) return;
+				const currentTheme = themeSwitcher.getCurrentTheme();
+				themeToggleButton.textContent = currentTheme === 'default' 
+					? 'Toggle to Water Theme' 
+					: 'Toggle to Default Theme';
+			}
+			
+			// Mode toggle functionality
+			function updateModeButtonText() {
+				if (!modeToggleButton) return;
+				const currentMode = modeSwitcher.getCurrentMode();
+				modeToggleButton.textContent = currentMode === 'light' 
+					? 'Toggle to Dark Mode' 
+					: 'Toggle to Light Mode';
+			}
 
-				// Listen for mode changes to update UI
-				window.addEventListener('mode-change', () => {
-					updateModeButtonText();
-				});
-				
-				// Initialize button texts
+			// Theme toggle click handler
+			themeToggleButton.addEventListener('click', () => {
+				themeSwitcher.toggleTheme();
 				updateThemeButtonText();
-				updateModeButtonText();
-
-				// Log current settings for debugging
-				console.log('Initial theme:', themeSwitcher.getCurrentTheme());
-				console.log('Initial mode:', modeSwitcher.getCurrentMode());
 			});
-		</script>
-	</body>
-</html>
+			
+			// Mode toggle click handler
+			modeToggleButton.addEventListener('click', () => {
+				modeSwitcher.toggleMode();
+				updateModeButtonText();
+			});
+
+			// Listen for theme changes to update UI
+			window.addEventListener('theme-change', () => {
+				updateThemeButtonText();
+			});
+
+			// Listen for mode changes to update UI
+			window.addEventListener('mode-change', () => {
+				updateModeButtonText();
+			});
+			
+			// Initialize button texts
+			updateThemeButtonText();
+			updateModeButtonText();
+
+			// Log current settings for debugging
+			console.log('Initial theme:', themeSwitcher.getCurrentTheme());
+			console.log('Initial mode:', modeSwitcher.getCurrentMode());
+		});
+	</script>
+</BoilerPlateHTML>
