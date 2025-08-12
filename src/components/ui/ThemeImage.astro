@@ -28,15 +28,7 @@ const attr = (value?: string | number) =>
   value !== undefined ? String(value) : undefined;
 ---
 
-<picture>
-  {hasDarkVariant && (
-    <source
-      srcset={darkSrc}
-      media="(prefers-color-scheme: dark)"
-      width={attr(width)}
-      height={attr(height)}
-    />
-  )}
+<div class="theme-image-container">
   <img
     src={lightSrc}
     alt={alt}
@@ -55,30 +47,50 @@ const attr = (value?: string | number) =>
       height={attr(height)}
     />
   )}
-</picture>
+</div>
 
 <style>
-  /* Handle both system preferences and manual dark mode */
-  .dark .light-image,
-  .dark-source {
+  .theme-image-container {
+    position: relative;
+  }
+
+  /* Default: show light image, hide dark image */
+  .light-image {
+    display: block;
+  }
+  
+  .dark-image {
+    display: none;
+  }
+
+  /* Dark mode: hide light image, show dark image */
+  :global(.dark) .light-image {
     display: none;
   }
   
-  .dark .dark-image {
+  :global(.dark) .dark-image {
     display: block !important;
   }
-  
-  /* Fallback for system preference */
+
+  /* System preference dark mode fallback */
   @media (prefers-color-scheme: dark) {
-    :not(.light) .light-image {
+    .light-image {
       display: none;
     }
-    :not(.light) .dark-image {
+    .dark-image {
       display: block !important;
+    }
+    
+    /* Override if explicitly in light mode */
+    :global(.light) .light-image {
+      display: block;
+    }
+    :global(.light) .dark-image {
+      display: none !important;
     }
   }
   
-  /* Add transition for smooth fade-in */
+  /* Smooth transitions */
   .light-image,
   .dark-image {
     transition: opacity 0.2s ease-in-out;

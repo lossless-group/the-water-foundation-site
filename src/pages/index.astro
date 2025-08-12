@@ -1,75 +1,83 @@
 ---
-import '../styles/global.css';
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import Hero from '../components/basics/Hero.astro';
 ---
 
-<html lang="en" class="theme-default">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Water Foundation</title>
-		
-		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-		
-		<style>
-			/* Basic theme styles */
-			.theme-default {
-				--font-sans: var(--font-family-primary);
-				--font-serif: var(--font-family-secondary);
-				--font-mono: var(--font-family-mono);
-				font-family: var(--font-sans);
+<BaseThemeLayout
+	title="The Water Foundation - Water Independence for 1 Billion People by 2035"
+	description="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital. Join our mission for global water independence."
+>
+	<!-- Main Hero Section -->
+	<Hero 
+		contextSetterTxt="Global Impact"
+		headerTxt="The Water Foundation"
+		subHeaderTxt="Water independence for 1 billion people by 2035"
+		supportingCopyTxt="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital."
+		ctaTxt="The world needs our focus."
+		targetActionsArray={[
+			{ text: "Dive In", href: "/about", variant: "primary" },
+			{ text: "Why Care?", href: "/team", variant: "secondary" },
+			{ text: "Partner with Us", href: "/partner-with-us", variant: "accent", external: false }
+		]}
+		backgroundsArray={[
+			{
+				type: "image",
+				src: "/imageOf__Whale.jpg",
+				overlay: true,
+				overlayOpacity: 0.1,
+				overlayGradient: "linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.6) 50%, rgba(59, 130, 246, 0.4) 100%)"
 			}
-		</style>
-	</head>
-	<body class="bg-secondary-50 text-secondary-900 min-h-screen p-8">
+		]}
+	/>
+
+	<!-- Additional Content Section -->
+	<div class="py-16">
 		<div class="max-w-4xl mx-auto">
-			<h1 class="text-4xl font-bold text-primary-600 mb-6">Water Foundation</h1>
-			
-			<div class="bg-white p-6 rounded-xl shadow-lg mb-8">
-				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Welcome</h2>
-				<p class="text-secondary-600 mb-4">
-					Welcome to the Water Foundation project. This is a comprehensive theming system built with Astro and Tailwind CSS v4.
-				</p>
-				<div class="space-y-4">
-					<div>
-						<h3 class="text-lg font-medium text-secondary-800 mb-2">Available Pages:</h3>
-						<ul class="space-y-2">
-							<li>
-								<a href="/brand-kit" class="text-primary-600 hover:text-primary-700 underline">
-									Brand Kit & Theme System
-								</a>
-								<span class="text-secondary-500 ml-2">- Interactive theme and color system demo</span>
-							</li>
-						</ul>
+			<div class="bg-card border border-border rounded-xl shadow-lg p-8 mb-8">
+				<h2 class="text-2xl font-semibold text-foreground mb-6">Explore Our Work</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="p-6 bg-primary/5 border border-primary/10 rounded-lg">
+						<h3 class="font-semibold text-foreground mb-3">Our Mission</h3>
+						<p class="text-foreground/80 text-sm mb-4">
+							Learn about our comprehensive approach to solving the global water crisis through sustainable solutions and community engagement.
+						</p>
+						<a href="/about" class="text-primary hover:text-primary/80 font-medium text-sm">
+							Learn More →
+						</a>
+					</div>
+					<div class="p-6 bg-secondary/5 border border-secondary/10 rounded-lg">
+						<h3 class="font-semibold text-foreground mb-3">Our Team</h3>
+						<p class="text-foreground/80 text-sm mb-4">
+							Meet the dedicated professionals working to bring clean, accessible water to communities worldwide.
+						</p>
+						<a href="/team" class="text-primary hover:text-primary/80 font-medium text-sm">
+							Meet the Team →
+						</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="bg-white p-6 rounded-xl shadow-lg">
-				<h2 class="text-2xl font-semibold text-secondary-800 mb-4">Project Features</h2>
+			<div class="bg-card border border-border rounded-xl shadow-lg p-8">
+				<h2 class="text-2xl font-semibold text-foreground mb-6">Project Features</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<div class="p-4 bg-primary-50 rounded-lg">
-						<h3 class="font-medium text-primary-800 mb-2">Theme System</h3>
-						<p class="text-primary-600 text-sm">Dual theme support with default and water themes</p>
+					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg">
+						<h3 class="font-medium text-foreground mb-2">Global Reach</h3>
+						<p class="text-foreground/70 text-sm">Operating across multiple continents with local partnerships</p>
 					</div>
-					<div class="p-4 bg-secondary-50 rounded-lg">
-						<h3 class="font-medium text-secondary-800 mb-2">Dark/Light Mode</h3>
-						<p class="text-secondary-600 text-sm">Complete dark and light mode implementation</p>
+					<div class="p-4 bg-primary/5 border border-primary/10 rounded-lg">
+						<h3 class="font-medium text-foreground mb-2">Sustainable Solutions</h3>
+						<p class="text-foreground/70 text-sm">Long-term water independence through innovative technology</p>
 					</div>
-					<div class="p-4 bg-accent-50 rounded-lg">
-						<h3 class="font-medium text-accent-800 mb-2">Tailwind CSS v4</h3>
-						<p class="text-accent-600 text-sm">Built with the latest Tailwind CSS v4 features</p>
+					<div class="p-4 bg-secondary/5 border border-secondary/10 rounded-lg">
+						<h3 class="font-medium text-foreground mb-2">Community Impact</h3>
+						<p class="text-foreground/70 text-sm">Empowering local communities with water access and education</p>
 					</div>
-					<div class="p-4 bg-primary-50 rounded-lg">
-						<h3 class="font-medium text-primary-800 mb-2">TypeScript Support</h3>
-						<p class="text-primary-600 text-sm">Full TypeScript integration for better DX</p>
+					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg">
+						<h3 class="font-medium text-foreground mb-2">Transparent Operations</h3>
+						<p class="text-foreground/70 text-sm">Open reporting on our progress and financial stewardship</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
-</html>
+	</div>
+</BaseThemeLayout>
