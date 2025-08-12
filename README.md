@@ -1,10 +1,30 @@
-# TWF Site
+# The Water Foundation Site
 
-A modern web application built with [Astro](https://astro.build) for The Water Foundation.
+![The Water Foundation Wordmark and Tagline](https://i.imgur.com/jur0e6z.png)
 
-### Completed
-- [x] Mode System
-- [ ] Theme System
+A modern web application built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com) for The Water Foundation.
+
+![Astro Logo](https://astro.build/assets/press/astro-logo-light-gradient.png)
+         with
+![Tailwind CSS Logo](https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg)
+         with
+![Vitest Logo](https://vitest.dev/logo.svg)
+
+## ✅ Implementation Status
+
+### Theme & Mode System (v0.0.1.0)
+- [x] **Dual Theme Support**: Default and Water themes with complete color palettes
+- [x] **Dark/Light Mode**: Automatic color inversion with proper contrast ratios
+- [x] **State Persistence**: localStorage integration for user preferences
+- [x] **Component Integration**: Theme-aware components with semantic CSS classes
+- [x] **Event System**: Custom events for coordinated UI updates
+- [x] **Comprehensive Testing**: 45 unit and integration tests with 100% pass rate
+
+### Key Features
+- **Tailwind CSS v4**: Modern `@theme` directive with CSS custom properties
+- **JavaScript Utilities**: `ThemeSwitcher` and `ModeSwitcher` classes
+- **Astro Layouts**: Reusable `BoilerPlateHTML` and `BaseThemeLayout` components
+- **Brand Kit Page**: Interactive demonstration of all theme combinations
 
 
 ## 🏗️ Project Structure
@@ -53,9 +73,75 @@ pnpm dev
 
 The site will be available at `http://localhost:4321`
 
+## 🧪 Testing
+
+The project includes comprehensive test coverage for theme and mode switching functionality:
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests once (CI mode)
+pnpm test:run
+```
+
+### Test Coverage
+- **45 total tests** across 3 test suites
+- **ThemeSwitcher**: 24 unit tests covering initialization, switching, storage, and events
+- **ModeSwitcher**: 7 unit tests for light/dark mode functionality  
+- **Integration**: 14 tests for combined theme/mode operations and state management
+
+## 🎨 Theme System
+
+### Available Themes
+- **Default Theme**: Professional blue/gray color palette
+- **Water Theme**: Ocean-inspired cyan/blue color palette
+
+### Usage Examples
+
+```javascript
+// Theme switching
+import { ThemeSwitcher } from './src/utils/theme-switcher.js';
+const themeSwitcher = new ThemeSwitcher();
+
+// Set specific theme
+themeSwitcher.setTheme('water');
+
+// Toggle between themes
+themeSwitcher.toggleTheme();
+
+// Get current theme
+const currentTheme = themeSwitcher.getCurrentTheme();
+```
+
+```javascript
+// Mode switching
+import { ModeSwitcher } from './src/utils/mode-switcher.js';
+const modeSwitcher = new ModeSwitcher();
+
+// Toggle dark/light mode
+modeSwitcher.toggleMode();
+
+// Set specific mode
+modeSwitcher.setMode('dark');
+```
+
+### CSS Custom Properties
+Themes use semantic CSS variables that automatically adapt to dark/light modes:
+
+```css
+/* Example theme variables */
+--color-primary-500: #3b82f6;    /* Default theme */
+--color-secondary-100: #f1f5f9;  /* Light backgrounds */
+--color-secondary-800: #1e293b;  /* Dark text */
+```
+
 ## 📝 Available Scripts
 
-All commands should be run from the `site/` directory:
+All commands should be run from the root directory:
 
 | Command | Action |
 | :-- | :-- |
@@ -63,27 +149,70 @@ All commands should be run from the `site/` directory:
 | `pnpm dev` | Start local development server |
 | `pnpm build` | Build production site to `./dist/` |
 | `pnpm preview` | Preview production build locally |
+| `pnpm test` | Run test suite |
+| `pnpm test:ui` | Run tests with interactive UI |
+| `pnpm test:run` | Run tests once (CI mode) |
 | `pnpm astro ...` | Run Astro CLI commands |
-| `pnpm astro -- --help` | Get help with Astro CLI |
 
 ## 🛠️ Technology Stack
 
-- **Framework**: [Astro](https://astro.build) - The web framework for content-driven websites
-- **Package Manager**: pnpm
+- **Framework**: [Astro](https://astro.build) v5.12.9 - The web framework for content-driven websites
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) v4.1.11 - Utility-first CSS framework
+- **Testing**: [Vitest](https://vitest.dev) v3.2.4 - Fast unit testing framework
+- **Package Manager**: pnpm - Fast, disk space efficient package manager
 - **Language**: JavaScript/TypeScript
-- **Build Tool**: Vite (via Astro)
+- **Build Tool**: Vite (via Astro) with `@tailwindcss/vite` plugin
 
 ## 📁 Key Directories
 
-- **`site/src/pages/`** - File-based routing. Each `.astro` or `.md` file becomes a route
-- **`site/src/components/`** - Reusable UI components (Astro, React, Vue, Svelte, etc.)
-- **`site/public/`** - Static assets (images, fonts, etc.) served directly
+- **`src/pages/`** - File-based routing. Each `.astro` or `.md` file becomes a route
+  - `index.astro` - Homepage with project overview
+  - `brand-kit/index.astro` - Interactive theme system demonstration
+- **`src/components/`** - Reusable UI components
+  - `design-system/` - Theme-aware components (ColorVariableGrid, TextStylePatternsGrid)
+- **`src/layouts/`** - Page layout components
+  - `BoilerPlateHTML.astro` - HTML boilerplate with meta tags and fonts
+  - `BaseThemeLayout.astro` - Theme-specific layout wrapper
+- **`src/utils/`** - JavaScript utilities
+  - `theme-switcher.js` - Theme management utility
+  - `mode-switcher.js` - Dark/light mode utility
+  - `__tests__/` - Comprehensive test suite (45 tests)
+- **`src/styles/`** - Global CSS and Tailwind configuration
+  - `global.css` - Tailwind imports and theme definitions
+- **`public/`** - Static assets served directly
 
 ## 🔧 Configuration
 
-- **`site/astro.config.mjs`** - Main Astro configuration file
-- **`site/tsconfig.json`** - TypeScript configuration
-- **`site/package.json`** - Project dependencies and scripts
+- **`astro.config.mjs`** - Main Astro configuration with Tailwind CSS v4 integration
+- **`vitest.config.js`** - Test configuration with jsdom environment
+- **`tsconfig.json`** - TypeScript configuration
+- **`package.json`** - Project dependencies and scripts
+
+### Key Configuration Files
+
+```javascript
+// astro.config.mjs - Tailwind CSS v4 integration
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+```
+
+```javascript
+// vitest.config.js - Test environment setup
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/utils/__tests__/setup.js'],
+  },
+});
+```
 
 ## 🌐 Deployment
 
