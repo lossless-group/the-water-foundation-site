@@ -1,0 +1,26 @@
+---
+import PersonCard from './PersonCard.astro';
+import type { PersonProps } from './PersonCard.astro';
+
+export interface TeamGridProps {
+  teamMembers: PersonProps[];
+  className?: string;
+}
+
+const { teamMembers, className = '' } = Astro.props;
+---
+
+<div class:list={[
+  'grid gap-8',
+  'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+  'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12',
+  className
+]}>
+  {teamMembers.map((member, index) => (
+    <PersonCard 
+      key={member.name}
+      {...member}
+      class={index === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : ''}
+    />
+  ))}
+</div>

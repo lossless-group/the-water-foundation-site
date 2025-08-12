@@ -1,0 +1,113 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import TeamGrid from '../../components/team/TeamGrid.astro';
+import type { SocialLink } from '../../components/ui/SocialIcons.astro';
+
+// Sample team data - in a real app, this would come from a CMS or API
+const teamMembers = [
+  {
+    name: 'Alex Johnson',
+    role: 'Founder & CEO',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces',
+    bio: 'Visionary leader with 15+ years of experience in water conservation and sustainable development. Passionate about creating scalable solutions for global water challenges.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Maria Garcia',
+    role: 'Chief Technology Officer',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces',
+    bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  },
+  {
+    name: 'James Wilson',
+    role: 'Head of Operations',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces',
+    bio: 'Operations expert ensuring our projects run smoothly and efficiently across all regions.',
+    socialLinks: [
+      { name: 'linkedin', href: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Community Outreach Director',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=faces',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'instagram', href: 'https://instagram.com' }
+    ]
+  },
+  {
+    name: 'David Kim',
+    role: 'Lead Engineer',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces',
+    bio: 'Mechanical engineer specializing in sustainable water infrastructure design and implementation.',
+    socialLinks: [
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  }
+];
+---
+
+<BaseThemeLayout>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="py-20 bg-primary/5">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Team</h1>
+        <p class="text-xl text-foreground/80 max-w-3xl mx-auto">
+          Meet the passionate individuals working tirelessly to bring clean water to communities around the world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="py-12 md:py-20">
+      <TeamGrid teamMembers={teamMembers} />
+    </section>
+
+    <!-- Join Us CTA -->
+    <section class="py-16 bg-primary/5">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-foreground mb-6">Join Our Mission</h2>
+        <p class="text-foreground/80 max-w-2xl mx-auto mb-8">
+          We're always looking for passionate individuals to join our team and help us make a difference.
+        </p>
+        <a 
+          href="/careers" 
+          class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+        >
+          View Open Positions
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Water theme specific styles */
+  :global(html[data-theme="water"]) {
+    --color-primary: 14 116 144;  /* Cyan-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-background: 240 249 255;  /* Light blue-50 */
+    --color-foreground: 3 7 18;  /* Gray-950 */
+    --color-border: 224 242 254;  /* Light blue-100 */
+  }
+  
+  /* Dark mode overrides */
+  :global(html[data-theme="water"].dark) {
+    --color-primary: 8 145 178;  /* Cyan-600 */
+    --color-background: 8 47 73;  /* Dark blue-950 */
+    --color-foreground: 248 250 252;  /* Slate-50 */
+    --color-border: 30 58 138;  /* Blue-900 */
+  }
+</style>

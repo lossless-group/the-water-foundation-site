@@ -517,6 +517,17 @@ button {
 }
 
 /* Ensure smooth theme transitions */
+/* Smooth transitions for theme changes */
+:root {
+  --transition-theme: 75ms ease;
+}
+
 * {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background-color var(--transition-theme), 
+             border-color var(--transition-theme);
+}
+
+/* Only transition text color on interactive elements */
+a, button, input, textarea, select, .transition-colors {
+  transition: color var(--transition-theme);
 }

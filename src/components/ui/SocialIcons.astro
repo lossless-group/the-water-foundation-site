@@ -56,16 +56,17 @@ const sizeClasses = {
 };
 ---
 
-<div class:list={['flex items-center space-x-4', className]}>
+<div class:list={['flex items-center gap-4', className]}>
   {socialLinks.map((link) => (
     <a
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      class="text-foreground/60 hover:text-foreground transition-colors"
+      class="text-foreground/80 hover:text-primary transition-colors duration-200"
       aria-label={link.name}
-      set:html={socialIcons[link.icon]}
-    ></a>
+    >
+      <div class={sizeClasses[iconSize]} set:html={socialIcons[link.icon]}></div>
+    </a>
   ))}
 </div>
 

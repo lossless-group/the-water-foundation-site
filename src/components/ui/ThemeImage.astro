@@ -5,8 +5,8 @@ interface Props {
   lightSrc: string;
   darkSrc?: string;
   alt: string;
-  width?: number | string;
-  height?: number | string;
+  width?: string | number;
+  height?: string | number;
   class?: string;
   loading?: 'eager' | 'lazy';
 }
@@ -19,9 +19,13 @@ const {
   height,
   class: className = '',
   loading = 'lazy'
-} = Astro.props;
+} = Astro.props as Props;
 
 const hasDarkVariant = !!darkSrc && darkSrc !== lightSrc;
+
+// Helper to safely convert to string attributes
+const attr = (value?: string | number) => 
+  value !== undefined ? String(value) : undefined;
 ---
 
 <picture>
@@ -29,26 +33,54 @@ const hasDarkVariant = !!darkSrc && darkSrc !== lightSrc;
     <source
       srcset={darkSrc}
       media="(prefers-color-scheme: dark)"
-      {width && { width }}
-      {height && { height }}
+      width={attr(width)}
+      height={attr(height)}
     />
   )}
   <img
     src={lightSrc}
     alt={alt}
-    class={className}
+    class:list={['light-image', className]}
     loading={loading}
-    {width && { width }}
-    {height && { height }}
+    width={attr(width)}
+    height={attr(height)}
   />
+  {hasDarkVariant && (
+    <img
+      src={darkSrc}
+      alt={alt}
+      class:list={['dark-image', 'hidden', className]}
+      loading={loading}
+      width={attr(width)}
+      height={attr(height)}
+    />
+  )}
 </picture>
 
 <style>
-  /* Ensures smooth transitions when theme changes */
+  /* Handle both system preferences and manual dark mode */
+  .dark .light-image,
+  .dark-source {
+    display: none;
+  }
+  
+  .dark .dark-image {
+    display: block !important;
+  }
+  
+  /* Fallback for system preference */
   @media (prefers-color-scheme: dark) {
-    :global(html.dark) picture source,
-    :global(html.dark) picture img {
-      transition: opacity 0.2s ease-in-out;
+    :not(.light) .light-image {
+      display: none;
     }
+    :not(.light) .dark-image {
+      display: block !important;
+    }
+  }
+  
+  /* Add transition for smooth fade-in */
+  .light-image,
+  .dark-image {
+    transition: opacity 0.2s ease-in-out;
   }
 </style>
