@@ -70,7 +70,11 @@ export class ThemeSwitcher {
   toggleTheme() {
     const currentTheme = this.getCurrentTheme();
     const newTheme = currentTheme === 'water' ? 'default' : 'water';
+    
+    // Update internal state
+    this.currentTheme = newTheme;
     this.applyTheme(newTheme);
+    this.storeTheme(newTheme);
     
     // Dispatch a custom event for any components that need to know about theme changes
     if (typeof window !== 'undefined') {
