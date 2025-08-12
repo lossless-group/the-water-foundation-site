@@ -38,13 +38,11 @@ const {
   logo: logoProp,
   navItems = [
     { text: 'About', href: '/about' },
-    { text: 'Programs', href: '/programs' },
-    { text: 'News', href: '/news' },
-    { text: 'Get Involved', href: '/get-involved' },
+    { text: 'Team', href: '/team' },
   ],
   cta = {
-    text: 'Donate',
-    href: '/donate',
+    text: 'Partner with Us',
+    href: '/partner-with-us',
     variant: 'primary' as const
   },
   className = ''
@@ -107,24 +105,27 @@ const logo = logoProp || defaultLogo;
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
-      <nav class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+      <ul class="flex items-center space-x-6">
         {navItems.map((item) => (
           <li>
             <a 
               href={item.href}
               class:list={[
-                'text-sm font-medium transition-colors hover:text-primary',
-                item.isActive ? 'text-primary' : 'text-foreground/80'
+                'text-sm font-medium hover:text-primary',
+                item.isActive ? 'text-primary' : 'text-foreground/80',
+                'inline-block py-2 transition-colors duration-100'
               ]}
             >
               {item.text}
             </a>
           </li>
         ))}
-        
-        <!-- Mode Toggle Button -->
+      </ul>
+      
+      <!-- Mode Toggle Button -->
+      <div class="ml-2">
         <ModeToggle />
-      </nav>
+      </div>
       
       {cta ? (
         <div class="ml-6 lg:ml-8">

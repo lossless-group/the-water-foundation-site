@@ -28,15 +28,15 @@
 </button>
 
 <script is:inline>
-  // Initialize theme from localStorage or system preference
-  function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
+  // Initialize mode from localStorage or system preference
+  function initMode() {
+    const savedMode = localStorage.getItem('mode');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    const mode = savedMode || (systemPrefersDark ? 'dark' : 'light');
     
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.documentElement.setAttribute('data-theme', theme);
-    updateButton(theme === 'dark');
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+    document.documentElement.setAttribute('data-mode', mode);
+    updateButton(mode === 'dark');
   }
   
   // Update button state
@@ -49,30 +49,30 @@
     button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
   
-  // Toggle theme
-  function toggleTheme() {
+  // Toggle mode
+  function toggleMode() {
     const isDark = document.documentElement.classList.toggle('dark');
-    const theme = isDark ? 'dark' : 'light';
+    const mode = isDark ? 'dark' : 'light';
     
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-mode', mode);
+    localStorage.setItem('mode', mode);
     updateButton(isDark);
   }
   
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
+    initMode();
     
     // Handle button click
     document.addEventListener('click', (event) => {
       if (event.target.closest('[data-theme-toggle]')) {
-        toggleTheme();
+        toggleMode();
       }
     });
     
-    // Listen for system theme changes
+    // Listen for system mode changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
+      if (!localStorage.getItem('mode')) {
         document.documentElement.classList.toggle('dark', e.matches);
         updateButton(e.matches);
       }

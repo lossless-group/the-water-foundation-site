@@ -34,7 +34,28 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 - **Brand Kit Page**: Interactive demonstration of all theme combinations
 - **Hero Component**: Full-width hero component with background cycling and responsive design
 - **Responsive Components**: Built with both media and container queries for maximum flexibility
+- **Header Component**: Responsive navigation with dark/light mode toggle and mobile menu
+- **Footer Component**: Site-wide footer with navigation and contact information
 
+
+## 🧩 UI Components
+
+### Header Component
+- **Features**:
+  - Responsive navigation that collapses into a mobile menu on smaller screens
+  - Dark/light mode toggle with system preference detection
+  - Accessible dropdown menus with keyboard navigation
+  - Smooth transitions and animations
+  - Support for custom logos and navigation items
+  - Call-to-action button with configurable variants
+
+### Footer Component
+- **Features**:
+  - Multi-column layout with configurable sections
+  - Social media links with SVG icons
+  - Copyright and legal links
+  - Responsive design that adapts to different screen sizes
+  - Consistent theming with the rest of the application
 
 ## 🏗️ Project Structure
 
