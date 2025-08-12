@@ -1,5 +1,70 @@
 @import "tailwindcss";
 
+/* ITC Avant Garde Gothic Font Faces */
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Book Oblique.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Medium Oblique.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Demi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Demi Oblique.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde Gothic';
+  src: url('/fonts/itc-avant-garde-gothic/ITC Avant Garde Gothic LT Bold Oblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --color-primary-50: #fafafa;
   --color-primary-100: #f4f4f5;
@@ -43,6 +108,7 @@
   /* Base font and layout variables */
   --font-family-primary: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-display: 'ITC Avant Garde Gothic', 'Montserrat', 'Inter', system-ui, sans-serif;
   --font-family-mono: 'Fira Code', monospace;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -139,6 +205,7 @@ html {
   --color-accent-900: #134e4a;
   --color-accent-950: #042f2e;
 
+  --font-family-brand: 'ITC Avant Garde Gothic', 'Montserrat', 'Inter', system-ui, sans-serif;
   --font-family-primary: 'Nunito', 'Quicksand', -apple-system, sans-serif;
   --font-family-secondary: 'Quicksand', -apple-system, sans-serif;
   --font-family-mono: 'Fira Code', monospace;
@@ -210,16 +277,16 @@ html {
 
 /* Dark mode overrides for water theme */
 .theme-water[data-mode="dark"] {
-  --color-background: rgb(8, 47, 73);
-  --color-foreground: rgb(248, 250, 252);
+  --color-background: #24404A;
+  --color-foreground: #F7FFFD;
   --color-card: rgb(12, 74, 110);
-  --color-card-foreground: rgb(248, 250, 252);
+  --color-card-foreground: #E7FFFB;
   --color-primary: rgb(14, 165, 233);
   --color-primary-foreground: rgb(8, 47, 73);
   --color-secondary: rgb(7, 89, 133);
-  --color-secondary-foreground: rgb(248, 250, 252);
+  --color-secondary-foreground: #E7FFFB;
   --color-muted: rgb(12, 74, 110);
-  --color-muted-foreground: rgb(186, 230, 253);
+  --color-muted-foreground: #DEEAE8;
   --color-accent: rgb(20, 184, 166);
   --color-accent-foreground: rgb(8, 47, 73);
   --color-border: rgb(3, 105, 161);
@@ -378,6 +445,27 @@ button {
 .gap-md { gap: 0.75rem; }
 .gap-lg { gap: 1rem; }
 .gap-xl { gap: 1.25rem; }
+
+/* Font family utility classes */
+.font-brand {
+  font-family: var(--font-family-brand);
+}
+
+.font-display {
+  font-family: var(--font-family-display);
+}
+
+.font-primary {
+  font-family: var(--font-family-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-family-secondary);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
 
 /* Ensure smooth theme transitions */
 * {

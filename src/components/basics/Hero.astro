@@ -1,0 +1,247 @@
+---
+
+export interface Props {
+    contextSetterTxt?: string;
+    headerTxt?: string;
+    subHeaderTxt?: string;
+    supportingCopyTxt?: string;
+    ctaTxt?: string;
+    cycleInterval?: number;
+    targetActionsArray?: Array<{
+      text: string;
+      href: string;
+      variant?: 'primary' | 'secondary' | 'accent';
+      external?: boolean;
+    }>;
+    backgroundsArray?: Array<{
+      type: 'image' | 'gradient' | 'video' | 'gif';
+      src?: string;
+      alt?: string;
+      gradient?: string;
+      overlay?: boolean;
+      overlayOpacity?: number;
+      overlayGradient?: string;
+    }>;
+}
+
+const {
+    contextSetterTxt,
+    headerTxt = "Welcome to The Water Foundation",
+    subHeaderTxt,
+    supportingCopyTxt,
+    ctaTxt,
+    targetActionsArray = [],
+    backgroundsArray = [],
+    cycleInterval = 8000 // Default 8 seconds per background
+} = Astro.props;
+
+// Default background if none provided
+const defaultBackground = {
+    type: 'gradient' as const,
+    gradient: 'from-primary-50 to-secondary-100',
+    src: undefined,
+    alt: undefined,
+    overlay: false,
+    overlayOpacity: 0.4,
+    overlayGradient: undefined
+};
+
+const backgrounds = backgroundsArray.length > 0 ? backgroundsArray : [defaultBackground];
+const heroId = `hero-${Math.random().toString(36).substr(2, 9)}`;
+
+// Generate background classes based on background type
+const getBackgroundClasses = (bg: any) => {
+    switch (bg.type) {
+      case 'gradient':
+        return `bg-gradient-to-br ${bg.gradient || 'from-primary-50 to-secondary-100'}`;
+      case 'image':
+      case 'gif':
+        return 'bg-cover bg-center bg-no-repeat';
+      case 'video':
+        return 'relative overflow-hidden';
+      default:
+        return 'bg-secondary-50';
+    }
+};
+---
+
+
+
+<section 
+  id={heroId}
+  class="relative min-h-screen flex items-center justify-center px-4 py-16 overflow-hidden"
+  style="--cycle-interval: ${cycleInterval}ms"
+>
+  <!-- Background Container -->
+  <div class="backgrounds-container absolute inset-0">
+    {backgrounds.map((bg, index: number) => {
+      const backgroundClasses = getBackgroundClasses(bg);
+      const isFirst = index === 0;
+      
+      return (
+        <div 
+          class={`background-item absolute inset-0 transition-opacity duration-1000 ease-in-out ${backgroundClasses} ${isFirst ? 'opacity-100' : 'opacity-0'}`}
+          style={`
+            z-index: 1;
+            ${bg.type === 'image' ? `background-image: url('${bg.src}')` : ''}
+          `}
+          aria-hidden={!isFirst}
+        >
+          {bg.type === 'gif' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background animation'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          
+          {bg.type === 'video' && bg.src && (
+            <video
+              class="absolute inset-0 w-full h-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src={bg.src} type="video/mp4" />
+            </video>
+          )}
+          
+          {bg.overlay && (
+            <div 
+              class="absolute inset-0"
+              style={`
+                z-index: 2;
+                ${bg.overlayGradient 
+                  ? `background: ${bg.overlayGradient}` 
+                  : 'background-color: rgb(15, 23, 42)'
+                };
+                opacity: ${bg.overlayOpacity || 0.4};
+              `}
+            ></div>
+          )}
+        </div>
+      );
+    })}
+  </div>
+
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-6xl mx-auto text-center space-y-8">
+    <!-- Context Setter -->
+    {contextSetterTxt && (
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent-100 border border-accent-200">
+        <span class="text-sm font-medium text-accent-800 tracking-wide uppercase">
+          {contextSetterTxt}
+        </span>
+      </div>
+    )}
+
+    <!-- Main Header -->
+    <div class="space-y-4">
+      <h1 class="font-brand text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-900 leading-tight">
+        {headerTxt}
+      </h1>
+      
+      {subHeaderTxt && (
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-medium text-secondary-700 max-w-4xl mx-auto">
+          {subHeaderTxt}
+        </h2>
+      )}
+    </div>
+
+    <!-- Supporting Copy -->
+    {supportingCopyTxt && (
+      <div class="max-w-3xl mx-auto">
+        <p class="text-lg md:text-xl text-secondary-600 leading-relaxed">
+          {supportingCopyTxt}
+        </p>
+      </div>
+    )}
+
+    <!-- Call to Action Section -->
+    {(ctaTxt || targetActionsArray.length > 0) && (
+      <div class="space-y-6">
+        {ctaTxt && (
+          <p class="text-lg font-medium text-secondary-800">
+            {ctaTxt}
+          </p>
+        )}
+        
+        {targetActionsArray.length > 0 && (
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {targetActionsArray.map((action, index) => {
+              const baseClasses = "inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+              
+              let variantClasses = "";
+              switch (action.variant || 'primary') {
+                case 'primary':
+                  variantClasses = "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl";
+                  break;
+                case 'secondary':
+                  variantClasses = "bg-secondary-100 text-secondary-900 hover:bg-secondary-200 focus:ring-secondary-500 border border-secondary-300";
+                  break;
+                case 'accent':
+                  variantClasses = "bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500 shadow-lg hover:shadow-xl";
+                  break;
+              }
+
+              return (
+                <a
+                  href={action.href}
+                  class={`${baseClasses} ${variantClasses}`}
+                  target={action.external ? "_blank" : undefined}
+                  rel={action.external ? "noopener noreferrer" : undefined}
+                >
+                  {action.text}
+                  {action.external && (
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-secondary-400 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-secondary-400 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ heroId, cycleInterval }}>
+// Background cycling functionality
+document.addEventListener('astro:page-load', () => {
+  const hero = document.getElementById(heroId);
+  if (!hero) return;
+  
+  const backgrounds = hero.querySelectorAll('.background-item');
+  if (backgrounds.length <= 1) return;
+  
+  let currentIndex = 0;
+  
+  // Start cycling
+  const cycleBackgrounds = setInterval(() => {
+    // Hide current background
+    backgrounds[currentIndex].classList.remove('opacity-100');
+    backgrounds[currentIndex].classList.add('opacity-0');
+    
+    // Move to next background
+    currentIndex = (currentIndex + 1) % backgrounds.length;
+    
+    // Show next background
+    backgrounds[currentIndex].classList.remove('opacity-0');
+    backgrounds[currentIndex].classList.add('opacity-100');
+  }, cycleInterval);
+  
+  // Clean up on component unmount
+  return () => clearInterval(cycleBackgrounds);
+});
+</script>

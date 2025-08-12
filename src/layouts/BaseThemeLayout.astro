@@ -12,7 +12,7 @@ export interface Props {
 const { 
 	title = "Water Foundation", 
 	description = "Water Foundation Theme System",
-	themeClass = "theme-default",
+	themeClass = "theme-water",
 	containerClass = "max-w-4xl mx-auto",
 	favicon = "favicon__The-Water-Foundation.svg"
 } = Astro.props;
@@ -37,6 +37,7 @@ import '../styles/global.css';
 		
 		/* Water theme styles */
 		.theme-water {
+			--font-brand: var(--font-family-brand);
 			--font-sans: var(--font-family-primary);
 			--font-serif: var(--font-family-secondary);
 			--font-mono: var(--font-family-mono);
