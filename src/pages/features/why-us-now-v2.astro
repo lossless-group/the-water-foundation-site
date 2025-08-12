@@ -1,0 +1,358 @@
+---
+// Immersive Story Flow Style
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout 
+  title="Why Us Now? - Story Flow"
+  description="An immersive journey through water innovation"
+>
+  <main class="overflow-x-hidden">
+    
+    <!-- Hero - Full Screen Impact -->
+    <section class="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-900/20 via-background to-teal-900/20">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23059669" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+      
+      <div class="text-center z-10 px-4">
+        <div class="mb-8 overflow-hidden">
+          <h1 class="text-6xl md:text-8xl font-black text-foreground mb-4 animate-slide-up">
+            Why Us
+          </h1>
+          <h1 class="text-6xl md:text-8xl font-black bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent animate-slide-up-delay">
+            Now?
+          </h1>
+        </div>
+        
+        <div class="w-32 h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 animate-expand"></div>
+        
+        <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
+          The convergence of crisis and opportunity in the world's most critical resource
+        </p>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+          <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crisis Section - Dark, Urgent -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-red-950/10 to-background">
+      <div class="absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent"></div>
+      
+      <div class="max-w-6xl mx-auto px-4 py-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8">
+            <div class="overflow-hidden">
+              <h2 class="text-5xl md:text-6xl font-bold text-foreground leading-tight parallax-text">
+                The Critical
+                <span class="block text-red-500">Resource</span>
+                <span class="block">Crisis</span>
+              </h2>
+            </div>
+            
+            <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p class="transform transition-all duration-1000 hover:translate-x-4">
+                Water is quickly becoming the world's most critical resource. As scarcity and contamination rise, so does the urgency for bold, scalable solutions.
+              </p>
+              
+              <p class="transform transition-all duration-1000 hover:translate-x-4">
+                In 2024, investor interest surged in technologies like desalination, advanced treatment, and PFAS destruction — solutions that are vital for environmental resilience and rich with market potential.
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative">
+            <div class="crisis-visual bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-3xl p-12 backdrop-blur-sm border border-red-500/20">
+              <div class="text-center space-y-6">
+                <div class="text-6xl font-black text-red-500 animate-pulse">!</div>
+                <div class="text-2xl font-bold text-foreground">Scarcity Rising</div>
+                <div class="text-2xl font-bold text-foreground">Contamination Spreading</div>
+                <div class="text-2xl font-bold text-primary">Solutions Needed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transformation Section - Light, Hopeful -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-green-950/10 to-background">
+      <div class="absolute inset-0 bg-gradient-to-l from-green-500/5 to-transparent"></div>
+      
+      <div class="max-w-6xl mx-auto px-4 py-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="relative order-2 lg:order-1">
+            <div class="opportunity-visual bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-3xl p-12 backdrop-blur-sm border border-green-500/20">
+              <div class="text-center space-y-6">
+                <div class="text-6xl font-black text-green-500">→</div>
+                <div class="text-2xl font-bold text-foreground">Innovation</div>
+                <div class="text-2xl font-bold text-foreground">Impact</div>
+                <div class="text-2xl font-bold text-primary">Investment</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-8 order-1 lg:order-2">
+            <div class="overflow-hidden">
+              <h2 class="text-5xl md:text-6xl font-bold text-foreground leading-tight parallax-text">
+                More Than
+                <span class="block text-green-500">A Crisis</span>
+              </h2>
+            </div>
+            
+            <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p class="transform transition-all duration-1000 hover:translate-x-4">
+                This is more than a crisis. It's a call to invest in the future — where innovation meets impact.
+              </p>
+              
+              <p class="transform transition-all duration-1000 hover:translate-x-4">
+                As global water challenges intensify, from increasing scarcity to emerging contaminants, the demand for breakthrough technologies in water treatment and management is rising.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2024 Surge - Dynamic Timeline -->
+    <section class="relative py-20 bg-gradient-to-b from-primary/5 to-background">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-bold text-foreground mb-8">
+            <span class="text-primary">2024</span> Surge
+          </h2>
+          <p class="text-xl text-muted-foreground">Investor interest exploded across key innovation areas</p>
+        </div>
+        
+        <div class="relative">
+          <!-- Timeline line -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-blue-600"></div>
+          
+          <div class="space-y-16">
+            <!-- Desalination -->
+            <div class="flex items-center">
+              <div class="w-1/2 pr-8 text-right">
+                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                  <h3 class="text-2xl font-bold text-primary mb-4">Desalination</h3>
+                  <p class="text-muted-foreground">Advanced technologies addressing water scarcity with unprecedented efficiency and environmental consideration.</p>
+                </div>
+              </div>
+              <div class="w-8 h-8 bg-primary rounded-full border-4 border-background z-10"></div>
+              <div class="w-1/2 pl-8"></div>
+            </div>
+            
+            <!-- Advanced Treatment -->
+            <div class="flex items-center">
+              <div class="w-1/2 pr-8"></div>
+              <div class="w-8 h-8 bg-blue-600 rounded-full border-4 border-background z-10"></div>
+              <div class="w-1/2 pl-8">
+                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                  <h3 class="text-2xl font-bold text-blue-600 mb-4">Advanced Treatment</h3>
+                  <p class="text-muted-foreground">Next-generation wastewater treatment solutions creating circular water economies.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- PFAS Destruction -->
+            <div class="flex items-center">
+              <div class="w-1/2 pr-8 text-right">
+                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                  <h3 class="text-2xl font-bold text-green-600 mb-4">PFAS Destruction</h3>
+                  <p class="text-muted-foreground">Breakthrough technologies eliminating forever chemicals from water systems worldwide.</p>
+                </div>
+              </div>
+              <div class="w-8 h-8 bg-green-600 rounded-full border-4 border-background z-10"></div>
+              <div class="w-1/2 pl-8"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Mission - Immersive -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-background to-primary/10">
+      <div class="max-w-4xl mx-auto px-4 py-20 text-center">
+        <h2 class="text-5xl md:text-6xl font-bold text-foreground mb-12">Our Mission</h2>
+        
+        <div class="space-y-12">
+          <div class="mission-card bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 transform hover:scale-105 transition-all duration-500">
+            <p class="text-xl text-muted-foreground leading-relaxed">
+              We bring together exceptional people who are impatient with the way things are, embrace new ways of systems thinking across the water cycle and along the water tech stack - and have the courage to act.
+            </p>
+          </div>
+          
+          <div class="mission-card bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 transform hover:scale-105 transition-all duration-500">
+            <p class="text-xl text-muted-foreground leading-relaxed">
+              The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future.
+            </p>
+          </div>
+          
+          <div class="mission-card bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 transform hover:scale-105 transition-all duration-500">
+            <p class="text-xl text-muted-foreground leading-relaxed">
+              We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Investment Verticals - Interactive -->
+    <section class="relative py-20 bg-gradient-to-b from-primary/10 to-background">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-bold text-foreground mb-8">Unsiloed Finance</h2>
+          <p class="text-xl text-muted-foreground">Three integrated approaches to water innovation investment</p>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="vertical-card group cursor-pointer">
+            <div class="bg-card border border-border rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+              <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl font-bold text-primary">01</span>
+                </div>
+                <h3 class="text-2xl font-bold text-foreground">Venture Builder</h3>
+              </div>
+              <p class="text-muted-foreground text-center leading-relaxed">
+                We identify the best water IP/ideas, build teams around it, enable them with capital
+              </p>
+            </div>
+          </div>
+          
+          <div class="vertical-card group cursor-pointer">
+            <div class="bg-card border border-border rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+              <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl font-bold text-blue-600">02</span>
+                </div>
+                <h3 class="text-2xl font-bold text-foreground">VC Fund</h3>
+              </div>
+              <p class="text-muted-foreground text-center leading-relaxed">
+                We invest in the best existing teams and technologies, plug them into the venture ecosystem and help them scale
+              </p>
+            </div>
+          </div>
+          
+          <div class="vertical-card group cursor-pointer">
+            <div class="bg-card border border-border rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+              <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl font-bold text-green-600">03</span>
+                </div>
+                <h3 class="text-2xl font-bold text-foreground">PE Fund</h3>
+              </div>
+              <p class="text-muted-foreground text-center leading-relaxed">
+                We buy incumbent players and hidden champions along the water cycle and build something even bigger
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseThemeLayout>
+
+<style>
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes expand {
+    from {
+      width: 0;
+    }
+    to {
+      width: 8rem;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 1s ease-out forwards;
+  }
+  
+  .animate-slide-up-delay {
+    animation: slide-up 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .animate-expand {
+    animation: expand 1s ease-out 0.8s forwards;
+    width: 0;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out 1.2s forwards;
+    opacity: 0;
+  }
+  
+  .parallax-text {
+    transform: translateZ(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .mission-card, .vertical-card {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .mission-card:nth-child(1) { animation-delay: 0.2s; }
+  .mission-card:nth-child(2) { animation-delay: 0.4s; }
+  .mission-card:nth-child(3) { animation-delay: 0.6s; }
+  
+  .vertical-card:nth-child(1) { animation-delay: 0.1s; }
+  .vertical-card:nth-child(2) { animation-delay: 0.3s; }
+  .vertical-card:nth-child(3) { animation-delay: 0.5s; }
+</style>
+
+<script>
+  // Parallax effect for text elements
+  document.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.parallax-text');
+    
+    parallaxElements.forEach(element => {
+      const rate = scrolled * -0.5;
+      element.style.transform = `translateY(${rate}px)`;
+    });
+  });
+  
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.mission-card, .vertical-card').forEach(el => {
+    observer.observe(el);
+  });
+</script>

@@ -1,0 +1,237 @@
+---
+// Data-Driven Impact Report Style
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout 
+  title="Why Us Now? - Impact Report"
+  description="The urgency and opportunity in water innovation"
+>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/95">
+    
+    <!-- Hero Section with Animated Statistics -->
+    <section class="relative overflow-hidden py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent mb-6">
+            Why Us Now?
+          </h1>
+          <div class="w-24 h-1 bg-primary mx-auto animate-pulse"></div>
+        </div>
+        
+        <!-- Animated Water Crisis Stats -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <div class="stat-card bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-500">
+            <div class="text-4xl font-bold text-primary mb-2 counter" data-target="2024">0</div>
+            <div class="text-muted-foreground">Year of Water Innovation Surge</div>
+          </div>
+          <div class="stat-card bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-500">
+            <div class="text-4xl font-bold text-blue-600 mb-2">∞</div>
+            <div class="text-muted-foreground">Market Potential</div>
+          </div>
+          <div class="stat-card bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-500">
+            <div class="text-4xl font-bold text-green-600 mb-2">3</div>
+            <div class="text-muted-foreground">Investment Verticals</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Flowing background animation -->
+      <div class="absolute inset-0 -z-10 opacity-10">
+        <div class="wave-animation"></div>
+      </div>
+    </section>
+
+    <!-- Crisis & Opportunity Section -->
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="crisis-card bg-gradient-to-r from-red-500/10 to-orange-500/10 border-l-4 border-red-500 rounded-r-xl p-8 mb-8 transform hover:translate-x-2 transition-transform duration-300">
+          <h2 class="text-2xl font-bold text-foreground mb-4">The Critical Resource Crisis</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            Water is quickly becoming the world's most critical resource. As scarcity and contamination rise, so does the urgency for bold, scalable solutions.
+            In 2024, investor interest surged in technologies like desalination, advanced treatment, and PFAS destruction — solutions that are vital for environmental resilience and rich with market potential.
+          </p>
+        </div>
+        
+        <div class="opportunity-card bg-gradient-to-r from-green-500/10 to-blue-500/10 border-l-4 border-green-500 rounded-r-xl p-8 transform hover:translate-x-2 transition-transform duration-300">
+          <h2 class="text-2xl font-bold text-foreground mb-4">The Innovation Opportunity</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            This is more than a crisis. It's a call to invest in the future — where innovation meets impact.
+            As global water challenges intensify, from increasing scarcity to emerging contaminants, the demand for breakthrough technologies in water treatment and management is rising.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Surge Section -->
+    <section class="py-16 px-4 bg-card/20">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-foreground mb-4">2024: The Surge Year</h2>
+          <div class="w-16 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="tech-card group">
+            <div class="bg-card border border-border rounded-xl p-6 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                <div class="w-6 h-6 bg-blue-500 rounded"></div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Desalination</h3>
+              <p class="text-muted-foreground">Advanced desalination technologies addressing water scarcity with unprecedented efficiency.</p>
+            </div>
+          </div>
+          
+          <div class="tech-card group">
+            <div class="bg-card border border-border rounded-xl p-6 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                <div class="w-6 h-6 bg-green-500 rounded"></div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Advanced Treatment</h3>
+              <p class="text-muted-foreground">Next-generation wastewater treatment solutions for environmental resilience.</p>
+            </div>
+          </div>
+          
+          <div class="tech-card group">
+            <div class="bg-card border border-border rounded-xl p-6 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                <div class="w-6 h-6 bg-purple-500 rounded"></div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">PFAS Destruction</h3>
+              <p class="text-muted-foreground">Breakthrough technologies for eliminating forever chemicals from water systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-foreground mb-4">Our Ecosystem Approach</h2>
+          <div class="w-16 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="space-y-8">
+          <div class="approach-card bg-card/50 border border-border rounded-xl p-8 transform hover:translate-y-[-4px] transition-all duration-300">
+            <p class="text-lg text-muted-foreground leading-relaxed">
+              We bring together exceptional people who are impatient with the way things are, embrace new ways of systems thinking across the water cycle and along the water tech stack - and have the courage to act.
+            </p>
+          </div>
+          
+          <div class="approach-card bg-card/50 border border-border rounded-xl p-8 transform hover:translate-y-[-4px] transition-all duration-300">
+            <p class="text-lg text-muted-foreground leading-relaxed">
+              The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future - through knowledge, cooperation, and systemic innovation.
+            </p>
+          </div>
+          
+          <div class="approach-card bg-card/50 border border-border rounded-xl p-8 transform hover:translate-y-[-4px] transition-all duration-300">
+            <p class="text-lg text-muted-foreground leading-relaxed">
+              We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Investment Verticals -->
+    <section class="py-16 px-4 bg-gradient-to-b from-primary/5 to-background">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-foreground mb-4">Unsiloed Finance</h2>
+          <p class="text-xl text-muted-foreground">Three integrated investment approaches</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="vertical-card group">
+            <div class="bg-card border border-border rounded-xl p-8 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-primary mb-4">01</div>
+              <h3 class="text-xl font-semibold mb-4">Venture Builder</h3>
+              <p class="text-muted-foreground">We identify the best water IP/ideas, build teams around it, enable them with capital</p>
+            </div>
+          </div>
+          
+          <div class="vertical-card group">
+            <div class="bg-card border border-border rounded-xl p-8 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-blue-600 mb-4">02</div>
+              <h3 class="text-xl font-semibold mb-4">VC Fund</h3>
+              <p class="text-muted-foreground">We invest in the best existing teams and technologies, plug them into the venture ecosystem and help them scale</p>
+            </div>
+          </div>
+          
+          <div class="vertical-card group">
+            <div class="bg-card border border-border rounded-xl p-8 h-full transform group-hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-green-600 mb-4">03</div>
+              <h3 class="text-xl font-semibold mb-4">PE Fund</h3>
+              <p class="text-muted-foreground">We buy incumbent players and hidden champions along the water cycle and build something even bigger</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseThemeLayout>
+
+<style>
+  .wave-animation {
+    background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+    animation: wave 3s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: translateX(-100%) rotate(0deg); }
+    50% { transform: translateX(100%) rotate(180deg); }
+  }
+  
+  .counter {
+    animation: countUp 2s ease-out forwards;
+  }
+  
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .stat-card, .tech-card, .vertical-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .stat-card:nth-child(1) { animation-delay: 0.1s; }
+  .stat-card:nth-child(2) { animation-delay: 0.2s; }
+  .stat-card:nth-child(3) { animation-delay: 0.3s; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Counter animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const increment = target / 100;
+      let current = 0;
+      
+      const updateCounter = () => {
+        if (current < target) {
+          current += increment;
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+      
+      setTimeout(updateCounter, 500);
+    });
+  });
+</script>
