@@ -1,0 +1,48 @@
+---
+// This component provides responsive context
+const { as: Component = 'div', class: className = '', ...props } = Astro.props;
+---
+
+<Component class:list={['responsive-container', className]} {...props}>
+  <slot />
+</Component>
+
+<style>
+  .responsive-container {
+    /* Base styles that apply to all breakpoints */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Monitor */
+  @media (min-width: 1536px) {
+    .responsive-container {
+      max-width: 1536px;
+      padding: 0 2rem;
+    }
+  }
+
+  /* Laptop */
+  @media (min-width: 1024px) and (max-width: 1535px) {
+    .responsive-container {
+      max-width: 1024px;
+      padding: 0 1.5rem;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .responsive-container {
+      max-width: 768px;
+      padding: 0 1rem;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .responsive-container {
+      padding: 0 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+/* Container query sizes */
+:root {
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+}
+
+/* Base container styles */
+.container {
+  container-type: inline-size;
+  container-name: component;
+  width: 100%;
+}
+
+/* Container query utilities */
+@container component (min-width: 0) {
+  .cq\:hidden { display: none; }
+  .cq\:block { display: block; }
+  .cq\:flex { display: flex; }
+  .cq\:grid { display: grid; }
+}
+
+/* Small container queries */
+@container component (min-width: 640px) {
+  .sm\:cq\:hidden { display: none; }
+  .sm\:cq\:block { display: block; }
+  .sm\:cq\:flex { display: flex; }
+  .sm\:cq\:grid { display: grid; }
+}
+
+/* Medium container queries */
+@container component (min-width: 768px) {
+  .md\:cq\:hidden { display: none; }
+  .md\:cq\:block { display: block; }
+  .md\:cq\:flex { display: flex; }
+  .md\:cq\:grid { display: grid; }
+}
+
+/* Large container queries */
+@container component (min-width: 1024px) {
+  .lg\:cq\:hidden { display: none; }
+  .lg\:cq\:block { display: block; }
+  .lg\:cq\:flex { display: flex; }
+  .lg\:cq\:grid { display: grid; }
+}
+
+/* Extra large container queries */
+@container component (min-width: 1280px) {
+  .xl\:cq\:hidden { display: none; }
+  .xl\:cq\:block { display: block; }
+  .xl\:cq\:flex { display: flex; }
+  .xl\:cq\:grid { display: grid; }
+}
+
+/* 2XL container queries */
+@container component (min-width: 1536px) {
+  .\32xl\:cq\:hidden { display: none; }
+  .\32xl\:cq\:block { display: block; }
+  .\32xl\:cq\:flex { display: flex; }
+  .\32xl\:cq\:grid { display: grid; }
+}
+
+/* Spacing utilities */
+.cq\:gap-0 { gap: 0; }
+.cq\:gap-1 { gap: 0.25rem; }
+.cq\:gap-2 { gap: 0.5rem; }
+.cq\:gap-4 { gap: 1rem; }
+.cq\:gap-8 { gap: 2rem; }
+
+/* Flex utilities */
+.cq\:flex-row { flex-direction: row; }
+.cq\:flex-col { flex-direction: column; }
+.cq\:flex-wrap { flex-wrap: wrap; }
+.cq\:items-start { align-items: flex-start; }
+.cq\:items-center { align-items: center; }
+.cq\:justify-between { justify-content: space-between; }
+
+/* Grid utilities */
+.cq\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.cq\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cq\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Text utilities */
+.cq\:text-sm { font-size: 0.875rem; }
+.cq\:text-base { font-size: 1rem; }
+.cq\:text-lg { font-size: 1.125rem; }
+.cq\:text-xl { font-size: 1.25rem; }

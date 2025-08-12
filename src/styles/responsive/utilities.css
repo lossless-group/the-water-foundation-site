@@ -1,0 +1,14 @@
+@layer utilities {
+   /* Hide/Show Utilities */
+   .monitor-only { display: none; }
+   .laptop-only { display: none; }
+   .tablet-only { display: none; }
+   .mobile-only { display: none; }
+ 
+   @media (--monitor) { .monitor-only { display: block; } }
+   @media (--laptop) { .laptop-only { display: block; } }
+   @media (--tablet) { .tablet-only { display: block; } }
+   @media (--mobile-xl) { .mobile-only { display: block; } }
+   
+   /* Add more utilities as needed */
+ }

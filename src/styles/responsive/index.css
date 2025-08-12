@@ -1,0 +1,34 @@
+/* Core responsive imports */
+@import './breakpoints.css';
+@import './utilities.css';
+@import './container-queries.css';
+
+/*
+  Responsive Design System
+  
+  This file imports all responsive utilities and breakpoints.
+  
+  Breakpoints:
+  - Mobile: Up to 767px
+  - Tablet: 768px - 1023px
+  - Laptop: 1024px - 1535px
+  - Monitor: 1536px and up
+  
+  Container Queries:
+  - Use .container class on a parent element
+  - Child elements can use cq: utilities (e.g., cq:block, cq:flex)
+  - Responsive variants: sm:cq:, md:cq:, lg:cq:, xl:cq:, 2xl:cq:
+*/
+
+/* Container query debug styles - remove in production */
+[class*="cq:"] {
+  outline: 1px dashed rgba(255, 0, 0, 0.1);
+  outline-offset: -1px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

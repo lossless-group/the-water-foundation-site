@@ -1,5 +1,54 @@
 @import "tailwindcss";
 
+:root {
+  /* Custom breakpoints */
+  --breakpoint-monitor: 1536px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-mobile-xl: 640px;
+  --breakpoint-mobile-base: 480px;
+  --breakpoint-mobile-sm: 360px;
+}
+
+/* Custom responsive utilities */
+@layer utilities {
+  /* Hide/Show Utilities */
+  .monitor-only { display: none; }
+  .laptop-only { display: none; }
+  .tablet-only { display: none; }
+  .mobile-only { display: none; }
+
+  /* Monitor (1536px and up) */
+  @media (min-width: 1536px) {
+    .monitor-only { display: block; }
+  }
+  
+  /* Laptop (1024px - 1535px) */
+  @media (min-width: 1024px) and (max-width: 1535px) {
+    .laptop-only { display: block; }
+  }
+  
+  /* Tablet (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .tablet-only { display: block; }
+  }
+  
+  /* Mobile (up to 767px) */
+  @media (max-width: 767px) {
+    .mobile-only { display: block; }
+  }
+  
+  /* Extra small mobile (up to 480px) */
+  @media (max-width: 480px) {
+    .mobile-base-only { display: block; }
+  }
+  
+  /* Smallest mobile (up to 360px) */
+  @media (max-width: 360px) {
+    .mobile-sm-only { display: block; }
+  }
+}
+
 /* ITC Avant Garde Gothic Font Faces */
 @font-face {
   font-family: 'ITC Avant Garde Gothic';

@@ -20,12 +20,20 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 - [x] **Event System**: Custom events for coordinated UI updates
 - [x] **Comprehensive Testing**: 51 unit and integration tests with 100% pass rate
 
+### Responsive Framework (v1.0.0)
+- [x] **Media Queries**: Mobile-first breakpoints for all device sizes
+- [x] **Container Queries**: Component-level responsive design
+- [x] **Utility Classes**: Comprehensive set of responsive utilities
+- [x] **Performance Optimized**: Efficient CSS with `contain` and `content-visibility`
+- [x] **Accessibility**: Responsive design that maintains accessibility
+
 ### Key Features
 - **Tailwind CSS v4**: Modern `@theme` directive with CSS custom properties
 - **JavaScript Utilities**: `ThemeSwitcher` and `ModeSwitcher` classes
 - **Astro Layouts**: Reusable `BoilerPlateHTML` and `BaseThemeLayout` components
 - **Brand Kit Page**: Interactive demonstration of all theme combinations
 - **Hero Component**: Full-width hero component with background cycling and responsive design
+- **Responsive Components**: Built with both media and container queries for maximum flexibility
 
 
 ## 🏗️ Project Structure
@@ -148,6 +156,93 @@ Themes use semantic CSS variables that automatically adapt to dark/light modes:
 --color-secondary-100: #f1f5f9;  /* Light backgrounds */
 --color-secondary-800: #1e293b;  /* Dark text */
 ```
+
+## 🌐 Responsive Framework
+
+Our responsive design system combines traditional media queries with modern container queries for optimal flexibility across all devices.
+
+### Breakpoints
+
+We use a mobile-first approach with the following breakpoints:
+
+| Breakpoint | Min-Width | Description        |
+|------------|-----------|--------------------|
+| `sm`       | 640px     | Small devices      |
+| `md`       | 768px     | Tablets            |
+| `lg`       | 1024px    | Laptops            |
+| `xl`       | 1280px    | Desktops           |
+| `2xl`      | 1536px    | Large desktops     |
+
+### Media Queries
+
+```css
+/* Mobile-first media query example */
+.component {
+  /* Mobile styles */
+  padding: 1rem;
+  
+  /* Small devices and up */
+  @media (min-width: 640px) {
+    padding: 1.5rem;
+  }
+  
+  /* Large devices and up */
+  @media (min-width: 1024px) {
+    padding: 2rem;
+  }
+}
+```
+
+### Container Queries
+
+Container queries allow components to adapt based on their container size rather than viewport size:
+
+```css
+/* Parent container */
+.container {
+  container-type: inline-size;
+  container-name: component;
+  width: 100%;
+}
+
+/* Component styles that respond to container size */
+@container component (min-width: 400px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+  }
+}
+```
+
+### Utility Classes
+
+We provide responsive utility classes for common patterns:
+
+```html
+<!-- Hide on mobile, show on medium screens and up -->
+<div class="hidden md:block">Visible on medium+</div>
+
+<!-- Stack on mobile, row on larger screens -->
+<div class="flex flex-col md:flex-row gap-4">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</div>
+```
+
+### Performance Optimization
+
+- **CSS Containment**: Used to optimize rendering performance
+- **Content Visibility**: Applied to off-screen content
+- **Efficient Selectors**: Optimized for better rendering performance
+
+### Accessibility
+
+All responsive components maintain:
+- Proper heading hierarchy
+- Sufficient color contrast
+- Keyboard navigation support
+- Screen reader compatibility
 
 ## 📝 Available Scripts
 
