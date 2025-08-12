@@ -2,6 +2,7 @@
 // @ts-ignore - Astro component imports
 import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
 import ThemeImage from '../ui/ThemeImage.astro';
+import ModeToggle from '../ui/ModeToggle.astro';
 
 // Define the logo type
 type LogoProps = {
@@ -122,29 +123,7 @@ const logo = logoProp || defaultLogo;
         ))}
         
         <!-- Mode Toggle Button -->
-        <button 
-          id="mode-toggle" 
-          type="button"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-          title="Toggle dark/light mode"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path 
-              class="hidden dark:block" 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-            />
-            <path 
-              class="block dark:hidden" 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
+        <ModeToggle />
       </nav>
       
       {cta ? (
@@ -249,34 +228,8 @@ const logo = logoProp || defaultLogo;
 </header>
 
 <script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize mode toggle button
-    const modeToggle = document.getElementById('mode-toggle');
-    if (modeToggle) {
-      // Toggle mode on button click
-      modeToggle.addEventListener('click', () => {
-        const html = document.documentElement;
-        const isDark = html.getAttribute('data-mode') === 'dark';
-        const newMode = isDark ? 'light' : 'dark';
-        
-        // Update the data-mode attribute
-        html.setAttribute('data-mode', newMode);
-        
-        // Save to localStorage
-        localStorage.setItem('mode', newMode);
-        
-        // Update button state
-        modeToggle.setAttribute('aria-pressed', String(!isDark));
-        modeToggle.setAttribute('aria-label', isDark ? 'Switch to dark mode' : 'Switch to light mode');
-      });
-      
-      // Set initial button state
-      const currentMode = document.documentElement.getAttribute('data-mode') || 'light';
-      const isDark = currentMode === 'dark';
-      modeToggle.setAttribute('aria-pressed', String(isDark));
-      modeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile menu toggle
     const menuButton = document.getElementById('mobile-menu-button');

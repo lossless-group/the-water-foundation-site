@@ -1,0 +1,81 @@
+---
+// ModeToggle.astro - A theme toggle button component
+---
+
+<button 
+  type="button"
+  class="mode-toggle p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors w-10 h-10 flex items-center justify-center"
+  title="Toggle dark/light mode"
+  aria-label="Toggle dark mode"
+  data-theme-toggle
+>
+  <picture>
+    <source
+      srcset="/icons/moon.svg"
+      media="(prefers-color-scheme: dark)"
+      width="20"
+      height="20"
+    />
+    <img
+      src="/icons/sun.svg"
+      alt="Theme toggle icon"
+      width="20"
+      height="20"
+      class="w-5 h-5"
+      data-theme-icon
+    />
+  </picture>
+</button>
+
+<script is:inline>
+  // Initialize theme from localStorage or system preference
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+    updateButton(theme === 'dark');
+  }
+  
+  // Update button state
+  function updateButton(isDark) {
+    const button = document.querySelector('.mode-toggle');
+    if (!button) return;
+    
+    button.setAttribute('aria-pressed', isDark);
+    button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  
+  // Toggle theme
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    const theme = isDark ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateButton(isDark);
+  }
+  
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
+    // Handle button click
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('[data-theme-toggle]')) {
+        toggleTheme();
+      }
+    });
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.classList.toggle('dark', e.matches);
+        updateButton(e.matches);
+      }
+    });
+  });
+</script>
