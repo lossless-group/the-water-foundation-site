@@ -1,0 +1,54 @@
+---
+// src/components/ui/ThemeImage.astro
+
+interface Props {
+  lightSrc: string;
+  darkSrc?: string;
+  alt: string;
+  width?: number | string;
+  height?: number | string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const {
+  lightSrc,
+  darkSrc,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy'
+} = Astro.props;
+
+const hasDarkVariant = !!darkSrc && darkSrc !== lightSrc;
+---
+
+<picture>
+  {hasDarkVariant && (
+    <source
+      srcset={darkSrc}
+      media="(prefers-color-scheme: dark)"
+      {width && { width }}
+      {height && { height }}
+    />
+  )}
+  <img
+    src={lightSrc}
+    alt={alt}
+    class={className}
+    loading={loading}
+    {width && { width }}
+    {height && { height }}
+  />
+</picture>
+
+<style>
+  /* Ensures smooth transitions when theme changes */
+  @media (prefers-color-scheme: dark) {
+    :global(html.dark) picture source,
+    :global(html.dark) picture img {
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+</style>

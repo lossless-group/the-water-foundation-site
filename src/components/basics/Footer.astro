@@ -1,0 +1,211 @@
+---
+import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
+import SocialIcons from '../ui/SocialIcons.astro';
+
+// Import SocialLink type from SocialIcons component
+type SocialLink = import('../ui/SocialIcons.astro').SocialLink;
+
+// Props
+export interface Props {
+  siteTitle?: string;
+  logo?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  };
+  description?: string;
+  links?: Array<{
+    title: string;
+    items: Array<{
+      text: string;
+      href: string;
+      isExternal?: boolean;
+    }>;
+  }>;
+  socialLinks?: SocialLink[];
+  copyright?: string;
+  className?: string;
+}
+
+const {
+  siteTitle = 'The Water Foundation',
+  logo = {
+    src: '/trademark__The-Water-Foundation.svg',
+    alt: 'The Water Foundation Logo',
+    width: 180,
+    height: 40
+  },
+  description = 'Working to ensure clean, accessible water for all through sustainable solutions and community engagement.',
+  links = [
+    {
+      title: 'About',
+      items: [
+        { text: 'Our Mission', href: '/about/mission' },
+        { text: 'Our Team', href: '/about/team' },
+        { text: 'Financials', href: '/about/financials' },
+        { text: 'Careers', href: '/about/careers' },
+      ]
+    },
+    {
+      title: 'Programs',
+      items: [
+        { text: 'Clean Water', href: '/programs/clean-water' },
+        { text: 'Education', href: '/programs/education' },
+        { text: 'Advocacy', href: '/programs/advocacy' },
+      ]
+    },
+    {
+      title: 'Get Involved',
+      items: [
+        { text: 'Donate', href: '/donate' },
+        { text: 'Volunteer', href: '/volunteer' },
+        { text: 'Partner', href: '/partner' },
+        { text: 'Events', href: '/events' },
+      ]
+    }
+  ],
+  socialLinks = [
+    { name: 'Twitter', href: 'https://twitter.com/waterfoundation', icon: 'twitter' },
+    { name: 'Facebook', href: 'https://facebook.com/waterfoundation', icon: 'facebook' },
+    { name: 'Instagram', href: 'https://instagram.com/waterfoundation', icon: 'instagram' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/waterfoundation', icon: 'linkedin' },
+  ],
+  copyright = `© ${new Date().getFullYear()} The Water Foundation. All rights reserved.`,
+  className = ''
+} = Astro.props;
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
+---
+
+<footer class:list={[
+  'bg-background border-t border-border/10',
+  'text-foreground/80',
+  className
+]}>
+  <ResponsiveContainer class="py-12 md:py-16 lg:py-20">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
+      <!-- Logo and description -->
+      <div class="md:col-span-2 lg:col-span-4">
+        <div class="flex flex-col space-y-4">
+          <a href="/" class="inline-block">
+            {logo?.src ? (
+              <img 
+                src={logo.src} 
+                alt={logo.alt || siteTitle} 
+                width={logo.width || 180} 
+                height={logo.height || 40}
+                class="h-10 w-auto"
+                loading="lazy"
+              />
+            ) : (
+              <span class="text-2xl font-bold text-foreground">{siteTitle}</span>
+            )}
+          </a>
+          
+          <p class="text-sm leading-relaxed">
+            {description}
+          </p>
+          
+          <!-- Social links -->
+          <div class="mt-4">
+            <SocialIcons socialLinks={socialLinks} />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Links grid -->
+      <div class="grid grid-cols-2 gap-8 md:col-span-2 lg:col-span-8 lg:grid-cols-3">
+        {links.map((section) => (
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-foreground">
+              {section.title}
+            </h3>
+            <ul class="mt-4 space-y-2">
+              {section.items.map((item) => (
+                <li>
+                  <a 
+                    href={item.href}
+                    class:list={[
+                      'text-sm hover:text-primary transition-colors',
+                      item.isExternal ? 'flex items-center gap-1' : ''
+                    ]}
+                    target={item.isExternal ? '_blank' : '_self'}
+                    rel={item.isExternal ? 'noopener noreferrer' : ''}
+                  >
+                    {item.text}
+                    {item.isExternal && (
+                      <svg 
+                        class="h-3.5 w-3.5" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path 
+                          stroke-linecap="round" 
+                          stroke-linejoin="round" 
+                          stroke-width="2" 
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Bottom bar -->
+    <div class="mt-12 border-t border-border/10 pt-8">
+      <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+        <p class="text-sm text-foreground/60">
+          {copyright.replace('{year}', currentYear.toString())}
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 text-sm sm:justify-end">
+          <a href="/privacy" class="hover:text-primary transition-colors">
+            Privacy Policy
+          </a>
+          <span class="text-foreground/30">•</span>
+          <a href="/terms" class="hover:text-primary transition-colors">
+            Terms of Service
+          </a>
+          <span class="text-foreground/30">•</span>
+          <a href="/accessibility" class="hover:text-primary transition-colors">
+            Accessibility
+          </a>
+        </div>
+      </div>
+    </div>
+  </ResponsiveContainer>
+</footer>
+
+<!-- No script needed - social links are handled by the SocialIcons component -->
+
+<style>
+  /* Container query adjustments */
+  @container (min-width: 64rem) {
+    .footer-content {
+      padding-inline: 2rem;
+    }
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    a, button {
+      transition: none !important;
+    }
+  }
+  
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    footer {
+      background-color: rgba(15, 23, 42, 0.98);
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+</style>

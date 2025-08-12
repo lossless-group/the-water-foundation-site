@@ -1,0 +1,391 @@
+---
+// @ts-ignore - Astro component imports
+import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
+import ThemeImage from '../ui/ThemeImage.astro';
+
+// Define the logo type
+type LogoProps = {
+  lightSrc: string;
+  darkSrc: string;
+  mobileLightSrc: string;
+  mobileDarkSrc: string;
+  alt: string;
+  width: number;
+  height: number;
+  mobileWidth: number;
+  mobileHeight: number;
+};
+
+export interface Props {
+  siteTitle?: string;
+  logo?: LogoProps;
+  navItems?: Array<{
+    text: string;
+    href: string;
+    isActive?: boolean;
+  }>;
+  cta?: {
+    text: string;
+    href: string;
+    variant?: 'primary' | 'secondary' | 'outline';
+  };
+  className?: string;
+}
+
+const {
+  siteTitle = 'The Water Foundation',
+  logo: logoProp,
+  navItems = [
+    { text: 'About', href: '/about' },
+    { text: 'Programs', href: '/programs' },
+    { text: 'News', href: '/news' },
+    { text: 'Get Involved', href: '/get-involved' },
+  ],
+  cta = {
+    text: 'Donate',
+    href: '/donate',
+    variant: 'primary' as const
+  },
+  className = ''
+} = Astro.props as Props;
+
+// Default logo configuration
+const defaultLogo: LogoProps = {
+  lightSrc: '/trademark__The-Water-Foundation.svg',
+  darkSrc: '/trademark__The-Water-Foundation--Inverted.svg',
+  mobileLightSrc: '/favicon__The-Water-Foundation.svg',
+  mobileDarkSrc: '/favicon__The-Water-Foundation--Inverted.svg',
+  alt: 'The Water Foundation Logo',
+  width: 180,
+  height: 40,
+  mobileWidth: 40,
+  mobileHeight: 40
+};
+
+const logo = logoProp || defaultLogo;
+
+// Mobile menu toggle logic will be handled in the client-side script
+---
+
+<header 
+  id="main-header"
+  class:list={[
+    'bg-background/80 backdrop-blur-sm border-b border-border/10',
+    'sticky top-0 z-50 w-full',
+    className
+  ]}
+>
+  <ResponsiveContainer class="relative flex h-16 items-center justify-between md:h-20">
+    <!-- Logo and mobile menu button -->
+    <div class="flex items-center">
+      <a href="/" class="flex items-center gap-2">
+        <div class="hidden md:block">
+          <ThemeImage
+            lightSrc={logo.lightSrc}
+            darkSrc={logo.darkSrc}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            class="h-10 w-auto"
+            loading="eager"
+          />
+        </div>
+        <div class="md:hidden">
+          <ThemeImage
+            lightSrc={logo.mobileLightSrc}
+            darkSrc={logo.mobileDarkSrc}
+            alt={logo.alt}
+            width={logo.mobileWidth}
+            height={logo.mobileHeight}
+            class="h-10 w-auto"
+            loading="eager"
+          />
+        </div>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
+      <nav class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+        {navItems.map((item) => (
+          <li>
+            <a 
+              href={item.href}
+              class:list={[
+                'text-sm font-medium transition-colors hover:text-primary',
+                item.isActive ? 'text-primary' : 'text-foreground/80'
+              ]}
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+        
+        <!-- Mode Toggle Button -->
+        <button 
+          id="mode-toggle" 
+          type="button"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          title="Toggle dark/light mode"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path 
+              class="hidden dark:block" 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+            <path 
+              class="block dark:hidden" 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </button>
+      </nav>
+      
+      {cta ? (
+        <div class="ml-6 lg:ml-8">
+          <a 
+            href={cta.href}
+            class:list={[
+              'inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+              cta.variant === 'primary' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : '',
+              cta.variant === 'secondary' ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80' : '',
+              cta.variant === 'outline' ? 'border border-input bg-background hover:bg-accent hover:text-accent-foreground' : ''
+            ]}
+          >
+            {cta.text}
+          </a>
+        </div>
+      ) : null}
+    </nav>
+
+    <!-- Mobile menu button -->
+    <div class="flex items-center md:hidden">
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-foreground/70 hover:bg-accent hover:text-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          id="menu-open-icon"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        <svg
+          id="menu-close-icon"
+          class="h-6 w-6 hidden"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+  </ResponsiveContainer>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div 
+    id="mobile-menu"
+    class="md:hidden hidden"
+  >
+    <div class="space-y-1 bg-background pb-3 pt-2">
+      <ResponsiveContainer>
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'block px-3 py-2 text-base font-medium',
+              item.isActive 
+                ? 'bg-accent text-accent-foreground' 
+                : 'text-foreground/80 hover:bg-accent hover:text-accent-foreground'
+            ]}
+          >
+            {item.text}
+          </a>
+        ))}
+        {cta ? (
+          <div class="mt-4">
+            <a
+              href={cta.href}
+              class:list={[
+                'block w-full rounded-md px-4 py-2 text-center text-base font-medium',
+                cta.variant === 'primary' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : '',
+                cta.variant === 'secondary' ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80' : '',
+                cta.variant === 'outline' ? 'border border-input bg-background hover:bg-accent hover:text-accent-foreground' : ''
+              ]}
+            >
+              {cta.text}
+            </a>
+          </div>
+        ) : null}
+      </ResponsiveContainer>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mode toggle button
+    const modeToggle = document.getElementById('mode-toggle');
+    if (modeToggle) {
+      // Toggle mode on button click
+      modeToggle.addEventListener('click', () => {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-mode') === 'dark';
+        const newMode = isDark ? 'light' : 'dark';
+        
+        // Update the data-mode attribute
+        html.setAttribute('data-mode', newMode);
+        
+        // Save to localStorage
+        localStorage.setItem('mode', newMode);
+        
+        // Update button state
+        modeToggle.setAttribute('aria-pressed', String(!isDark));
+        modeToggle.setAttribute('aria-label', isDark ? 'Switch to dark mode' : 'Switch to light mode');
+      });
+      
+      // Set initial button state
+      const currentMode = document.documentElement.getAttribute('data-mode') || 'light';
+      const isDark = currentMode === 'dark';
+      modeToggle.setAttribute('aria-pressed', String(isDark));
+      modeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    
+    // Mobile menu toggle
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
+    
+    if (menuButton && mobileMenu && menuOpenIcon && menuCloseIcon) {
+      menuButton.addEventListener('click', () => {
+        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isExpanded));
+        
+        // Toggle menu with animation
+        if (isExpanded) {
+          // Closing animation
+          mobileMenu.style.display = 'block';
+          mobileMenu.classList.remove('mobile-menu-enter-active');
+          mobileMenu.classList.add('mobile-menu-leave');
+          
+          setTimeout(() => {
+            mobileMenu.classList.remove('mobile-menu-leave');
+            mobileMenu.classList.remove('mobile-menu-leave-active');
+            mobileMenu.style.display = 'none';
+          }, 75);
+        } else {
+          // Opening animation
+          mobileMenu.style.display = 'block';
+          mobileMenu.classList.add('mobile-menu-enter');
+          setTimeout(() => {
+            mobileMenu.classList.remove('mobile-menu-enter');
+            mobileMenu.classList.add('mobile-menu-enter-active');
+          }, 10);
+        }
+        
+        menuOpenIcon.classList.toggle('hidden');
+        menuCloseIcon.classList.toggle('hidden');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      // Close menu when clicking on a link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.style.display = 'none';
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuOpenIcon.classList.remove('hidden');
+          menuCloseIcon.classList.add('hidden');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      
+      // Close menu when pressing Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.style.display === 'block') {
+          mobileMenu.style.display = 'none';
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuOpenIcon.classList.remove('hidden');
+          menuCloseIcon.classList.add('hidden');
+          document.body.classList.remove('menu-open');
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Mobile menu animation classes */
+  .mobile-menu-enter {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  .mobile-menu-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 100ms ease-out, transform 100ms ease-out;
+  }
+  .mobile-menu-leave {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .mobile-menu-leave-active {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 75ms ease-in, transform 75ms ease-in;
+  }
+  
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (max-width: 767px) {
+    body.menu-open {
+      overflow: hidden;
+    }
+  }
+  
+  /* Container query for header */
+  @container (min-width: 1024px) {
+    .header-lg {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .header-dark {
+      background-color: rgba(15, 23, 42, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+</style>
