@@ -60,11 +60,11 @@ import '../styles/global.css';
 		}
 	</style>
 
-	<div class="bg-background text-foreground min-h-screen p-8">
-		<Header />
-		<div class={containerClass}>
+	<div class="bg-background text-foreground min-h-screen flex flex-col">
+		<Header className="w-full" />
+		<main class="flex-1">
 			<slot />
-		</div>
-		<Footer />
+		</main>
+		<Footer className="w-full" />
 	</div>
 </BoilerPlateHTML>

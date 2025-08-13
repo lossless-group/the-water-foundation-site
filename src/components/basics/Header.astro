@@ -31,7 +31,8 @@ export interface Props {
     href: string;
     variant?: 'primary' | 'secondary' | 'outline';
   };
-  className?: string;
+  class?: string;
+  className?: string; // For backward compatibility
 }
 
 const {
@@ -46,7 +47,7 @@ const {
     href: '/partner-with-us',
     variant: 'primary' as const
   },
-  className = ''
+  class: className = ''
 } = Astro.props as Props;
 
 // Default logo configuration
@@ -67,14 +68,7 @@ const logo = logoProp || defaultLogo;
 // Mobile menu toggle logic will be handled in the client-side script
 ---
 
-<header 
-  id="main-header"
-  class:list={[
-    'bg-background/80 backdrop-blur-sm border-b border-border/10',
-    'sticky top-0 z-50 w-full',
-    className
-  ]}
->
+<header id="main-header" class={`bg-background/80 backdrop-blur-sm border-b border-border/10 sticky top-0 z-50 w-full ${className}`}>
   <ResponsiveContainer class="relative flex h-16 items-center justify-between md:h-20">
     <!-- Logo and mobile menu button -->
     <div class="flex items-center">

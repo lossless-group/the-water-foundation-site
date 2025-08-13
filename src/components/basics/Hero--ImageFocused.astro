@@ -1,0 +1,271 @@
+---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro';
+
+export interface Props {
+    contextSetterTxt?: string;
+    contextSetterClassName?: string;
+    headerTxt?: string;
+    headerClassName?: string;
+    subHeaderTxt?: string;
+    subHeaderClassName?: string;
+    supportingCopyTxt?: string;
+    supportingCopyClassName?: string;
+    ctaTxt?: string;
+    ctaClassName?: string;
+    cycleInterval?: number;
+    targetActionsArray?: Array<{
+      text: string;
+      href: string;
+      variant?: 'primary' | 'secondary' | 'accent';
+      buttonVariant?: 'solid' | 'transparent';
+      external?: boolean;
+    }>;
+    backgroundsArray?: Array<{
+      type: 'image' | 'gradient' | 'video' | 'gif';
+      src?: string;
+      alt?: string;
+      gradient?: string;
+      overlay?: boolean;
+      overlayOpacity?: number;
+      overlayGradient?: string;
+    }>;
+}
+
+const {
+    contextSetterTxt,
+    contextSetterClassName = "",
+    headerTxt = "Welcome to The Water Foundation",
+    headerClassName = "",
+    subHeaderTxt,
+    subHeaderClassName = "",
+    supportingCopyTxt,
+    supportingCopyClassName = "",
+    ctaTxt,
+    ctaClassName = "",
+    targetActionsArray = [],
+    backgroundsArray = [],
+    cycleInterval = 8000
+} = Astro.props;
+
+// Default background if none provided
+const defaultBackground = {
+    type: 'gradient' as const,
+    gradient: 'from-primary-50 to-secondary-100',
+    src: undefined,
+    alt: undefined,
+    overlay: false,
+    overlayOpacity: 0.4,
+    overlayGradient: undefined
+};
+
+const backgrounds = backgroundsArray.length > 0 ? backgroundsArray : [defaultBackground];
+const heroId = `hero-image-focused-${Math.random().toString(36).substr(2, 9)}`;
+
+// Generate background classes based on background type
+const getBackgroundClasses = (bg: any) => {
+    switch (bg.type) {
+      case 'gradient':
+        return `bg-gradient-to-br ${bg.gradient || 'from-primary-50 to-secondary-100'}`;
+      case 'image':
+      case 'gif':
+        return 'bg-cover bg-center bg-no-repeat';
+      case 'video':
+        return 'relative overflow-hidden';
+      default:
+        return 'bg-secondary-50';
+    }
+};
+---
+
+<section 
+  id={heroId}
+  class="relative min-h-screen flex items-end justify-start overflow-hidden w-screen left-1/2 right-1/2 -mx-[50vw]"
+  style="--cycle-interval: ${cycleInterval}ms; margin-left: -50vw !important; margin-right: -50vw !important;"
+>
+  <!-- Background Container - Full width, no margins -->
+  <div class="backgrounds-container absolute inset-0">
+    {backgrounds.map((bg, index: number) => {
+      const backgroundClasses = getBackgroundClasses(bg);
+      const isFirst = index === 0;
+      
+      return (
+        <div 
+          class={`background-item absolute inset-0 transition-opacity duration-1000 ease-in-out ${backgroundClasses} ${isFirst ? 'opacity-100' : 'opacity-0'}`}
+          style={`
+            z-index: 1;
+            ${bg.type === 'image' ? `background-image: url('${bg.src}')` : ''}
+          `}
+          aria-hidden={!isFirst}
+        >
+          {bg.type === 'gif' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background animation'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          
+          {bg.type === 'video' && bg.src && (
+            <video
+              class="absolute inset-0 w-full h-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src={bg.src} type="video/mp4" />
+            </video>
+          )}
+          
+          {bg.overlay && (
+            <div 
+              class="absolute inset-0"
+              style={`
+                z-index: 2;
+                ${bg.overlayGradient 
+                  ? `background: ${bg.overlayGradient}` 
+                  : 'background-color: rgb(15, 23, 42)'
+                };
+                opacity: ${bg.overlayOpacity || 0.4};
+              `}
+            ></div>
+          )}
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Hero Content - Compressed spacing, bottom positioned, left-aligned text -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:px-12 lg:px-16">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+      
+      <!-- Left side: Text content -->
+      <div class="flex-1 text-left space-y-3 lg:space-y-4 max-w-2xl">
+        <!-- Context Setter -->
+        {contextSetterTxt && (
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm">
+            <span class={`text-xs font-medium text-accent-800 tracking-wide uppercase ${contextSetterClassName}`}>
+              {contextSetterTxt}
+            </span>
+          </div>
+        )}
+
+        <!-- Main Header -->
+        <div class="space-y-2">
+          <h1 class={`font-brand text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg ${headerClassName}`}>
+            {headerTxt}
+          </h1>
+          
+          {subHeaderTxt && (
+            <h2 class={`text-lg md:text-xl lg:text-2xl font-medium text-white/90 leading-snug drop-shadow-md ${subHeaderClassName}`}>
+              {subHeaderTxt}
+            </h2>
+          )}
+        </div>
+
+        <!-- Supporting Copy -->
+        {supportingCopyTxt && (
+          <div class="max-w-xl">
+            <p class={`text-base md:text-lg text-white/80 leading-relaxed drop-shadow-md ${supportingCopyClassName}`}>
+              {supportingCopyTxt}
+            </p>
+          </div>
+        )}
+
+        <!-- Call to Action Text -->
+        {ctaTxt && (
+          <p class={`text-base font-medium text-white/90 drop-shadow-md ${ctaClassName}`}>
+            {ctaTxt}
+          </p>
+        )}
+      </div>
+
+      <!-- Right side: Action buttons -->
+      {targetActionsArray.length > 0 && (
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 lg:gap-4 lg:items-end">
+          {targetActionsArray.map((action, index) => {
+            const buttonVariant = action.buttonVariant || 'solid';
+            
+            switch (action.variant || 'primary') {
+              case 'primary':
+                return (
+                  <ButtonPrimary
+                    href={action.href}
+                    text={action.text}
+                    external={action.external}
+                    variant={buttonVariant}
+                  />
+                );
+              case 'secondary':
+                return (
+                  <ButtonSecondary
+                    href={action.href}
+                    text={action.text}
+                    external={action.external}
+                    variant={buttonVariant}
+                  />
+                );
+              case 'accent':
+                return (
+                  <ButtonAccent
+                    href={action.href}
+                    text={action.text}
+                    external={action.external}
+                    variant={buttonVariant}
+                  />
+                );
+              default:
+                return (
+                  <ButtonPrimary
+                    href={action.href}
+                    text={action.text}
+                    external={action.external}
+                    variant={buttonVariant}
+                  />
+                );
+            }
+          })}
+        </div>
+      )}
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ heroId, cycleInterval }}>
+// Background cycling functionality
+document.addEventListener('astro:page-load', () => {
+  const hero = document.getElementById(heroId);
+  if (!hero) return;
+  
+  const backgrounds = hero.querySelectorAll('.background-item');
+  if (backgrounds.length <= 1) return;
+  
+  let currentIndex = 0;
+  
+  // Start cycling
+  const cycleBackgrounds = setInterval(() => {
+    // Hide current background
+    backgrounds[currentIndex].classList.remove('opacity-100');
+    backgrounds[currentIndex].classList.add('opacity-0');
+    
+    // Move to next background
+    currentIndex = (currentIndex + 1) % backgrounds.length;
+    
+    // Show next background
+    backgrounds[currentIndex].classList.remove('opacity-0');
+    backgrounds[currentIndex].classList.add('opacity-100');
+  }, cycleInterval);
+  
+  // Clean up on component unmount
+  return () => clearInterval(cycleBackgrounds);
+});
+</script>

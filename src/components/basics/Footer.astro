@@ -26,7 +26,8 @@ export interface Props {
   }>;
   socialLinks?: SocialLink[];
   copyright?: string;
-  className?: string;
+  class?: string;
+  className?: string; // For backward compatibility
 }
 
 const {
@@ -73,20 +74,21 @@ const {
     { name: 'LinkedIn', href: 'https://linkedin.com/company/waterfoundation', icon: 'linkedin' },
   ],
   copyright = `© ${new Date().getFullYear()} The Water Foundation. All rights reserved.`,
-  className = ''
-} = Astro.props;
+  class: className = ''
+} = Astro.props as Props;
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class:list={[
-  'bg-background border-t border-border/10',
-  'text-foreground/80',
-  'mt-16 md:mt-20 lg:mt-24',
-  className
-]}>
-  <ResponsiveContainer class="py-12 md:py-16 lg:py-20">
+<footer 
+  class:list={[
+    'bg-background border-t border-border/10 text-foreground/80',
+    'mt-8 pt-8 md:mt-12 md:pt-12 lg:mt-16 lg:pt-16',
+    className
+  ]}
+>
+  <ResponsiveContainer class="pb-12 md:pb-16 lg:pb-20">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
       <!-- Logo and description -->
       <div class="md:col-span-2 lg:col-span-4">
