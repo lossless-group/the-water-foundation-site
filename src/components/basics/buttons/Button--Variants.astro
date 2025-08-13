@@ -1,0 +1,160 @@
+---
+// src/components/basics/buttons/Button--Variants.astro
+// A collection of specialized button variants
+
+// Define button size variants
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'compact';
+
+export interface Props {
+    href: string;
+    text?: string;
+    icon?: string; // SVG path or icon name
+    variant?: 'lean' | 'icon' | 'gradient' | 'animated' | 'ghost' | 'text-gradient' | 'partner';
+    size?: ButtonSize;
+    external?: boolean;
+    className?: string;
+}
+
+const { 
+    href, 
+    text = '',
+    icon = '',
+    variant = 'lean',
+    size = 'md',
+    external = false,
+    className = ''
+} = Astro.props;
+
+// Define size types and classes with type safety
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'compact';
+
+const sizeClasses: Record<ButtonSize, string> = {
+    'xs': 'px-2 py-0.5 text-xs',
+    'sm': 'px-2.5 py-1 text-sm',
+    'md': 'px-3 py-1.5 text-base',
+    'lg': 'px-4 py-2 text-lg',
+    'xl': 'px-6 py-3 text-xl',
+    'compact': 'px-4 py-2 text-base'  // Compact size with standard padding
+};
+
+// Get size classes with fallback to 'md'
+const sizeClass = sizeClasses[size as ButtonSize] || sizeClasses['md'];
+
+// Base button classes
+const baseClasses = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+// Variant classes with improved contrast and hover effects
+const variantClasses = {
+    // Lean variant - enhanced glassmorphic effect with more white
+    lean: 'text-white/90 hover:text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 hover:border-white/40 focus:ring-2 focus:ring-white/50',
+    
+    // Text Gradient variant - gradient text with subtle glassmorphic background
+    'text-gradient': 'bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/40 focus:ring-2 focus:ring-white/50 group backdrop-blur-sm',
+    
+    // Icon-only variant - circular with gradient and glow
+    icon: 'rounded-full bg-gradient-to-br from-primary-400 to-blue-500 text-white hover:from-primary-300 hover:to-blue-400 focus:ring-2 focus:ring-white/50 shadow-lg hover:shadow-xl shadow-primary-500/30 hover:shadow-primary-400/40 backdrop-blur-sm border border-white/20',
+    
+    // Gradient variant - filled with gradient and glow
+    gradient: 'bg-gradient-to-r from-primary-500 to-blue-600 text-white hover:from-primary-400 hover:to-blue-500 focus:ring-2 focus:ring-white/50 shadow-md hover:shadow-lg shadow-primary-500/30 hover:shadow-primary-400/40 backdrop-blur-sm border border-white/20',
+    
+    // Animated variant - hover animation with glow
+    animated: 'relative overflow-hidden bg-gradient-to-r from-primary-500 to-blue-600 text-white hover:from-primary-400 hover:to-blue-500 focus:ring-2 focus:ring-white/50 shadow-md hover:shadow-lg shadow-primary-500/30 hover:shadow-primary-400/40 backdrop-blur-sm border border-white/20 group',
+    
+    // Ghost variant - transparent with glowing border
+    ghost: 'bg-white/5 hover:bg-white/10 text-white/90 hover:text-white border-2 border-white/30 hover:border-white/50 focus:ring-2 focus:ring-white/50 backdrop-blur-sm',
+    
+    // Partner variant - complementary gradient
+    partner: 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:from-purple-400 hover:to-indigo-500 focus:ring-2 focus:ring-white/50 shadow-md hover:shadow-lg shadow-purple-500/30 hover:shadow-purple-400/40 backdrop-blur-sm border border-white/20'
+};
+
+// Size-specific icon classes with type safety
+const iconSizeClasses = {
+    'xs': 'w-4 h-4',
+    'sm': 'w-5 h-5',
+    'md': 'w-6 h-6',
+    'lg': 'w-7 h-7',
+    'xl': 'w-8 h-8',
+    'compact': 'w-6 h-6'  // Same as 'md' size for consistency
+} as const;
+
+// Common icon paths
+const iconMap = {
+    arrow: 'M14 5l7 7m0 0l-7 7m7-7H3',
+    plus: 'M12 4v16m8-8H4',
+    external: 'M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14',
+    // Add more icons as needed
+};
+
+// Get the appropriate icon path
+const getIconPath = (iconName: string) => {
+    return iconMap[iconName as keyof typeof iconMap] || icon;
+};
+
+// Check if the variant is icon-only
+const isIconOnly = variant === 'icon' || !text;
+
+// Generate the final class string
+const buttonClasses = [
+    baseClasses,
+    sizeClasses[size],
+    variantClasses[variant],
+    isIconOnly ? 'p-0 aspect-square' : 'px-4',
+    className
+].filter(Boolean).join(' ');
+--->
+
+<a
+    href={href}
+    class={buttonClasses}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noopener noreferrer" : undefined}
+>
+    {variant === 'animated' && (
+        <span class="absolute inset-0 flex items-center justify-center w-full h-full transition-all duration-300 transform -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-white/20 to-transparent"></span>
+    )}
+    
+    <span class={[
+        'relative z-10 flex items-center justify-center w-full h-full',
+        variant === 'text-gradient' && 'bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-blue-500 group-hover:from-primary-300 group-hover:to-blue-400 transition-colors duration-200'
+    ].filter(Boolean).join(' ')}>
+        {variant === 'icon' && icon && (
+            <svg 
+                class={iconSizeClasses[size as keyof typeof iconSizeClasses] || iconSizeClasses['md']}
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+            >
+                <path 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d={getIconPath(icon)}
+                />
+            </svg>
+        )}
+        {text}
+    </span>
+</a>
+
+<style>
+    /* Add smooth hover animation for all variants */
+    a {
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Special animation for the gradient variant */
+    .bg-gradient-to-r:hover {
+        background-size: 200% auto;
+        background-position: right center;
+    }
+    
+    /* Bounce animation for icon buttons */
+    .rounded-full:hover {
+        animation: bounce 0.5s ease-in-out;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+</style>

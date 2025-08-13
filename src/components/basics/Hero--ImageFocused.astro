@@ -2,6 +2,7 @@
 import ButtonPrimary from './buttons/Button--Primary.astro';
 import ButtonSecondary from './buttons/Button--Secondary.astro';
 import ButtonAccent from './buttons/Button--Accent.astro';
+import ButtonVariants from './buttons/Button--Variants.astro';
 
 export interface Props {
     contextSetterTxt?: string;
@@ -19,9 +20,11 @@ export interface Props {
     targetActionsArray?: Array<{
       text: string;
       href: string;
-      variant?: 'primary' | 'secondary' | 'accent';
+      type: 'primary' | 'secondary' | 'accent' | 'lean' | 'gradient' | 'animated' | 'ghost' | 'text-gradient' | 'partner';
       buttonVariant?: 'solid' | 'transparent';
       external?: boolean;
+      icon?: string;
+      size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }>;
     backgroundsArray?: Array<{
       type: 'image' | 'gradient' | 'video' | 'gif';
@@ -200,7 +203,8 @@ const getBackgroundClasses = (bg: any) => {
           {targetActionsArray.map((action, index) => {
             const buttonVariant = action.buttonVariant || 'solid';
             
-            switch (action.variant || 'primary') {
+            // Use action.type for variant to match the type definition
+            switch (action.type || 'primary') {
               case 'primary':
                 return (
                   <ButtonPrimary
@@ -226,6 +230,66 @@ const getBackgroundClasses = (bg: any) => {
                     text={action.text}
                     external={action.external}
                     variant={buttonVariant}
+                  />
+                );
+              case 'lean':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="lean"
+                    size={action.size || 'lg'}
+                    external={action.external}
+                  />
+                );
+              case 'gradient':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="gradient"
+                    size={action.size || 'lg'}
+                    external={action.external}
+                  />
+                );
+              case 'animated':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="animated"
+                    size={action.size || 'lg'}
+                    external={action.external}
+                  />
+                );
+              case 'ghost':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="ghost"
+                    size={action.size || 'lg'}
+                    external={action.external}
+                  />
+                );
+              case 'text-gradient':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="text-gradient"
+                    size={action.size || 'lg'}
+                    external={action.external}
+                  />
+                );
+              case 'partner':
+                return (
+                  <ButtonVariants
+                    href={action.href}
+                    text={action.text}
+                    variant="partner"
+                    size={action.size || 'lg'}
+                    external={action.external}
                   />
                 );
               default:
