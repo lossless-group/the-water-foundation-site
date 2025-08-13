@@ -5,9 +5,19 @@ import type { SocialLink } from '../../components/ui/SocialIcons.astro';
 
 // Sample team data - in a real app, this would come from a CMS or API
 const teamMembers = [
+{
+    name: 'Cristophe C. Meeus',
+    role: 'Trustee',
+    image: '/headshots/headshotOf__Christophe-C-Meeus.webp',
+    bio: 'Managing Director, CFO, General Counsel, Board Member, Liquidator, international experienced executive. Guiding and assisting international companies with a broad range of legal and financial expertise. Specialties: Company and Commercial Law, Employment Law, Mergers and Acquisition, Computer Law, License Law, Copyright Law, Unfair Competition',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://www.linkedin.com/in/christophe-c-meeus-7031b1/' }
+    ]
+  },
   {
     name: 'Cristoph Schwager',
-    role: 'Co-Founder & Chairman',
+    role: 'Co-Chair & Co-Founder',
     image: '/headshots/headshotOf__Christoph-Schwager.jpg',
     bio: 'Visionary leader with 15+ years of experience in water conservation and sustainable development. Passionate about creating scalable solutions for global water challenges.',
     socialLinks: [
@@ -17,7 +27,7 @@ const teamMembers = [
   },
   {
     name: 'Verena Sturm',
-    role: 'Founder & CEO',
+    role: 'Co-Chair & Co-Founder',
     image: '/headshots/headshotOf__Verena-Sturm.jpeg',
     bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
     socialLinks: [
@@ -27,47 +37,39 @@ const teamMembers = [
     ]
   },
   {
-    name: 'Divyakshi Nath',
-    role: 'Impact Operations',
-    image: '/headshots/headshotOf__Divyakshi-Nath.png',
-    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she’s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
-    socialLinks: [
-      { name: 'linkedin', href: 'https://linkedin.com' }
-    ]
-  },
-  {
-    name: 'Lisa Niedenfuehr',
-    role: 'Founding Director of Philanthropies',
-    image: '/headshots/headshotOf__Lisa-Niedenfuehr.jpeg',
-    bio: 'Building strong relationships with communities and partners to maximize our impact.',
-    socialLinks: [
-      { name: 'twitter', href: 'https://twitter.com' },
-      { name: 'instagram', href: 'https://instagram.com' }
-    ]
-  },
-  {
     name: 'Rahman Wynberg',
-    role: 'Founding Partner',
+    role: 'Co-Founder & VP Technologies',
     image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
     bio: 'Building strong relationships with communities and partners to maximize our impact.',
     socialLinks: [
       { name: 'twitter', href: 'https://twitter.com' },
-      { name: 'instagram', href: 'https://instagram.com' }
+      { name: 'instagram', href: 'https://instagram.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' }
     ]
   },
   {
     name: 'Felix Famira',
-    role: 'Founder',
+    role: 'Co-Founder & Director of Operations',
     image: '/headshots/headshotOf__Felix-Famira.png',
     bio: 'Mechanical engineer specializing in sustainable water infrastructure design and implementation.',
     socialLinks: [
-      { name: 'linkedin', href: 'https://linkedin.com' },
-      { name: 'github', href: 'https://github.com' }
+      { name: 'linkedin', href: 'https://linkedin.com' }
     ]
   }, 
   {
+    name: 'Michael P. Staton',
+    role: 'Vibe Coder, Deep Work Enthusiast',
+    image: '/headshots/headshotOf__Michael-Staton.jpeg',
+    bio: 'Advising the Fund of Funds portion of The Water Foundations integrated Blended Finance Strategy. Maintaing a cutting edge tech stack for us all.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com/mpstaton' },
+      { name: 'linkedin', href: 'https://linkedin.com/in/mpstaton' },
+      { name: 'github', href: 'https://github.com/mpstaton' }
+    ]
+  },
+  {
     name: 'David Schwager',
-    role: 'Founding Partner',
+    role: 'Founding Partner & Director Technologies',
     image: '/headshots/headshotOf__David-Schwager.jpeg',
     bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
     socialLinks: [
@@ -85,6 +87,25 @@ const teamMembers = [
       { name: 'twitter', href: 'https://twitter.com' },
       { name: 'linkedin', href: 'https://linkedin.com' },
       { name: 'github', href: 'https://github.com' }
+    ]
+  },
+  {
+    name: 'Lisa Niedenfuehr',
+    role: 'Director PR & Co-Director of Philanthropies',
+    image: '/headshots/headshotOf__Lisa-Niedenfuehr.jpeg',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'instagram', href: 'https://instagram.com' }
+    ]
+  },
+  {
+    name: 'Divyakshi Nath',
+    role: 'Impact Operations',
+    image: '/headshots/headshotOf__Divyakshi-Nath.png',
+    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she’s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
+    socialLinks: [
+      { name: 'linkedin', href: 'https://linkedin.com' }
     ]
   },
 ];
