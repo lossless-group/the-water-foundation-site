@@ -8,6 +8,7 @@ export interface Props {
     contextSetterClassName?: string;
     headerTxt?: string;
     headerClassName?: string;
+    headerLogoSrc?: string;
     subHeaderTxt?: string;
     subHeaderClassName?: string;
     supportingCopyTxt?: string;
@@ -38,6 +39,7 @@ const {
     contextSetterClassName = "",
     headerTxt = "Welcome to The Water Foundation",
     headerClassName = "",
+    headerLogoSrc,
     subHeaderTxt,
     subHeaderClassName = "",
     supportingCopyTxt,
@@ -152,14 +154,24 @@ const getBackgroundClasses = (bg: any) => {
           </div>
         )}
 
-        <!-- Main Header -->
+        <!-- Main Header with Logo or Text -->
         <div class="space-y-2">
-          <h1 class={`font-brand text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg ${headerClassName}`}>
-            {headerTxt}
-          </h1>
+          {headerLogoSrc ? (
+            <div class="max-w-2xl">
+              <img 
+                src={headerLogoSrc} 
+                alt={headerTxt} 
+                class={`w-full h-auto max-h-24 md:max-h-32 lg:max-h-40 object-contain object-left ${headerClassName}`}
+              />
+            </div>
+          ) : (
+            <h1 class={`font-brand text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg ${headerClassName}`}>
+              {headerTxt}
+            </h1>
+          )}
           
           {subHeaderTxt && (
-            <h2 class={`text-lg md:text-xl lg:text-2xl font-medium text-white/90 leading-snug drop-shadow-md ${subHeaderClassName}`}>
+            <h2 class={`text-lg md:text-xl lg:text-2xl font-medium text-white/90 leading-snug drop-shadow-md mt-4 ${subHeaderClassName}`}>
               {subHeaderTxt}
             </h2>
           )}

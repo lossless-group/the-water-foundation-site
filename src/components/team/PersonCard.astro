@@ -19,6 +19,7 @@ interface PersonProps {
     href: string;
   }>;
   className?: string;
+  maxWords?: number;
 }
 
 const { 
@@ -27,8 +28,21 @@ const {
   image, 
   bio, 
   socialLinks = [], 
-  className = '' 
+  className = '',
+  maxWords = 25
 } = Astro.props as PersonProps;
+
+// Function to truncate text to a certain number of words
+const truncateText = (text: string, words: number) => {
+  const wordArray = text.split(' ');
+  if (wordArray.length <= words) return { text, isTruncated: false };
+  return {
+    text: wordArray.slice(0, words).join(' ') + '...',
+    isTruncated: true
+  };
+};
+
+const truncatedBio = truncateText(bio, maxWords);
 
 // Map social links to include the correct icon type
 const mappedSocialLinks = socialLinks.map(link => ({
@@ -61,7 +75,24 @@ const mappedSocialLinks = socialLinks.map(link => ({
       <p class="text-primary/80 text-sm font-medium">{role}</p>
     </div>
     
-    <p class="text-foreground/80 text-sm mb-4 flex-1">{bio}</p>
+    <div class="mb-4 flex-1">
+      <p class="text-foreground/80 text-sm mb-2" id={`bio-${name.toLowerCase().replace(/\s+/g, '-')}`}>
+        {truncatedBio.isTruncated ? (
+          <>
+            {truncatedBio.text}
+            <button 
+              onclick="this.previousElementSibling.textContent = this.previousElementSibling.getAttribute('data-full-bio') || this.previousElementSibling.textContent; this.remove()"
+              class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50 rounded ml-1"
+              data-full-bio={bio}
+            >
+              Read more
+            </button>
+          </>
+        ) : (
+          bio
+        )}
+      </p>
+    </div>
     
     {mappedSocialLinks.length > 0 && (
       <div class="mt-auto pt-4 border-t border-border/10">

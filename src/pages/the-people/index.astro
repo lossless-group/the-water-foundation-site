@@ -1,0 +1,145 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import TeamGrid from '../../components/team/TeamGrid.astro';
+import type { SocialLink } from '../../components/ui/SocialIcons.astro';
+
+// Sample team data - in a real app, this would come from a CMS or API
+const teamMembers = [
+  {
+    name: 'Cristoph Schwager',
+    role: 'Co-Founder & Chairman',
+    image: '/headshots/headshotOf__Christoph-Schwager.jpg',
+    bio: 'Visionary leader with 15+ years of experience in water conservation and sustainable development. Passionate about creating scalable solutions for global water challenges.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Verena Sturm',
+    role: 'Founder & CEO',
+    image: '/headshots/headshotOf__Verena-Sturm.jpeg',
+    bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  },
+  {
+    name: 'Divyakshi Nath',
+    role: 'Impact Operations',
+    image: '/headshots/headshotOf__Divyakshi-Nath.png',
+    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she’s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
+    socialLinks: [
+      { name: 'linkedin', href: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Lisa Niedenfuehr',
+    role: 'Founding Director of Philanthropies',
+    image: '/headshots/headshotOf__Lisa-Niedenfuehr.jpeg',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'instagram', href: 'https://instagram.com' }
+    ]
+  },
+  {
+    name: 'Rahman Wynberg',
+    role: 'Founding Partner',
+    image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'instagram', href: 'https://instagram.com' }
+    ]
+  },
+  {
+    name: 'Felix Famira',
+    role: 'Founder',
+    image: '/headshots/headshotOf__Felix-Famira.png',
+    bio: 'Mechanical engineer specializing in sustainable water infrastructure design and implementation.',
+    socialLinks: [
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  }, 
+  {
+    name: 'David Schwager',
+    role: 'Founding Partner',
+    image: '/headshots/headshotOf__David-Schwager.jpeg',
+    bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  },
+  {
+    name: 'Corinna Schwager',
+    role: 'Co-Director of Philanthropies',
+    image: '/headshots/headshotOf__Corinna-Schwager.jpeg',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com' },
+      { name: 'linkedin', href: 'https://linkedin.com' },
+      { name: 'github', href: 'https://github.com' }
+    ]
+  },
+];
+---
+
+<BaseThemeLayout>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="pt-12 pb-8 md:pt-16 md:pb-10 bg-primary/5">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-2">Our People</h1>
+        <p class="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-tight">
+          Meet the passionate individuals working tirelessly to bring clean water to communities around the world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="pt-0 pb-12 md:pt-0 md:pb-16">
+      <TeamGrid teamMembers={teamMembers} />
+    </section>
+
+    <!-- Join Us CTA -->
+    <section class="py-16 bg-primary/5">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-foreground mb-6">Join Our Mission</h2>
+        <p class="text-foreground/80 max-w-2xl mx-auto mb-8">
+          We're always looking for passionate individuals to join our team and help us make a difference.
+        </p>
+        <a 
+          href="/careers" 
+          class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+        >
+          View Open Positions
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Water theme specific styles */
+  :global(html[data-theme="water"]) {
+    --color-primary: 14 116 144;  /* Cyan-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-background: 240 249 255;  /* Light blue-50 */
+    --color-foreground: 3 7 18;  /* Gray-950 */
+    --color-border: 224 242 254;  /* Light blue-100 */
+  }
+  
+  /* Dark mode overrides */
+  :global(html[data-theme="water"].dark) {
+    --color-primary: 8 145 178;  /* Cyan-600 */
+    --color-background: 8 47 73;  /* Dark blue-950 */
+    --color-foreground: 248 250 252;  /* Slate-50 */
+    --color-border: 30 58 138;  /* Blue-900 */
+  }
+</style>
