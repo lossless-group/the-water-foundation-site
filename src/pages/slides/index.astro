@@ -5,11 +5,18 @@
  */
 
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
-import TitleSlidePreviewCard from '../../components/basics/TitleSlidePreviewCard.astro';
+import TitleSlidePreviewCard from '../../components/slides/TitleSlidePreviewCard.astro';
 
 // For now, we'll hardcode available presentations
 // In the future, this could be dynamic from content collections
 const presentations = [
+  {
+    title: "The Water Fund",
+    slug: "water-fund-variant-1", 
+    description: "Systemic Solutions for Global Water Security - Complete presentation showcasing our approach to water investment challenges",
+    date: "2025-08-13",
+    icon: "💧"
+  },
   {
     title: "Sample Presentation",
     slug: "sample", 

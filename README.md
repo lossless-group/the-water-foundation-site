@@ -4,11 +4,19 @@
 
 A modern web application built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com) for The Water Foundation.
 
+***
+
+# Stack
+
 ![Astro Logo](https://astro.build/assets/press/astro-logo-light-gradient.png)
+         with
+![Reveal JS Logo](https://camo.githubusercontent.com/d376cf5327dc94d0d97617892e35b7d37f8cbd4d7636ea38cbf393f0fa5ad45e/68747470733a2f2f68616b696d2d7374617469632e73332e616d617a6f6e6177732e636f6d2f72657665616c2d6a732f6c6f676f2f76312f72657665616c2d626c61636b2d746578742d737469636b65722e706e67)
          with
 ![Tailwind CSS Logo](https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg)
          with
 ![Vitest Logo](https://vitest.dev/logo.svg)
+
+***
 
 ## ✅ Implementation Status
 

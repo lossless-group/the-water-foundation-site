@@ -1,0 +1,414 @@
+---
+/**
+ * FramingTheChallenge Component - Variant 1
+ * Introduction slide presenting the water investment challenge
+ * Features: Split layout with water technology image and key statistics
+ */
+
+interface Props {
+  sectionTitle?: string;
+  year?: string;
+  challengeTitle?: string;
+  challengeSubtitle?: string;
+  introText?: string;
+  statistics?: Array<string>;
+  heroImage?: string;
+}
+
+const {
+  sectionTitle = "Introduction",
+  year = "2025",
+  challengeTitle = "Framing the Challenge:",
+  challengeSubtitle = "Water & the SDGs",
+  introText = "Water is the foundation of our global economy and food systems, yet it faces a critical investment gap that threatens our future",
+  statistics = [
+    "Water underpins 70% of global GDP and 100% of food production.",
+    "Yet it receives less than 1% of institutional capital.",
+    "The global water investment gap is $670B per year.",
+    "By 2030, 40% of the global population may face water scarcity.",
+    "Addressing water is critical to SDG 6, 13, 9, and 17."
+  ],
+  heroImage = "/images/water-technology-hero.jpg"
+} = Astro.props;
+---
+
+<section class="framing-challenge-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left panel with title and image -->
+    <div class="left-panel">
+      <div class="section-title-container">
+        <h1 class="section-title">{sectionTitle}</h1>
+      </div>
+      
+      <div class="hero-image-container">
+        <div class="hero-image">
+          <!-- Water technology visualization with CSS -->
+          <div class="water-tech-bg">
+            <div class="tech-overlay">
+              <!-- Water droplet icons -->
+              <div class="water-icon icon-1">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </div>
+              <div class="water-icon icon-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </div>
+              <div class="water-icon icon-3">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </div>
+              
+              <!-- Network connection lines -->
+              <div class="connection-line line-1"></div>
+              <div class="connection-line line-2"></div>
+              <div class="connection-line line-3"></div>
+              
+              <!-- Circular tech elements -->
+              <div class="tech-circle circle-1"></div>
+              <div class="tech-circle circle-2"></div>
+              <div class="tech-circle circle-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative dots pattern -->
+      <div class="dots-pattern">
+        <div class="dot-grid">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel with content -->
+    <div class="right-panel">
+      <div class="year-badge">{year}</div>
+      
+      <div class="content-section">
+        <div class="challenge-header">
+          <h2 class="challenge-title">{challengeTitle}</h2>
+          <h3 class="challenge-subtitle">{challengeSubtitle}</h3>
+        </div>
+        
+        <p class="intro-text">{introText}</p>
+        
+        <ul class="statistics-list">
+          {statistics.map(stat => (
+            <li class="statistic-item">{stat}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .framing-challenge-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Left Panel Styling */
+  .left-panel {
+    background: rgb(var(--color-primary-900));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .section-title-container {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-50));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .hero-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .hero-image {
+    width: 350px;
+    height: 280px;
+    position: relative;
+  }
+
+  .water-tech-bg {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgb(var(--color-accent-600)) 0%, rgb(var(--color-accent-400)) 50%, rgb(var(--color-accent-300)) 100%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+  }
+
+  .water-icon {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .icon-1 { top: 20%; left: 25%; animation-delay: 0s; }
+  .icon-2 { top: 60%; left: 70%; animation-delay: 1s; }
+  .icon-3 { top: 40%; left: 50%; animation-delay: 2s; }
+
+  .connection-line {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .line-1 {
+    width: 80px;
+    height: 2px;
+    top: 35%;
+    left: 35%;
+    transform: rotate(25deg);
+  }
+
+  .line-2 {
+    width: 60px;
+    height: 2px;
+    top: 55%;
+    left: 45%;
+    transform: rotate(-15deg);
+  }
+
+  .line-3 {
+    width: 2px;
+    height: 50px;
+    top: 25%;
+    left: 60%;
+  }
+
+  .tech-circle {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: rotate 8s linear infinite;
+  }
+
+  .circle-1 {
+    width: 40px;
+    height: 40px;
+    top: 15%;
+    right: 20%;
+  }
+
+  .circle-2 {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 15%;
+    animation-direction: reverse;
+  }
+
+  .circle-3 {
+    width: 30px;
+    height: 30px;
+    top: 70%;
+    right: 35%;
+    animation-duration: 12s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); opacity: 0.8; }
+    50% { transform: translateY(-8px); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .dots-pattern {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .dot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+  }
+
+  /* Right Panel Styling */
+  .right-panel {
+    background: rgb(var(--color-primary-50));
+    padding: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .year-badge {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    color: rgb(var(--color-primary-600));
+  }
+
+  .content-section {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .challenge-header {
+    margin-bottom: 2rem;
+  }
+
+  .challenge-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .challenge-subtitle {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .intro-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-700));
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .statistics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .statistic-item {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-800));
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .statistic-item::before {
+    content: "•";
+    color: rgb(var(--color-accent-500));
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    
+    .left-panel, .right-panel {
+      padding: 2rem;
+    }
+    
+    .section-title {
+      font-size: 3rem;
+    }
+    
+    .hero-image {
+      width: 280px;
+      height: 220px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .left-panel, .right-panel {
+      padding: 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+    }
+    
+    .challenge-title, .challenge-subtitle {
+      font-size: 1.25rem;
+    }
+    
+    .intro-text {
+      font-size: 1rem;
+    }
+    
+    .hero-image {
+      width: 240px;
+      height: 180px;
+    }
+  }
+</style>

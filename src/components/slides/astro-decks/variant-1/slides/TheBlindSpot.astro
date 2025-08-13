@@ -1,0 +1,398 @@
+---
+/**
+ * TheBlindSpot Component - Variant 1
+ * Slide highlighting the water investment blind spot
+ * Features: Split layout with environmental contrast image and key insights
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  section1Title?: string;
+  section1Points?: Array<string>;
+  section2Title?: string;
+  section2Points?: Array<string>;
+  website?: string;
+}
+
+const {
+  mainTitle = "The Blind Spot of",
+  titleHighlight = "Humankind",
+  section1Title = "Hidden in Plain Sight",
+  section1Points = [
+    "Water is a critical system hiding in plain sight.",
+    "Despite its foundational role, water is undervalued, undercapitalized, and unprotected."
+  ],
+  section2Title = "Climate Finance Gap",
+  section2Points = [
+    "90% of climate adaptation needs are water-based, but less than 5% of climate finance flows there.",
+    "Those who act early to close this gap will unlock both impact and value."
+  ],
+  website = "www.waterfund.com"
+} = Astro.props;
+---
+
+<section class="blind-spot-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left content panel -->
+    <div class="content-panel">
+      <div class="title-section">
+        <h1 class="main-title">{mainTitle}</h1>
+        <h1 class="title-highlight">{titleHighlight}</h1>
+      </div>
+
+      <div class="insights-section">
+        <!-- Section 1: Hidden in Plain Sight -->
+        <div class="insight-block">
+          <h2 class="insight-title">{section1Title}</h2>
+          <ul class="insight-list">
+            {section1Points.map(point => (
+              <li class="insight-item">{point}</li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Section 2: Climate Finance Gap -->
+        <div class="insight-block">
+          <h2 class="insight-title">{section2Title}</h2>
+          <ul class="insight-list">
+            {section2Points.map(point => (
+              <li class="insight-item">{point}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="website-footer">
+        <p>{website}</p>
+      </div>
+    </div>
+
+    <!-- Right image panel -->
+    <div class="image-panel">
+      <div class="environmental-contrast">
+        <!-- CSS-based environmental contrast image -->
+        <div class="landscape-container">
+          <!-- Drought side -->
+          <div class="drought-side">
+            <div class="cracked-earth">
+              <div class="crack crack-1"></div>
+              <div class="crack crack-2"></div>
+              <div class="crack crack-3"></div>
+              <div class="crack crack-4"></div>
+              <div class="crack crack-5"></div>
+            </div>
+            <div class="dead-tree">
+              <div class="trunk"></div>
+              <div class="branch branch-1"></div>
+              <div class="branch branch-2"></div>
+              <div class="branch branch-3"></div>
+              <div class="branch branch-4"></div>
+            </div>
+          </div>
+          
+          <!-- Green side -->
+          <div class="green-side">
+            <div class="grass-field"></div>
+            <div class="living-tree">
+              <div class="trunk-green"></div>
+              <div class="foliage foliage-1"></div>
+              <div class="foliage foliage-2"></div>
+              <div class="foliage foliage-3"></div>
+            </div>
+          </div>
+          
+          <!-- Sky background -->
+          <div class="sky-background"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blind-spot-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Content Panel Styling */
+  .content-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-section {
+    margin-bottom: 2rem;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .title-highlight {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .insights-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .insight-block {
+    max-width: 500px;
+  }
+
+  .insight-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  .insight-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .insight-item {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-800));
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .insight-item::before {
+    content: "→";
+    color: rgb(var(--color-accent-500));
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 0;
+  }
+
+  .website-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+
+  .website-footer p {
+    font-size: 1rem;
+    color: rgb(var(--color-primary-600));
+    margin: 0;
+  }
+
+  /* Image Panel Styling */
+  .image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .environmental-contrast {
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(var(--color-primary-900), 0.15);
+  }
+
+  .landscape-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .sky-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, rgb(var(--color-accent-200)) 0%, rgb(var(--color-accent-100)) 100%);
+  }
+
+  /* Drought side (left) */
+  .drought-side {
+    position: absolute;
+    left: 0;
+    top: 60%;
+    width: 50%;
+    height: 40%;
+    background: linear-gradient(to bottom, #8B7355 0%, #6B5B47 100%);
+  }
+
+  .cracked-earth {
+    position: absolute;
+    inset: 0;
+  }
+
+  .crack {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1px;
+  }
+
+  .crack-1 { width: 60px; height: 2px; top: 20%; left: 10%; transform: rotate(15deg); }
+  .crack-2 { width: 40px; height: 2px; top: 40%; left: 30%; transform: rotate(-25deg); }
+  .crack-3 { width: 50px; height: 2px; top: 60%; left: 15%; transform: rotate(35deg); }
+  .crack-4 { width: 2px; height: 30px; top: 25%; left: 70%; }
+  .crack-5 { width: 35px; height: 2px; top: 75%; left: 45%; transform: rotate(-15deg); }
+
+  .dead-tree {
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    transform: translateX(-50%);
+  }
+
+  .trunk {
+    width: 8px;
+    height: 40px;
+    background: #4A4A4A;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .branch {
+    position: absolute;
+    background: #4A4A4A;
+    border-radius: 2px;
+  }
+
+  .branch-1 { width: 20px; height: 3px; top: 5px; left: 8px; transform: rotate(25deg); }
+  .branch-2 { width: 15px; height: 3px; top: 15px; left: -10px; transform: rotate(-35deg); }
+  .branch-3 { width: 18px; height: 3px; top: 10px; left: 8px; transform: rotate(45deg); }
+  .branch-4 { width: 12px; height: 3px; top: 25px; left: -8px; transform: rotate(-25deg); }
+
+  /* Green side (right) */
+  .green-side {
+    position: absolute;
+    right: 0;
+    top: 60%;
+    width: 50%;
+    height: 40%;
+  }
+
+  .grass-field {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(var(--color-accent-400)) 0%, rgb(var(--color-accent-500)) 100%);
+  }
+
+  .living-tree {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .trunk-green {
+    width: 10px;
+    height: 45px;
+    background: #8B4513;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .foliage {
+    position: absolute;
+    background: rgb(var(--color-accent-500));
+    border-radius: 50%;
+  }
+
+  .foliage-1 {
+    width: 40px;
+    height: 40px;
+    top: -15px;
+    left: -15px;
+  }
+
+  .foliage-2 {
+    width: 35px;
+    height: 35px;
+    top: -25px;
+    left: -10px;
+    background: rgb(var(--color-accent-400));
+  }
+
+  .foliage-3 {
+    width: 30px;
+    height: 30px;
+    top: -20px;
+    left: -5px;
+    background: rgb(var(--color-accent-300));
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      gap: 2rem;
+    }
+    
+    .environmental-contrast {
+      width: 350px;
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-title, .title-highlight {
+      font-size: 2.5rem;
+    }
+    
+    .insight-title {
+      font-size: 1.25rem;
+    }
+    
+    .insight-item {
+      font-size: 0.95rem;
+    }
+    
+    .environmental-contrast {
+      width: 300px;
+      height: 200px;
+    }
+    
+    .slide-container {
+      gap: 1rem;
+    }
+  }
+</style>

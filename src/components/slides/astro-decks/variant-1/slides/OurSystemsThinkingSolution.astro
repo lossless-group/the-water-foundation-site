@@ -1,0 +1,371 @@
+---
+/**
+ * OurSystemsThinkingSolution Component - Variant 1
+ * Solution framework slide with flowchart diagram
+ * Features: Title with flowchart showing systemic solution approach
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  introText?: string;
+  introDescription?: string;
+  solutionElements?: Array<{
+    title: string;
+    description?: string;
+    variant: 'blue' | 'light' | 'dark';
+    position: { x: number; y: number };
+    connections?: string[];
+  }>;
+}
+
+const {
+  mainTitle = "Our Systemic",
+  titleHighlight = "Solution",
+  introText = "Not a fund...",
+  introDescription = "We're building a systemic correction mechanism, not just a fund....",
+  solutionElements = [
+    {
+      title: "Mechanism",
+      variant: "blue",
+      position: { x: 50, y: 15 },
+      connections: ["Structure"]
+    },
+    {
+      title: "Structure",
+      description: "A multi-layered structure realigning capital with the water system",
+      variant: "light",
+      position: { x: 50, y: 35 },
+      connections: ["Innovation", "Approach", "Policy Alignment"]
+    },
+    {
+      title: "Innovation",
+      description: "Deploy solutions with proven impact readiness",
+      variant: "light",
+      position: { x: 15, y: 55 },
+      connections: []
+    },
+    {
+      title: "Approach",
+      variant: "dark",
+      position: { x: 50, y: 55 },
+      connections: ["Finance Stack"]
+    },
+    {
+      title: "Policy Alignment",
+      description: "Ensure governance supports long-term capital flow.",
+      variant: "light",
+      position: { x: 85, y: 55 },
+      connections: []
+    },
+    {
+      title: "Finance Stack",
+      description: "Activate capital layers from grants to private equity",
+      variant: "light",
+      position: { x: 50, y: 75 },
+      connections: []
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="systems-solution-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Header section -->
+    <div class="header-section">
+      <div class="title-section">
+        <h1 class="main-title">
+          <span class="title-our">{mainTitle}</span>
+          <span class="title-solution">{titleHighlight}</span>
+        </h1>
+      </div>
+      
+      <div class="intro-section">
+        <h2 class="intro-text">{introText}</h2>
+        <p class="intro-description">{introDescription}</p>
+      </div>
+    </div>
+
+    <!-- Flowchart section -->
+    <div class="flowchart-section">
+      <div class="flowchart-container">
+        <!-- Connection lines -->
+        <svg class="connection-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <!-- Mechanism to Structure -->
+          <line x1="50" y1="20" x2="50" y2="30" stroke="rgb(var(--color-primary-400))" stroke-width="0.3"/>
+          
+          <!-- Structure to three branches -->
+          <line x1="50" y1="40" x2="15" y2="50" stroke="rgb(var(--color-primary-400))" stroke-width="0.3"/>
+          <line x1="50" y1="40" x2="50" y2="50" stroke="rgb(var(--color-primary-400))" stroke-width="0.3"/>
+          <line x1="50" y1="40" x2="85" y2="50" stroke="rgb(var(--color-primary-400))" stroke-width="0.3"/>
+          
+          <!-- Approach to Finance Stack -->
+          <line x1="50" y1="60" x2="50" y2="70" stroke="rgb(var(--color-primary-400))" stroke-width="0.3"/>
+        </svg>
+
+        <!-- Solution elements -->
+        {solutionElements.map((element) => (
+          <div 
+            class={`solution-element element-${element.variant}`}
+            style={`position: absolute; left: ${element.position.x}%; top: ${element.position.y}%; transform: translate(-50%, -50%);`}
+          >
+            <div class="element-content">
+              <h3 class="element-title">{element.title}</h3>
+              {element.description && (
+                <p class="element-description">{element.description}</p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .systems-solution-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Header Section Styling */
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 2rem 0 1rem 0;
+  }
+
+  .title-section {
+    flex-shrink: 0;
+  }
+
+  .main-title {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .title-our {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin-right: 0.5rem;
+  }
+
+  .title-solution {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+  }
+
+  .intro-section {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .intro-text {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+  }
+
+  .intro-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-700));
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Flowchart Section Styling */
+  .flowchart-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .flowchart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    max-height: 500px;
+  }
+
+  .connection-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .solution-element {
+    z-index: 2;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(var(--color-primary-900), 0.1);
+    transition: var(--transition-smooth);
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .solution-element:hover {
+    transform: translate(-50%, -50%) translateY(-2px) !important;
+    box-shadow: 0 4px 16px rgba(var(--color-primary-900), 0.15);
+  }
+
+  .element-blue {
+    background: rgb(var(--color-accent-500));
+    color: white;
+  }
+
+  .element-light {
+    background: rgb(var(--color-primary-50));
+    color: rgb(var(--color-primary-900));
+    border: 1px solid rgb(var(--color-primary-200));
+  }
+
+  .element-dark {
+    background: rgb(var(--color-primary-800));
+    color: white;
+  }
+
+  .element-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .element-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .element-blue .element-title {
+    color: white;
+  }
+
+  .element-light .element-title {
+    color: rgb(var(--color-primary-900));
+  }
+
+  .element-dark .element-title {
+    color: white;
+  }
+
+  .element-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+    text-align: left;
+  }
+
+  .element-blue .element-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .element-light .element-description {
+    color: rgb(var(--color-primary-700));
+  }
+
+  .element-dark .element-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .header-section {
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .intro-section {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .flowchart-container {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title-our, .title-solution {
+      font-size: 2.5rem;
+    }
+    
+    .intro-text {
+      font-size: 1.25rem;
+    }
+    
+    .intro-description {
+      font-size: 0.95rem;
+    }
+    
+    .solution-element {
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+    }
+    
+    .element-title {
+      font-size: 1rem;
+    }
+    
+    .element-description {
+      font-size: 0.8rem;
+    }
+    
+    .flowchart-container {
+      max-height: 350px;
+    }
+    
+    .slide-container {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .solution-element {
+      min-width: 100px;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .element-title {
+      font-size: 0.9rem;
+    }
+    
+    .element-description {
+      font-size: 0.75rem;
+    }
+  }
+</style>

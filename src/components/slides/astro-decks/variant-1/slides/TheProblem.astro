@@ -1,0 +1,401 @@
+---
+/**
+ * TheProblem Component - Variant 1
+ * Problem statement slide with card-based layout
+ * Features: Title section with problem cards showing different aspects of water crisis
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  description?: string;
+  problemCards?: Array<{
+    title: string;
+    description: string;
+    icon: string;
+    variant: 'blue' | 'light' | 'dark';
+    highlight?: string;
+  }>;
+}
+
+const {
+  mainTitle = "The",
+  titleHighlight = "Problem",
+  subtitle = "Water is underfunded and fragmented",
+  description = "A persistent capital gap, neglected infrastructure, and systemic risk have left the water sector exposed",
+  problemCards = [
+    {
+      title: "Visibility",
+      description: "Water receives little attention from mainstream investors. It is largely missing from climate capital allocations.",
+      icon: "eye",
+      variant: "blue"
+    },
+    {
+      title: "Risk",
+      description: "Underinvestment increases vulnerability across systems. Water stress fuels food, health, and migration crises.",
+      icon: "triangle",
+      variant: "light"
+    },
+    {
+      title: "Neglect",
+      description: "Infrastructure is fragmented, outdated, and under protected. Governance and maintenance models are often absent.",
+      icon: "layers",
+      variant: "light"
+    },
+    {
+      title: "Misalignment",
+      description: "Capital flows miss where water is most needed. Systemic needs are not matched by funding mechanisms.",
+      icon: "target",
+      variant: "light"
+    },
+    {
+      title: "Demand Gap",
+      description: "By 2030, global water demand will outpace supply by 40%, triggering systemic stress.",
+      icon: "40%",
+      variant: "dark",
+      highlight: "40%"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="the-problem-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left content section -->
+    <div class="content-section">
+      <div class="title-section">
+        <h1 class="main-title">
+          <span class="title-the">{mainTitle}</span>
+          <span class="title-problem">{titleHighlight}</span>
+        </h1>
+      </div>
+
+      <div class="problem-intro">
+        <h2 class="subtitle">{subtitle}</h2>
+        <p class="description">{description}</p>
+      </div>
+
+      <!-- Navigation dots -->
+      <div class="nav-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Right cards section -->
+    <div class="cards-section">
+      <div class="cards-grid">
+        {problemCards.map((card, index) => (
+          <div class={`problem-card card-${card.variant} ${index === 4 ? 'card-large' : ''}`}>
+            <div class="card-icon">
+              {card.icon === 'eye' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              )}
+              {card.icon === 'triangle' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              )}
+              {card.icon === 'layers' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12,2 2,7 12,12 22,7 12,2"/>
+                  <polyline points="2,17 12,22 22,17"/>
+                  <polyline points="2,12 12,17 22,12"/>
+                </svg>
+              )}
+              {card.icon === 'target' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              )}
+              {card.icon === '40%' && (
+                <div class="percentage-icon">
+                  <span class="percentage-number">{card.highlight}</span>
+                </div>
+              )}
+            </div>
+            
+            <div class="card-content">
+              <h3 class="card-title">{card.title}</h3>
+              <p class="card-description">{card.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .the-problem-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Content Section Styling */
+  .content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-section {
+    margin-bottom: 1rem;
+  }
+
+  .main-title {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .title-the {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin-right: 0.5rem;
+  }
+
+  .title-problem {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+  }
+
+  .problem-intro {
+    max-width: 450px;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-800));
+    margin: 0;
+    font-style: italic;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(var(--color-primary-300));
+    transition: var(--transition-smooth);
+  }
+
+  .dot.active {
+    background: rgb(var(--color-accent-500));
+  }
+
+  /* Cards Section Styling */
+  .cards-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .problem-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 4px 12px rgba(var(--color-primary-900), 0.1);
+    transition: var(--transition-smooth);
+  }
+
+  .problem-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-900), 0.15);
+  }
+
+  .card-blue {
+    background: rgb(var(--color-accent-500));
+    color: white;
+  }
+
+  .card-light {
+    background: rgb(var(--color-primary-100));
+    color: rgb(var(--color-primary-900));
+    border: 1px solid rgb(var(--color-primary-200));
+  }
+
+  .card-dark {
+    background: rgb(var(--color-primary-800));
+    color: white;
+  }
+
+  .card-large {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+  }
+
+  .card-blue .card-icon {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .card-light .card-icon {
+    color: rgb(var(--color-primary-600));
+  }
+
+  .card-dark .card-icon {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .percentage-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .percentage-number {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: inherit;
+  }
+
+  .card-content {
+    flex: 1;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .card-blue .card-title,
+  .card-blue .card-description {
+    color: white;
+  }
+
+  .card-light .card-title {
+    color: rgb(var(--color-primary-900));
+  }
+
+  .card-light .card-description {
+    color: rgb(var(--color-primary-700));
+  }
+
+  .card-dark .card-title,
+  .card-dark .card-description {
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 2rem;
+    }
+    
+    .cards-grid {
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title-the, .title-problem {
+      font-size: 2.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.25rem;
+    }
+    
+    .description {
+      font-size: 0.95rem;
+    }
+    
+    .cards-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+    
+    .card-large {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .problem-card {
+      padding: 1.25rem;
+    }
+    
+    .slide-container {
+      gap: 1.5rem;
+    }
+  }
+</style>

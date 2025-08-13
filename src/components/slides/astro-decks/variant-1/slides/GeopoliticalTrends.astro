@@ -1,0 +1,459 @@
+---
+/**
+ * GeopoliticalTrends Component - Variant 1
+ * Geopolitical trends slide with world map and trend indicators
+ * Features: Title with world map visualization and trend cards
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  trendIndicators?: Array<{
+    title: string;
+    description: string;
+    icon: string;
+    variant: 'dark' | 'blue' | 'light' | 'accent';
+  }>;
+}
+
+const {
+  mainTitle = "Geopolitical",
+  titleHighlight = "Trend",
+  trendIndicators = [
+    {
+      title: "Conflict Zones",
+      description: "Water stress is intensifying tensions across fragile regions and borders.",
+      icon: "conflict",
+      variant: "dark"
+    },
+    {
+      title: "Regional Flashpoints",
+      description: "Disputes over water are growing in South Asia, Africa, and the Middle East.",
+      icon: "flashpoint",
+      variant: "blue"
+    },
+    {
+      title: "Resource Competition",
+      description: "Nations are contesting dwindling supplies, risking broader geopolitical instability.",
+      icon: "resources",
+      variant: "light"
+    },
+    {
+      title: "Threat to Peace",
+      description: "Water scarcity now endangers not just communities, but peace between nations.",
+      icon: "peace",
+      variant: "accent"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="geopolitical-trends-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Header section -->
+    <div class="header-section">
+      <h1 class="main-title">
+        <span class="title-geo">{mainTitle}</span>
+        <span class="title-trend">{titleHighlight}</span>
+      </h1>
+    </div>
+
+    <!-- Content section -->
+    <div class="content-section">
+      <!-- World map section -->
+      <div class="map-section">
+        <div class="world-map">
+          <!-- CSS-based world map with highlighted regions -->
+          <div class="map-container">
+            <!-- Base world map silhouette -->
+            <div class="continent north-america"></div>
+            <div class="continent south-america"></div>
+            <div class="continent europe"></div>
+            <div class="continent africa"></div>
+            <div class="continent asia highlighted"></div>
+            <div class="continent australia"></div>
+            
+            <!-- Water stress indicators -->
+            <div class="stress-indicator indicator-1"></div>
+            <div class="stress-indicator indicator-2"></div>
+            <div class="stress-indicator indicator-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trends indicators section -->
+      <div class="indicators-section">
+        <div class="indicators-grid">
+          {trendIndicators.map((indicator) => (
+            <div class={`trend-indicator indicator-${indicator.variant}`}>
+              <div class="indicator-icon">
+                {indicator.icon === 'conflict' && (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                    <path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                    <path d="M12 21c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                    <path d="M12 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                  </svg>
+                )}
+                {indicator.icon === 'flashpoint' && (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12,6 12,12 16,14"/>
+                  </svg>
+                )}
+                {indicator.icon === 'resources' && (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12,2 2,7 12,12 22,7 12,2"/>
+                    <polyline points="2,17 12,22 22,17"/>
+                    <polyline points="2,12 12,17 22,12"/>
+                  </svg>
+                )}
+                {indicator.icon === 'peace' && (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                )}
+              </div>
+              
+              <div class="indicator-content">
+                <h3 class="indicator-title">{indicator.title}</h3>
+                <p class="indicator-description">{indicator.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .geopolitical-trends-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* Header Section Styling */
+  .header-section {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .main-title {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .title-geo {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin-right: 0.5rem;
+  }
+
+  .title-trend {
+    display: inline;
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+  }
+
+  /* Content Section Styling */
+  .content-section {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Map Section Styling */
+  .map-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .world-map {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    position: relative;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: rgb(var(--color-primary-100));
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .continent {
+    position: absolute;
+    background: rgb(var(--color-primary-300));
+    border-radius: 4px;
+  }
+
+  /* Simplified continent shapes using CSS */
+  .north-america {
+    width: 120px;
+    height: 80px;
+    top: 20%;
+    left: 15%;
+    clip-path: polygon(20% 0%, 80% 10%, 90% 40%, 70% 80%, 30% 90%, 10% 60%);
+  }
+
+  .south-america {
+    width: 60px;
+    height: 100px;
+    top: 45%;
+    left: 25%;
+    clip-path: polygon(40% 0%, 70% 20%, 80% 60%, 60% 100%, 20% 90%, 30% 40%);
+  }
+
+  .europe {
+    width: 80px;
+    height: 60px;
+    top: 15%;
+    left: 45%;
+    clip-path: polygon(0% 60%, 30% 0%, 80% 20%, 100% 80%, 60% 100%, 20% 80%);
+  }
+
+  .africa {
+    width: 70px;
+    height: 120px;
+    top: 30%;
+    left: 48%;
+    clip-path: polygon(30% 0%, 70% 10%, 80% 40%, 90% 80%, 60% 100%, 40% 90%, 20% 60%, 10% 20%);
+  }
+
+  .asia {
+    width: 180px;
+    height: 120px;
+    top: 10%;
+    left: 55%;
+    clip-path: polygon(0% 40%, 20% 0%, 60% 10%, 100% 30%, 90% 70%, 70% 100%, 30% 90%, 10% 60%);
+  }
+
+  .australia {
+    width: 60px;
+    height: 40px;
+    top: 65%;
+    left: 75%;
+    clip-path: polygon(20% 30%, 80% 0%, 100% 70%, 60% 100%, 0% 80%);
+  }
+
+  .highlighted {
+    background: rgb(var(--color-accent-500)) !important;
+    animation: pulse-highlight 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-highlight {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+
+  .stress-indicator {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #FF6B6B;
+    border-radius: 50%;
+    animation: pulse-stress 2s ease-in-out infinite;
+  }
+
+  .indicator-1 {
+    top: 25%;
+    left: 60%;
+    animation-delay: 0s;
+  }
+
+  .indicator-2 {
+    top: 45%;
+    left: 50%;
+    animation-delay: 0.7s;
+  }
+
+  .indicator-3 {
+    top: 35%;
+    left: 70%;
+    animation-delay: 1.4s;
+  }
+
+  @keyframes pulse-stress {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  /* Indicators Section Styling */
+  .indicators-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .indicators-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .trend-indicator {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+  }
+
+  .trend-indicator:hover {
+    transform: translateX(4px);
+  }
+
+  .indicator-dark {
+    background: rgb(var(--color-primary-800));
+    color: white;
+  }
+
+  .indicator-blue {
+    background: rgb(var(--color-accent-500));
+    color: white;
+  }
+
+  .indicator-light {
+    background: rgb(var(--color-accent-100));
+    color: rgb(var(--color-primary-900));
+    border: 1px solid rgb(var(--color-accent-200));
+  }
+
+  .indicator-accent {
+    background: rgb(var(--color-secondary-100));
+    color: rgb(var(--color-primary-900));
+    border: 1px solid rgb(var(--color-secondary-200));
+  }
+
+  .indicator-icon {
+    flex-shrink: 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .indicator-dark .indicator-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .indicator-blue .indicator-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .indicator-light .indicator-icon {
+    background: rgb(var(--color-accent-200));
+    color: rgb(var(--color-accent-600));
+  }
+
+  .indicator-accent .indicator-icon {
+    background: rgb(var(--color-secondary-200));
+    color: rgb(var(--color-secondary-600));
+  }
+
+  .indicator-content {
+    flex: 1;
+  }
+
+  .indicator-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .indicator-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .content-section {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 2rem;
+    }
+    
+    .world-map {
+      max-width: 500px;
+      height: 280px;
+    }
+    
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title-geo, .title-trend {
+      font-size: 2.5rem;
+    }
+    
+    .world-map {
+      max-width: 400px;
+      height: 220px;
+    }
+    
+    .indicators-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .trend-indicator {
+      padding: 0.75rem;
+    }
+    
+    .indicator-title {
+      font-size: 1rem;
+    }
+    
+    .indicator-description {
+      font-size: 0.85rem;
+    }
+    
+    .slide-container {
+      gap: 1.5rem;
+    }
+  }
+</style>

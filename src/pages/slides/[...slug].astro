@@ -5,26 +5,45 @@
  */
 
 import OneSlideDeck from '../../layouts/OneSlideDeck.astro';
+import SlideShowVariant1 from '../../components/slides/astro-decks/variant-1/SlideShow--Variant-1.astro';
 
 export async function getStaticPaths() {
-  // For now, we'll return just the sample presentation
+  // For now, we'll return available presentations
   // In the future, this would load from content collections
   return [
+    {
+      params: { slug: 'water-fund-variant-1' },
+      props: {
+        title: "The Water Fund",
+        description: "Systemic Solutions for Global Water Security",
+        slideshow: "water-fund-variant-1"
+      }
+    },
     {
       params: { slug: 'sample' },
       props: {
         title: "Sample Presentation",
-        description: "A sample slide deck to test the Water Theme integration"
+        description: "A sample slide deck to test the Water Theme integration",
+        slideshow: "sample"
       }
     }
   ];
 }
 
-const { title, description } = Astro.props;
+const { title, description, slideshow } = Astro.props;
 ---
 
 <OneSlideDeck title={title} description={description}>
-  <!-- Sample slide content -->
+  {slideshow === 'water-fund-variant-1' && (
+    <SlideShowVariant1 
+      title={title}
+      subtitle={description}
+      author="The Water Fund Team"
+    />
+  )}
+  
+  {slideshow === 'sample' && (
+    <!-- Sample slide content -->
   <section data-background-color="rgb(var(--color-primary-950))">
     <h1 style="color: rgb(var(--color-primary-50));">Welcome to TWF Slides</h1>
     <p style="color: rgb(var(--color-primary-200));">
@@ -101,4 +120,5 @@ function createSlide(content) &#123;
       </a>
     </div>
   </section>
+  )}
 </OneSlideDeck>

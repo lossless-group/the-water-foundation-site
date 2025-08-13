@@ -1,0 +1,330 @@
+---
+/**
+ * WelcomeMessage Component - Variant 1
+ * Professional welcome slide with chairman photo and message
+ * Features: Split layout with headshot, welcome text, and geometric accent image
+ */
+
+interface Props {
+  welcomeTitle?: string;
+  messageTitle?: string;
+  chairmanName?: string;
+  chairmanTitle?: string;
+  chairmanPhoto?: string;
+  mainMessage?: string;
+  subMessage?: string;
+  website?: string;
+}
+
+const {
+  welcomeTitle = "Welcome",
+  messageTitle = "Message",
+  chairmanName = "Christoph Schweizer",
+  chairmanTitle = "Chairman",
+  chairmanPhoto = "/headshots/headshotOf__Christoph-Schwager.jpg", 
+  mainMessage = "The Water Fund channels smart capital into global water resilience.",
+  subMessage = "We emphasize scalable solutions that build resilience, restore ecosystems, and expand water access globally.",
+  website = "www.waterfund.com"
+} = Astro.props;
+---
+
+<section class="welcome-message-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left content area -->
+    <div class="content-area">
+      <!-- Title section -->
+      <div class="title-section">
+        <h1 class="welcome-title">{welcomeTitle}</h1>
+        <h2 class="message-title">{messageTitle}</h2>
+      </div>
+
+      <!-- Chairman section -->
+      <div class="chairman-section">
+        <div class="chairman-photo">
+          <img src={chairmanPhoto} alt={`${chairmanName}, ${chairmanTitle}`} />
+        </div>
+        <div class="chairman-info">
+          <p class="chairman-name">{chairmanName}</p>
+          <p class="chairman-title-text">{chairmanTitle}</p>
+        </div>
+      </div>
+
+      <!-- Message content -->
+      <div class="message-content">
+        <p class="main-message">{mainMessage}</p>
+        <p class="sub-message">{subMessage}</p>
+      </div>
+
+      <!-- Website footer -->
+      <div class="website-footer">
+        <p>{website}</p>
+      </div>
+    </div>
+
+    <!-- Right accent area -->
+    <div class="accent-area">
+      <div class="geometric-shape">
+        <!-- CSS-based geometric design inspired by the blue cube -->
+        <div class="cube-face face-1"></div>
+        <div class="cube-face face-2"></div>
+        <div class="cube-face face-3"></div>
+        <div class="light-accent accent-1"></div>
+        <div class="light-accent accent-2"></div>
+        <div class="light-accent accent-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .welcome-message-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Content Area Styling */
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .title-section {
+    margin-bottom: 1rem;
+  }
+
+  .welcome-title {
+    font-size: 4rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .message-title {
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .chairman-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .chairman-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(var(--color-primary-900), 0.1);
+  }
+
+  .chairman-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: rgb(var(--color-primary-200)); /* Fallback if image doesn't load */
+  }
+
+  .chairman-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .chairman-name {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    color: rgb(var(--color-primary-900));
+    margin: 0;
+  }
+
+  .chairman-title-text {
+    font-size: 1rem;
+    color: rgb(var(--color-primary-600));
+    margin: 0;
+  }
+
+  .message-content {
+    max-width: 600px;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .main-message {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    color: rgb(var(--color-primary-900));
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+  }
+
+  .sub-message {
+    font-size: 1.125rem;
+    color: rgb(var(--color-primary-700));
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .website-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+
+  .website-footer p {
+    font-size: 1rem;
+    color: rgb(var(--color-primary-600));
+    margin: 0;
+  }
+
+  /* Accent Area Styling */
+  .accent-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .geometric-shape {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transform: perspective(800px) rotateX(-10deg) rotateY(25deg);
+  }
+
+  .cube-face {
+    position: absolute;
+    background: linear-gradient(135deg, rgb(var(--color-accent-600)), rgb(var(--color-accent-400)));
+    border-radius: 8px;
+  }
+
+  .face-1 {
+    width: 200px;
+    height: 200px;
+    top: 50px;
+    left: 50px;
+    transform: translateZ(0px);
+  }
+
+  .face-2 {
+    width: 200px;
+    height: 200px;
+    top: 30px;
+    left: 70px;
+    background: linear-gradient(135deg, rgb(var(--color-accent-500)), rgb(var(--color-accent-300)));
+    transform: translateZ(20px);
+  }
+
+  .face-3 {
+    width: 200px;
+    height: 200px;
+    top: 10px;
+    left: 90px;
+    background: linear-gradient(135deg, rgb(var(--color-accent-400)), rgb(var(--color-accent-200)));
+    transform: translateZ(40px);
+  }
+
+  .light-accent {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  .accent-1 {
+    width: 60px;
+    height: 4px;
+    top: 80px;
+    left: 120px;
+    transform: translateZ(50px);
+  }
+
+  .accent-2 {
+    width: 4px;
+    height: 60px;
+    top: 120px;
+    left: 180px;
+    transform: translateZ(50px);
+  }
+
+  .accent-3 {
+    width: 40px;
+    height: 4px;
+    top: 200px;
+    left: 140px;
+    transform: translateZ(50px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      gap: 2rem;
+    }
+    
+    .accent-area {
+      height: 200px;
+    }
+    
+    .geometric-shape {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .cube-face {
+      width: 150px !important;
+      height: 150px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .welcome-title, .message-title {
+      font-size: 2.5rem;
+    }
+    
+    .main-message {
+      font-size: 1.25rem;
+    }
+    
+    .sub-message {
+      font-size: 1rem;
+    }
+    
+    .chairman-section {
+      gap: 1rem;
+    }
+    
+    .chairman-photo {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .slide-container {
+      gap: 1rem;
+    }
+  }
+</style>

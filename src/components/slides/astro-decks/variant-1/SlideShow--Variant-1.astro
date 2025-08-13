@@ -1,0 +1,431 @@
+---
+/**
+ * SlideShow--Variant-1 Component
+ * Complete Water Theme presentation slideshow
+ * Features: Full RevealJS integration with all variant-1 slide components
+ */
+
+import TitleSlide from './slides/TitleSlide.astro';
+import WelcomeMessage from './slides/WelcomeMessage.astro';
+import FramingTheChallenge from './slides/FramingTheChallenge.astro';
+import TheBlindSpot from './slides/TheBlindSpot.astro';
+import OurMission from './slides/OurMission.astro';
+import TheProblem from './slides/TheProblem.astro';
+import KeyFigures from './slides/KeyFigures.astro';
+import OurSystemsThinkingSolution from './slides/OurSystemsThinkingSolution.astro';
+import GeopoliticalTrends from './slides/GeopoliticalTrends.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  author?: string;
+  theme?: string;
+  transition?: string;
+  autoSlide?: number;
+}
+
+const {
+  title = "The Water Fund",
+  subtitle = "Systemic Solutions for Global Water Security",
+  author = "The Water Fund Team",
+  theme = "water",
+  transition = "slide",
+  autoSlide = 0
+} = Astro.props;
+---
+
+<!-- Slide 1: Title Slide -->
+    <section data-transition="fade">
+      <TitleSlide 
+        title={title}
+        subtitle={subtitle}
+        description="A blended capital platform connecting systemic underinvestment in the world's most essential and overlooked resource — water"
+        date="Date: 15/08/25"
+        website="www.waterfund.com"
+        year="2024"
+      />
+    </section>
+
+    <!-- Slide 2: Welcome Message -->
+    <section data-transition="slide">
+      <WelcomeMessage 
+        welcomeTitle="Welcome"
+        chairmanName="Christoph Schwager"
+        chairmanTitle="Chairman, The Water Foundation"
+        mainMessage="Thank you for joining us today as we explore innovative approaches to global water security challenges."
+        chairmanPhoto="/headshots/headshotOf__Christoph-Schwager.jpg"
+      />
+    </section>
+
+    <!-- Slide 3: Framing the Challenge -->
+    <section data-transition="slide">
+      <FramingTheChallenge 
+        challengeTitle="Framing the"
+        challengeSubtitle="Challenge"
+        introText="Water technology innovation requires unprecedented coordination across sectors, geographies, and stakeholder groups."
+        statistics={[
+          "2.2 billion people lack safely managed drinking water",
+          "4.2 billion people lack safely managed sanitation",
+          "$114 billion annual investment gap in water infrastructure",
+          "80% of wastewater flows back to ecosystem untreated"
+        ]}
+      />
+    </section>
+
+    <!-- Slide 4: The Blind Spot -->
+    <section data-transition="slide">
+      <TheBlindSpot 
+        mainTitle="The Blind Spot of"
+        titleHighlight="Humankind"
+        section1Title="Hidden in Plain Sight"
+        section1Points={[
+          "Water is a critical system hiding in plain sight.",
+          "Despite its foundational role, water is undervalued, undercapitalized, and unprotected."
+        ]}
+        section2Title="The Investment Gap"
+        section2Points={[
+          "Traditional funding models fail to address systemic water challenges",
+          "Fragmented approaches miss critical interconnections"
+        ]}
+      />
+    </section>
+
+    <!-- Slide 5: Our Mission -->
+    <section data-transition="slide">
+      <OurMission 
+        mainTitle="Our"
+        titleHighlight="Mission"
+        subtitle="Our mission is built on three key pillars"
+        missionPoints={[
+          "We exist to solve humanity's most overlooked crisis at a global turning point.",
+          "Our mission is to mobilize blended capital, science, and local leadership to restore global water resilience.",
+          "We aim to close the water capital gap by building vehicles, alliances, and trust systems for lasting change."
+        ]}
+        panel1Text="Catalyze Innovation"
+        panel2Text="Build Resilience"
+      />
+    </section>
+
+    <!-- Slide 6: The Problem -->
+    <section data-transition="slide">
+      <TheProblem 
+        mainTitle="The"
+        titleHighlight="Problem"
+        subtitle="Water is underfunded and fragmented"
+        description="Multiple interconnected challenges prevent effective water security solutions"
+        problemCards={[
+          {
+            title: "Scale Mismatch",
+            description: "Local solutions struggle to address global challenges",
+            icon: "scale",
+            variant: "blue"
+          },
+          {
+            title: "Capital Gaps",
+            description: "Insufficient funding for critical water infrastructure",
+            icon: "capital",
+            variant: "light"
+          },
+          {
+            title: "Technology Barriers",
+            description: "Innovation adoption hindered by market failures",
+            icon: "technology",
+            variant: "dark"
+          },
+          {
+            title: "Governance Fragmentation",
+            description: "Disconnected policies undermine coordinated action",
+            icon: "governance",
+            variant: "blue"
+          }
+        ]}
+      />
+    </section>
+
+    <!-- Slide 7: Key Figures -->
+    <section data-transition="slide">
+      <KeyFigures 
+        mainTitle="Key"
+        titleHighlight="Figures"
+        contextText="Water stress is escalating globally, with critical implications for human security and economic stability."
+        keyFigures={[
+          {
+            figure: "4bn",
+            title: "People in Water Stress",
+            description: "Experience severe water scarcity at least one month per year",
+            variant: "blue"
+          },
+          {
+            figure: "40%",
+            title: "Supply Deficit",
+            description: "Gap between water demand and sustainable supply by 2030",
+            variant: "light"
+          },
+          {
+            figure: "90%",
+            title: "Water-Related Disasters",
+            description: "Of all natural disasters are water-related",
+            variant: "dark"
+          }
+        ]}
+      />
+    </section>
+
+    <!-- Slide 8: Geopolitical Trends -->
+    <section data-transition="slide">
+      <GeopoliticalTrends 
+        mainTitle="Geopolitical"
+        titleHighlight="Trend"
+        trendIndicators={[
+          {
+            title: "Conflict Zones",
+            description: "Water stress is intensifying tensions across fragile regions and borders.",
+            icon: "conflict",
+            variant: "dark"
+          },
+          {
+            title: "Regional Flashpoints",
+            description: "Disputes over water are growing in South Asia, Africa, and the Middle East.",
+            icon: "flashpoint",
+            variant: "blue"
+          },
+          {
+            title: "Resource Competition",
+            description: "Nations are contesting dwindling supplies, risking broader geopolitical instability.",
+            icon: "resources",
+            variant: "light"
+          },
+          {
+            title: "Threat to Peace",
+            description: "Water scarcity now endangers not just communities, but peace between nations.",
+            icon: "peace",
+            variant: "accent"
+          }
+        ]}
+      />
+    </section>
+
+    <!-- Slide 9: Our Systemic Solution -->
+    <section data-transition="slide">
+      <OurSystemsThinkingSolution 
+        mainTitle="Our Systemic"
+        titleHighlight="Solution"
+        introText="Not a fund..."
+        introDescription="We're building a systemic correction mechanism, not just a fund...."
+        solutionElements={[
+          {
+            title: "Mechanism",
+            variant: "blue",
+            position: { x: 50, y: 15 },
+            connections: ["Structure"]
+          },
+          {
+            title: "Structure",
+            description: "A multi-layered structure realigning capital with the water system",
+            variant: "light",
+            position: { x: 50, y: 35 },
+            connections: ["Innovation", "Approach", "Policy Alignment"]
+          },
+          {
+            title: "Innovation",
+            description: "Deploy solutions with proven impact readiness",
+            variant: "light",
+            position: { x: 15, y: 55 },
+            connections: []
+          },
+          {
+            title: "Approach",
+            variant: "dark",
+            position: { x: 50, y: 55 },
+            connections: ["Finance Stack"]
+          },
+          {
+            title: "Policy Alignment",
+            description: "Ensure governance supports long-term capital flow.",
+            variant: "light",
+            position: { x: 85, y: 55 },
+            connections: []
+          },
+          {
+            title: "Finance Stack",
+            description: "Activate capital layers from grants to private equity",
+            variant: "light",
+            position: { x: 50, y: 75 },
+            connections: []
+          }
+        ]}
+      />
+    </section>
+
+    <!-- Final slide: Thank You / Contact -->
+    <section data-transition="fade" data-background-color="rgb(var(--color-accent-500))">
+      <div class="thank-you-slide">
+        <div class="thank-you-content">
+          <h1 class="thank-you-title">Thank You</h1>
+          <p class="thank-you-subtitle">Questions & Discussion</p>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong>The Water Fund</strong><br>
+              Systemic Solutions for Water Security
+            </div>
+            <div class="contact-item">
+              <strong>Contact:</strong><br>
+              info@thewaterfund.org
+            </div>
+            <div class="contact-item">
+              <strong>Learn More:</strong><br>
+              www.thewaterfund.org
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+<style>
+  /* Thank You Slide Styling */
+  .thank-you-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-accent-500));
+    color: white;
+    font-family: var(--font-family-primary);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .thank-you-content {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .thank-you-title {
+    font-size: 5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 1rem 0;
+    color: white;
+  }
+
+  .thank-you-subtitle {
+    font-size: 2rem;
+    font-weight: var(--font-weight-normal);
+    margin: 0 0 3rem 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 0 0 3rem 0;
+  }
+
+  .contact-item {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-item strong {
+    color: white;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .social-link {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .thank-you-title {
+      font-size: 3rem;
+    }
+    
+    .thank-you-subtitle {
+      font-size: 1.5rem;
+    }
+    
+    .contact-info {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .contact-item {
+      padding: 1rem;
+    }
+    
+    .social-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 200px;
+      text-align: center;
+    }
+  }
+
+  /* RevealJS Integration Styles */
+  .reveal .slides section {
+    padding: 0;
+    margin: 0;
+  }
+
+  .reveal .slides section > * {
+    margin: 0;
+  }
+
+  /* Ensure slides fill viewport */
+  .reveal .slides section[data-background-color] {
+    background-color: inherit !important;
+  }
+
+  /* Custom slide transitions */
+  .reveal .slides section.past {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .reveal .slides section.future {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .reveal .slides section.present {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
