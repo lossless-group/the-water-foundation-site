@@ -2,7 +2,10 @@
 /**
  * OneSlideDeck.astro
  * A component for RevealJS presentations integrated with Water Theme
+ * Standalone layout that imports Water Theme for consistent theming
  */
+
+import ModeToggle from '../components/ui/ModeToggle.astro';
 
 interface Props {
   title?: string;
@@ -18,7 +21,7 @@ const { title = "Presentation", description } = Astro.props;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
-  {description && <meta name="description" content={description}>}
+  {description ? <meta name="description" content={description} /> : null}
   
   <!-- Water Theme Styles -->
   <link rel="stylesheet" href="/src/styles/global.css">
@@ -26,9 +29,6 @@ const { title = "Presentation", description } = Astro.props;
   
   <!-- RevealJS Core Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
-  
-  <!-- Syntax highlighting for code blocks -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.min.css">
 </head>
 
 <body>
@@ -62,6 +62,11 @@ const { title = "Presentation", description } = Astro.props;
         </svg>
         Fullscreen
       </button>
+      
+      <!-- Mode Toggle button -->
+      <div class="control-button mode-toggle-wrapper">
+        <ModeToggle />
+      </div>
     </div>
     
     <!-- The actual reveal.js presentation -->
@@ -74,7 +79,6 @@ const { title = "Presentation", description } = Astro.props;
 
   <!-- RevealJS scripts -->
   <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.js"></script>
-  <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.min.js"></script>
   <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.min.js"></script>
 
   <script is:inline>
@@ -104,7 +108,6 @@ const { title = "Presentation", description } = Astro.props;
         
         // Initialize plugins
         plugins: [
-          RevealHighlight,
           RevealNotes
         ]
       });
@@ -120,6 +123,27 @@ const { title = "Presentation", description } = Astro.props;
         }
       }
     }
+
+    // Ensure mode toggle works in slides context
+    function initSlidesMode() {
+      const savedMode = localStorage.getItem('mode');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const mode = savedMode || (systemPrefersDark ? 'dark' : 'light');
+      
+      document.documentElement.classList.toggle('dark', mode === 'dark');
+      document.documentElement.setAttribute('data-mode', mode);
+    }
+
+    // Initialize mode on slides load
+    initSlidesMode();
+
+    // Listen for system mode changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('mode')) {
+        document.documentElement.classList.toggle('dark', e.matches);
+        document.documentElement.setAttribute('data-mode', e.matches ? 'dark' : 'light');
+      }
+    });
   </script>
 
   <style>
