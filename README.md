@@ -47,6 +47,62 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 - **Slides System**: Interactive presentations powered by [RevealJS](https://revealjs.com) with Water Theme integration
 
 
+### 🎨 Button Variants Framework
+
+The application features a comprehensive button system with multiple variants and sizes for consistent UI/UX:
+
+#### Available Variants
+- **Lean**: Glassmorphic effect with subtle hover states
+- **Icon**: Circular buttons for icon-only actions
+- **Gradient**: Filled gradient buttons with hover effects
+- **Animated**: Buttons with animated hover effects
+- **Ghost**: Transparent buttons with border
+- **Text Gradient**: Buttons with gradient text and glassmorphic background
+- **Partner**: Special variant with custom styling for partnership actions
+
+##### Sizes
+- `xs`: Extra small
+- `sm`: Small
+- `md`: Medium (default)
+- `lg`: Large
+- `xl`: Extra large
+- `compact`: Compact size with standard padding
+
+#### Usage Example
+```astro
+<ButtonVariants 
+  href="/example"
+  text="Click Me"
+  variant="gradient"
+  size="md"
+  external={false}
+  className="custom-class"
+/>
+```
+
+## 📦 Major Dependencies
+
+### Core
+- **Astro**: v5.12.9 - Modern static site generator
+- **Tailwind CSS**: v4.1.11 - Utility-first CSS framework
+- **Vite**: Next generation frontend tooling (via Astro)
+- **TypeScript**: Type-safe JavaScript
+
+### UI & Styling
+- **@tailwindcss/vite**: v4.1.11 - Vite plugin for Tailwind CSS
+- **PostCSS**: CSS processing with Tailwind and Autoprefixer
+- **Autoprefixer**: Add vendor prefixes to CSS rules
+
+### Development & Testing
+- **Vitest**: v3.2.4 - Fast unit testing framework
+- **@vitest/ui**: v3.2.4 - UI for Vitest
+- **jsdom**: v26.1.0 - JavaScript implementation of web standards
+
+### Build & Tooling
+- **pnpm**: v10.13.1 - Fast, disk space efficient package manager
+- **ESLint**: Code quality and style checking
+- **Prettier**: Code formatting
+
 ## 🧩 UI Components
 
 ### Header Component
