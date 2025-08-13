@@ -36,6 +36,7 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 - **Responsive Components**: Built with both media and container queries for maximum flexibility
 - **Header Component**: Responsive navigation with dark/light mode toggle and mobile menu
 - **Footer Component**: Site-wide footer with navigation and contact information
+- **Slides System**: Interactive presentations powered by [RevealJS](https://revealjs.com) with Water Theme integration
 
 
 ## 🧩 UI Components
@@ -56,6 +57,21 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
   - Copyright and legal links
   - Responsive design that adapts to different screen sizes
   - Consistent theming with the rest of the application
+
+### Slides System
+- **Features**:
+  - Interactive presentations powered by [RevealJS](https://revealjs.com) 4.5.0
+  - Full Water Theme integration with automatic dark/light mode support
+  - Four-way navigation (horizontal and vertical slides)
+  - Control buttons (exit, restart, fullscreen toggle)
+  - Responsive design (16:9 aspect ratio) that works on all devices
+  - Syntax highlighting for code blocks
+  - CDN-based RevealJS loading (no npm dependencies required)
+  - Content collections support for slide management
+- **Usage**:
+  - Visit `/slides/` to view available presentations
+  - Create new slides in `src/content/slides/` directory
+  - Use `.astro` files for component-based slides or `.md` for Markdown content
 
 ## 🏗️ Project Structure
 
@@ -284,6 +300,7 @@ All commands should be run from the root directory:
 
 - **Framework**: [Astro](https://astro.build) v5.12.9 - The web framework for content-driven websites
 - **Styling**: [Tailwind CSS](https://tailwindcss.com) v4.1.11 - Utility-first CSS framework
+- **Presentations**: [RevealJS](https://revealjs.com) v4.5.0 - HTML presentation framework (CDN-based)
 - **Testing**: [Vitest](https://vitest.dev) v3.2.4 - Fast unit testing framework
 - **Package Manager**: pnpm - Fast, disk space efficient package manager
 - **Language**: JavaScript/TypeScript

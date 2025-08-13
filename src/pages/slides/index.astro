@@ -1,0 +1,108 @@
+---
+/**
+ * Slides Index Page
+ * Lists available slide presentations
+ */
+
+// For now, we'll hardcode available presentations
+// In the future, this could be dynamic from content collections
+const presentations = [
+  {
+    title: "Sample Presentation",
+    slug: "sample",
+    description: "A sample slide deck to test the system",
+    date: "2025-08-13"
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="water">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentations - TWF Site</title>
+  <meta name="description" content="Available slide presentations">
+  
+  <!-- Water Theme Styles -->
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/water-theme.css">
+</head>
+
+<body class="min-h-screen" style="background: rgb(var(--color-primary-950)); color: rgb(var(--color-primary-50));">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold mb-4" style="color: rgb(var(--color-primary-50));">
+        Presentations
+      </h1>
+      <p class="text-lg" style="color: rgb(var(--color-primary-100));">
+        Interactive slide presentations powered by RevealJS and Water Theme
+      </p>
+    </header>
+
+    <main>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {presentations.map((presentation) => (
+          <article class="presentation-card">
+            <div class="p-6">
+              <h2 class="text-xl font-semibold mb-2">
+                <a href={`/slides/${presentation.slug}`} class="hover:underline">
+                  {presentation.title}
+                </a>
+              </h2>
+              <p class="mb-4" style="color: rgb(var(--color-primary-200));">
+                {presentation.description}
+              </p>
+              <div class="flex justify-between items-center">
+                <time class="text-sm" style="color: rgb(var(--color-primary-300));">
+                  {presentation.date}
+                </time>
+                <a 
+                  href={`/slides/${presentation.slug}`}
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all"
+                  style="background: rgba(var(--color-accent-500), 0.2); color: rgb(var(--color-accent-300)); border: 1px solid rgba(var(--color-accent-500), 0.3);"
+                >
+                  View Slides
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <footer class="mt-12 pt-8 border-t" style="border-color: rgba(var(--color-primary-800), 0.5);">
+      <p class="text-center" style="color: rgb(var(--color-primary-300));">
+        <a href="/" class="hover:underline" style="color: rgb(var(--color-accent-400));">
+          ← Back to TWF Site
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <style>
+    .presentation-card {
+      background: rgba(var(--color-primary-900), 0.6);
+      border: 1px solid rgba(var(--color-accent-500), 0.2);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(8px);
+      transition: var(--transition-smooth);
+    }
+    
+    .presentation-card:hover {
+      background: rgba(var(--color-primary-800), 0.8);
+      border-color: rgba(var(--color-accent-400), 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--color-accent-500), 0.1);
+    }
+    
+    .presentation-card a[href*="/slides/"]:hover {
+      background: rgba(var(--color-accent-500), 0.3);
+      border-color: rgba(var(--color-accent-400), 0.6);
+    }
+  </style>
+</body>
+</html>

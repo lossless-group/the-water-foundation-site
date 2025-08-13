@@ -1,0 +1,104 @@
+---
+/**
+ * Dynamic Slides Router
+ * Handles individual slide deck URLs
+ */
+
+import OneSlideDeck from '../../layouts/OneSlideDeck.astro';
+
+export async function getStaticPaths() {
+  // For now, we'll return just the sample presentation
+  // In the future, this would load from content collections
+  return [
+    {
+      params: { slug: 'sample' },
+      props: {
+        title: "Sample Presentation",
+        description: "A sample slide deck to test the Water Theme integration"
+      }
+    }
+  ];
+}
+
+const { title, description } = Astro.props;
+---
+
+<OneSlideDeck title={title} description={description}>
+  <!-- Sample slide content -->
+  <section data-background-color="rgb(var(--color-primary-950))">
+    <h1 style="color: rgb(var(--color-primary-50));">Welcome to TWF Slides</h1>
+    <p style="color: rgb(var(--color-primary-200));">
+      Powered by RevealJS and Water Theme
+    </p>
+  </section>
+
+  <section data-background-color="rgb(var(--color-primary-900))">
+    <h2 style="color: rgb(var(--color-accent-300));">Features</h2>
+    <ul style="color: rgb(var(--color-primary-100));">
+      <li>Water Theme Integration</li>
+      <li>Four-way Navigation</li>
+      <li>Responsive Design</li>
+      <li>Control Buttons</li>
+      <li>Fullscreen Support</li>
+    </ul>
+  </section>
+
+  <section data-background-color="rgb(var(--color-primary-800))">
+    <h2 style="color: rgb(var(--color-accent-400));">Code Example</h2>
+    <pre><code class="language-javascript">// Sample code with syntax highlighting
+function createSlide(content) &#123;
+  return &#123;
+    title: content.title,
+    background: 'rgb(var(--color-primary-950))',
+    render: () =&gt; content.html
+  &#125;;
+&#125;</code></pre>
+  </section>
+
+  <section data-background-color="rgb(var(--color-accent-950))">
+    <h2 style="color: rgb(var(--color-accent-200));">Navigation</h2>
+    <p style="color: rgb(var(--color-primary-100));">
+      Use arrow keys or swipe to navigate
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
+      <div></div>
+      <div style="text-align: center; color: rgb(var(--color-accent-300));">↑</div>
+      <div></div>
+      <div style="text-align: center; color: rgb(var(--color-accent-300));">←</div>
+      <div style="text-align: center; color: rgb(var(--color-accent-300));">●</div>
+      <div style="text-align: center; color: rgb(var(--color-accent-300));">→</div>
+      <div></div>
+      <div style="text-align: center; color: rgb(var(--color-accent-300));">↓</div>
+      <div></div>
+    </div>
+  </section>
+
+  <!-- Vertical slide example -->
+  <section>
+    <section data-background-color="rgb(var(--color-primary-900))">
+      <h2 style="color: rgb(var(--color-accent-300));">Vertical Slides</h2>
+      <p style="color: rgb(var(--color-primary-100));">
+        Press down arrow to see nested content
+      </p>
+    </section>
+    
+    <section data-background-color="rgb(var(--color-primary-800))">
+      <h3 style="color: rgb(var(--color-accent-400));">Nested Content</h3>
+      <p style="color: rgb(var(--color-primary-100));">
+        This is a vertical slide within the main horizontal flow
+      </p>
+    </section>
+  </section>
+
+  <section data-background-color="rgb(var(--color-primary-950))">
+    <h2 style="color: rgb(var(--color-primary-50));">Thank You</h2>
+    <p style="color: rgb(var(--color-accent-300));">
+      TWF Slides System v1.0
+    </p>
+    <div style="margin-top: 2rem;">
+      <a href="/slides/" style="color: rgb(var(--color-accent-400)); text-decoration: underline;">
+        ← Back to Presentations
+      </a>
+    </div>
+  </section>
+</OneSlideDeck>

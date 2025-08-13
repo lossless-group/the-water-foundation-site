@@ -1,0 +1,269 @@
+---
+/**
+ * OneSlideDeck.astro
+ * A component for RevealJS presentations integrated with Water Theme
+ */
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Presentation", description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="water">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  {description && <meta name="description" content={description}>}
+  
+  <!-- Water Theme Styles -->
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/water-theme.css">
+  
+  <!-- RevealJS Core Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
+  
+  <!-- Syntax highlighting for code blocks -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.min.css">
+</head>
+
+<body>
+  <!-- RevealJS container -->
+  <div class="reveal-container">
+    <!-- Control buttons -->
+    <div class="control-buttons">
+      <!-- Exit button -->
+      <a href="/slides/" class="control-button exit-button" title="Back to Presentations">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Exit
+      </a>
+      
+      <!-- Restart button -->
+      <button class="control-button restart-button" title="Restart Presentation" onclick="Reveal.slide(0, 0)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M21 3v5h-5"/>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M3 21v-5h5"/>
+        </svg>
+        Restart
+      </button>
+      
+      <!-- Fullscreen button -->
+      <button class="control-button fullscreen-button" title="Toggle Fullscreen" onclick="toggleFullscreen()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+        Fullscreen
+      </button>
+    </div>
+    
+    <!-- The actual reveal.js presentation -->
+    <div class="reveal">
+      <div class="slides">
+        <slot />
+      </div>
+    </div>
+  </div>
+
+  <!-- RevealJS scripts -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.min.js"></script>
+
+  <script is:inline>
+    // Initialize RevealJS with Water Theme integration
+    document.addEventListener('DOMContentLoaded', function() {
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        slideNumber: true,
+        history: true,
+        center: true,
+        touch: true,
+        hideInactiveCursor: true,
+        transition: 'slide',
+        backgroundTransition: 'fade',
+        
+        // Set 16:9 aspect ratio
+        width: 1600,
+        height: 900,
+        
+        // Make it responsive
+        disableLayout: false,
+        margin: 0.04,
+        
+        // Enable four-direction navigation for nested slides
+        navigationMode: 'grid',
+        
+        // Initialize plugins
+        plugins: [
+          RevealHighlight,
+          RevealNotes
+        ]
+      });
+    });
+
+    // Fullscreen toggle function
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Water Theme Integration for Slides */
+    :root {
+      --slide-bg-primary: rgb(var(--color-primary-950));
+      --slide-bg-secondary: rgb(var(--color-primary-900));
+      --slide-text-primary: rgb(var(--color-primary-50));
+      --slide-text-secondary: rgb(var(--color-primary-100));
+      --slide-accent: rgb(var(--color-accent-500));
+      --slide-accent-bright: rgb(var(--color-accent-300));
+      --slide-font-family: var(--font-family-primary);
+    }
+
+    /* Container styling */
+    .reveal-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--slide-bg-primary);
+    }
+    
+    /* RevealJS overrides with Water Theme */
+    .reveal {
+      font-family: var(--slide-font-family);
+      --r-width: 1600;
+      --r-height: 900;
+    }
+
+    .reveal .slides {
+      background-color: var(--slide-bg-primary);
+    }
+    
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: var(--slide-font-family);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--slide-text-primary);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .reveal p, .reveal li {
+      color: var(--slide-text-secondary);
+      line-height: var(--line-height-relaxed);
+    }
+    
+    .reveal a {
+      color: var(--slide-accent-bright);
+      transition: var(--transition-smooth);
+    }
+    
+    .reveal a:hover {
+      color: var(--slide-accent);
+    }
+
+    /* Control buttons styling */
+    .control-buttons {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 30;
+      display: flex;
+      gap: 0.75rem;
+    }
+    
+    .control-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(var(--color-primary-800), 0.9);
+      color: rgb(var(--color-primary-50));
+      border: 1px solid rgba(var(--color-accent-500), 0.3);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-normal);
+      font-family: var(--slide-font-family);
+      backdrop-filter: blur(8px);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+    
+    .control-button:hover {
+      background: rgba(var(--color-primary-700), 0.95);
+      border-color: rgba(var(--color-accent-400), 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(var(--color-accent-500), 0.2);
+    }
+    
+    .exit-button {
+      background: rgba(var(--color-secondary-700), 0.9);
+    }
+    
+    .exit-button:hover {
+      background: rgba(var(--color-secondary-600), 0.95);
+    }
+
+    /* Code blocks styling */
+    .reveal pre {
+      background: rgba(var(--color-primary-900), 0.8);
+      border: 1px solid rgba(var(--color-accent-500), 0.2);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .reveal code {
+      font-family: var(--font-family-mono);
+      background: rgba(var(--color-primary-800), 0.6);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .control-buttons {
+        top: 1rem;
+        right: 1rem;
+        gap: 0.5rem;
+      }
+      
+      .control-button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+      }
+      
+      .control-button svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    /* Hide controls in fullscreen for cleaner presentation */
+    :fullscreen .control-buttons {
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    
+    :fullscreen .control-buttons:hover {
+      opacity: 1;
+    }
+  </style>
+</body>
+</html>
