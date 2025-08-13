@@ -1,0 +1,127 @@
+---
+/**
+ * TitleSlidePreviewCard Component
+ * A card component for displaying slide presentation previews
+ * Integrates with Water Theme design system
+ */
+
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  date?: string;
+  icon?: string;
+  class?: string;
+}
+
+const { 
+  title, 
+  description, 
+  slug, 
+  date,
+  icon = "📊",
+  class: className = ""
+} = Astro.props;
+---
+
+<article class={`presentation-card ${className}`}>
+  <div class="p-6">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="text-3xl flex-shrink-0">{icon}</div>
+      <div class="flex-1">
+        <h2 class="text-xl font-semibold mb-2">
+          <a href={`/slides/${slug}`} class="hover:underline transition-all">
+            {title}
+          </a>
+        </h2>
+        <p class="opacity-70 leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </div>
+    
+    <div class="flex justify-between items-center">
+      {date && (
+        <time class="text-sm opacity-60">
+          {date}
+        </time>
+      )}
+      <a 
+        href={`/slides/${slug}`}
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all view-slides-btn ml-auto"
+      >
+        View Slides
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .presentation-card {
+    /* Enhanced glassmorphic effect */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Add subtle gradient overlay */
+  .presentation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  
+  .presentation-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Ensure content is above the overlay */
+  .presentation-card > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .view-slides-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .view-slides-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+</style>
