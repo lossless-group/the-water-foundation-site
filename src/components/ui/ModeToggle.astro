@@ -28,15 +28,19 @@
 </button>
 
 <script is:inline>
-  // Initialize mode from localStorage or system preference
-  function initMode() {
-    const savedMode = localStorage.getItem('mode');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const mode = savedMode || (systemPrefersDark ? 'dark' : 'light');
+  // Toggle between light and dark mode
+  function toggleMode() {
+    const currentMode = document.documentElement.getAttribute('data-mode');
+    const newMode = currentMode === 'dark' ? 'light' : 'dark';
     
-    document.documentElement.classList.toggle('dark', mode === 'dark');
-    document.documentElement.setAttribute('data-mode', mode);
-    updateButton(mode === 'dark');
+    // Update the data-mode attribute
+    document.documentElement.setAttribute('data-mode', newMode);
+    
+    // Save preference to localStorage
+    localStorage.setItem('mode', newMode);
+    
+    // Update button state
+    updateButton(newMode === 'dark');
   }
   
   // Update button state
@@ -49,32 +53,12 @@
     button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
   
-  // Toggle mode
-  function toggleMode() {
-    const isDark = document.documentElement.classList.toggle('dark');
-    const mode = isDark ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-mode', mode);
-    localStorage.setItem('mode', mode);
-    updateButton(isDark);
-  }
-  
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
-    initMode();
-    
     // Handle button click
     document.addEventListener('click', (event) => {
       if (event.target.closest('[data-theme-toggle]')) {
         toggleMode();
-      }
-    });
-    
-    // Listen for system mode changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('mode')) {
-        document.documentElement.classList.toggle('dark', e.matches);
-        updateButton(e.matches);
       }
     });
   });

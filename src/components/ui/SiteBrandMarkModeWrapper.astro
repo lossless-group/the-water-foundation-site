@@ -1,0 +1,80 @@
+---
+// src/components/ui/SiteBrandMarkModeWrapper.astro
+// Specialized component for The Water Foundation's brand mark with theme support
+
+interface Props {
+  className?: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+const { 
+  className = '',
+  width = 180,
+  height = 40
+} = Astro.props;
+
+// Define the logo paths for light and dark modes
+const lightLogo = '/trademark__The-Water-Foundation--Darker.svg';
+const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
+---
+
+<div class="brand-mark-wrapper relative w-full h-full">
+  <!-- Light mode logo -->
+  <img
+    src={lightLogo}
+    alt="The Water Foundation"
+    width={width}
+    height={height}
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class:list={[
+      'light-logo w-full h-full object-contain',
+      className
+    ]}
+  />
+  
+  <!-- Dark mode logo -->
+  <img
+    src={darkLogo}
+    alt="The Water Foundation"
+    width={width}
+    height={height}
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class:list={[
+      'dark-logo w-full h-full object-contain',
+      className
+    ]}
+  />
+</div>
+
+<style>
+  /* Default: show light logo, hide dark logo */
+  .light-logo {
+    display: block;
+  }
+  .dark-logo {
+    display: none;
+  }
+
+  /* Dark mode: hide light logo, show dark logo */
+  :global([data-mode="dark"]) .light-logo {
+    display: none;
+  }
+  :global([data-mode="dark"]) .dark-logo {
+    display: block;
+  }
+
+  /* Fallback for system preference */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-mode="light"]) .light-logo {
+      display: none;
+    }
+    :root:not([data-mode="light"]) .dark-logo {
+      display: block;
+    }
+  }
+</style>

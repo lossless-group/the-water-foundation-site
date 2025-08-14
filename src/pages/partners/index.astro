@@ -1,0 +1,164 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import Hero from '../../components/basics/Hero.astro';
+import LogoGrid from '../../components/basics/grids/LogoGrid.astro';
+
+const partners = [
+  {
+    logoLightMode: '/trademarks/trademark__Technical-University-of-Munich.svg',
+    logoDarkMode: '/trademarks/trademark__Technical-University-of-Munich.svg',
+    conventionalName: 'Technical University of Munich',
+    officialName: 'Technical University of Munich',
+    urlToPartnerSite: 'https://www.tum.de/en/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Hellenic-Impact-Investor-Network.png',
+    logoDarkMode: '/trademarks/trademark__Hellenic-Impact-Investor-Network.png',
+    conventionalName: 'HIIN',
+    officialName: 'Hellenic Impact Investing Network',
+    urlToPartnerSite: 'https://thehiin.org/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Swiss-Impact-Office.png',
+    logoDarkMode: '/trademarks/trademark__Swiss-Impact-Office.png',
+    conventionalName: 'Swiss Impact Office',
+    officialName: 'Swiss Impact Office',
+    urlToPartnerSite: 'https://impactoffice.ch/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Chancemaker-Foundation.svg',
+    logoDarkMode: '/trademarks/trademark__Chancemaker-Foundation.svg',
+    conventionalName: 'Chancemaker',
+    officialName: 'Chancemaker Foundation',
+    urlToPartnerSite: 'https://chancemaker.foundation/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Seastrees-org.svg',
+    logoDarkMode: '/trademarks/trademark__Seastrees-org.svg',
+    conventionalName: 'Seastrees',
+    officialName: 'Seastrees',
+    urlToPartnerSite: 'https://seastrees.org/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Rotreat.png',
+    logoDarkMode: '/trademarks/trademark__Rotreat.png',
+    conventionalName: 'Rotreat',
+    officialName: 'Rotreat',
+    urlToPartnerSite: 'https://rotreat.net/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Hydratio.png',
+    logoDarkMode: '/trademarks/trademark__Hydratio.png',
+    conventionalName: 'Hydratio',
+    officialName: 'Hydratio',
+    urlToPartnerSite: 'https://hydratio.com/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__GreenVault-Holding.svg',
+    logoDarkMode: '/trademarks/trademark__GreenVault-Holding.svg',
+    conventionalName: 'GreenVault Holding',
+    officialName: 'GreenVault Holding',
+    urlToPartnerSite: 'https://gvaultholding.com/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+  {
+    logoLightMode: '/trademarks/trademark__Wild-Assetts.webp',
+    logoDarkMode: '/trademarks/trademark__Wild-Assetts.webp',
+    conventionalName: 'Wild Assets',
+    officialName: 'Wild Assets',
+    urlToPartnerSite: 'https://www.wild-assets.com/',
+    blurbShortTxt: 'Description of partnership and what they do.',
+    listOfPeopleData: [
+      {
+        name: 'John Doe',
+        role: 'CEO',
+        image: '/path/to/avatar.jpg'
+      }
+    ]
+  },
+];
+
+
+---
+
+<BaseThemeLayout
+	title="Our Partners | The Water Foundation"
+	description="Explore our strategic partnerships driving systemic change through innovative water solutions and unsiloed financial strategies."
+	themeClass="theme-water"
+>
+	<Hero 
+		headerTxt="Our Current Partnerships"
+		subHeaderTxt="Meaningful collaborations for systemic change using unsiloed financial strategies."
+		headerClassName="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
+		subHeaderClassName="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto"
+    paddingClasses="py-8 md:py-12 lg:py-16"
+	/>
+
+	<!-- Partners content will go here -->
+	<div class="container mx-auto px-4 py-16">
+        <LogoGrid {partners} />
+	</div>
+</BaseThemeLayout>

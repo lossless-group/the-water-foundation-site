@@ -1,0 +1,62 @@
+---
+import ThemeImage from '../../ui/ThemeImage.astro';
+
+export interface BannerImage {
+  lightModeSrc: string;
+  darkModeSrc?: string;
+  alt: string;
+  url?: string;
+  width?: number;
+  height?: number;
+  className?: string;
+}
+
+interface Props {
+  images: BannerImage[];
+  gap?: string;
+  padding?: string;
+  className?: string;
+}
+
+const {
+  images,
+  gap = 'gap-8',
+  padding = 'py-8',
+  className = ''
+} = Astro.props;
+
+const containerClass = `flex flex-wrap items-center justify-center ${gap} ${padding} ${className}`;
+---
+
+<div class={containerClass}>
+  {images.map((image) => {
+    const imageElement = (
+      <div class={`flex items-center h-16 ${image.className || ''}`}>
+        <ThemeImage
+          lightSrc={image.lightModeSrc}
+          darkSrc={image.darkModeSrc || image.lightModeSrc}
+          alt={image.alt}
+          class="max-h-full w-auto object-contain"
+          width={image.width}
+          height={image.height}
+        />
+      </div>
+    );
+
+    return image.url ? (
+      <a 
+        href={image.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="opacity-80 hover:opacity-100 transition-opacity duration-200"
+        aria-label={`Visit ${image.alt}`}
+      >
+        {imageElement}
+      </a>
+    ) : (
+      <div class="opacity-80 hover:opacity-100 transition-opacity duration-200">
+        {imageElement}
+      </div>
+    );
+  })}
+</div>

@@ -1,15 +1,18 @@
 ---
 export interface Props {
-	title: string;
-	description: string;
-	themeClass: string;
-	favicon?: string;
+  title: string;
+  description: string;
+  themeClass: string;
+  favicon?: string;
 }
 
 const { title, description, themeClass, favicon } = Astro.props;
+
+// Get initial theme mode from cookies or system preference
+const initialTheme = 'light'; // Default to light theme
 ---
 
-<html lang="en" class={themeClass}>
+<html lang="en" class={themeClass} data-mode={initialTheme}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon || "/favicon.svg"} />
@@ -29,5 +32,31 @@ const { title, description, themeClass, favicon } = Astro.props;
 	</head>
 	<body>
 		<slot />
+
+    <script is:inline>
+      // Initialize theme from localStorage or system preference
+      (function() {
+        // Get current mode from localStorage or system preference
+        const savedMode = localStorage.getItem('mode');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialMode = savedMode || (systemPrefersDark ? 'dark' : 'light');
+        
+        // Apply the initial mode
+        document.documentElement.setAttribute('data-mode', initialMode);
+        
+        // If no saved preference, set it based on system preference
+        if (!savedMode) {
+          localStorage.setItem('mode', systemPrefersDark ? 'dark' : 'light');
+        }
+        
+        // Listen for system preference changes (only when no user preference is set)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('mode')) {
+            const mode = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-mode', mode);
+          }
+        });
+      })();
+    </script>
 	</body>
 </html>

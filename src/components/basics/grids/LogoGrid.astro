@@ -1,0 +1,50 @@
+---
+import type { LogoCardProps } from './grid-cards/LogoCard-ModeWrapper.astro';
+import LogoCard from './grid-cards/LogoCard-ModeWrapper.astro';
+
+export interface LogoGridProps {
+  partners: LogoCardProps[];
+  className?: string;
+  gridCols?: {
+    default?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+  };
+}
+
+const { 
+  partners = [],
+  className = '',
+  gridCols = {
+    default: '1',
+    sm: '2',
+    lg: '3',
+    xl: '4'
+  }
+} = Astro.props;
+
+// Generate grid column classes based on props
+const gridColsClass = [
+  gridCols.default ? `grid-cols-${gridCols.default}` : 'grid-cols-1',
+  gridCols.sm ? `sm:grid-cols-${gridCols.sm}` : '',
+  gridCols.md ? `md:grid-cols-${gridCols.md}` : '',
+  gridCols.lg ? `lg:grid-cols-${gridCols.lg}` : 'lg:grid-cols-3',
+  gridCols.xl ? `xl:grid-cols-${gridCols.xl}` : 'xl:grid-cols-4'
+].filter(Boolean).join(' ');
+---
+
+<div class:list={[
+  'grid gap-6',
+  gridColsClass,
+  'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12',
+  className
+]}>
+  {partners.map((partner: LogoCardProps) => (
+    <LogoCard 
+      {...partner}
+      class="h-full"
+    />
+  ))}
+</div>

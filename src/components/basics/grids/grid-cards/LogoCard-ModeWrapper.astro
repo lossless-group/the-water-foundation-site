@@ -1,0 +1,129 @@
+---
+import ThemeImage from '../../../ui/ThemeImage.astro';
+
+export interface LogoCardProps {
+  logoLightMode?: string;
+  logoDarkMode?: string;
+  logoColor?: string;
+  conventionalName?: string;
+  officialName?: string;
+  urlToPartnerSite?: string;
+  blurbShortTxt?: string;
+  internalPartnerPage?: string;
+  listOfPeopleData?: Array<{
+    name: string;
+    role?: string;
+    image?: string;
+  }>;
+}
+
+const {
+  logoLightMode,
+  logoDarkMode,
+  logoColor,
+  conventionalName = '',
+  officialName = '',
+  urlToPartnerSite,
+  blurbShortTxt,
+  internalPartnerPage,
+  listOfPeopleData = []
+} = Astro.props;
+
+const hasLogo = logoLightMode || logoDarkMode;
+const hasName = conventionalName || officialName;
+const hasContent = blurbShortTxt || listOfPeopleData.length > 0;
+const hasLink = urlToPartnerSite || internalPartnerPage;
+---
+
+<article class="h-full flex flex-col bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+  {(hasLogo || hasName) && (
+    <div class="p-6 pb-4 border-b border-border">
+      {hasLogo && (
+        <div class="h-16 flex items-center justify-center mb-3">
+          <div class="h-full w-full flex items-center justify-center" style={logoColor ? { color: logoColor } : {}}>
+            <div class="[&_svg]:w-full [&_svg]:h-auto [&_svg]:max-h-16">
+              <ThemeImage 
+                lightSrc={logoLightMode || ''}
+                darkSrc={logoDarkMode || logoLightMode || ''}
+                alt={officialName || conventionalName || 'Partner Logo'}
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {hasName && (
+        <h3 class="text-center text-lg font-medium text-foreground">
+          {urlToPartnerSite ? (
+            <a 
+              href={urlToPartnerSite} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="hover:text-primary transition-colors"
+            >
+              {conventionalName || officialName}
+            </a>
+          ) : conventionalName || officialName}
+        </h3>
+      )}
+      
+      {officialName && officialName !== conventionalName && (
+        <p class="text-center text-sm text-muted-foreground mt-1">
+          {officialName}
+        </p>
+      )}
+    </div>
+  )}
+  
+  {hasContent && (
+    <div class="p-6 pt-4 flex-1 flex flex-col">
+      {blurbShortTxt && (
+        <p class="text-sm text-foreground/80 mb-4">
+          {blurbShortTxt}
+        </p>
+      )}
+      
+      {listOfPeopleData.length > 0 && (
+        <div class="mt-auto pt-4 border-t border-border">
+          <h4 class="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            Key Contacts
+          </h4>
+          <ul class="space-y-3">
+            {listOfPeopleData.map((person: { name: string; role?: string; image?: string }) => (
+              <li class="flex items-center space-x-3">
+                {person.image && (
+                  <img 
+                    src={person.image} 
+                    alt={person.name} 
+                    class="h-8 w-8 rounded-full object-cover"
+                  />
+                )}
+                <div>
+                  <p class="text-sm font-medium text-foreground">{person.name}</p>
+                  {person.role && (
+                    <p class="text-xs text-muted-foreground">{person.role}</p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )}
+  
+  {hasLink && (
+    <div class="px-6 py-3 bg-muted/20 border-t border-border">
+      <a 
+        href={urlToPartnerSite || internalPartnerPage || '#'}
+        class="text-sm font-medium text-primary hover:text-primary/80 flex items-center justify-end gap-1"
+        target={urlToPartnerSite ? '_blank' : '_self'}
+        rel={urlToPartnerSite ? 'noopener noreferrer' : undefined}
+      >
+        {urlToPartnerSite ? 'Visit Website' : 'Learn More'}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  )}
+</article>

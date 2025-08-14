@@ -331,6 +331,21 @@ We provide responsive utility classes for common patterns:
 </div>
 ```
 
+### API Integrations
+
+#### Unipile API
+
+```text
+//.env
+UNIPILE_API_CUSTOM_URL=
+UNIPILE_API_KEY=
+```
+
+The Unipile API is used to retrieve data for people. 
+```bash
+curl --request GET --url ${UNIPILE_API_CUSTOM_URL}/api/v1/accounts --header 'X-API-KEY:'${UNIPILE_API_KEY}' --header 'accept: application/json'
+```
+
 ### Performance Optimization
 
 - **CSS Containment**: Used to optimize rendering performance

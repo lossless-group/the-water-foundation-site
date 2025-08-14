@@ -1,26 +1,12 @@
 ---
 // @ts-ignore - Astro component imports
 import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
-import ThemeImage from '../ui/ThemeImage.astro';
+import SiteBrandMarkModeWrapper from '../ui/SiteBrandMarkModeWrapper.astro';
 import ModeToggle from '../ui/ModeToggle.astro';
 import InternalLink from '../ui/InternalLinkWrapper.astro';
 
-// Define the logo type
-type LogoProps = {
-  lightSrc: string;
-  darkSrc: string;
-  mobileLightSrc: string;
-  mobileDarkSrc: string;
-  alt: string;
-  width: number;
-  height: number;
-  mobileWidth: number;
-  mobileHeight: number;
-};
-
 export interface Props {
   siteTitle?: string;
-  logo?: LogoProps;
   navItems?: Array<{
     text: string;
     href: string;
@@ -37,34 +23,18 @@ export interface Props {
 
 const {
   siteTitle = 'The Water Foundation',
-  logo: logoProp,
   navItems = [
-    { text: 'About', href: '/features/why-us-now-v2' },
+    { text: 'About', href: '/about' },
     { text: 'The People', href: '/the-people' },
     { text: 'Impact', href: '/impact' },
   ],
   cta = {
     text: 'Partner with Us',
-    href: '/partner-with-us',
+    href: '/partners',
     variant: 'primary' as const
   },
   class: className = ''
 } = Astro.props as Props;
-
-// Default logo configuration
-const defaultLogo: LogoProps = {
-  lightSrc: '/trademark__The-Water-Foundation--Darker.svg',
-  darkSrc: '/trademark__The-Water-Foundation--Lighter.svg',
-  mobileLightSrc: '/favicon__The-Water-Foundation.svg',
-  mobileDarkSrc: '/favicon__The-Water-Foundation--Inverted.svg',
-  alt: 'The Water Foundation Logo',
-  width: 180,
-  height: 40,
-  mobileWidth: 40,
-  mobileHeight: 40
-};
-
-const logo = logoProp || defaultLogo;
 
 // Mobile menu toggle logic will be handled in the client-side script
 ---
@@ -74,27 +44,8 @@ const logo = logoProp || defaultLogo;
     <!-- Logo and mobile menu button -->
     <div class="flex items-center">
       <a href="/" class="flex items-center gap-2">
-        <div class="hidden md:block">
-          <ThemeImage
-            lightSrc={logo.lightSrc}
-            darkSrc={logo.darkSrc}
-            alt={logo.alt}
-            width={logo.width}
-            height={logo.height}
-            class="h-10 w-auto"
-            loading="eager"
-          />
-        </div>
-        <div class="md:hidden">
-          <ThemeImage
-            lightSrc={logo.mobileLightSrc}
-            darkSrc={logo.mobileDarkSrc}
-            alt={logo.alt}
-            width={logo.mobileWidth}
-            height={logo.mobileHeight}
-            class="h-10 w-auto"
-            loading="eager"
-          />
+        <div class="h-10 w-auto">
+          <SiteBrandMarkModeWrapper className="h-full" />
         </div>
       </a>
     </div>
@@ -114,11 +65,6 @@ const logo = logoProp || defaultLogo;
         ))}
       </ul>
       
-      <!-- Mode Toggle Button -->
-      <div class="ml-2">
-        <ModeToggle />
-      </div>
-      
       {cta ? (
         <div class="ml-6 lg:ml-8">
           <a 
@@ -134,6 +80,11 @@ const logo = logoProp || defaultLogo;
           </a>
         </div>
       ) : null}
+
+      <!-- Mode Toggle Button -->
+      <div class="ml-2">
+        <ModeToggle />
+      </div>
     </nav>
 
     <!-- Mobile menu button -->

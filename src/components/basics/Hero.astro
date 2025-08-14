@@ -14,6 +14,8 @@ export interface Props {
     supportingCopyClassName?: string;
     ctaTxt?: string;
     ctaClassName?: string;
+    noPadding?: boolean;
+    paddingClasses?: string;
     cycleInterval?: number;
     targetActionsArray?: Array<{
       text: string;
@@ -44,6 +46,8 @@ const {
     supportingCopyClassName = "",
     ctaTxt,
     ctaClassName = "",
+    noPadding = false,
+    paddingClasses = "py-12 md:py-16 lg:py-20",
     targetActionsArray = [],
     backgroundsArray = [],
     cycleInterval = 8000 // Default 8 seconds per background
@@ -83,7 +87,7 @@ const getBackgroundClasses = (bg: any) => {
 
 <section 
   id={heroId}
-  class="relative min-h-screen flex items-center justify-center px-4 py-16 overflow-hidden"
+  class={`relative flex flex-col items-center justify-center w-full min-h-[50vh] overflow-hidden ${!noPadding ? paddingClasses : ''}`}
   style="--cycle-interval: ${cycleInterval}ms"
 >
   <!-- Background Container -->
