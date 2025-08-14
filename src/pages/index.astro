@@ -1,6 +1,12 @@
 ---
 import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
 import HeroImageFocused from '../components/basics/Hero--ImageFocused.astro';
+import MessageGridContent from '../layouts/sections/message-grids/MessageGridContent-Vnt2.astro';
+import BlindSpotStoryVariant2 from '../layouts/sections/core-messages/BlindSpotV2.astro';
+import WhoWeAreExtendedV1 from '../layouts/sections/who-we-are/WhoWeAreExtendedV1.astro';
+import WhoWeAreExtendedV2 from '../layouts/sections/who-we-are/WhoWeAreExtendedV2.astro';
+import WhoWeAreExtendedV3 from '../layouts/sections/who-we-are/WhoWeAreExtendedV3.astro';
+import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.astro';
 ---
 
 <BaseThemeLayout
@@ -12,74 +18,75 @@ import HeroImageFocused from '../components/basics/Hero--ImageFocused.astro';
 	<HeroImageFocused 
 		contextSetterTxt="Global Impact"
 		headerLogoSrc="/trademark__The-Water-Foundation--Darker--Wide.svg"
-		subHeaderTxt="Water independence for 1 billion people by 2035"
-		supportingCopyTxt="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital."
-		ctaTxt="The world needs our focus."
-		paddingClasses="py-8 md:py-12 lg:py-16"
+		headerTxt="A New Era for Water"
+		subHeaderTxt="Securing our water future through innovation, investment, and impact."
+		supportingCopyTxt="We are at a critical juncture where water scarcity threatens communities, economies, and ecosystems worldwide. The Water Foundation is pioneering a new approach to water security that combines cutting-edge technology, sustainable finance, and community engagement to create lasting solutions."
 		targetActionsArray={[
-			{ text: "Think with Us", href: "/about", type: "text-gradient", size: "md" },
-			{ text: "Invest with Us", href: "/team", type: "gradient", size: "md" },
-			{ text: "Partner with Us", href: "/partners", type: "partner", size: "md" }
-		]}
-		backgroundsArray={[
-			{
-				type: "image",
-				src: "/imageOf__Whale--Overlayed-Light.png",
-				overlay: true,
-				overlayOpacity: 0.1,
-				overlayGradient: "linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.6) 50%, rgba(59, 130, 246, 0.4) 100%)"
+			{ 
+				text: 'Learn About Our Approach', 
+				href: '#our-approach', 
+				type: 'primary',
+				size: 'md',
+				external: false
+			},
+			{ 
+				text: 'Join Our Mission', 
+				href: '/get-involved', 
+				type: 'secondary',
+				size: 'md',
+				external: false
 			}
 		]}
-	/>
-
-	<!-- Additional Content Section -->
-	<div class="py-16">
-		<div class="max-w-4xl mx-auto">
-			<div class="bg-card border border-border rounded-xl shadow-lg p-8 mb-8">
-				<h2 class="text-2xl font-semibold text-foreground mb-6">Explore Our Work</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-					<div class="p-6 bg-primary/5 border border-primary/10 rounded-lg">
-						<h3 class="font-semibold text-foreground mb-3">Our Mission</h3>
-						<p class="text-foreground/80 text-sm mb-4">
-							Learn about our comprehensive approach to solving the global water crisis through sustainable solutions and community engagement.
-						</p>
-						<a href="/about" class="text-primary hover:text-primary/80 font-medium text-sm">
-							Learn More →
-						</a>
-					</div>
-					<div class="p-6 bg-secondary/5 border border-secondary/10 rounded-lg">
-						<h3 class="font-semibold text-foreground mb-3">Our Team</h3>
-						<p class="text-foreground/80 text-sm mb-4">
-							Meet the dedicated professionals working to bring clean, accessible water to communities worldwide.
-						</p>
-						<a href="/team" class="text-primary hover:text-primary/80 font-medium text-sm">
-							Meet the Team →
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="bg-card border border-border rounded-xl shadow-lg p-8">
-				<h2 class="text-2xl font-semibold text-foreground mb-6">Project Features</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg">
-						<h3 class="font-medium text-foreground mb-2">Global Reach</h3>
-						<p class="text-foreground/70 text-sm">Operating across multiple continents with local partnerships</p>
-					</div>
-					<div class="p-4 bg-primary/5 border border-primary/10 rounded-lg">
-						<h3 class="font-medium text-foreground mb-2">Sustainable Solutions</h3>
-						<p class="text-foreground/70 text-sm">Long-term water independence through innovative technology</p>
-					</div>
-					<div class="p-4 bg-secondary/5 border border-secondary/10 rounded-lg">
-						<h3 class="font-medium text-foreground mb-2">Community Impact</h3>
-						<p class="text-foreground/70 text-sm">Empowering local communities with water access and education</p>
-					</div>
-					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg">
-						<h3 class="font-medium text-foreground mb-2">Transparent Operations</h3>
-						<p class="text-foreground/70 text-sm">Open reporting on our progress and financial stewardship</p>
-					</div>
-				</div>
-			</div>
+		backgroundsArray={[
+			{ 
+				type: 'image', 
+				src: '/imageOf__Whale--Overlayed-Light.png',
+				overlay: true,
+				overlayOpacity: 0.1,
+				overlayGradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.6) 50%, rgba(59, 130, 246, 0.4) 100%)'
+			}
+		]}
+		paddingClasses="py-8 md:py-12 lg:py-16"
+	>
+		<div slot="overlay" class="w-full max-w-6xl mx-auto px-4">
+			<CrisisByNumbers />
 		</div>
-	</div>
+	</HeroImageFocused>
+
+<!-- Blind Spot Story -->
+<BlindSpotStoryVariant2 />
+
+<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
+
+<!-- Who We Are - Variant 1 -->
+<div class="mb-16">
+  <div class="text-center mb-12">
+    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 1: Storytelling Narrative</h3>
+    <div class="w-16 h-0.5 bg-primary/30 mx-auto"></div>
+  </div>
+  <WhoWeAreExtendedV1 />
+</div>
+
+<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
+
+<!-- Who We Are - Variant 2 -->
+<div class="mb-16">
+  <div class="text-center mb-12">
+    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 2: Impact Focused</h3>
+    <div class="w-16 h-0.5 bg-blue-500/30 mx-auto"></div>
+  </div>
+  <WhoWeAreExtendedV2 />
+</div>
+
+<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
+
+<!-- Who We Are - Variant 3 -->
+<div>
+  <div class="text-center mb-12">
+    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 3: Visual Timeline</h3>
+    <div class="w-16 h-0.5 bg-teal-500/30 mx-auto"></div>
+  </div>
+  <WhoWeAreExtendedV3 />
+</div>
+
 </BaseThemeLayout>

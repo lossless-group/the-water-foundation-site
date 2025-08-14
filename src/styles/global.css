@@ -334,6 +334,7 @@ html {
   --color-primary-foreground: rgb(8, 47, 73);
   --color-secondary: rgb(7, 89, 133);
   --color-secondary-foreground: #E7FFFB;
+  --color-neutral-background: #6a8d9a; 
   --color-muted: rgb(12, 74, 110);
   --color-muted-foreground: #DEEAE8;
   --color-accent: rgb(20, 184, 166);

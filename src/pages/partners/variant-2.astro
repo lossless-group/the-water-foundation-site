@@ -1,0 +1,140 @@
+---
+// src/pages/partners/variant-2.astro
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import Hero from '../../components/basics/Hero.astro';
+import LogoGrid from '../../components/basics/grids/LogoGrid.astro';
+import PartnerCard from '../../components/basics/grids/grid-cards/PartnerCard.astro';
+import PartnerCardV1 from '../../components/basics/grids/grid-cards/PartnerCardV1.astro';
+import partnersData from '../../content/page-content/partners.json';
+
+// Animation will be defined in the style section below
+
+// Define types for the partner data
+type Person = {
+  name: string;
+  role: string;
+  image?: string;
+};
+
+type Partner = {
+  logoLightMode: string;
+  logoDarkMode: string;
+  conventionalName: string;
+  officialName: string;
+  urlToPartnerSite: string;
+  blurbShortTxt: string;
+  listOfPeopleData?: Person[];
+};
+
+// Use the imported partners data with type assertion
+const partners = partnersData as Partner[];
+
+const pageTitle = 'Our Partners';
+const pageDescription = 'We collaborate with leading organizations to drive innovation and create meaningful impact.';
+
+---
+
+<BaseThemeLayout title={pageTitle} description={pageDescription}>
+  <div class="bg-background">
+    <!-- Hero Section -->
+    <Hero>
+      <div slot="content" class="text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          {pageTitle}
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-foreground/80">
+          {pageDescription}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+          <a 
+            href="/partners" 
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-foreground bg-primary hover:bg-primary/90 transition-colors"
+          >
+            View Original Layout
+          </a>
+        </div>
+      </div>
+    </Hero>
+
+    <!-- Main Content -->
+    <main class="relative isolate">
+      <!-- Grid Section -->
+      <div class="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div class="mx-auto max-w-7xl">
+          <h2 class="text-2xl font-bold tracking-tight text-foreground sm:text-3xl mb-8 text-center">
+            Partner Spotlights
+          </h2>
+          <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            {
+              partners.map((partner, index) => {
+                const logoDark = partner.logoDarkMode || partner.logoLightMode;
+                const blurb = partner.blurbShortTxt || '';
+                const delay = (index % 5) * 100; // 0ms, 100ms, 200ms, 300ms, 400ms
+                
+                return (
+                  <div 
+                    class="opacity-0 animate-fade-in" 
+                    style={`animation-delay: ${delay}ms`}
+                  >
+                    <PartnerCardV1 
+                      client:load
+                      logoLightMode={partner.logoLightMode}
+                      logoDarkMode={logoDark}
+                      officialName={partner.officialName}
+                      conventionalName={partner.conventionalName}
+                      urlToPartnerSite={partner.urlToPartnerSite}
+                      blurbShortTxt={blurb}
+                      className="h-full"
+                    />
+                  </div>
+                );
+              })
+            }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative elements */}
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -z-10 -translate-x-1/2 sm:top-0 sm:h-[48rem] sm:w-[68rem] sm:[mask-image:linear-gradient(white,transparent)]">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary-foreground/20 opacity-40 blur-3xl"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseThemeLayout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  /* Smooth scrolling for the page */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground);
+  }
+</style>

@@ -5,6 +5,7 @@ import ButtonAccent from './buttons/Button--Accent.astro';
 import ButtonVariants from './buttons/Button--Variants.astro';
 
 export interface Props {
+  overlayComponent?: any;
     contextSetterTxt?: string;
     contextSetterClassName?: string;
     headerTxt?: string;
@@ -27,6 +28,8 @@ export interface Props {
       external?: boolean;
       icon?: string;
       size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+      children?: string;
+      className?: string;
     }>;
     backgroundsArray?: Array<{
       type: 'image' | 'gradient' | 'video' | 'gif';
@@ -40,23 +43,26 @@ export interface Props {
 }
 
 const {
-    contextSetterTxt,
-    contextSetterClassName = "",
-    headerTxt = "Welcome to The Water Foundation",
-    headerClassName = "",
-    headerLogoSrc,
-    subHeaderTxt,
-    subHeaderClassName = "",
-    supportingCopyTxt,
-    supportingCopyClassName = "",
-    ctaTxt,
-    ctaClassName = "",
-    noPadding = false,
-    paddingClasses = "py-12 md:py-16 lg:py-20",
-    targetActionsArray = [],
-    backgroundsArray = [],
-    cycleInterval = 8000
+  overlayComponent,
+  contextSetterTxt = '',
+  contextSetterClassName = '',
+  headerTxt = '',
+  headerClassName = '',
+  headerLogoSrc = '',
+  subHeaderTxt = '',
+  subHeaderClassName = '',
+  supportingCopyTxt = '',
+  supportingCopyClassName = '',
+  ctaTxt = '',
+  ctaClassName = '',
+  noPadding = false,
+  paddingClasses = '',
+  cycleInterval = 5000,
+  targetActionsArray = [],
+  backgroundsArray = [],
 } = Astro.props;
+
+
 
 // Default background if none provided
 const defaultBackground = {
@@ -147,6 +153,14 @@ const getBackgroundClasses = (bg: any) => {
   </div>
 
   <!-- Hero Content - Compressed spacing, bottom positioned, left-aligned text -->
+  <div class="absolute inset-0 z-10 w-full">
+    <div class="container mx-auto h-full">
+      <div class="h-full flex items-center">
+        <slot name="overlay" />
+      </div>
+    </div>
+  </div>
+
   <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:px-12 lg:px-16">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
       
@@ -207,104 +221,38 @@ const getBackgroundClasses = (bg: any) => {
           {targetActionsArray.map((action, index) => {
             const buttonVariant = action.buttonVariant || 'solid';
             
+            // Add a unique key for each button
+            const buttonProps = {
+              href: action.href,
+              text: action.text || action.children || 'Button',
+              external: action.external || false,
+              variant: buttonVariant,
+              size: action.size || 'md',
+              class: action.className || ''
+            };
+            
             // Use action.type for variant to match the type definition
             switch (action.type || 'primary') {
               case 'primary':
-                return (
-                  <ButtonPrimary
-                    href={action.href}
-                    text={action.text}
-                    external={action.external}
-                    variant={buttonVariant}
-                  />
-                );
+                return <ButtonPrimary {...buttonProps} />;
               case 'secondary':
-                return (
-                  <ButtonSecondary
-                    href={action.href}
-                    text={action.text}
-                    external={action.external}
-                    variant={buttonVariant}
-                  />
-                );
+                return <ButtonSecondary {...buttonProps} />;
               case 'accent':
-                return (
-                  <ButtonAccent
-                    href={action.href}
-                    text={action.text}
-                    external={action.external}
-                    variant={buttonVariant}
-                  />
-                );
+                return <ButtonAccent {...buttonProps} />;
               case 'lean':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="lean"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="lean" />;
               case 'gradient':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="gradient"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="gradient" />;
               case 'animated':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="animated"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="animated" />;
               case 'ghost':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="ghost"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="ghost" />;
               case 'text-gradient':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="text-gradient"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="text-gradient" />;
               case 'partner':
-                return (
-                  <ButtonVariants
-                    href={action.href}
-                    text={action.text}
-                    variant="partner"
-                    size={action.size || 'lg'}
-                    external={action.external}
-                  />
-                );
+                return <ButtonVariants {...buttonProps} variant="partner" />;
               default:
-                return (
-                  <ButtonPrimary
-                    href={action.href}
-                    text={action.text}
-                    external={action.external}
-                    variant={buttonVariant}
-                  />
-                );
+                return <ButtonPrimary {...buttonProps} />;
             }
           })}
         </div>

@@ -30,11 +30,23 @@
 <script is:inline>
   // Toggle between light and dark mode
   function toggleMode() {
-    const currentMode = document.documentElement.getAttribute('data-mode');
+    const html = document.documentElement;
+    const currentMode = html.getAttribute('data-mode');
     const newMode = currentMode === 'dark' ? 'light' : 'dark';
     
-    // Update the data-mode attribute
-    document.documentElement.setAttribute('data-mode', newMode);
+    // Update the data-mode attribute on html element
+    if (newMode === 'dark') {
+      html.setAttribute('data-mode', 'dark');
+    } else {
+      html.removeAttribute('data-mode');
+    }
+    
+    // Also set class for Tailwind dark mode if needed
+    if (newMode === 'dark') {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
     
     // Save preference to localStorage
     localStorage.setItem('mode', newMode);
@@ -55,10 +67,39 @@
   
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
+    // Set initial mode from localStorage or system preference
+    const savedMode = localStorage.getItem('mode');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedMode === 'dark' || (!savedMode && prefersDark)) {
+      document.documentElement.setAttribute('data-mode', 'dark');
+      document.documentElement.classList.add('dark');
+      updateButton(true);
+    } else {
+      document.documentElement.removeAttribute('data-mode');
+      document.documentElement.classList.remove('dark');
+      updateButton(false);
+    }
+    
     // Handle button click
     document.addEventListener('click', (event) => {
       if (event.target.closest('[data-theme-toggle]')) {
         toggleMode();
+      }
+    });
+    
+    // Listen for system color scheme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('mode')) {
+        if (e.matches) {
+          document.documentElement.setAttribute('data-mode', 'dark');
+          document.documentElement.classList.add('dark');
+          updateButton(true);
+        } else {
+          document.documentElement.removeAttribute('data-mode');
+          document.documentElement.classList.remove('dark');
+          updateButton(false);
+        }
       }
     });
   });

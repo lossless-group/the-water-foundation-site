@@ -2,6 +2,7 @@
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import TeamGrid from '../../components/team/TeamGrid.astro';
 import type { SocialLink } from '../../components/ui/SocialIcons.astro';
+import WhoWeAreTimeline from '../../layouts/sections/who-we-are/WhoWeAreTimeline.astro';
 
 interface TeamMember {
   name: string;
@@ -142,6 +143,9 @@ const teamMembers: TeamMember[] = [
     <section class="pt-0 pb-12 md:pt-0 md:pb-16">
       <TeamGrid teamMembers={teamMembers} />
     </section>
+
+    <!-- Timeline -->
+    <WhoWeAreTimeline />
 
     <!-- Join Us CTA -->
     <section class="py-16 bg-primary/5">

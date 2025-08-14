@@ -1,0 +1,149 @@
+---
+// src/components/basics/grids/grid-cards/PartnerCardV1.astro
+import ThemeImage from '../../../ui/ThemeImage.astro';
+
+interface Props {
+  logoLightMode: string;
+  logoDarkMode?: string;
+  officialName: string;
+  conventionalName?: string;
+  urlToPartnerSite: string;
+  blurbShortTxt?: string;
+  listOfPeopleData?: Array<{
+    name: string;
+    role: string;
+    image?: string;
+  }>;
+  className?: string;
+}
+
+const {
+  logoLightMode,
+  logoDarkMode = logoLightMode,
+  officialName,
+  conventionalName = officialName,
+  urlToPartnerSite,
+  blurbShortTxt,
+  listOfPeopleData = [],
+  className = ''
+} = Astro.props;
+
+const hasPeople = listOfPeopleData && listOfPeopleData.length > 0;
+---
+
+<article class:list={[
+  'group relative overflow-hidden rounded-2xl p-6',
+  'bg-gradient-to-br from-card/80 to-card/30',
+  'transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10',
+  'transform hover:-translate-y-1',
+  'backdrop-blur-sm',
+  'border border-transparent hover:border-primary/20',
+  className
+].join(' ')}>
+  <!-- Hover effect background -->
+  <div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+  </div>
+  
+  <!-- Logo and Basic Info -->
+  <div class="flex flex-col h-full">
+    <!-- Logo Container with Hover Effect -->
+    <div class="mb-6 relative group-hover:scale-105 transition-transform duration-500">
+      <div class="relative z-10">
+        <a 
+          href={urlToPartnerSite} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="block hover:opacity-90 transition-opacity"
+          aria-label={`Visit ${officialName}'s website`}
+        >
+          <div class="relative w-full h-24 flex items-center justify-center">
+            <ThemeImage
+              lightSrc={logoLightMode}
+              darkSrc={logoDarkMode}
+              alt={officialName}
+              loading="lazy"
+              decoding="async"
+              className="max-h-20 w-auto max-w-full object-contain transition-all duration-500 group-hover:brightness-110"
+            />
+          </div>
+        </a>
+      </div>
+      <div class="absolute -inset-4 -z-10 bg-gradient-to-r from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </div>
+    
+    <!-- Partner Info -->
+    <div class="flex-grow">
+      <h3 class="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+        <a 
+          href={urlToPartnerSite} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="after:absolute after:inset-0"
+        >
+          {officialName}
+        </a>
+      </h3>
+      
+      {conventionalName !== officialName && (
+        <p class="text-sm text-muted-foreground mb-3 font-medium">
+          {conventionalName}
+        </p>
+      )}
+      
+      {blurbShortTxt && (
+        <p class="text-sm text-foreground/80 mb-4 line-clamp-3 transition-all duration-300 group-hover:text-foreground/90">
+          {blurbShortTxt}
+        </p>
+      )}
+    </div>
+    
+    <!-- People Section with Hover Reveal -->
+    {hasPeople && (
+      <div class="mt-4 pt-4 border-t border-border/20 group-hover:border-primary/30 transition-colors duration-500">
+        <div class="flex items-center -space-x-2">
+          {listOfPeopleData.slice(0, 4).map((person) => {
+            const initials = person.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            return (
+              <div class="relative group/person transition-transform duration-300 hover:-translate-y-1">
+                {person.image ? (
+                  <img 
+                    src={person.image}
+                    alt={`${person.name} - ${person.role}`}
+                    class="w-8 h-8 rounded-full border-2 border-card bg-muted object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary/80 to-primary/60 flex items-center justify-center text-xs font-medium text-white border-2 border-card">
+                    {initials}
+                  </div>
+                )}
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-foreground text-background rounded whitespace-nowrap opacity-0 group-hover/person:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  {person.name}
+                  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[3px] w-2 h-2 bg-foreground rotate-45"></div>
+                </div>
+              </div>
+            );
+          })}
+          {listOfPeopleData.length > 4 && (
+            <div class="w-8 h-8 rounded-full bg-muted/80 flex items-center justify-center text-xs font-medium text-muted-foreground border-2 border-card">
+              +{listOfPeopleData.length - 4}
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+  
+  <!-- Corner accent -->
+  <div class="absolute top-0 right-0 w-2 h-2 bg-primary/80 rounded-bl-full transition-all duration-500 group-hover:w-4 group-hover:h-4"></div>
+  
+  <!-- Visit link indicator -->
+  <div class="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+      <line x1="7" y1="17" x2="17" y2="7"></line>
+      <polyline points="7 7 17 7 17 17"></polyline>
+    </svg>
+  </div>
+</article>

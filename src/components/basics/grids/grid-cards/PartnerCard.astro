@@ -1,0 +1,140 @@
+---
+// src/components/basics/grids/grid-cards/PartnerCard.astro
+import ThemeImage from '../../../ui/ThemeImage.astro';
+
+interface Props {
+  logoLightMode: string;
+  logoDarkMode?: string;
+  officialName: string;
+  conventionalName?: string;
+  urlToPartnerSite: string;
+  blurbShortTxt?: string;
+  listOfPeopleData?: Array<{
+    name: string;
+    role: string;
+    image?: string;
+  }>;
+  className?: string;
+}
+
+const {
+  logoLightMode,
+  logoDarkMode = logoLightMode,
+  officialName,
+  conventionalName = officialName,
+  urlToPartnerSite,
+  blurbShortTxt,
+  listOfPeopleData: listOfPeopleDataString = '[]',
+  className = ''
+} = Astro.props as Props;
+
+// Parse the people data if it's a string
+const listOfPeopleData = typeof listOfPeopleDataString === 'string' 
+  ? JSON.parse(listOfPeopleDataString) 
+  : listOfPeopleDataString || [];
+
+const hasPeople = listOfPeopleData && listOfPeopleData.length > 0;
+---
+
+<article class:list={[
+  'group relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl overflow-hidden',
+  'transition-all duration-300 hover:shadow-lg hover:border-primary/30',
+  'flex flex-col h-full',
+  className
+  ].join(' ')}>
+  {/* Logo and Basic Info */}
+  <div class="p-6 pb-4">
+    <div class="h-24 mb-4 flex items-center justify-center">
+      <div class="h-full w-full flex items-center justify-center">
+        <div class="[&>a>div>img]:w-auto [&>a>div>img]:h-16 [&>a>div>img]:max-h-20 [&>a>div>img]:object-contain">
+          <a 
+            href={urlToPartnerSite} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="block hover:opacity-80 transition-opacity"
+          >
+            <ThemeImage
+              lightSrc={logoLightMode}
+              darkSrc={logoDarkMode}
+              alt={officialName}
+              loading="lazy"
+              decoding="async"
+              className="mx-auto"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="text-center text-lg font-semibold text-foreground mb-2">
+      <a 
+        href={urlToPartnerSite} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="hover:text-primary transition-colors after:absolute after:inset-0"
+      >
+        {officialName}
+      </a>
+    </h3>
+    
+    {conventionalName !== officialName && (
+      <p class="text-center text-sm text-muted-foreground mb-3">
+        {conventionalName}
+      </p>
+    )}
+    
+    {blurbShortTxt && (
+      <p class="text-sm text-foreground/80 text-center mb-4 line-clamp-3">
+        {blurbShortTxt}
+      </p>
+    )}
+  </div>
+  
+  <!-- People Section -->
+  {hasPeople && (
+    <div class="mt-auto border-t border-border/50 p-4 bg-card/50">
+      <h4 class="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+        Key People
+      </h4>
+      <div class="space-y-2">
+        {
+          listOfPeopleData.map((person: { name: string; role: string; image?: string }) => {
+            const initials = person.name.split(' ').map((n: string) => n[0]).join('').toUpperCase();
+            return (
+              <div class="flex items-center gap-3">
+                {
+                  person.image ? (
+                    <img 
+                      src={person.image}
+                      alt={`${person.name} - ${person.role}`}
+                      class="w-8 h-8 rounded-full object-cover bg-muted"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium text-muted-foreground">
+                      {initials}
+                    </div>
+                  )
+                }
+                <div class="min-w-0">
+                  <p class="text-sm font-medium text-foreground truncate">
+                    {person.name}
+                  </p>
+                  <p class="text-xs text-muted-foreground truncate">
+                    {person.role}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  )}
+  
+  {/* Hover effect */}
+  <div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+  </div>
+</article>
