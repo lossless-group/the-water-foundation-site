@@ -69,9 +69,9 @@ const getBackgroundClasses = (bg: BackgroundItem) => {
 };
 ---
 
-<section class="relative h-screen flex flex-col">
-  <!-- Background Container - Full width, no margins -->
-  <div class="backgrounds-container absolute inset-0">
+<section class="relative h-screen flex flex-col overflow-hidden">
+  <!-- Background Container - Full width, no margins, with controlled overflow -->
+  <div class="backgrounds-container absolute inset-0 w-full h-full">
     {backgrounds.map((bg, index) => {
       const backgroundClasses = getBackgroundClasses(bg);
       const isFirst = index === 0;
@@ -89,13 +89,15 @@ const getBackgroundClasses = (bg: BackgroundItem) => {
             <img
               src={bg.src}
               alt={bg.alt || 'Background animation'}
-              class="absolute inset-0 w-full h-full object-cover"
+              class="absolute inset-0 w-full h-auto min-h-full object-contain md:object-cover"
+              style="object-position: center top"
             />
           )}
           
           {bg.type === 'video' && bg.src && (
             <video
-              class="absolute inset-0 w-full h-full object-cover"
+              class="absolute inset-0 w-full h-auto min-h-full object-contain md:object-cover"
+              style="object-position: center top"
               autoplay
               muted
               loop
@@ -103,6 +105,16 @@ const getBackgroundClasses = (bg: BackgroundItem) => {
             >
               <source src={bg.src} type="video/mp4" />
             </video>
+          )}
+          
+          {bg.type === 'image' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background'}
+              class={`absolute w-full h-auto min-h-full object-contain md:object-cover transition-opacity duration-1000 ease-in-out ${isFirst ? 'opacity-100' : 'opacity-0'}`}
+              style="object-position: center top"
+              aria-hidden={!isFirst}
+            />
           )}
           
           {bg.overlay && (
