@@ -1,21 +1,28 @@
 ---
 export interface Props {
     href: string;
-    text: string;
     external?: boolean;
     variant?: 'solid' | 'transparent';
+    size?: 'sm' | 'md' | 'lg';
     className?: string;
 }
 
 const { 
     href, 
-    text, 
     external = false, 
     variant = 'solid',
+    size = 'md',
     className = ""
 } = Astro.props;
 
-const baseClasses = "inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+// Size classes
+const sizeClasses = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg'
+};
+
+const baseClasses = `inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${sizeClasses[size]}`;
 
 const solidClasses = "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl";
 const transparentClasses = "bg-transparent text-primary-600 border-2 border-primary-600 hover:bg-primary-600 hover:text-white focus:ring-primary-500 shadow-md hover:shadow-lg";
@@ -29,7 +36,7 @@ const variantClasses = variant === 'solid' ? solidClasses : transparentClasses;
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
 >
-    {text}
+    <slot />
     {external && (
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>

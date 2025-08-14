@@ -1,0 +1,211 @@
+---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+
+interface BackgroundItem {
+  type: 'image' | 'video' | 'gif' | 'color';
+  src?: string;
+  alt?: string;
+  overlay?: boolean;
+  overlayOpacity?: number;
+  overlayGradient?: string;
+  position?: string;
+  size?: string;
+  repeat?: string;
+  attachment?: string;
+  videoSrc?: string;
+}
+
+interface Props {
+  contextSetterTxt?: string;
+  headerTxt?: string;
+  headerLogoSrc?: string;
+  subHeaderTxt?: string;
+  supportingCopyTxt?: string;
+  targetActionsArray?: Array<{
+    text: string;
+    href: string;
+    type: 'primary' | 'secondary';
+    size?: 'sm' | 'md' | 'lg';
+    external?: boolean;
+  }>;
+  backgroundsArray?: BackgroundItem[];
+  backgroundImageUrl?: string; // For backward compatibility
+  paddingClasses?: string; // For custom padding
+}
+
+const {
+  contextSetterTxt = '',
+  headerTxt = '',
+  headerLogoSrc = '',
+  subHeaderTxt = '',
+  supportingCopyTxt = '',
+  targetActionsArray = [],
+  backgroundsArray = [],
+  backgroundImageUrl = '',
+  paddingClasses = 'py-8 md:py-12 lg:py-16' // Default padding
+} = Astro.props;
+
+// For backward compatibility, use backgroundImageUrl if no backgroundsArray is provided
+const backgrounds: BackgroundItem[] = backgroundsArray.length > 0 
+  ? backgroundsArray 
+  : [{ 
+      type: 'image' as const, 
+      src: backgroundImageUrl || '/images/hero-bg.jpg',
+      overlay: true,
+      overlayOpacity: 0.4
+    }];
+
+// Function to get background classes based on background type
+const getBackgroundClasses = (bg: BackgroundItem) => {
+  const classes = [];
+  
+  if (bg.position) classes.push(`bg-${bg.position}`);
+  if (bg.size) classes.push(`bg-${bg.size}`);
+  if (bg.repeat) classes.push(`bg-${bg.repeat}`);
+  if (bg.attachment) classes.push(`bg-${bg.attachment}`);
+  
+  return classes.join(' ');
+};
+---
+
+<section class="relative h-screen flex flex-col">
+  <!-- Background Container - Full width, no margins -->
+  <div class="backgrounds-container absolute inset-0">
+    {backgrounds.map((bg, index) => {
+      const backgroundClasses = getBackgroundClasses(bg);
+      const isFirst = index === 0;
+      
+      return (
+        <div 
+          class={`background-item absolute inset-0 transition-opacity duration-1000 ease-in-out ${backgroundClasses} ${isFirst ? 'opacity-100' : 'opacity-0'}`}
+          style={`
+            z-index: 1;
+            ${bg.type === 'image' ? `background-image: url('${bg.src}')` : ''}
+          `}
+          aria-hidden={!isFirst}
+        >
+          {bg.type === 'gif' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background animation'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          
+          {bg.type === 'video' && bg.src && (
+            <video
+              class="absolute inset-0 w-full h-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src={bg.src} type="video/mp4" />
+            </video>
+          )}
+          
+          {bg.overlay && (
+            <div 
+              class="absolute inset-0"
+              style={`
+                z-index: 2;
+                ${bg.overlayGradient 
+                  ? `background: ${bg.overlayGradient}` 
+                  : 'background-color: rgba(0, 0, 0, 0.4)'
+                };
+                opacity: ${bg.overlayOpacity || 0.4};
+              `}
+            ></div>
+          )}
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Centered Logo with Context -->
+  <div class="relative z-10 flex-1 flex flex-col items-center justify-center p-4">
+    {/* Space above logo */}
+    <div class="flex-1"></div>
+    
+    {/* Logo */}
+    {headerLogoSrc && (
+      <div class="max-w-2xl w-full mx-auto text-center">
+        <img 
+          src={headerLogoSrc} 
+          alt="Logo" 
+          class="mx-auto max-w-full h-auto"
+        />
+      </div>
+    )}
+    
+    {/* Context below logo */}
+    {contextSetterTxt && (
+      <div class="mt-12 w-full max-w-2xl mx-auto text-center">
+        <p class="text-sm font-medium text-white/80 uppercase tracking-wider">
+          {contextSetterTxt}
+        </p>
+      </div>
+    )}
+    
+    {/* Space below context */}
+    <div class="flex-1"></div>
+  </div>
+
+  <!-- Bottom Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+      <!-- Left side: Text content -->
+      <div class="flex-1 text-left space-y-6 max-w-2xl">
+        {contextSetterTxt && (
+          <a href="/impact" class="inline-block">
+            <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm hover:bg-accent-200/70 transition-colors">
+              <span class="text-xs font-medium text-accent-800 tracking-wide uppercase">
+                {contextSetterTxt}
+              </span>
+            </div>
+          </a>
+        )}
+        
+        <div class="space-y-4">
+          {headerTxt && (
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+              {headerTxt}
+            </h1>
+          )}
+          
+          {subHeaderTxt && (
+            <p class="text-lg md:text-xl text-white/90 font-medium leading-relaxed">
+              {subHeaderTxt}
+            </p>
+          )}
+          
+          {supportingCopyTxt && (
+            <p class="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl">
+              {supportingCopyTxt}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <!-- Right side: CTA Buttons -->
+      {targetActionsArray.length > 0 && (
+        <div class="flex flex-wrap gap-4">
+          {targetActionsArray.map((action, index) => {
+            const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
+            return (
+              <ButtonComponent
+                href={action.href}
+                size={action.size || 'md'}
+                external={action.external}
+                className="w-full sm:w-auto"
+              >
+                {action.text}
+              </ButtonComponent>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

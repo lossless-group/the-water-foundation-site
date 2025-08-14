@@ -1,34 +1,43 @@
 ---
 // Blind Spot Story - Split Screen with Visual Emphasis
+import GlobalFootprint from '../message-grids/GlobalFootprintRowTags.astro';
 ---
 
-<section class="relative min-h-screen bg-background overflow-hidden">
+<section class="relative bg-background overflow-hidden">
   <!-- Water Wave Background -->
-  <div class="absolute inset-0 z-0 opacity-5">
+  <div class="absolute inset-0 z-0">
     <div class="wave-bg"></div>
   </div>
+
+
   
   <div class="relative z-10 text-center max-w-3xl mx-auto px-4 py-8">
-    <h3 class="text-xl font-medium text-foreground/90 italic">
+
+    <h3 class="mb-4 text-xl font-medium text-foreground/90 italic">
       The Water Foundation is set up to tackle a core blind spot of humankind.
     </h3>
+    <div class="flex justify-center w-full mb-8">
+      <div class="w-full max-w-3xl px-4">
+        <GlobalFootprint />
+      </div>
+    </div> 
   </div>
   
-  <div class="relative z-10 min-h-screen flex flex-col lg:flex-row">
+  <div class="relative z-10 py-12 flex flex-col lg:flex-row">
 
     <!-- Left Column - Visual -->
-    <div class="w-full lg:w-1/2 bg-primary/5 flex items-center justify-center p-12">
-      <div class="text-center max-w-md">
-        <div class="text-7xl font-bold text-primary mb-6">WATER</div>
-        <div class="h-1 w-24 bg-primary mx-auto mb-8"></div>
-        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">
-          The defining <span class="text-primary">Critical Resource</span> of our time
+    <div class="w-full lg:w-1/2 bg-primary/5 flex items-center justify-center p-6">
+      <div class="text-center max-w-md py-8">
+        <div class="text-6xl font-bold text-primary mb-4">WATER</div>
+        <div class="h-1 w-20 bg-primary mx-auto mb-6"></div>
+        <h2 class="text-3xl md:text-4xl text-foreground mb-6">
+          The defining issue of our time
         </h2>
       </div>
     </div>
     
     <!-- Right Column - Content -->
-    <div class="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-background">
+    <div class="w-full lg:w-1/2 p-6 md:p-6 lg:p-6 flex flex-col justify-center bg-background">
       <div class="max-w-lg mx-auto">
         <div class="mb-12">
           <h3 class="text-2xl font-semibold text-foreground mb-6">The Water Blind Spot</h3>
@@ -36,7 +45,7 @@
             The unrecognised consequences of current and future water availability and access.
           </p>
           
-          <div class="space-y-6">
+          <div class="space-y-2">
             <!-- Impact Item -->
             <div class="flex items-start">
               <div class="flex-shrink-0 mt-1">
@@ -96,9 +105,10 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 30%),
-      radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+      radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
     animation: wave 20s ease-in-out infinite alternate;
+    opacity: 0.5;
   }
   
   @keyframes wave {

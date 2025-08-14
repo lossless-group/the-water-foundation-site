@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 456 209" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,938.288,1648.35)">
+        <g transform="matrix(1,0,0,1,-2375.43,1062)">
+            <g transform="matrix(1,0,0,1,370.187,-1136.25)">
+                <g transform="matrix(1.39935,0,0,1.42266,135.123,-1747.56)">
+                    <g transform="matrix(1.59736,0,0,1.59736,-392.129,-207.89)">
+                        <g transform="matrix(1,0,0,1,-8.13842,0)">
+                            <path d="M691.571,298.268L691.571,214.834L670.501,214.834L670.501,206.479L726.106,206.479L726.106,214.834L700.774,214.834L700.774,298.268L691.571,298.268Z" style="fill:rgb(18,96,122);fill-rule:nonzero;"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-4.38223,0)">
+                            <path d="M732.016,298.268L732.016,206.479L741.219,206.479L741.219,246.924L788.688,246.924L788.688,206.479L797.831,206.479L797.831,298.268L788.688,298.268L788.688,255.219L741.219,255.219L741.219,298.268L732.016,298.268Z" style="fill:rgb(18,96,122);fill-rule:nonzero;"/>
+                        </g>
+                        <g transform="matrix(1.17379,0,0,1,-150.52,0)">
+                            <path d="M815.934,216.666L815.934,206.479L866.128,206.479L866.128,216.712L853.252,216.712C840.812,216.697 828.373,216.681 815.934,216.666ZM825.137,247.654L825.137,247.772L864.796,247.772L864.796,256.127L854.207,256.127L854.207,256.07L815.934,256.07L815.934,247.654L825.137,247.654ZM815.934,287.998C819.002,288.03 822.07,288.062 825.137,288.095L866.128,288.095L866.128,298.268L815.934,298.268L815.934,287.998Z" style="fill:rgb(18,96,122);"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

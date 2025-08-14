@@ -6,44 +6,43 @@ import ButtonVariants from './buttons/Button--Variants.astro';
 
 export interface Props {
   overlayComponent?: any;
-    contextSetterTxt?: string;
-    contextSetterClassName?: string;
-    headerTxt?: string;
-    headerClassName?: string;
-    headerLogoSrc?: string;
-    subHeaderTxt?: string;
-    subHeaderClassName?: string;
-    supportingCopyTxt?: string;
-    supportingCopyClassName?: string;
-    ctaTxt?: string;
-    ctaClassName?: string;
-    noPadding?: boolean;
-    paddingClasses?: string;
-    cycleInterval?: number;
-    targetActionsArray?: Array<{
-      text: string;
-      href: string;
-      type: 'primary' | 'secondary' | 'accent' | 'lean' | 'gradient' | 'animated' | 'ghost' | 'text-gradient' | 'partner';
-      buttonVariant?: 'solid' | 'transparent';
-      external?: boolean;
-      icon?: string;
-      size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-      children?: string;
-      className?: string;
-    }>;
-    backgroundsArray?: Array<{
-      type: 'image' | 'gradient' | 'video' | 'gif';
-      src?: string;
-      alt?: string;
-      gradient?: string;
-      overlay?: boolean;
-      overlayOpacity?: number;
-      overlayGradient?: string;
-    }>;
+  contextSetterTxt?: string;
+  contextSetterClassName?: string;
+  headerTxt?: string;
+  headerClassName?: string;
+  headerLogoSrc?: string;
+  subHeaderTxt?: string;
+  subHeaderClassName?: string;
+  supportingCopyTxt?: string;
+  supportingCopyClassName?: string;
+  ctaTxt?: string;
+  ctaClassName?: string;
+  noPadding?: boolean;
+  paddingClasses?: string;
+  cycleInterval?: number;
+  targetActionsArray?: Array<{
+    text: string;
+    href: string;
+    type: 'primary' | 'secondary' | 'accent' | 'lean' | 'gradient' | 'animated' | 'ghost' | 'text-gradient' | 'partner';
+    buttonVariant?: 'solid' | 'transparent';
+    external?: boolean;
+    icon?: string;
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    children?: string;
+    className?: string;
+  }>;
+  backgroundsArray?: Array<{
+    type: 'image' | 'gradient' | 'video' | 'gif';
+    src?: string;
+    alt?: string;
+    gradient?: string;
+    overlay?: boolean;
+    overlayOpacity?: number;
+    overlayGradient?: string;
+  }>;
 }
 
 const {
-  overlayComponent,
   contextSetterTxt = '',
   contextSetterClassName = '',
   headerTxt = '',
@@ -155,24 +154,28 @@ const getBackgroundClasses = (bg: any) => {
   <!-- Hero Content - Compressed spacing, bottom positioned, left-aligned text -->
   <div class="absolute inset-0 z-10 w-full">
     <div class="container mx-auto h-full">
-      <div class="h-full flex items-center">
-        <slot name="overlay" />
+      <div class="h-full flex items-start pt-10">
+        <div class="w-full">
+          <slot name="overlay" />
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:px-12 lg:px-16">
+  <div class="relative z-10 w-full max-w-full px-30 pb-16">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
       
       <!-- Left side: Text content -->
       <div class="flex-1 text-left space-y-3 lg:space-y-4 max-w-2xl">
         <!-- Context Setter -->
         {contextSetterTxt && (
-          <div class="inline-flex items-center px-3 py-1 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm">
-            <span class={`text-xs font-medium text-accent-800 tracking-wide uppercase ${contextSetterClassName}`}>
-              {contextSetterTxt}
-            </span>
-          </div>
+          <a href="/impact">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm">
+              <span class={`text-xs font-medium text-accent-800 tracking-wide uppercase ${contextSetterClassName}`}>
+                {contextSetterTxt}
+              </span>
+            </div>
+          </a>
         )}
 
         <!-- Main Header with Logo or Text -->

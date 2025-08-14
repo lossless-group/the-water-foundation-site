@@ -1,10 +1,7 @@
 ---
 import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
-import HeroImageFocused from '../components/basics/Hero--ImageFocused.astro';
-import MessageGridContent from '../layouts/sections/message-grids/MessageGridContent-Vnt2.astro';
+import HeroCenteredLogoImageFocused from '../components/basics/HeroCenteredLogo--ImageFocused.astro';
 import BlindSpotStoryVariant2 from '../layouts/sections/core-messages/BlindSpotV2.astro';
-import WhoWeAreExtendedV1 from '../layouts/sections/who-we-are/WhoWeAreExtendedV1.astro';
-import WhoWeAreExtendedV2 from '../layouts/sections/who-we-are/WhoWeAreExtendedV2.astro';
 import WhoWeAreExtendedV3 from '../layouts/sections/who-we-are/WhoWeAreExtendedV3.astro';
 import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.astro';
 ---
@@ -15,12 +12,12 @@ import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.a
 	containerClass="w-full max-w-none p-0"
 >
 	<!-- Full-Width Hero Section -->
-	<HeroImageFocused 
+	<HeroCenteredLogoImageFocused 
 		contextSetterTxt="Global Impact"
 		headerLogoSrc="/trademark__The-Water-Foundation--Darker--Wide.svg"
-		headerTxt="A New Era for Water"
+		headerTxt="Improving the lives of 1 billion people through resilient access to clean water."
 		subHeaderTxt="Securing our water future through innovation, investment, and impact."
-		supportingCopyTxt="We are at a critical juncture where water scarcity threatens communities, economies, and ecosystems worldwide. The Water Foundation is pioneering a new approach to water security that combines cutting-edge technology, sustainable finance, and community engagement to create lasting solutions."
+		supportingCopyTxt="The Water Foundation is pioneering a new approach to water security that combines cutting-edge technology, blended & sustainable finance, and networked capital to create lasting solutions."
 		targetActionsArray={[
 			{ 
 				text: 'Learn About Our Approach', 
@@ -48,45 +45,19 @@ import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.a
 		]}
 		paddingClasses="py-8 md:py-12 lg:py-16"
 	>
-		<div slot="overlay" class="w-full max-w-6xl mx-auto px-4">
-			<CrisisByNumbers />
-		</div>
+
 	</HeroImageFocused>
 
-<!-- Blind Spot Story -->
-<BlindSpotStoryVariant2 />
+	<!-- Blind Spot Story -->
+	<BlindSpotStoryVariant2 />
 
-<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
 
-<!-- Who We Are - Variant 1 -->
-<div class="mb-16">
-  <div class="text-center mb-12">
-    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 1: Storytelling Narrative</h3>
-    <div class="w-16 h-0.5 bg-primary/30 mx-auto"></div>
-  </div>
-  <WhoWeAreExtendedV1 />
-</div>
+	<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
 
-<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
 
-<!-- Who We Are - Variant 2 -->
-<div class="mb-16">
-  <div class="text-center mb-12">
-    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 2: Impact Focused</h3>
-    <div class="w-16 h-0.5 bg-blue-500/30 mx-auto"></div>
-  </div>
-  <WhoWeAreExtendedV2 />
-</div>
-
-<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
-
-<!-- Who We Are - Variant 3 -->
-<div>
-  <div class="text-center mb-12">
-    <h3 class="text-2xl font-semibold text-foreground/80 mb-2">Variant 3: Visual Timeline</h3>
-    <div class="w-16 h-0.5 bg-teal-500/30 mx-auto"></div>
-  </div>
-  <WhoWeAreExtendedV3 />
-</div>
+	<!-- Who We Are - Variant 3 -->
+	<div>
+	<WhoWeAreExtendedV3 />
+	</div>
 
 </BaseThemeLayout>
