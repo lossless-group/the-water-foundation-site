@@ -1,6 +1,8 @@
 ---
 import ButtonPrimary from './buttons/Button--Primary.astro';
 import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro'
+import ButtonVariants from './buttons/Button--Variants.astro';
 
 interface BackgroundItem {
   type: 'image' | 'video' | 'gif' | 'color';
@@ -25,7 +27,7 @@ interface Props {
   targetActionsArray?: Array<{
     text: string;
     href: string;
-    type: 'primary' | 'secondary';
+    type: 'primary' | 'secondary' | 'accent';
     size?: 'sm' | 'md' | 'lg';
     external?: boolean;
   }>;
@@ -135,32 +137,34 @@ const getBackgroundClasses = (bg: BackgroundItem) => {
     })}
   </div>
 
-  <!-- Centered Logo with Context -->
+  <!-- Centered Logo -->
   <div class="relative z-10 flex-1 flex flex-col items-center justify-center p-4">
     {/* Space above logo */}
     <div class="flex-1"></div>
     
-    {/* Logo */}
-    {headerLogoSrc && (
-      <div class="max-w-2xl w-full mx-auto text-center">
-        <img 
-          src={headerLogoSrc} 
-          alt="Logo" 
-          class="mx-auto max-w-full h-auto"
+    {/* Center column: App icon (big) on top, wordmark below */}
+    <div class="max-w-2xl w-full mx-auto text-center">
+      <div class="inline-flex flex-col items-center gap-6">
+        <img
+          src="/appIcon__The-Water-Foundation--Darkest.svg"
+          alt="The Water Foundation icon"
+          class="mx-auto object-contain w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 filter brightness-[.7]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <img
+          src="/wordmark__The-Water-Foundation--Darker--Wide.svg"
+          alt="The Water Foundation wordmark"
+          class="mx-auto object-contain w-[min(90vw,56rem)] h-auto filter brightness-[.7]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
       </div>
-    )}
+    </div>
     
-    {/* Context below logo */}
-    {contextSetterTxt && (
-      <div class="mt-12 w-full max-w-2xl mx-auto text-center">
-        <p class="text-sm font-medium text-white/80 uppercase tracking-wider">
-          {contextSetterTxt}
-        </p>
-      </div>
-    )}
-    
-    {/* Space below context */}
+    {/* Space below logo */}
     <div class="flex-1"></div>
   </div>
 
@@ -202,15 +206,27 @@ const getBackgroundClasses = (bg: BackgroundItem) => {
 
       <!-- Right side: CTA Buttons -->
       {targetActionsArray.length > 0 && (
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-col gap-4">
           {targetActionsArray.map((action, index) => {
+            // Accent button has a different API (uses `text` prop instead of slot)
+            if (action.type === 'accent') {
+              return (
+                <ButtonAccent
+                  href={action.href}
+                  text={action.text}
+                  external={action.external}
+                  className="w-full"
+                />
+              );
+            }
+
             const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
             return (
               <ButtonComponent
                 href={action.href}
                 size={action.size || 'md'}
                 external={action.external}
-                className="w-full sm:w-auto"
+                className="w-full"
               >
                 {action.text}
               </ButtonComponent>

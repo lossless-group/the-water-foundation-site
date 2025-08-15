@@ -22,7 +22,10 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
   </a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://vitest.dev" target="_blank" rel="noopener">
-    <img src="https://vitest.dev/logo.svg" alt="Vitest" height="48" />
+    <span style="display:inline-flex;align-items:center;gap:8px">
+      <img src="https://vitest.dev/logo.svg" alt="Vitest" height="48" />
+      <span style="font-weight:600;font-size:16px">Vitest</span>
+    </span>
   </a>
 </p>
 
