@@ -1,28 +1,15 @@
 ---
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
-import Hero from '../../components/basics/Hero.astro';
-import LogoGrid from '../../components/basics/grids/LogoGrid.astro';
+import LogoGridOnly, { type LogoOnlyItem } from '../../components/basics/grids/LogoGrid--LogoOnly.astro';
 import partnersData from '../../content/page-content/partners.json';
 
-const partners = partnersData;
-
+const partners: LogoOnlyItem[] = (partnersData as any[]).map((p: any) => ({
+  brand: p.conventionalName ?? p.officialName,
+  lightMode: p.logoLightMode,
+  darkMode: p.logoDarkMode,
+  urlToPartnerSite: p.urlToPartnerSite,
+}));
 ---
-
-<BaseThemeLayout
-	title="Our Partners | The Water Foundation"
-	description="Explore our strategic partnerships driving systemic change through innovative water solutions and unsiloed financial strategies."
-	themeClass="theme-water"
->
-	<Hero 
-		headerTxt="Our Current Partnerships"
-		subHeaderTxt="Meaningful collaborations for systemic change using unsiloed financial strategies."
-		headerClassName="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
-		subHeaderClassName="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto"
-    paddingClasses="py-8 md:py-12 lg:py-16"
-	/>
-
-	<!-- Partners content will go here -->
-	<div class="container mx-auto px-4 py-16">
-        <LogoGrid {partners} />
-	</div>
+<BaseThemeLayout>
+  <LogoGridOnly partners={partners} />
 </BaseThemeLayout>

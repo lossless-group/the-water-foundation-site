@@ -1,0 +1,62 @@
+---
+import LogoOnlyContainer from './grid-cards/LogoOnlyContainer.astro';
+
+export interface LogoOnlyItem {
+  brand: string;
+  lightMode: string;
+  darkMode?: string;
+  urlToPartnerSite: string;
+}
+
+export interface LogoGridOnlyProps {
+  partners: LogoOnlyItem[];
+  className?: string;
+  gridCols?: {
+    default?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+  };
+}
+
+const {
+  partners = [],
+  className = '',
+  gridCols = {
+    default: '1',
+    sm: '2',
+    lg: '3',
+    xl: '4',
+  },
+} = Astro.props as LogoGridOnlyProps;
+
+// Generate grid column classes based on props (falls back sensibly)
+const gridColsClass = [
+  gridCols.default ? `grid-cols-${gridCols.default}` : 'grid-cols-1',
+  gridCols.sm ? `sm:grid-cols-${gridCols.sm}` : '',
+  gridCols.md ? `md:grid-cols-${gridCols.md}` : '',
+  gridCols.lg ? `lg:grid-cols-${gridCols.lg}` : 'lg:grid-cols-4',
+  gridCols.xl ? `xl:grid-cols-${gridCols.xl}` : 'xl:grid-cols-6',
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div
+  class:list={[
+    'grid gap-8 md:gap-10',
+    gridColsClass,
+    'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12',
+    className,
+  ]}
+>
+  {partners.map((p: LogoOnlyItem) => (
+    <LogoOnlyContainer
+      brand={p.brand}
+      lightMode={p.lightMode}
+      darkMode={p.darkMode}
+      urlToPartnerSite={p.urlToPartnerSite}
+    />
+  ))}
+</div>

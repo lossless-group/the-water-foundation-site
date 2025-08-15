@@ -3,6 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import TeamGrid from '../../components/team/TeamGrid.astro';
 import type { SocialLink } from '../../components/ui/SocialIcons.astro';
 import WhoWeAreTimeline from '../../layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '../../layouts/sections/propose-yourself/ProposeYourself.astro';
 
 interface TeamMember {
   name: string;
@@ -147,21 +148,10 @@ const teamMembers: TeamMember[] = [
     <!-- Timeline -->
     <WhoWeAreTimeline />
 
-    <!-- Join Us CTA -->
-    <section class="py-16 bg-primary/5">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-foreground mb-6">Join Our Mission</h2>
-        <p class="text-foreground/80 max-w-2xl mx-auto mb-8">
-          We're always looking for passionate individuals to join our team and help us make a difference.
-        </p>
-        <a 
-          href="/careers" 
-          class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-        >
-          View Open Positions
-        </a>
-      </div>
-    </section>
+    <!-- Propose Yourself -->
+    <ProposeYourself />
+
+
   </main>
 </BaseThemeLayout>
 

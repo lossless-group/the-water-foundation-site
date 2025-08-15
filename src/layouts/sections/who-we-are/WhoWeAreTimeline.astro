@@ -1,68 +1,94 @@
 ---
+const { variant = 'comfortable' } = Astro.props as { variant?: 'compact' | 'comfortable' };
 
+const variants = {
+  compact: {
+    gap: 'space-y-10 md:space-y-12',
+    pad: 'p-4 md:p-5',
+    title: 'text-[clamp(1.125rem,2vw,1.25rem)]',
+    body: 'text-[clamp(0.95rem,1.8vw,1rem)]',
+  },
+  comfortable: {
+    gap: 'space-y-16 md:space-y-20',
+    pad: 'p-6 md:p-8',
+    title: 'text-[clamp(1.25rem,2.2vw,1.375rem)]',
+    body: 'text-[clamp(1rem,1.9vw,1.0625rem)]',
+  },
+} as const;
+
+const v = variants[variant];
 ---
-    <!-- Timeline -->
+<!-- Timeline -->
+<section class="py-12 md:py-16">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative">
-        <!-- Timeline Line -->
-        <div class="absolute left-1/2 w-1 h-full bg-gradient-to-b from-primary to-blue-500 -ml-px"></div>
-        
-        <!-- Timeline Items -->
-        <div class="space-y-16">
-          <!-- Item 1 -->
-          <div class="relative flex md:items-center">
-            <div class="hidden md:flex md:w-1/2"></div>
-            <div class="z-10 flex items-center justify-center w-6 h-6 rounded-full bg-primary border-4 border-background mx-auto md:mx-0"></div>
-            <div class="md:w-1/2 md:pl-12">
-              <div class="bg-card/50 border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-xl font-semibold text-foreground mb-2">The Beginning</h3>
-                <p class="text-foreground/80">
-                  A group of systems thinkers met at COP29, united by a shared vision to address the global water crisis through innovation and collaboration.
-                </p>
-              </div>
+      <!-- Timeline Line (desktop/tablet) -->
+      <div class="hidden md:block absolute left-1/2 w-1 h-full bg-gradient-to-b from-primary to-blue-500 -ml-px"></div>
+      <!-- Simple left rail on small screens -->
+      <div class="md:hidden absolute left-4 w-[3px] h-full bg-gradient-to-b from-primary to-blue-500"></div>
+
+      <!-- Timeline Items -->
+      <div class={v.gap}>
+        <!-- Item 1 -->
+        <div class="relative md:flex md:items-center">
+          <div class="hidden md:flex md:w-1/2"></div>
+          <!-- Marker (hidden on mobile for cleaner stack) -->
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-primary border-4 border-background mx-auto md:mx-0"></div>
+          <div class="md:w-1/2 md:pl-12">
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>The Beginning</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
+                A group of systems thinkers met at COP29, united by a shared vision to address the global water crisis through innovation and collaboration.
+              </p>
             </div>
-          </div>
-  
-          <!-- Item 2 -->
-          <div class="relative flex md:items-center">
-            <div class="md:w-1/2 pr-12 text-right">
-              <div class="bg-card/50 border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-xl font-semibold text-foreground mb-2">Our Mission</h3>
-                <p class="text-foreground/80">
-                  We committed to advancing SDG 6 and improving the lives of 1 billion people through resilient, equitable access to clean water.
-                </p>
-              </div>
-            </div>
-            <div class="z-10 flex items-center justify-center w-6 h-6 rounded-full bg-blue-500 border-4 border-background mx-auto md:mx-0"></div>
-            <div class="hidden md:flex md:w-1/2"></div>
-          </div>
-  
-          <!-- Item 3 -->
-          <div class="relative flex md:items-center">
-            <div class="hidden md:flex md:w-1/2"></div>
-            <div class="z-10 flex items-center justify-center w-6 h-6 rounded-full bg-teal-500 border-4 border-background mx-auto md:mx-0"></div>
-            <div class="md:w-1/2 md:pl-12">
-              <div class="bg-card/50 border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-xl font-semibold text-foreground mb-2">Global Expansion</h3>
-                <p class="text-foreground/80">
-                  Established teams in Dubai, Delhi, Vaduz, and Munich to create a truly global impact network for water innovation.
-                </p>
-              </div>
-            </div>
-          </div>
-  
-          <!-- Item 4 -->
-          <div class="relative flex md:items-center">
-            <div class="md:w-1/2 pr-12 text-right">
-              <div class="bg-card/50 border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-xl font-semibold text-foreground mb-2">Integrated Approach</h3>
-                <p class="text-foreground/80">
-                  Launched our three-pillar strategy: Venture Building, VC Fund, and PE Fund to address water challenges at every stage.
-                </p>
-              </div>
-            </div>
-            <div class="z-10 flex items-center justify-center w-6 h-6 rounded-full bg-purple-500 border-4 border-background mx-auto md:mx-0"></div>
-            <div class="hidden md:flex md:w-1/2"></div>
           </div>
         </div>
+
+        <!-- Item 2 -->
+        <div class="relative md:flex md:items-center">
+          <div class="md:w-1/2 md:pr-12 text-left md:text-right">
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>Our Mission</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
+                We committed to advancing SDG 6 and improving the lives of 1 billion people through resilient, equitable access to clean water.
+              </p>
+            </div>
+          </div>
+          <!-- Marker (hidden on mobile) -->
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-blue-500 border-4 border-background mx-auto md:mx-0"></div>
+          <div class="hidden md:flex md:w-1/2"></div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative md:flex md:items-center">
+          <div class="hidden md:flex md:w-1/2"></div>
+          <!-- Marker (hidden on mobile) -->
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-teal-500 border-4 border-background mx-auto md:mx-0"></div>
+          <div class="md:w-1/2 md:pl-12">
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>World-Class Talent Around the World</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
+                Established teams in Dubai, Delhi, Vaduz, and Munich to create a truly global impact network for water innovation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="relative md:flex md:items-center">
+          <div class="md:w-1/2 md:pr-12 text-left md:text-right">
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>Unsiloed Finance</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
+                Launched our three-pillar strategy: Venture Building, VC Fund, and PE Fund to address water challenges at every stage.
+              </p>
+            </div>
+          </div>
+          <!-- Marker (hidden on mobile) -->
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-purple-500 border-4 border-background mx-auto md:mx-0"></div>
+          <div class="hidden md:flex md:w-1/2"></div>
+        </div>
       </div>
-  
+    </div>
+  </div>
+  </section>

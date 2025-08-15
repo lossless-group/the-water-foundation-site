@@ -1,0 +1,54 @@
+---
+import ThemeImage from '../../../ui/ThemeImage.astro';
+
+interface Props {
+  brand: string;
+  lightMode: string;
+  darkMode?: string;
+  urlToPartnerSite: string;
+}
+
+const { brand, lightMode, darkMode, urlToPartnerSite } = Astro.props as Props;
+---
+
+<a
+  href={urlToPartnerSite}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group relative block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-lg"
+  aria-label={`Visit ${brand} website`}
+>
+  <!-- Card container -->
+  <div class="h-full rounded-xl bg-white/60 dark:bg-white/10 supports-[backdrop-filter]:backdrop-blur-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+    <!-- Hover overlay with external-link button -->
+    <div class="pointer-events-none absolute inset-0 rounded-xl bg-black/5 dark:bg-white/5 transition-colors group-hover:bg-black/8 dark:group-hover:bg-white/8"></div>
+
+    <div class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity">
+      <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground shadow ring-1 ring-primary/50">
+        <!-- External link icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17l10-10" />
+          <path d="M14 7h3a1 1 0 0 1 1 1v3" />
+          <path d="M7 10v7a1 1 0 0 0 1 1h7" />
+        </svg>
+        <span class="sr-only">Open external site</span>
+      </span>
+    </div>
+
+    <!-- Logo area -->
+    <div class="p-6 sm:p-8">
+      <div class="relative w-full aspect-[3/2]">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-full max-w-[28rem] [&_img]:max-h-full">
+            <ThemeImage
+              lightSrc={lightMode}
+              darkSrc={darkMode || lightMode}
+              alt={brand}
+              class="h-full w-auto max-h-full object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
