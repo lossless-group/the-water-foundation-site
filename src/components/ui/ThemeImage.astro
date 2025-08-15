@@ -6,6 +6,7 @@ interface Props {
   darkSrc?: string;
   alt: string;
   className?: string;
+  class?: string;
   loading?: 'eager' | 'lazy';
   width?: number | string;
   height?: number | string;
@@ -17,7 +18,7 @@ const props = Astro.props as Props;
 const lightSrc = props.lightSrc;
 const darkSrc = props.darkSrc || lightSrc; // Fallback to lightSrc if darkSrc not provided
 const alt = props.alt;
-const className = props.className || '';
+const className = props.className || props.class || '';
 const loading = props.loading || 'lazy';
 const width = props.width || '100%';
 const height = props.height || 'auto';
@@ -25,7 +26,7 @@ const decoding = props.decoding || 'async';
 const fetchpriority = props.fetchpriority || 'auto';
 ---
 
-<div class="theme-image-container relative w-full h-full">
+<div class="theme-image-container relative" class:list={[className]}>
   <!-- Light mode image (hidden in dark mode) -->
   <img
     src={lightSrc}
@@ -36,8 +37,7 @@ const fetchpriority = props.fetchpriority || 'auto';
     decoding={decoding}
     fetchpriority={fetchpriority}
     class:list={[
-      'block dark:hidden w-full h-full object-contain',
-      className
+      'light-image object-contain',
     ]}
   />
   
@@ -51,40 +51,28 @@ const fetchpriority = props.fetchpriority || 'auto';
     decoding={decoding}
     fetchpriority={fetchpriority}
     class:list={[
-      'hidden dark:block w-full h-full object-contain',
-      className
+      'dark-image object-contain',
     ]}
   />
 </div>
 
-<style>
+<style is:global>
   .theme-image-container {
     position: relative;
   }
 
-  /* Default: show light image, hide dark image */
-  .light-image {
-    opacity: 1;
-  }
-  
-  .dark-image {
-    opacity: 0;
-  }
+  /* Default: light image visible */
+  .light-image { display: block; }
+  .dark-image { display: none; }
 
-  /* Theme switching based on data-mode attribute */
-  :global([data-mode="dark"]) .light-image {
-    opacity: 0;
-  }
-  
-  :global([data-mode="dark"]) .dark-image {
-    opacity: 1;
-  }
-  
+  /* Swap in dark mode via data attribute */
+  html[data-mode="dark"] .light-image { display: none; }
+  html[data-mode="dark"] .dark-image { display: block; }
 
-  
-  /* Smooth transitions */
-  .light-image,
-  .dark-image {
-    transition: opacity 0.2s ease-in-out;
-  }
+  /* Also support Tailwind's .dark class on html */
+  html.dark .light-image { display: none; }
+  html.dark .dark-image { display: block; }
+
+  /* Smooth transitions (optional) */
+  .light-image, .dark-image { transition: opacity 0.2s ease-in-out; }
 </style>

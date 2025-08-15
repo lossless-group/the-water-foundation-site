@@ -51,7 +51,7 @@ const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
   />
 </div>
 
-<style>
+<style is:global>
   /* Default: show light logo, hide dark logo */
   .light-logo {
     display: block;
@@ -61,20 +61,16 @@ const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
   }
 
   /* Dark mode: hide light logo, show dark logo */
-  :global([data-mode="dark"]) .light-logo {
-    display: none;
-  }
-  :global([data-mode="dark"]) .dark-logo {
-    display: block;
-  }
+  html[data-mode="dark"] .light-logo { display: none; }
+  html[data-mode="dark"] .dark-logo { display: block; }
+
+  /* Also support Tailwind's .dark class on html */
+  html.dark .light-logo { display: none; }
+  html.dark .dark-logo { display: block; }
 
   /* Fallback for system preference */
   @media (prefers-color-scheme: dark) {
-    :root:not([data-mode="light"]) .light-logo {
-      display: none;
-    }
-    :root:not([data-mode="light"]) .dark-logo {
-      display: block;
-    }
+    :root:not([data-mode="light"]) .light-logo { display: none; }
+    :root:not([data-mode="light"]) .dark-logo { display: block; }
   }
 </style>
