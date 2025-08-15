@@ -29,6 +29,10 @@ interface Props {
   backgroundsArray?: BackgroundItem[];
   backgroundImageUrl?: string; // Backward compat
   paddingClasses?: string; // Custom padding for desktop section
+  showCenteredBranding?: boolean; // Show centered icon + wordmark overlay (md+)
+  appIconSrc?: string;
+  wordmarkSrc?: string;
+  desktopContentOffsetClass?: string; // additional mt/pt classes for md+ to clear branding
 }
 
 const {
@@ -40,7 +44,11 @@ const {
   targetActionsArray = [],
   backgroundsArray = [],
   backgroundImageUrl = '',
-  paddingClasses = 'py-8 md:py-12 lg:py-16'
+  paddingClasses = 'py-8 md:py-12 lg:py-16',
+  showCenteredBranding = true,
+  appIconSrc = '/appIcon__The-Water-Foundation--Darkest.svg',
+  wordmarkSrc = '/wordmark__The-Water-Foundation--Darker--Wide.svg'
+  ,desktopContentOffsetClass = 'mt-[18vh] lg:mt-[22vh]'
 } = Astro.props as Props;
 
 const backgrounds: BackgroundItem[] = backgroundsArray.length > 0
@@ -96,10 +104,36 @@ Variant behavior:
       );
     })}
 
+    {showCenteredBranding && (
+      <!-- Centered logo + wordmark overlay (md+) -->
+      <div class="hidden md:flex absolute inset-0 z-0 flex-col items-center justify-center p-4">
+        <div class="max-w-2xl w-full mx-auto text-center">
+          <div class="inline-flex flex-col items-center gap-6">
+            <img
+              src={appIconSrc}
+              alt="The Water Foundation icon"
+              class="mx-auto object-contain w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 filter brightness-[.7]"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <img
+              src={wordmarkSrc}
+              alt="The Water Foundation wordmark"
+              class="mx-auto object-contain w-[min(90vw,56rem)] h-auto filter brightness-[.7]"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+    )}
+
     <!-- Desktop/Tablet overlay content (hidden on mobile) -->
     <div class="hidden md:flex relative z-10 h-full flex-col">
       <div class="flex-1" />
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16">
+      <div class={`relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 ${desktopContentOffsetClass}`}>
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
           <!-- Left: Text -->
           <div class="flex-1 text-left space-y-6 max-w-2xl">

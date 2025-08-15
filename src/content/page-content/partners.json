@@ -1,7 +1,7 @@
 [
   {
-    "logoLightMode": "/trademarks/trademark__TUM-International.png",
-    "logoDarkMode": "/trademarks/trademark__TUM-International.png",
+    "logoLightMode": "/trademarks/trademark__TUM-International--Brand.png",
+    "logoDarkMode": "/trademarks/trademark__TUM-International--Lightest.png",
     "conventionalName": "Technical University of Munich",
     "officialName": "Technical University of Munich",
     "urlToPartnerSite": "https://www.tum.de/en/",
@@ -15,8 +15,8 @@
     ]
   },
   {
-    "logoLightMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network.png",
-    "logoDarkMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network.png",
+    "logoLightMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network--Darker.png",
+    "logoDarkMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network--Lightest.png",
     "conventionalName": "HIIN",
     "officialName": "Hellenic Impact Investing Network",
     "urlToPartnerSite": "https://thehiin.org/",
