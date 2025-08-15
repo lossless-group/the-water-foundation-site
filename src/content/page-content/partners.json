@@ -31,7 +31,7 @@
   },
   {
     "logoLightMode": "/trademarks/trademark__Swiss-Impact-Office.png",
-    "logoDarkMode": "/trademarks/trademark__Swiss-Impact-Office.png",
+    "logoDarkMode": "/trademarks/trademark__Swiss-Impact-Office--Lighter.png",
     "conventionalName": "Swiss Impact Office",
     "officialName": "Swiss Impact Office",
     "urlToPartnerSite": "https://impactoffice.ch/",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "logoLightMode": "/trademarks/trademark__Chancemaker-Foundation.svg",
+    "logoLightMode": "/trademarks/trademark__Chancemaker-Foundation--Darker.svg",
     "logoDarkMode": "/trademarks/trademark__Chancemaker-Foundation.svg",
     "conventionalName": "Chancemaker",
     "officialName": "Chancemaker Foundation",
