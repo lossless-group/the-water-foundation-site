@@ -19,7 +19,10 @@ const lightLogo = '/trademark__The-Water-Foundation--Darker.svg';
 const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
 ---
 
-<div class="brand-mark-wrapper relative w-full h-full">
+<div class:list={[
+  'brand-mark-wrapper relative w-full h-full',
+  className
+]}>
   <!-- Light mode logo -->
   <img
     src={lightLogo}
@@ -29,10 +32,7 @@ const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    class:list={[
-      'light-logo w-full h-full object-contain',
-      className
-    ]}
+    class="light-logo w-full h-full object-contain"
   />
   
   <!-- Dark mode logo -->
@@ -44,33 +44,22 @@ const darkLogo = '/trademark__The-Water-Foundation--Lighter.svg';
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    class:list={[
-      'dark-logo w-full h-full object-contain',
-      className
-    ]}
+    class="dark-logo w-full h-full object-contain"
   />
 </div>
 
 <style is:global>
   /* Default: show light logo, hide dark logo */
-  .light-logo {
-    display: block;
-  }
-  .dark-logo {
-    display: none;
-  }
+  .brand-mark-wrapper .light-logo { display: block !important; }
+  .brand-mark-wrapper .dark-logo { display: none !important; }
 
   /* Dark mode: hide light logo, show dark logo */
-  html[data-mode="dark"] .light-logo { display: none; }
-  html[data-mode="dark"] .dark-logo { display: block; }
+  html[data-mode="dark"] .brand-mark-wrapper .light-logo { display: none !important; }
+  html[data-mode="dark"] .brand-mark-wrapper .dark-logo { display: block !important; }
 
   /* Also support Tailwind's .dark class on html */
-  html.dark .light-logo { display: none; }
-  html.dark .dark-logo { display: block; }
+  html.dark .brand-mark-wrapper .light-logo { display: none !important; }
+  html.dark .brand-mark-wrapper .dark-logo { display: block !important; }
 
-  /* Fallback for system preference */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-mode="light"]) .light-logo { display: none; }
-    :root:not([data-mode="light"]) .dark-logo { display: block; }
-  }
+  /* No system preference fallback: authoritative source is data-mode/.dark on html */
 </style>
