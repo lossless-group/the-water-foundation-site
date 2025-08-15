@@ -327,7 +327,7 @@ html {
 /* Dark mode overrides for water theme */
 .theme-water[data-mode="dark"] {
   --color-background: #042632; 
-  --color-foreground: #F7FFFD;
+  --color-foreground: #fbfffe;
   --color-card: rgb(12, 74, 110);
   --color-card-foreground: #E7FFFB;
   --color-primary: rgb(14, 165, 233);
