@@ -1,0 +1,184 @@
+---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro';
+
+interface BackgroundItem {
+  type: 'image' | 'video' | 'gif' | 'color';
+  src?: string;
+  alt?: string;
+  overlay?: boolean;
+  overlayOpacity?: number;
+  overlayGradient?: string;
+  position?: string;
+}
+
+interface Props {
+  contextSetterTxt?: string;
+  headerTxt?: string;
+  headerLogoSrc?: string;
+  subHeaderTxt?: string;
+  supportingCopyTxt?: string;
+  targetActionsArray?: Array<{
+    text: string;
+    href: string;
+    type: 'primary' | 'secondary' | 'accent';
+    size?: 'sm' | 'md' | 'lg';
+    external?: boolean;
+  }>;
+  backgroundsArray?: BackgroundItem[];
+  backgroundImageUrl?: string; // Backward compat
+  paddingClasses?: string; // Custom padding for desktop section
+}
+
+const {
+  contextSetterTxt = '',
+  headerTxt = '',
+  headerLogoSrc = '',
+  subHeaderTxt = '',
+  supportingCopyTxt = '',
+  targetActionsArray = [],
+  backgroundsArray = [],
+  backgroundImageUrl = '',
+  paddingClasses = 'py-8 md:py-12 lg:py-16'
+} = Astro.props as Props;
+
+const backgrounds: BackgroundItem[] = backgroundsArray.length > 0
+  ? backgroundsArray
+  : [{ type: 'image' as const, src: backgroundImageUrl || '/images/hero-bg.jpg', overlay: true, overlayOpacity: 0.4 }];
+---
+
+<!--
+Variant behavior:
+- Mobile (default): hero media is a fixed-height container; content (text + buttons) renders below, outside the image.
+- md+ viewport: hero behaves like a classic image hero with content overlaid near the bottom.
+- Fixes duplication by not setting CSS background-image and <img> simultaneously. We only render media elements.
+-->
+<section class="relative overflow-hidden">
+  <!-- Media container: mobile shows a fixed-height cover; md+ stretches to screen height -->
+  <div class="relative w-full h-[60vh] min-h-[420px] md:h-screen">
+    {backgrounds.map((bg, index) => {
+      const isFirst = index === 0;
+      return (
+        <div class={`absolute inset-0 ${isFirst ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`} aria-hidden={!isFirst}>
+          {bg.type === 'image' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          {bg.type === 'gif' && bg.src && (
+            <img
+              src={bg.src}
+              alt={bg.alt || 'Background animation'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          {bg.type === 'video' && bg.src && (
+            <video
+              class="absolute inset-0 w-full h-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src={bg.src} type="video/mp4" />
+            </video>
+          )}
+          {bg.overlay && (
+            <div 
+              class="absolute inset-0"
+              style={`background: ${bg.overlayGradient || 'rgba(0,0,0,0.4)'}; opacity: ${bg.overlayOpacity ?? 0.4};`}
+            />
+          )}
+        </div>
+      );
+    })}
+
+    <!-- Desktop/Tablet overlay content (hidden on mobile) -->
+    <div class="hidden md:flex relative z-10 h-full flex-col">
+      <div class="flex-1" />
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+          <!-- Left: Text -->
+          <div class="flex-1 text-left space-y-6 max-w-2xl">
+            {contextSetterTxt && (
+              <a href="/impact" class="inline-block">
+                <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm hover:bg-accent-200/70 transition-colors">
+                  <span class="text-xs font-medium text-accent-800 tracking-wide uppercase">{contextSetterTxt}</span>
+                </div>
+              </a>
+            )}
+            <div class="space-y-4">
+              {headerTxt && (
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">{headerTxt}</h1>
+              )}
+              {subHeaderTxt && (
+                <p class="text-lg md:text-xl text-white/90 font-medium leading-relaxed">{subHeaderTxt}</p>
+              )}
+              {supportingCopyTxt && (
+                <p class="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl">{supportingCopyTxt}</p>
+              )}
+            </div>
+          </div>
+          <!-- Right: Buttons -->
+          {targetActionsArray.length > 0 && (
+            <div class="flex flex-col gap-4">
+              {targetActionsArray.map((action) => {
+                if (action.type === 'accent') {
+                  return (
+                    <ButtonAccent href={action.href} text={action.text} external={action.external} className="w-full" />
+                  );
+                }
+                const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
+                return (
+                  <ButtonComponent href={action.href} size={action.size || 'md'} external={action.external} className="w-full">{action.text}</ButtonComponent>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile content block (pops out below image) -->
+  <div class="md:hidden relative z-10 -mt-4">
+    <div class="rounded-t-2xl bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-t border-border/20 shadow-[0_-10px_30px_rgba(0,0,0,.15)]">
+      <div class="max-w-3xl mx-auto px-6 py-8 space-y-5">
+        {contextSetterTxt && (
+          <a href="/impact" class="inline-block">
+            <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-accent-100/80 border border-accent-200/50">
+              <span class="text-xs font-medium text-accent-800 tracking-wide uppercase">{contextSetterTxt}</span>
+            </div>
+          </a>
+        )}
+        {headerTxt && (
+          <h1 class="text-2xl font-bold leading-tight tracking-tight text-foreground">{headerTxt}</h1>
+        )}
+        {subHeaderTxt && (
+          <p class="text-base text-foreground/80 leading-relaxed">{subHeaderTxt}</p>
+        )}
+        {supportingCopyTxt && (
+          <p class="text-sm text-foreground/70 leading-relaxed">{supportingCopyTxt}</p>
+        )}
+        {targetActionsArray.length > 0 && (
+          <div class="flex flex-col gap-3 pt-2">
+            {targetActionsArray.map((action) => {
+              if (action.type === 'accent') {
+                return (
+                  <ButtonAccent href={action.href} text={action.text} external={action.external} className="w-full" />
+                );
+              }
+              const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
+              return (
+                <ButtonComponent href={action.href} size={action.size || 'md'} external={action.external} className="w-full">{action.text}</ButtonComponent>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

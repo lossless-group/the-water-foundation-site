@@ -5,6 +5,8 @@
  * Integrates with Water Theme design system
  */
 
+import { formatDate } from '../../utils/date';
+
 export interface Props {
   title: string;
   description: string;
@@ -42,8 +44,8 @@ const {
     
     <div class="flex justify-between items-center">
       {date && (
-        <time class="text-sm opacity-60">
-          {date}
+        <time datetime={date} class="text-sm opacity-60">
+          {formatDate(date)}
         </time>
       )}
       <a 

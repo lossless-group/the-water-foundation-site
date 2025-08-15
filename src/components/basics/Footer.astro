@@ -44,26 +44,26 @@ const {
       title: 'About',
       items: [
         { text: 'Our Mission', href: '/about/mission' },
-        { text: 'Our Team', href: '/about/team' },
-        { text: 'Financials', href: '/about/financials' },
-        { text: 'Careers', href: '/about/careers' },
+        { text: 'Our People', href: '/about/the-people' },
+        { text: 'Investment Strategy', href: '/strategy' },
+        { text: 'Artesians', href: '/about/artesians' },
       ]
     },
     {
-      title: 'Programs',
+      title: 'Pattern Breakers',
       items: [
-        { text: 'Clean Water', href: '/programs/clean-water' },
-        { text: 'Education', href: '/programs/education' },
-        { text: 'Advocacy', href: '/programs/advocacy' },
+        { text: 'Saltwater & Freshwater', href: '/beliefs/saltwater-freshwater' },
+        { text: 'For-Profit & Non-Profit', href: '/beliefs/for-profit-non-profit' },
+        { text: 'Private Sector & Public Sector', href: '/beliefs/private-public' },
+        { text: 'Evergreen & Closed-End Funds', href: '/beliefs/public-private' },
       ]
     },
     {
       title: 'Get Involved',
       items: [
-        { text: 'Donate', href: '/donate' },
-        { text: 'Volunteer', href: '/volunteer' },
         { text: 'Partner', href: '/partner' },
         { text: 'Events', href: '/events' },
+        { text: 'Fellowship', href: '/our-fellowship-program' },
       ]
     }
   ],
@@ -88,7 +88,7 @@ const currentYear = new Date().getFullYear();
     className
   ]}
 >
-  <ResponsiveContainer class="pb-12 md:pb-16 lg:pb-20">
+  <ResponsiveContainer class="pb-16 md:pb-20 lg:pb-24">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
       <!-- Logo and description -->
       <div class="md:col-span-2 lg:col-span-4">
@@ -165,21 +165,25 @@ const currentYear = new Date().getFullYear();
     </div>
     
     <!-- Bottom bar -->
-    <div class="mt-12 border-t border-border/10 pt-8">
+    <div class="mt-12 border-t border-border/10 py-10" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
       <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
         <p class="text-sm text-foreground/60">
           {copyright.replace('{year}', currentYear.toString())}
         </p>
         
-        <div class="flex flex-wrap justify-center gap-4 text-sm sm:justify-end">
+        <div class="flex flex-wrap justify-center gap-6 text-sm sm:justify-end">
+          <a href="/about/our-charter" class="hover:text-primary transition-colors">
+            Our Charter
+          </a>
           <a href="/privacy" class="hover:text-primary transition-colors">
             Privacy Policy
           </a>
-          <span class="text-foreground/30">•</span>
+          <a href="/imprint" class="hover:text-primary transition-colors">
+            Imprint
+          </a>
           <a href="/terms" class="hover:text-primary transition-colors">
             Terms of Service
           </a>
-          <span class="text-foreground/30">•</span>
           <a href="/accessibility" class="hover:text-primary transition-colors">
             Accessibility
           </a>
