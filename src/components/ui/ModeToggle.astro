@@ -9,98 +9,97 @@
   aria-label="Toggle dark mode"
   data-theme-toggle
 >
-  <picture>
-    <source
-      srcset="/icons/moon.svg"
-      media="(prefers-color-scheme: dark)"
-      width="20"
-      height="20"
-    />
-    <img
-      src="/icons/sun.svg"
-      alt="Theme toggle icon"
-      width="20"
-      height="20"
-      class="w-5 h-5"
-      data-theme-icon
-    />
-  </picture>
+  <!-- Two icons; CSS switches visibility based on mode -->
+  <img
+    src="/icons/sun.svg"
+    alt="Switch to dark mode"
+    width="20"
+    height="20"
+    class="sun-icon w-5 h-5"
+    aria-hidden="true"
+  />
+  <img
+    src="/icons/moon.svg"
+    alt="Switch to light mode"
+    width="20"
+    height="20"
+    class="moon-icon w-5 h-5"
+    aria-hidden="true"
+  />
 </button>
 
 <script is:inline>
-  // Toggle between light and dark mode
-  function toggleMode() {
-    const html = document.documentElement;
-    const currentMode = html.getAttribute('data-mode');
-    const newMode = currentMode === 'dark' ? 'light' : 'dark';
-    
-    // Update the data-mode attribute on html element
-    if (newMode === 'dark') {
-      html.setAttribute('data-mode', 'dark');
-    } else {
-      html.removeAttribute('data-mode');
-    }
-    
-    // Also set class for Tailwind dark mode if needed
-    if (newMode === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-    
-    // Save preference to localStorage
-    localStorage.setItem('mode', newMode);
-    
-    // Update button state
-    updateButton(newMode === 'dark');
+  // Centralized mode switching via global utility (loaded in base layout)
+  // Fallback: dynamically import if not yet available
+
+  function updateAllToggleButtons(isDark) {
+    const buttons = document.querySelectorAll('[data-theme-toggle]');
+    buttons.forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(isDark));
+      const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    });
   }
-  
-  // Update button state
-  function updateButton(isDark) {
-    const button = document.querySelector('.mode-toggle');
-    if (!button) return;
-    
-    button.setAttribute('aria-pressed', isDark);
-    button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-  
-  // Initialize
-  document.addEventListener('DOMContentLoaded', () => {
-    // Set initial mode from localStorage or system preference
-    const savedMode = localStorage.getItem('mode');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedMode === 'dark' || (!savedMode && prefersDark)) {
-      document.documentElement.setAttribute('data-mode', 'dark');
-      document.documentElement.classList.add('dark');
-      updateButton(true);
-    } else {
-      document.documentElement.removeAttribute('data-mode');
-      document.documentElement.classList.remove('dark');
-      updateButton(false);
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    let modeSwitcher = window.modeSwitcher;
+    if (!modeSwitcher) {
+      try {
+        const mod = await import('/src/utils/mode-switcher.js');
+        modeSwitcher = window.modeSwitcher || mod.modeSwitcher;
+      } catch (e) {
+        console.warn('Mode switcher module failed to load', e);
+      }
     }
-    
-    // Handle button click
+    // Initialize button state from utility
+    if (modeSwitcher) {
+      const isDark = (modeSwitcher.getStoredMode() || modeSwitcher.getSystemPreference()) === 'dark';
+      updateAllToggleButtons(isDark);
+    }
+
+    // Click handler: delegate to utility
     document.addEventListener('click', (event) => {
-      if (event.target.closest('[data-theme-toggle]')) {
-        toggleMode();
+      const toggle = event.target.closest('[data-theme-toggle]');
+      if (!toggle) return;
+      if (modeSwitcher) {
+        const newMode = modeSwitcher.toggleMode();
+        updateAllToggleButtons(newMode === 'dark');
       }
     });
-    
-    // Listen for system color scheme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (!localStorage.getItem('mode')) {
-        if (e.matches) {
-          document.documentElement.setAttribute('data-mode', 'dark');
-          document.documentElement.classList.add('dark');
-          updateButton(true);
-        } else {
-          document.documentElement.removeAttribute('data-mode');
-          document.documentElement.classList.remove('dark');
-          updateButton(false);
+
+    // Sync when utility dispatches mode changes (and on other tabs/windows)
+    if (modeSwitcher) {
+      window.addEventListener('mode-change', (e) => {
+        const newMode = e?.detail?.mode || modeSwitcher.getCurrentMode();
+        updateAllToggleButtons(newMode === 'dark');
+      });
+    }
+
+    // Respect system changes only when no explicit preference is stored
+    if (modeSwitcher) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const systemListener = (e) => {
+        if (!modeSwitcher.getStoredMode()) {
+          modeSwitcher.applyMode(e.matches ? 'dark' : 'light');
+          updateAllToggleButtons(e.matches);
         }
-      }
-    });
+      };
+      mq.addEventListener('change', systemListener);
+    }
   });
 </script>
+
+<style is:global>
+  /* Default to light (sun visible) */
+  .sun-icon { display: block; }
+  .moon-icon { display: none; }
+
+  /* When in dark mode via data attribute */
+  html[data-mode="dark"] .sun-icon { display: none; }
+  html[data-mode="dark"] .moon-icon { display: block; }
+
+  /* Also support Tailwind's .dark class */
+  html.dark .sun-icon { display: none; }
+  html.dark .moon-icon { display: block; }
+</style>

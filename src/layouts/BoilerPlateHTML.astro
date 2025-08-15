@@ -34,29 +34,36 @@ const initialTheme = 'light'; // Default to light theme
 		<slot />
 
     <script is:inline>
-      // Initialize theme from localStorage or system preference
+      // Early mode application to avoid FOUC; do not write to localStorage here.
       (function() {
-        // Get current mode from localStorage or system preference
         const savedMode = localStorage.getItem('mode');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initialMode = savedMode || (systemPrefersDark ? 'dark' : 'light');
-        
-        // Apply the initial mode
-        document.documentElement.setAttribute('data-mode', initialMode);
-        
-        // If no saved preference, set it based on system preference
-        if (!savedMode) {
-          localStorage.setItem('mode', systemPrefersDark ? 'dark' : 'light');
+        const mode = savedMode || (systemPrefersDark ? 'dark' : 'light');
+        const html = document.documentElement;
+        if (mode === 'dark') {
+          html.setAttribute('data-mode', 'dark');
+          html.classList.add('dark');
+        } else {
+          html.removeAttribute('data-mode');
+          html.classList.remove('dark');
         }
-        
-        // Listen for system preference changes (only when no user preference is set)
+        // React to system changes only when no stored preference exists.
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
           if (!localStorage.getItem('mode')) {
-            const mode = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-mode', mode);
+            const newMode = e.matches ? 'dark' : 'light';
+            if (newMode === 'dark') {
+              html.setAttribute('data-mode', 'dark');
+              html.classList.add('dark');
+            } else {
+              html.removeAttribute('data-mode');
+              html.classList.remove('dark');
+            }
           }
         });
       })();
+    </script>
+    <script type="module">
+      import '/src/utils/mode-switcher.js';
     </script>
 	</body>
 </html>

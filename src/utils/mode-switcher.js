@@ -48,8 +48,11 @@ export class ModeSwitcher {
     
     if (mode === 'dark') {
       html.setAttribute('data-mode', 'dark');
+      // Ensure Tailwind dark mode class is kept in sync
+      html.classList.add('dark');
     } else {
       html.removeAttribute('data-mode');
+      html.classList.remove('dark');
     }
     
     // Only store the mode if it's not the initial load
@@ -111,4 +114,10 @@ if (typeof document !== 'undefined') {
     // Apply the stored mode or system preference
     modeSwitcher.applyMode(modeSwitcher.getStoredMode() || modeSwitcher.getSystemPreference());
   });
+}
+
+// Expose globally so components can access without ESM imports
+if (typeof window !== 'undefined') {
+  // Do not overwrite if already present
+  window.modeSwitcher = window.modeSwitcher || modeSwitcher;
 }
