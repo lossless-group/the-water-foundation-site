@@ -1,0 +1,184 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import HeroSplit from '../../components/basics/heros/Hero--SplitScreen.astro';
+---
+
+<BaseThemeLayout>
+
+    <!-- Image Right, S-Curve (defaults) -->
+    <section class="py-8">
+      <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Image Right, Moon Curve (default tokens)</h2>
+      <HeroSplit
+        imageArray="/imageOf__Whale-Mom-Calf.jpg"
+        alignImage="right"
+        splitShape="s-curve"
+        imageWidthRatioToContainerWidth={0.56}
+      >
+        <p class="mb-2 text-accent-400 font-medium">Global Impact</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">The Water Foundation</h1>
+        <p class="mt-4 max-w-xl text-primary-100">
+          Water independence for 1 billion people by 2035.
+        </p>
+        <div class="mt-6">
+          <a href="/mission" class="inline-block rounded-full border border-accent-400/60 px-5 py-2 text-primary-50 hover:bg-accent-400/10">
+            Learn More
+          </a>
+        </div>
+      </HeroSplit>
+    </section>
+  <!-- Image Right, Moon Curve (defaults) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Image Right, Moon Curve (default tokens)</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale.jpg"
+      alignImage="right"
+      splitShape="curve"
+      imageWidthRatioToContainerWidth={0.56}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Global Impact</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">The Water Foundation</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Water independence for 1 billion people by 2035.
+      </p>
+      <div class="mt-6">
+        <a href="/mission" class="inline-block rounded-full border border-accent-400/60 px-5 py-2 text-primary-50 hover:bg-accent-400/10">
+          Learn More
+        </a>
+      </div>
+    </HeroSplit>
+  </section>
+
+  <!-- Image Right, S-Curve -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Image Right, S-Curve</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale.jpg"
+      alignImage="right"
+      splitShape="s-curve"
+      imageWidthRatioToContainerWidth={0.56}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Global Impact</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">S-Curve Boundary</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Demonstrating the S-shaped split edge variant.
+      </p>
+    </HeroSplit>
+  </section>
+
+  <!-- Image Left, Rectangle (accent band) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Image Left, Rectangle (accent band)</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale--Overlayed-Light.png"
+      alignImage="left"
+      splitShape="rectangle"
+      splitShapeFillLightMode="bg-accent-500"
+      splitShapeFillDarkMode="bg-accent-400"
+      imageWidthRatioToContainerWidth={0.45}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Programs</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Clean Water for Everyone</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Join our mission to provide sustainable water access.
+      </p>
+      <div class="mt-6 flex gap-3">
+        <a href="/get-involved" class="inline-block rounded-full bg-accent-500/20 px-5 py-2 text-accent-50 border border-accent-500/40">Get Involved</a>
+        <a href="/donate" class="inline-block rounded-full px-5 py-2 text-primary-50 border border-primary-200/40">Donate</a>
+      </div>
+    </HeroSplit>
+  </section>
+
+  <!-- Centered 50/50 (no split edge visible) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Centered 50/50</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale.jpg"
+      alignImage="center"
+      splitShape="curve"  
+      imageWidthRatioToContainerWidth={0.5}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Research</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Rethinking Water Resilience</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Scaling proven solutions—not waiting for future breakthroughs.
+      </p>
+    </HeroSplit>
+  </section>
+
+  <!-- Wide Image 80% (thin content) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Wide Image 80% (thin content)</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale--Overlayed-Light.png"
+      alignImage="right"
+      splitShape="curve"
+      imageWidthRatioToContainerWidth={0.8}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Case Studies</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Making Water Work Better</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Utilities worldwide are building resilience with smart tools.
+      </p>
+    </HeroSplit>
+  </section>
+
+  <!-- Narrow Image 35% (content-heavy) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Narrow Image 35% (content-heavy)</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale.jpg"
+      alignImage="left"
+      splitShape="curve"
+      imageWidthRatioToContainerWidth={0.35}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Initiatives</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Community-Driven Solutions</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Partnering with local leaders to create lasting impact.
+      </p>
+    </HeroSplit>
+  </section>
+
+  <!-- Inline CSS fills (raw CSS demo) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Inline CSS fills (raw CSS demo)</h2>
+    <HeroSplit
+      imageArray="/imageOf__Whale--Overlayed-Light.png"
+      alignImage="right"
+      splitShape="curve"
+      contentAreaFillLightMode="background: linear-gradient(180deg, rgba(2,32,40,0.35), rgba(2,32,40,0.1));"
+      contentAreaFillDarkMode="background: linear-gradient(180deg, rgba(2,32,40,0.55), rgba(2,32,40,0.2));"
+      splitShapeFillLightMode="fill: var(--color-accent-500);"
+      splitShapeFillDarkMode="fill: var(--color-accent-400);"
+      imageWidthRatioToContainerWidth={0.56}
+    >
+      <p class="mb-2 text-accent-400 font-medium">Technology</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Data + Analytics for Water</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        From sensing to prediction—closing the innovation gap.
+      </p>
+    </HeroSplit>
+  </section>
+
+  <!-- Array input (first image used) -->
+  <section class="py-8">
+    <h2 class="px-6 text-xl font-semibold text-primary-900 dark:text-primary-50">Array input (first image used)</h2>
+    <HeroSplit
+      imageArray={[
+        '/imageOf__Whale.jpg',
+        '/imageOf__Whale--Overlayed-Light.png'
+      ]}
+      alignImage="right"
+      splitShape="rectangle"
+      imageWidthRatioToContainerWidth={0.56}
+      splitShapeFillLightMode="bg-accent-500"
+      splitShapeFillDarkMode="bg-accent-400"
+    >
+      <p class="mb-2 text-accent-400 font-medium">News</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-primary-50">Updates & Events</h1>
+      <p class="mt-4 max-w-xl text-primary-100">
+        Explore the newsroom—press releases, blogs and conferences.
+      </p>
+    </HeroSplit>
+  </section>
+</BaseThemeLayout>

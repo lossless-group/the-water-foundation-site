@@ -1,0 +1,79 @@
+---
+interface TimelineItem {
+  title: string;
+  body: string;
+  color?: 'primary' | 'blue' | 'teal' | 'purple';
+}
+
+const { timeline = [], variant = 'comfortable' } = Astro.props as {
+  timeline: TimelineItem[];
+  variant?: 'compact' | 'comfortable';
+};
+
+const variants = {
+  compact: {
+    gap: 'space-y-10 md:space-y-12',
+    pad: 'p-4 md:p-5',
+    title: 'text-[clamp(1.125rem,2vw,1.25rem)]',
+    body: 'text-[clamp(0.95rem,1.8vw,1rem)]',
+  },
+  comfortable: {
+    gap: 'space-y-16 md:space-y-20',
+    pad: 'p-6 md:p-8',
+    title: 'text-[clamp(1.25rem,2.2vw,1.375rem)]',
+    body: 'text-[clamp(1rem,1.9vw,1.0625rem)]',
+  },
+} as const;
+
+const v = variants[variant];
+
+const colorClass = (c?: TimelineItem['color']) => {
+  switch (c) {
+    case 'blue': return 'bg-blue-500';
+    case 'teal': return 'bg-teal-500';
+    case 'purple': return 'bg-purple-500';
+    default: return 'bg-primary';
+  }
+};
+---
+
+<section class="relative">
+  <!-- Center rail (md+) -->
+  <div class="hidden md:block absolute left-1/2 w-1 h-full bg-gradient-to-b from-primary to-blue-500 -ml-px"></div>
+  <!-- Left rail (mobile) -->
+  <div class="md:hidden absolute left-4 w-[3px] h-full bg-gradient-to-b from-primary to-blue-500"></div>
+
+  <div class={v.gap}>
+    {timeline.map((item, i) => {
+      const isEven = i % 2 === 0;
+      const markerColor = colorClass(item.color);
+      return (
+        <div class="relative md:flex md:items-center">
+          {isEven ? (
+            <>
+              <div class="hidden md:flex md:w-1/2"></div>
+              <div class={`hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full ${markerColor} border-4 border-background mx-auto md:mx-0`}></div>
+              <div class="md:w-1/2 md:pl-12">
+                <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+                  <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>{item.title}</h3>
+                  <p class={`text-foreground/80 leading-relaxed ${v.body}`}>{item.body}</p>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="md:w-1/2 md:pr-12 text-left md:text-right">
+                <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+                  <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>{item.title}</h3>
+                  <p class={`text-foreground/80 leading-relaxed ${v.body}`}>{item.body}</p>
+                </div>
+              </div>
+              <div class={`hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full ${markerColor} border-4 border-background mx-auto md:mx-0`}></div>
+              <div class="hidden md:flex md:w-1/2"></div>
+            </>
+          )}
+        </div>
+      );
+    })}
+  </div>
+</section>

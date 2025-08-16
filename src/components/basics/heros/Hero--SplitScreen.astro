@@ -1,0 +1,135 @@
+---
+export interface Props {
+  imageArray: string[] | string;
+  alignImage?: 'left' | 'right' | 'center';
+  contentAreaFillLightMode?: string; // tailwind classes OR raw CSS (e.g. "background: var(--color-primary-900)")
+  contentAreaFillDarkMode?: string;  // tailwind classes OR raw CSS
+  splitShape?: 'rectangle' | 'curve' | 'moon-curve' | 's-curve';
+  splitShapeFillLightMode?: string;  // tailwind classes OR raw CSS
+  splitShapeFillDarkMode?: string;   // tailwind classes OR raw CSS
+  imageWidthRatioToContainerWidth?: number; // 0..1
+  class?: string;
+}
+
+const {
+  imageArray,
+  alignImage = 'right',
+  contentAreaFillLightMode = 'bg-primary-900/30',
+  contentAreaFillDarkMode = 'bg-primary-900/40',
+  splitShape = 'curve',
+  splitShapeFillLightMode = 'bg-accent-500',
+  splitShapeFillDarkMode = 'bg-accent-400',
+  imageWidthRatioToContainerWidth = 0.56,
+  class: extraClass = ''
+} = Astro.props as Props;
+
+// Normalize images
+const images: string[] = Array.isArray(imageArray) ? imageArray : [imageArray];
+const firstImage = images[0] || '';
+
+// Clamp and compute percentages
+const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
+const imgRatio = clamp(imageWidthRatioToContainerWidth ?? 0.56, 0.2, 0.9);
+const contentRatio = 1 - imgRatio;
+
+// Heuristic: if prop contains ':' or ';' -> treat as inline CSS style; otherwise as Tailwind classes
+const isStyleString = (s?: string) => !!s && /[:;]/.test(s);
+
+const contentLightIsStyle = isStyleString(contentAreaFillLightMode);
+const contentDarkIsStyle = isStyleString(contentAreaFillDarkMode);
+const shapeLightIsStyle = isStyleString(splitShapeFillLightMode);
+const shapeDarkIsStyle = isStyleString(splitShapeFillDarkMode);
+
+const imgOnLeft = alignImage === 'left';
+const imgCentered = alignImage === 'center';
+const isMoonCurve = splitShape === 'curve' || splitShape === 'moon-curve';
+const isSCurve = splitShape === 's-curve';
+
+// Grid template columns based on alignment
+let gridTemplate = '';
+if (imgCentered) {
+  gridTemplate = '1fr 1fr';
+} else if (imgOnLeft) {
+  gridTemplate = `${imgRatio}fr ${contentRatio}fr`;
+} else {
+  gridTemplate = `${contentRatio}fr ${imgRatio}fr`;
+}
+---
+
+<section class={`hero-split relative w-full overflow-hidden ${extraClass}`} style={`--grid-cols: ${gridTemplate}`}> 
+  <div class="mx-auto max-w-[1400px]">
+    <div class="relative grid min-h-[380px] md:min-h-[520px] lg:min-h-[640px]" style="grid-template-columns: var(--grid-cols);">
+      {/** Full-hero S-curve overlay (spans entire width) */}
+      {isSCurve && !imgCentered && (
+        <div class="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="h-full w-full">
+            {/** Anchors: bottom tip at x=36 (y=100), top tip at x=70 (y=0). */}
+            {/** Light fill */}
+            <path class={`dark:hidden ${shapeLightIsStyle ? '' : splitShapeFillLightMode}`} style={shapeLightIsStyle ? splitShapeFillLightMode : undefined}
+              d="M36,100 C48,88 64,66 62,52 C60,38 52,18 70,0 C60,8 54,26 54,50 C54,74 44,92 36,100 Z" />
+            {/** Dark fill */}
+            <path class={`hidden dark:block ${shapeDarkIsStyle ? '' : splitShapeFillDarkMode}`} style={shapeDarkIsStyle ? splitShapeFillDarkMode : undefined}
+              d="M36,100 C48,88 64,66 62,52 C60,38 52,18 70,0 C60,8 54,26 54,50 C54,74 44,92 36,100 Z" />
+          </svg>
+        </div>
+      )}
+      {/** Image side */}
+      <div class={`relative ${imgCentered ? 'col-span-1 order-1' : imgOnLeft ? 'col-start-1 order-1' : 'col-start-2 order-2'}`}>
+        {firstImage && (
+          <img src={firstImage} alt="" class="absolute inset-0 h-full w-full object-cover" loading="eager" decoding="async" />
+        )}
+      </div>
+
+      {/** Content side */}
+      <div class={`relative ${imgCentered ? 'col-span-1 order-2' : imgOnLeft ? 'col-start-2 order-2' : 'col-start-1 order-1'}`}>
+        {/** Background layer for content (light) */}
+        <div class={`absolute inset-0 ${contentLightIsStyle ? '' : contentAreaFillLightMode} block dark:hidden`} style={contentLightIsStyle ? contentAreaFillLightMode : undefined}></div>
+        {/** Background layer for content (dark) */}
+        <div class={`absolute inset-0 ${contentDarkIsStyle ? '' : contentAreaFillDarkMode} hidden dark:block`} style={contentDarkIsStyle ? contentAreaFillDarkMode : undefined}></div>
+
+        {/** Curved or rectangular split at the boundary */}
+        {isMoonCurve && !imgCentered && (
+          <div class={`pointer-events-none absolute inset-y-0 ${imgOnLeft ? 'left-0 -translate-x-1/2' : 'right-0 translate-x-1/2'} w-28 sm:w-32 md:w-36 lg:w-40` } aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="h-full w-full">
+              <defs>
+                <linearGradient id="curveFade" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stop-opacity="0.0"></stop>
+                  <stop offset="25%" stop-opacity="0.4"></stop>
+                  <stop offset="100%" stop-opacity="1.0"></stop>
+                </linearGradient>
+              </defs>
+              {/** Light fill */}
+              <path class={`dark:hidden ${shapeLightIsStyle ? '' : splitShapeFillLightMode}`} style={shapeLightIsStyle ? splitShapeFillLightMode : undefined} d="M0,0 C60,35 60,65 0,100 L100,100 L100,0 Z" />
+              {/** Dark fill */}
+              <path class={`hidden dark:block ${shapeDarkIsStyle ? '' : splitShapeFillDarkMode}`} style={shapeDarkIsStyle ? splitShapeFillDarkMode : undefined} d="M0,0 C60,35 60,65 0,100 L100,100 L100,0 Z" />
+            </svg>
+          </div>
+        )}
+
+        {/** S-curve ribbon moved to full-hero overlay above (to make percentages relative to entire hero). */}
+
+        {splitShape === 'rectangle' && !imgCentered && (
+          <div class={`pointer-events-none absolute inset-y-0 ${imgOnLeft ? 'left-0 -translate-x-1/2' : 'right-0 translate-x-1/2'} w-10`} aria-hidden="true">
+            <div class={`h-full w-full dark:hidden ${shapeLightIsStyle ? '' : splitShapeFillLightMode}`} style={shapeLightIsStyle ? splitShapeFillLightMode : undefined}></div>
+            <div class={`h-full w-full hidden dark:block ${shapeDarkIsStyle ? '' : splitShapeFillDarkMode}`} style={shapeDarkIsStyle ? splitShapeFillDarkMode : undefined}></div>
+          </div>
+        )}
+
+        {/** Content container */}
+        <div class="relative z-10 flex h-full w-full items-center">
+          <div class={`px-6 sm:px-8 md:px-10 lg:px-14 ${imgCentered ? 'py-12' : 'py-12 md:py-16'}`}>
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/** Mobile stacking: default responsive behavior via Tailwind breakpoints */}
+  <style>
+    @media (max-width: 768px) {
+      .hero-split > div > .grid { grid-template-columns: 1fr !important; }
+      .hero-split > div > .grid > div { order: unset !important; }
+    }
+  </style>
+</section>

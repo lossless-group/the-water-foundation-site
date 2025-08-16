@@ -1,6 +1,25 @@
 ---
 // Immersive Story Flow Style
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import Timeline from '../../layouts/sections/Timeline.astro';
+
+const timelineArray = [
+  {
+    title: 'Desalination',
+    body: 'Advanced technologies addressing water scarcity with unprecedented efficiency and environmental consideration.',
+    color: 'primary',
+  },
+  {
+    title: 'Advanced Treatment',
+    body: 'Next-generation wastewater treatment solutions creating circular water economies.',
+    color: 'blue',
+  },
+  {
+    title: 'PFAS Destruction',
+    body: 'Breakthrough technologies eliminating forever chemicals from water systems worldwide.',
+    color: 'teal',
+  },
+];
 ---
 
 <BaseThemeLayout 
@@ -130,46 +149,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
         </div>
         
         <div class="relative">
-          <!-- Timeline line -->
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-blue-600"></div>
-          
-          <div class="space-y-16">
-            <!-- Desalination -->
-            <div class="flex items-center">
-              <div class="w-1/2 pr-8 text-right">
-                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
-                  <h3 class="text-2xl font-bold text-primary mb-4">Desalination</h3>
-                  <p class="text-muted-foreground">Advanced technologies addressing water scarcity with unprecedented efficiency and environmental consideration.</p>
-                </div>
-              </div>
-              <div class="w-8 h-8 bg-primary rounded-full border-4 border-background z-10"></div>
-              <div class="w-1/2 pl-8"></div>
-            </div>
-            
-            <!-- Advanced Treatment -->
-            <div class="flex items-center">
-              <div class="w-1/2 pr-8"></div>
-              <div class="w-8 h-8 bg-blue-600 rounded-full border-4 border-background z-10"></div>
-              <div class="w-1/2 pl-8">
-                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
-                  <h3 class="text-2xl font-bold text-blue-600 mb-4">Advanced Treatment</h3>
-                  <p class="text-muted-foreground">Next-generation wastewater treatment solutions creating circular water economies.</p>
-                </div>
-              </div>
-            </div>
-            
-            <!-- PFAS Destruction -->
-            <div class="flex items-center">
-              <div class="w-1/2 pr-8 text-right">
-                <div class="bg-card border border-border rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
-                  <h3 class="text-2xl font-bold text-green-600 mb-4">PFAS Destruction</h3>
-                  <p class="text-muted-foreground">Breakthrough technologies eliminating forever chemicals from water systems worldwide.</p>
-                </div>
-              </div>
-              <div class="w-8 h-8 bg-green-600 rounded-full border-4 border-background z-10"></div>
-              <div class="w-1/2 pl-8"></div>
-            </div>
-          </div>
+          <Timeline timeline={timelineArray} />
         </div>
       </div>
     </section>

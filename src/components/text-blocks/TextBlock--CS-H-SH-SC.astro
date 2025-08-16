@@ -1,0 +1,27 @@
+---
+
+interface Props {
+	contextSetterTxt: string;
+	headingTxt: string;
+	subHeadingTxt: string;
+	supportingCopyTxt: string;
+}
+
+const { contextSetterTxt, headingTxt, subHeadingTxt, supportingCopyTxt } = Astro.props;
+---
+
+<div class="context-setter">
+    <span>{contextSetterTxt}</span>    
+</div> 
+
+<div class="heading">   
+    <h1>{headingTxt}</h1>
+</div>
+
+<div class="sub-heading">   
+    <h3>{subHeadingTxt}</h2>
+</div>
+
+<div class="supporting-copy">   
+    <p>{supportingCopyTxt}</p>
+</div>
