@@ -25,18 +25,38 @@
             position: sticky;
             top: 0;
             background: white;
-            padding: 20px;
+            padding: 0;
             text-align: center;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 120px; /* Fixed header height - never changes */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible; /* Allow container to overflow initially */
+        }
+        
+        .logo-container {
+            background: #042632; /* Water theme dark blue */
+            border-radius: 20px;
+            padding: 40px;
+            z-index: 2000; /* Higher than header */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Start big - overlaying beyond header bounds */
+            width: 500px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Keep in document flow but allow overflow */
         }
         
         .logo {
             height: auto;
-            transition: transform 0.3s ease;
-            transform-origin: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             /* Start large */
             width: 400px;
+            filter: brightness(0) invert(1); /* Make logo white on green background */
         }
         
         .content {
@@ -56,7 +76,9 @@
 </head>
 <body>
     <header class="header">
-        <img src="/trademark__The-Water-Foundation--Darker.svg" alt="The Water Foundation Logo" class="logo" id="logo">
+        <div class="logo-container" id="logoContainer">
+            <img src="/trademark__The-Water-Foundation--Darker.svg" alt="The Water Foundation Logo" class="logo" id="logo">
+        </div>
     </header>
     
     <div class="content">
@@ -73,27 +95,59 @@
 
     <script>
         const logo = document.getElementById('logo');
-        const maxSize = 400; // Starting size in pixels
-        const minSize = 80;  // Minimum size in pixels
+        const logoContainer = document.getElementById('logoContainer');
         
-        function updateLogoSize() {
-            if (!logo) return; // Guard against null element
+        function updateLogoContainer() {
+            if (!logo || !logoContainer) return;
             
             const scrollY = window.scrollY;
-            const maxScroll = 800; // Shrink over first 800px of scroll
-            const scrollProgress = Math.min(scrollY / maxScroll, 1);
+            const shrinkThreshold = 200; // Quick shrink in first 200px
+            const scrollProgress = Math.min(scrollY / shrinkThreshold, 1);
             
-            // Calculate scale from 1.0 (full size) to 0.3 (30% size)
-            const scale = 1 - (scrollProgress * 0.7);
-            
-            logo.style.transform = `scale(${scale})`;
+            if (scrollProgress === 0) {
+                // Initial state - big water theme container
+                logoContainer.style.width = '500px';
+                logoContainer.style.height = '300px';
+                logoContainer.style.padding = '40px';
+                logoContainer.style.background = '#042632';
+                logoContainer.style.borderRadius = '20px';
+                logo.style.width = '400px';
+                logo.style.filter = 'brightness(0) invert(1)';
+            } else if (scrollProgress < 1) {
+                // Transitioning - shrinking to fit within header bounds
+                const containerWidth = 500 - (scrollProgress * 420); // 500px to 80px
+                const containerHeight = 300 - (scrollProgress * 220); // 300px to 80px
+                const containerPadding = 40 - (scrollProgress * 25); // 40px to 15px
+                const logoWidth = 400 - (scrollProgress * 340); // 400px to 60px
+                const borderRadius = 20 - (scrollProgress * 10); // 20px to 10px
+                
+                logoContainer.style.width = containerWidth + 'px';
+                logoContainer.style.height = containerHeight + 'px';
+                logoContainer.style.padding = containerPadding + 'px';
+                logoContainer.style.borderRadius = borderRadius + 'px';
+                logo.style.width = logoWidth + 'px';
+                
+                // Fade out water theme background and white filter
+                const opacity = 1 - scrollProgress;
+                logoContainer.style.background = `rgba(4, 38, 50, ${opacity})`;
+                logo.style.filter = `brightness(0) invert(${opacity})`;
+            } else {
+                // Final state - fits nicely within header
+                logoContainer.style.width = '80px';
+                logoContainer.style.height = '80px';
+                logoContainer.style.padding = '15px';
+                logoContainer.style.background = 'transparent';
+                logoContainer.style.borderRadius = '10px';
+                logo.style.width = '60px';
+                logo.style.filter = 'none';
+            }
         }
         
-        // Update logo size on scroll
-        window.addEventListener('scroll', updateLogoSize);
+        // Update on scroll
+        window.addEventListener('scroll', updateLogoContainer);
         
         // Initialize
-        updateLogoSize();
+        updateLogoContainer();
     </script>
 </body>
 </html>
