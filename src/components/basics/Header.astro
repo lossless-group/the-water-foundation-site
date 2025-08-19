@@ -48,7 +48,7 @@ const {
         <div class="h-10 w-auto flex items-center relative" id="logo-container">
           <div class="bg-[#042632] rounded-2xl p-8 flex items-center justify-center transition-all duration-300 absolute" id="logo-wrapper" style="top: 4rem; left: 0;">
             <div id="logo" class="flex items-center">
-              <SiteBrandMarkModeWrapper className="h-full filter brightness-0 invert" />
+              <SiteBrandMarkModeWrapper className="h-full" />
             </div>
           </div>
         </div>
@@ -178,11 +178,36 @@ const {
 </header>
 
 <script is:inline>
-  // Logo container scroll animation
+  // Logo container scroll animation - only on index page
   document.addEventListener('DOMContentLoaded', () => {
     const logo = document.getElementById('logo');
     const logoWrapper = document.getElementById('logo-wrapper');
     const header = document.getElementById('main-header');
+    
+    // Check if we're on the index page
+    const isIndexPage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    
+    if (!isIndexPage) {
+      // Non-index pages: Set logo to normal header position
+      if (logoWrapper && logo) {
+        logoWrapper.style.position = 'relative';
+        logoWrapper.style.top = '0';
+        logoWrapper.style.left = '0';
+        logoWrapper.style.width = 'auto';
+        logoWrapper.style.height = 'auto';
+        logoWrapper.style.padding = '0.25rem';
+        logoWrapper.style.background = 'transparent';
+        logoWrapper.style.borderRadius = '0.25rem';
+        logoWrapper.style.zIndex = 'auto';
+        logo.style.position = 'static';
+        logo.style.top = 'auto';
+        logo.style.left = 'auto';
+        logo.style.marginTop = '0';
+        logo.style.width = '11.7rem';
+        logo.style.height = 'auto';
+      }
+      return;
+    }
     
     function updateLogoContainer() {
       if (!logo || !logoWrapper || !header) return;
