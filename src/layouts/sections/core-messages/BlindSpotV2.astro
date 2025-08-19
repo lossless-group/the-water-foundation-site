@@ -1,6 +1,7 @@
 ---
 // Blind Spot Story - Split Screen with Visual Emphasis
 import GlobalFootprint from '../message-grids/GlobalFootprintRowTags.astro';
+import ArrowContainer from '../../../components/infographic/ArrowContainer.astro';
 ---
 
 <section class="relative bg-background overflow-hidden">
@@ -80,16 +81,18 @@ import GlobalFootprint from '../message-grids/GlobalFootprintRowTags.astro';
             </div>
           </div>
           
-          <div class="mt-12 pt-8 border-t border-border/20">
-            <p class="text-foreground/80 mb-6">
-              The Water Foundation is stepping up to fill this gap at a systems level, utilizing systems level & first principles thinking.
-            </p>
-            <a href="/about" class="inline-flex items-center text-primary font-medium hover:underline">
-              Learn about our approach
-              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </a>
+          <div class="mt-12 pt-8">
+            <ArrowContainer>
+              <p class="text-foreground/80 mb-6">
+                The Water Foundation is stepping up to fill this gap at a systems level, utilizing systems level & first principles thinking.
+              </p>
+              <a href="/about" class="inline-flex items-center text-primary font-medium hover:underline">
+                Learn about our approach
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </ArrowContainer>
           </div>
         </div>
       </div>

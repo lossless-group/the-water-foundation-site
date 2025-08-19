@@ -1,0 +1,70 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  className?: string;
+}
+
+const { title, description, className = '' } = Astro.props;
+---
+
+<div class={`arrow-container ${className}`}>
+  <div class="arrow-content">
+    <h4 class="arrow-title">{title}</h4>
+    <p class="arrow-description">{description}</p>
+  </div>
+</div>
+
+<style>
+  .arrow-container {
+    position: relative;
+    background: rgba(4, 38, 50, 0.8);
+    border: 2px solid #0891b2;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    margin: 0.5rem 0;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+  }
+
+  .arrow-container:hover {
+    background: rgba(4, 38, 50, 0.9);
+    border-color: #06b6d4;
+    transform: translateX(4px);
+  }
+
+  .arrow-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .arrow-title {
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .arrow-description {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .arrow-container {
+      padding: 1.25rem 1.5rem 1.25rem 1.25rem;
+      clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    }
+    
+    .arrow-title {
+      font-size: 1rem;
+    }
+    
+    .arrow-description {
+      font-size: 0.85rem;
+    }
+  }
+</style>
