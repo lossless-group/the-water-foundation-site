@@ -1,5 +1,5 @@
 ---
-import ThreeButtonsRow from './ThreeButtons--Row.astro';
+import ThreeButtonsRow from '../ThreeButtons--Row.astro';
 // GSAP will be loaded via CDN
 
 interface BackgroundItem {
@@ -105,6 +105,31 @@ Variant behavior:
       );
     })}
 
+    {showCenteredBranding && (
+      <!-- Centered logo + wordmark overlay (all breakpoints, scales down on mobile) -->
+      <div class="flex absolute inset-x-0 top-0 z-0 flex-col items-center justify-start p-3 pt-16 sm:pt-20 md:pt-24 lg:pt-32 xl:pt-40 pointer-events-none">
+        <div class="max-w-2xl w-full mx-auto text-center">
+          <div class="inline-flex flex-col items-center gap-6 md:gap-8 lg:gap-10">
+            <img
+              src={appIconSrc}
+              alt="The Water Foundation icon"
+              class="mx-auto object-contain w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 filter brightness-[.7]"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <img
+              src={wordmarkSrc}
+              alt="The Water Foundation wordmark"
+              class="mx-auto object-contain w-[min(88vw,40rem)] md:w-[min(90vw,56rem)] h-auto filter brightness-[.7]"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+    )}
 
     <!-- Desktop/Tablet overlay content (hidden on mobile) -->
     <div class="hidden md:flex relative z-10 h-full flex-col">
