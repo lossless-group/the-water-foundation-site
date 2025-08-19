@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { findFirstNormalized } from '../../lib/api/unsplash';
+
+interface Props {
+  entry: CollectionEntry<'facts'>;
+}
+
+const { entry } = Astro.props;
+
+type SourceItem = { org: string; title?: string | null; url?: string | null };
+
+const effectiveSources: SourceItem[] = entry.data.sources?.length
+  ? entry.data.sources
+  : entry.data.source_org
+    ? [{ org: entry.data.source_org, title: entry.data.source_title, url: entry.data.source_url! }]
+    : [];
+
+const displayTitle = entry.data.title ?? entry.data.zinger ?? `Fact ${entry.data.index}`;
+const { Content } = await entry.render();
+const rawImgUrl = entry.data.companion_image_url;
+const imgAlt = `${displayTitle}`;
+
+let displaySrc: string | undefined;
+if (rawImgUrl?.startsWith('https://source.unsplash.com/')) {
+  // Extract query segment after '?' like "water,drop,essential" and turn into a search string
+  const querySegment = rawImgUrl.split('?')[1] ?? '';
+  const terms = querySegment.replace(/[+,]+/g, ' ').trim();
+  const normalized = terms ? await findFirstNormalized(terms, 1200, 800, 80) : null;
+  displaySrc = normalized?.src;
+} else if (rawImgUrl && /^https?:\/\//.test(rawImgUrl)) {
+  // Proxy external images via server to avoid client-side CORS/policy issues
+  displaySrc = `/api/image?url=${encodeURIComponent(rawImgUrl)}`;
+} else if (rawImgUrl) {
+  // Local or relative path provided
+  displaySrc = rawImgUrl;
+}
+
+if (!displaySrc) {
+  displaySrc = '/heroes/imageOf__Whale-pair-under-wave.jpeg';
+}
+
+---
+
+<article class="h-full bg-card border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
+  <div class="w-full h-40 sm:h-44 md:h-48 overflow-hidden">
+    <img
+      src={displaySrc}
+      alt={imgAlt}
+      class="w-full h-full object-cover"
+      loading="lazy"
+      onerror="this.onerror=null; this.src='/heroes/imageOf__Whale-pair-under-wave.jpeg';"
+    />
+  </div>
+  <div class="p-5 flex-1 flex flex-col">
+    <header class="mb-3">
+      <div class="text-xs text-foreground/60 uppercase tracking-wide">Fact {entry.data.index}</div>
+      <h3 class="text-lg font-semibold text-foreground mt-1">{displayTitle}</h3>
+    </header>
+
+    <div class="prose prose-invert max-w-none text-foreground/80 text-sm leading-relaxed flex-1">
+      <Content />
+    </div>
+
+    {effectiveSources.length > 0 && (
+      <footer class="mt-4 pt-3 border-t border-border/60">
+        <div class="text-xs text-foreground/60 mb-1">Sources</div>
+        <ul class="space-y-1">
+          {effectiveSources.map((s) => (
+            <li class="text-xs text-primary/90 hover:text-primary">
+              {s.url ? (
+                <a href={s.url} target="_blank" rel="noopener noreferrer">
+                  {s.org}{s.title ? ` — ${s.title}` : ''}
+                </a>
+              ) : (
+                <span>{s.org}{s.title ? ` — ${s.title}` : ''}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </footer>
+    )}
+  </div>
+</article>

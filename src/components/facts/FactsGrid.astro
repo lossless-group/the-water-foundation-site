@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FactCardWithImage from './FactCard--w-Image.astro';
+
+interface Props {
+  entries: CollectionEntry<'facts'>[];
+  title?: string;
+  description?: string;
+}
+
+const { entries, title = 'Water Facts', description } = Astro.props;
+---
+
+<section class="py-10">
+  <div class="max-w-6xl mx-auto px-4">
+    <header class="mb-6">
+      <h2 class="text-2xl font-bold text-foreground">{title}</h2>
+      {description && (
+        <p class="text-foreground/70 mt-1">{description}</p>
+      )}
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {entries.map((entry) => (
+        <FactCardWithImage entry={entry} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+interface Props {
+	contextSetterTxt: string;
+	headingTxt: string;
+	columns: {
+		title: string;
+		items: string[];
+	}[];
+}
+
+const { contextSetterTxt, headingTxt, columns } = Astro.props;
+---
+
+<div class="py-16 bg-gradient-to-br from-teal-900 to-teal-800 text-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<!-- Context Setter -->
+		<div class="text-center mb-6">
+			<span class="text-teal-200 text-sm font-medium tracking-wide uppercase">
+				{contextSetterTxt}
+			</span>
+		</div>
+
+		<!-- Main Heading -->
+		<div class="text-center mb-12">
+			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+				{headingTxt}
+			</h1>
+		</div>
+
+		<!-- Four Column Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			{columns.map((column) => (
+				<div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+					<h3 class="text-xl font-semibold mb-6 text-teal-100 border-b border-white/20 pb-3">
+						{column.title}
+					</h3>
+					<ul class="space-y-4">
+						{column.items.map((item) => (
+							<li class="flex items-start">
+								<span class="text-teal-300 mr-3 mt-1 flex-shrink-0">→</span>
+								<span class="text-white/90 text-sm leading-relaxed">{item}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</div>
+	</div>
+</div>

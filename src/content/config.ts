@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { factsCollection } from './facts/schema';
 
 // Slides collection for presentation content
 const slides = defineCollection({
@@ -16,4 +17,5 @@ const slides = defineCollection({
 
 export const collections = {
   slides,
+  facts: factsCollection,
 };

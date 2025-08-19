@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'facts'>;
+}
+
+const { entry } = Astro.props;
+
+type SourceItem = { org: string; title?: string | null; url?: string | null };
+
+const effectiveSources: SourceItem[] = entry.data.sources?.length
+  ? entry.data.sources
+  : entry.data.source_org
+    ? [{ org: entry.data.source_org, title: entry.data.source_title, url: entry.data.source_url! }]
+    : [];
+
+const displayTitle = entry.data.title ?? entry.data.zinger ?? `Fact ${entry.data.index}`;
+const { Content } = await entry.render();
+---
+
+<article class="h-full bg-card border border-border rounded-xl shadow-sm p-5 flex flex-col">
+  <header class="mb-3">
+    <div class="text-xs text-foreground/60 uppercase tracking-wide">Fact {entry.data.index}</div>
+    <h3 class="text-lg font-semibold text-foreground mt-1">{displayTitle}</h3>
+  </header>
+
+  <div class="prose prose-invert max-w-none text-foreground/80 text-sm leading-relaxed flex-1">
+    <Content />
+  </div>
+
+  {effectiveSources.length > 0 && (
+    <footer class="mt-4 pt-3 border-t border-border/60">
+      <div class="text-xs text-foreground/60 mb-1">Sources</div>
+      <ul class="space-y-1">
+        {effectiveSources.map((s) => (
+          <li class="text-xs text-primary/90 hover:text-primary">
+            {s.url ? (
+              <a href={s.url} target="_blank" rel="noopener noreferrer">
+                {s.org}{s.title ? ` — ${s.title}` : ''}
+              </a>
+            ) : (
+              <span>{s.org}{s.title ? ` — ${s.title}` : ''}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </footer>
+  )}
+</article>
