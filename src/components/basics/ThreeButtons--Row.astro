@@ -1,0 +1,51 @@
+---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro';
+
+interface ButtonAction {
+  type: 'primary' | 'secondary' | 'accent';
+  href: string;
+  text: string;
+  external?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export interface Props {
+  actions: ButtonAction[];
+  className?: string;
+  buttonClassName?: string;
+}
+
+const { actions, className = '', buttonClassName = '' } = Astro.props;
+
+// Responsive classes for different screen sizes
+const responsiveClasses = 'flex flex-col sm:flex-row gap-3 sm:gap-4';
+---
+
+<div class={`${responsiveClasses} ${className}`}>
+  {actions.map((action, index) => {
+    if (action.type === 'accent') {
+      return (
+        <ButtonAccent 
+          href={action.href} 
+          text={action.text} 
+          external={action.external} 
+          className={`${index > 0 ? 'sm:ml-2' : ''} w-full sm:w-auto`}
+        />
+      );
+    }
+    
+    const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
+    return (
+      <ButtonComponent 
+        href={action.href} 
+        size={action.size || 'md'} 
+        external={action.external} 
+        className={`flex-1 ${buttonClassName} ${index > 0 ? 'sm:ml-2' : ''} w-full sm:w-auto`}
+      >
+        {action.text}
+      </ButtonComponent>
+    );
+  })}
+</div>

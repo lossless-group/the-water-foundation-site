@@ -1,0 +1,47 @@
+---
+import ButtonPrimary from './buttons/Button--Primary.astro';
+import ButtonSecondary from './buttons/Button--Secondary.astro';
+import ButtonAccent from './buttons/Button--Accent.astro';
+
+interface ButtonAction {
+  type: 'primary' | 'secondary' | 'accent';
+  href: string;
+  text: string;
+  external?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export interface Props {
+  actions: ButtonAction[];
+  className?: string;
+}
+
+const { actions, className = '' } = Astro.props;
+---
+
+<div class={`flex flex-col gap-4 ${className}`}>
+  {actions.map((action) => {
+    if (action.type === 'accent') {
+      return (
+        <ButtonAccent 
+          href={action.href} 
+          text={action.text} 
+          external={action.external} 
+          className="w-full"
+        />
+      );
+    }
+    
+    const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
+    return (
+      <ButtonComponent 
+        href={action.href} 
+        size={action.size || 'md'} 
+        external={action.external} 
+        className="w-full"
+      >
+        {action.text}
+      </ButtonComponent>
+    );
+  })}
+</div>

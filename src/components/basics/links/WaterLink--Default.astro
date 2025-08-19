@@ -1,0 +1,53 @@
+---
+interface Props {
+  href: string;
+  newTab?: boolean;
+  variant?: "default" | "subtle" | "inverse";
+  underline?: "hover" | "always" | "none";
+  class?: string;
+}
+
+const { 
+  href, 
+  newTab = href.startsWith('http'), 
+  variant = "default", 
+  underline = "hover",
+  class: className = ""
+} = Astro.props;
+
+const isExternal = href.startsWith('http');
+
+const variantClasses = {
+  default: "text-primary/90 hover:text-primary",
+  subtle: "text-foreground/80 hover:text-primary/90", 
+  inverse: "text-primary-foreground/90 hover:text-primary-foreground"
+};
+
+const underlineClasses = {
+  hover: "hover:underline",
+  always: "underline",
+  none: ""
+};
+
+const classes = [
+  "transition-colors duration-200",
+  "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2",
+  variantClasses[variant],
+  underlineClasses[underline],
+  className
+].filter(Boolean).join(" ");
+---
+
+<a 
+  href={href}
+  class={classes}
+  {...(isExternal && newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+>
+  <slot />
+</a>
+
+<style>
+  a {
+    color: var(--color-accent-brighter);
+  }
+</style>

@@ -282,6 +282,7 @@ html {
   --color-muted: rgb(30, 41, 59);
   --color-muted-foreground: rgb(148, 163, 184);
   --color-accent: rgb(56, 189, 248);
+  --color-accent-brighter: rgb(91, 206, 255);
   --color-accent-foreground: rgb(15, 23, 42);
   --color-border: rgb(51, 65, 85);
   --color-input: rgb(51, 65, 85);
@@ -338,6 +339,7 @@ html {
   --color-muted: rgb(12, 74, 110);
   --color-muted-foreground: #DEEAE8;
   --color-accent: rgb(20, 184, 166);
+  --color-accent-brighter: rgb(91, 206, 255);
   --color-accent-foreground: rgb(8, 47, 73);
   --color-border: rgb(3, 105, 161);
   --color-input: rgb(3, 105, 161);

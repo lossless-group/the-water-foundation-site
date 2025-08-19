@@ -1,0 +1,99 @@
+---
+// No server-side logic needed
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Scroll Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: white;
+            font-family: Arial, sans-serif;
+            height: 300vh; /* Make page scrollable */
+        }
+        
+        .header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            height: auto;
+            transition: transform 0.3s ease;
+            transform-origin: center;
+            /* Start large */
+            width: 400px;
+        }
+        
+        .content {
+            padding-top: 50px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/trademark__The-Water-Foundation--Darker.svg" alt="The Water Foundation Logo" class="logo" id="logo">
+    </header>
+    
+    <div class="content">
+        <div class="section">
+            <p>Scroll down to see the logo shrink</p>
+        </div>
+        <div class="section">
+            <p>Keep scrolling...</p>
+        </div>
+        <div class="section">
+            <p>The logo should be smaller now</p>
+        </div>
+    </div>
+
+    <script>
+        const logo = document.getElementById('logo');
+        const maxSize = 400; // Starting size in pixels
+        const minSize = 80;  // Minimum size in pixels
+        
+        function updateLogoSize() {
+            if (!logo) return; // Guard against null element
+            
+            const scrollY = window.scrollY;
+            const maxScroll = 800; // Shrink over first 800px of scroll
+            const scrollProgress = Math.min(scrollY / maxScroll, 1);
+            
+            // Calculate scale from 1.0 (full size) to 0.3 (30% size)
+            const scale = 1 - (scrollProgress * 0.7);
+            
+            logo.style.transform = `scale(${scale})`;
+        }
+        
+        // Update logo size on scroll
+        window.addEventListener('scroll', updateLogoSize);
+        
+        // Initialize
+        updateLogoSize();
+    </script>
+</body>
+</html>

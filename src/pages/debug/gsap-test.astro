@@ -1,0 +1,82 @@
+---
+// Minimal GSAP test page
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Test</title>
+  <style>
+    body { 
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    #header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #ddd;
+    }
+    #logo {
+      width: 100px;
+      height: 100px;
+      background: #4f46e5;
+      border-radius: 50%;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #content {
+      height: 200vh;
+      padding: 200px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div id="logo"></div>
+  </header>
+  
+  <main id="content">
+    <h1>Scroll down to see animation</h1>
+  </main>
+
+  <!-- Load GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <script>
+    // Wait for everything to load
+    window.addEventListener('load', () => {
+      // Register ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Simple animation - logo will shrink and move up on scroll
+      gsap.to("#logo", {
+        scrollTrigger: {
+          trigger: "#content",
+          start: "top top",
+          end: "+=500",
+          scrub: true,
+          markers: true // Shows start/end markers
+        },
+        y: -30, // Move up
+        scale: 0.5, // Shrink
+        opacity: 0.7,
+        duration: 1
+      });
+      
+      console.log('GSAP and ScrollTrigger loaded successfully');
+    });
+  </script>
+</body>
+</html>

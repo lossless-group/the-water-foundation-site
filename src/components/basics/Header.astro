@@ -50,6 +50,16 @@ const {
         </div>
       </a>
     </div>
+    
+    {/* Large logo that will shrink */}
+    <div class="absolute left-1/2 transform -translate-x-1/2 -bottom-4 origin-top transition-all duration-300" id="logo-container">
+      <img
+        src="/appIcon__The-Water-Foundation--Darkest.svg"
+        alt="Logo"
+        class="w-24 h-24 md:w-32 md:h-32 transition-all duration-300"
+        id="logo"
+      />
+    </div>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
@@ -173,10 +183,96 @@ const {
   </div>
 </header>
 
-<script>
+<script is:inline>
+  // Wait for GSAP and DOM to be ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure GSAP is loaded
+    const initAnimation = () => {
+      const header = document.getElementById('main-header');
+      const logo = document.getElementById('logo');
+      const heroSection = document.getElementById('hero-section');
+      
+      if (!header || !logo || !heroSection || !window.gsap || !window.gsap.registerPlugin) {
+        // If GSAP isn't loaded yet, wait a bit and try again
+        if (window.gsap && !window.gsap.timeline) {
+          setTimeout(initAnimation, 100);
+        }
+        return;
+      }
+      
+      try {
+        // Register ScrollTrigger plugin if available
+        if (window.ScrollTrigger) {
+          window.gsap.registerPlugin(window.ScrollTrigger);
+        } else {
+          console.error('ScrollTrigger not found');
+          return;
+        }
+        
+        // Set initial state
+        window.gsap.set(logo, {
+          transformOrigin: 'center center',
+          y: 0,
+          scale: 1,
+          opacity: 1
+        });
+        
+        // Create the animation
+        const tl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'top top',
+            end: '+=200',
+            scrub: 0.5,
+            onUpdate: function(self) {
+              const progress = Math.min(self.progress, 1);
+              const scale = 1 - (progress * 0.5);
+              const y = 20 * progress;
+              
+              // Apply transformations to the logo
+              window.gsap.to(logo, {
+                scale: scale,
+                y: y,
+                opacity: 1 - (progress * 0.5),
+                duration: 0.1,
+                overwrite: 'auto'
+              });
+              
+              // Update header background and shadow based on scroll
+              if (progress > 0.1) {
+                header.classList.add('bg-white/90', 'shadow-md', 'backdrop-blur-sm');
+                header.classList.remove('bg-transparent');
+              } else {
+                header.classList.remove('bg-white/90', 'shadow-md', 'backdrop-blur-sm');
+                header.classList.add('bg-transparent');
+              }
+            }
+          }
+        });
+        
+        // Force a refresh of ScrollTrigger after a short delay
+        setTimeout(() => {
+          if (window.ScrollTrigger) {
+            window.ScrollTrigger.refresh();
+          }
+        }, 500);
+        
+      } catch (error) {
+        console.error('Error initializing header animation:', error);
+      }
+    };
+    
+    // Start initialization
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      // Call on next tick to ensure GSAP is loaded
+      setTimeout(initAnimation, 0);
+    } else {
+      window.addEventListener('load', initAnimation);
+    }
+  });
+
   // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function() {
-    
     // Mobile menu toggle
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');

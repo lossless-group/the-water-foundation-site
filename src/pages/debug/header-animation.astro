@@ -1,0 +1,120 @@
+---
+// src/pages/debug/header-animation.astro
+import Layout from '../../layouts/BaseThemeLayout.astro';
+---
+
+<Layout title="Header Animation Debug">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header with logo that will animate -->
+    <header id="main-header" class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm border-b border-gray-200 z-50 transition-all duration-300">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16 md:h-20">
+          <!-- Left side -->
+          <div class="flex-1">
+            <a href="/" class="text-xl font-bold text-gray-900">Logo</a>
+          </div>
+          
+          <!-- Center logo that will animate -->
+          <div id="logo-container" class="absolute left-1/2 transform -translate-x-1/2 -bottom-4 origin-top transition-all duration-300">
+            <img 
+              src="/appIcon__The-Water-Foundation--Darkest.svg" 
+              alt="Logo" 
+              id="logo" 
+              class="w-24 h-24 md:w-32 md:h-32 transition-all duration-300"
+            />
+          </div>
+          
+          <!-- Right side -->
+          <div class="flex-1 flex justify-end">
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+              Button
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Hero section that will trigger the animation -->
+    <section id="hero-section" class="pt-40 pb-20 bg-gradient-to-b from-blue-50 to-white">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Scroll Down</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          The logo above should shrink and move up as you scroll down.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Content to enable scrolling -->
+    <div class="h-screen bg-white"></div>
+    
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    
+    <!-- Animation Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Wait a moment to ensure GSAP is loaded
+        setTimeout(() => {
+          const header = document.getElementById('main-header');
+          const logo = document.getElementById('logo');
+          const logoContainer = document.getElementById('logo-container');
+          
+          if (!header || !logo || !window.gsap || !window.ScrollTrigger) {
+            console.error('Required elements or GSAP not found');
+            return;
+          }
+          
+          try {
+            // Register ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Set initial state
+            gsap.set(logo, {
+              transformOrigin: 'center center',
+              y: 0,
+              scale: 1,
+              opacity: 1
+            });
+            
+            // Create the animation
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: '#hero-section',
+                start: 'top top',
+                end: '+=200',
+                scrub: 0.5,
+                onUpdate: (self) => {
+                  const progress = Math.min(self.progress, 1);
+                  const scale = 1 - (progress * 0.5);
+                  const y = 20 * progress;
+                  
+                  // Update logo styles directly for better performance
+                  logo.style.transform = `scale(${scale}) translateY(${y}px)`;
+                  logo.style.opacity = 1 - (progress * 0.5);
+                  
+                  // Update header background
+                  if (progress > 0.1) {
+                    header.classList.add('bg-white/90', 'shadow-md');
+                    header.classList.remove('bg-transparent');
+                  } else {
+                    header.classList.remove('bg-white/90', 'shadow-md');
+                    header.classList.add('bg-transparent');
+                  }
+                }
+              }
+            });
+            
+            // Force a refresh after a short delay
+            setTimeout(() => {
+              ScrollTrigger.refresh();
+            }, 500);
+            
+          } catch (error) {
+            console.error('Animation error:', error);
+          }
+        }, 100);
+      });
+    </script>
+  </div>
+</Layout>

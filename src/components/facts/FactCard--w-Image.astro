@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { findFirstNormalized } from '../../lib/api/unsplash';
+import WaterLink from '../basics/links/WaterLink--Default.astro';
 
 interface Props {
   entry: CollectionEntry<'facts'>;
@@ -49,7 +50,6 @@ if (!displaySrc) {
       alt={imgAlt}
       class="w-full h-full object-cover"
       loading="lazy"
-      onerror="this.onerror=null; this.src='/heroes/imageOf__Whale-pair-under-wave.jpeg';"
     />
   </div>
   <div class="p-5 flex-1 flex flex-col">
@@ -64,17 +64,17 @@ if (!displaySrc) {
 
     {effectiveSources.length > 0 && (
       <footer class="mt-4 pt-3 border-t border-border/60">
-        <div class="text-xs text-foreground/60 mb-1">Sources</div>
         <ul class="space-y-1">
-          {effectiveSources.map((s) => (
-            <li class="text-xs text-primary/90 hover:text-primary">
-              {s.url ? (
-                <a href={s.url} target="_blank" rel="noopener noreferrer">
-                  {s.org}{s.title ? ` — ${s.title}` : ''}
-                </a>
+          {effectiveSources.map((source) => (
+            <li class="text-xs">
+              {source.url ? (
+                <WaterLink href={source.url} variant="default" class="text-xs">
+                  {source.org}
+                </WaterLink>
               ) : (
-                <span>{s.org}{s.title ? ` — ${s.title}` : ''}</span>
+                <span class="text-foreground/80">{source.org}</span>
               )}
+              {source.title && <span class="text-foreground/60">: "{source.title}"</span>}
             </li>
           ))}
         </ul>

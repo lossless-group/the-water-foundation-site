@@ -1,7 +1,6 @@
 ---
-import ButtonPrimary from './buttons/Button--Primary.astro';
-import ButtonSecondary from './buttons/Button--Secondary.astro';
-import ButtonAccent from './buttons/Button--Accent.astro';
+import ThreeButtonsRow from './ThreeButtons--Row.astro';
+// GSAP will be loaded via CDN
 
 interface BackgroundItem {
   type: 'image' | 'video' | 'gif' | 'color';
@@ -62,8 +61,12 @@ Variant behavior:
 - md+ viewport: hero behaves like a classic image hero with content overlaid near the bottom.
 - Fixes duplication by not setting CSS background-image and <img> simultaneously. We only render media elements.
 -->
-<section class="relative overflow-hidden">
-  <!-- Media container: mobile shows a fixed-height cover; md+ stretches to screen height -->
+<section class="relative overflow-hidden" id="hero-section">
+  {/* Header is now in the main Header component */}
+  {/* Add padding to account for fixed header */}
+  <div class="pt-24 md:pt-32"></div>
+  
+  {/* Media container: mobile shows a fixed-height cover; md+ stretches to screen height */}
   <div class="relative w-full h-[60vh] min-h-[420px] md:h-screen">
     {backgrounds.map((bg, index) => {
       const isFirst = index === 0;
@@ -134,9 +137,8 @@ Variant behavior:
     <div class="hidden md:flex relative z-10 h-full flex-col">
       <div class="flex-1" />
       <div class={`relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 ${desktopContentOffsetClass}`}>
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
-          <!-- Left: Text -->
-          <div class="flex-1 text-left space-y-6 max-w-2xl">
+        <div class="flex flex-col gap-8 lg:gap-10 max-w-2xl">
+          <div class="space-y-6">
             {contextSetterTxt && (
               <a href="/impact" class="inline-block">
                 <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-accent-100/90 border border-accent-200/50 backdrop-blur-sm hover:bg-accent-200/70 transition-colors">
@@ -152,24 +154,14 @@ Variant behavior:
                 <p class="text-lg md:text-xl text-white/90 font-medium leading-relaxed">{subHeaderTxt}</p>
               )}
               {supportingCopyTxt && (
-                <p class="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl">{supportingCopyTxt}</p>
+                <p class="text-base md:text-lg text-white/80 leading-relaxed">{supportingCopyTxt}</p>
               )}
             </div>
           </div>
-          <!-- Right: Buttons -->
+          {/* Buttons row - now below the text */}
           {targetActionsArray.length > 0 && (
-            <div class="flex flex-col gap-4">
-              {targetActionsArray.map((action) => {
-                if (action.type === 'accent') {
-                  return (
-                    <ButtonAccent href={action.href} text={action.text} external={action.external} className="w-full" />
-                  );
-                }
-                const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
-                return (
-                  <ButtonComponent href={action.href} size={action.size || 'md'} external={action.external} className="w-full">{action.text}</ButtonComponent>
-                );
-              })}
+            <div class="w-full">
+              <ThreeButtonsRow actions={targetActionsArray} className="w-full" />
             </div>
           )}
         </div>
@@ -198,21 +190,16 @@ Variant behavior:
           <p class="text-sm text-foreground/70 leading-relaxed">{supportingCopyTxt}</p>
         )}
         {targetActionsArray.length > 0 && (
-          <div class="flex flex-col gap-3 pt-2">
-            {targetActionsArray.map((action) => {
-              if (action.type === 'accent') {
-                return (
-                  <ButtonAccent href={action.href} text={action.text} external={action.external} className="w-full" />
-                );
-              }
-              const ButtonComponent = action.type === 'primary' ? ButtonPrimary : ButtonSecondary;
-              return (
-                <ButtonComponent href={action.href} size={action.size || 'md'} external={action.external} className="w-full">{action.text}</ButtonComponent>
-              );
-            })}
-          </div>
+          <ThreeButtonsRow 
+            actions={targetActionsArray} 
+            className="pt-2" 
+            buttonClassName="w-full"
+          />
         )}
       </div>
     </div>
   </div>
+  
+  {/* GSAP and ScrollTrigger are now loaded in the Header component */}
+  <script></script>
 </section>

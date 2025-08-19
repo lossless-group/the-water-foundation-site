@@ -1,0 +1,50 @@
+---
+// Simple GSAP Test
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Simple Test</title>
+  <style>
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    #test-box {
+      width: 100px;
+      height: 100px;
+      background: blue;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="test-box"></div>
+
+  <!-- Load GSAP -->
+  <script>
+    // Create script elements
+    const gsapScript = document.createElement('script');
+    gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+    
+    // Load GSAP first
+    gsapScript.onload = () => {
+      // Simple test - if this works, GSAP is loading
+      gsap.to("#test-box", {
+        rotation: 360,
+        duration: 2,
+        repeat: -1,
+        ease: "none"
+      });
+      
+      console.log('GSAP loaded successfully');
+    };
+    
+    // Append to body
+    document.body.appendChild(gsapScript);
+  </script>
+</body>
+</html>
