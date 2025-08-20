@@ -1,4 +1,6 @@
 ---
+import { isMessagingApp } from '../../utils/detect-messaging-app';
+
 interface Props {
   title: string;
   description: string;
@@ -11,8 +13,8 @@ interface Props {
 const {
   title,
   description,
-  imageLandscape = '/og_image--The-Water-Foundation_vnt1.jpg',
-  imagePortrait = '/og_image--The-Water-Foundation_vnt1--Portrait.jpg',
+  imageLandscape = '/ogImageLandscape__The-Water-Foundation.jpg',
+  imagePortrait = '/ogImagePortrait__The-Water-Foundation.jpg',
   type = 'website',
   url
 } = Astro.props;
@@ -21,28 +23,18 @@ const fullUrl = url ? new URL(url, import.meta.env.SITE).toString() : '';
 const fullImageLandscapeUrl = new URL(imageLandscape, import.meta.env.SITE).toString();
 const fullImagePortraitUrl = new URL(imagePortrait, import.meta.env.SITE).toString();
 
-// Detect if the request is from a messaging app
-const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
-const isMessagingApp = (ua: string): boolean => {
-  if (!ua) return false;
-  const patterns = [
-    /WhatsApp/i,
-    /iMessage/i,
-    /Messenger\/[0-9.]/i,
-    /FBAN\/MessengerForiOS/i,
-    /Telegram/i,
-    /Slack/i,
-    /Discord/i,
-    /Viber/i,
-    /WeChat/i,
-    /Line\//i,
-    /KakaoTalk/i
-  ];
-  return patterns.some(pattern => pattern.test(ua));
-};
+// Get user agent from headers for server-side rendering
+const userAgent = Astro.request.headers.get('user-agent') || '';
 
-const isFromMessagingApp = isMessagingApp(userAgent);
-const ogImage = isFromMessagingApp ? fullImagePortraitUrl : fullImageLandscapeUrl;
+// Always use portrait for WhatsApp and iMessage, landscape for others
+const isWhatsApp = /WhatsApp/i.test(userAgent);
+const isIMessage = /iMessage/i.test(userAgent);
+const usePortrait = isWhatsApp || isIMessage;
+
+const ogImage = usePortrait ? fullImagePortraitUrl : fullImageLandscapeUrl;
+const imageWidth = usePortrait ? '1200' : '1200';
+const imageHeight = usePortrait ? '1600' : '630';
+
 ---
 
 <!-- Primary Meta Tags -->
@@ -65,5 +57,5 @@ const ogImage = isFromMessagingApp ? fullImagePortraitUrl : fullImageLandscapeUr
 <meta property="twitter:image" content={ogImage} />
 
 <!-- Additional OpenGraph tags for better cross-platform support -->
-<meta property="og:image:width" content={isFromMessagingApp ? '1200' : '1200'} />
-<meta property="og:image:height" content={isFromMessagingApp ? '1600' : '630'} />
+<meta property="og:image:width" content={imageWidth} />
+<meta property="og:image:height" content={imageHeight} />
