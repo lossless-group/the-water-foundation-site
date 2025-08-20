@@ -1,0 +1,37 @@
+ ---
+import Timeline from '../../sections/Timeline.astro';
+ const timelineArray = [
+    {
+      title: 'Desalination',
+      body: 'Advanced technologies addressing water scarcity with unprecedented efficiency and environmental consideration.',
+      color: 'primary',
+    },
+    {
+      title: 'Advanced Treatment',
+      body: 'Next-generation wastewater treatment solutions creating circular water economies.',
+      color: 'blue',
+    },
+    {
+      title: 'PFAS Destruction',
+      body: 'Breakthrough technologies eliminating forever chemicals from water systems worldwide.',
+      color: 'teal',
+    },
+  ];
+
+---
+
+ <!-- 2024 Surge - Dynamic Timeline -->
+ <section class="relative py-20 bg-gradient-to-b from-primary/5 to-background">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-bold text-foreground mb-8">
+          <span class="text-primary">2024</span> Surge
+        </h2>
+        <p class="text-xl text-muted-foreground">Investor interest exploded across key innovation areas</p>
+      </div>
+      
+      <div class="relative">
+        <Timeline timeline={timelineArray} />
+      </div>
+    </div>
+  </section>

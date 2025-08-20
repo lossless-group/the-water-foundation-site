@@ -1,0 +1,116 @@
+<!-- Transformation Section - Light, Hopeful -->
+<section class="relative min-h-screen flex items-center bg-gradient-to-b from-green-950/5 to-background">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-500/3 via-transparent to-blue-500/3"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="relative order-2 lg:order-1 flex justify-center lg:justify-start">
+          <div class="opportunity-visual bg-gradient-to-br from-green-500/15 to-blue-500/15 rounded-2xl p-8 lg:p-12 backdrop-blur-sm border border-green-500/20 shadow-2xl max-w-md w-full animate-fade-in-up">
+            <div class="text-center space-y-8">
+              <div class="text-5xl lg:text-6xl font-black text-green-400 animate-pulse">→</div>
+              <div class="space-y-4">
+                <div class="text-xl lg:text-2xl font-semibold text-foreground">Innovation</div>
+                <div class="text-xl lg:text-2xl font-semibold text-foreground">Impact</div>
+                <div class="text-xl lg:text-2xl font-semibold text-primary">Investment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="space-y-10 order-1 lg:order-2">
+          <div class="overflow-hidden">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight parallax-text animate-slide-up">
+              More Than
+              <span class="block text-green-400 mt-2 animate-slide-up-delay">A Crisis</span>
+            </h2>
+          </div>
+          
+          <div class="space-y-8 text-lg lg:text-xl text-muted-foreground leading-relaxed">
+            <p class="transform transition-all duration-700 hover:translate-x-2 animate-fade-in-up">
+              This is more than a crisis. It's a call to invest in the future — where innovation meets impact.
+            </p>
+            
+            <p class="transform transition-all duration-700 hover:translate-x-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+              As global water challenges intensify, from increasing scarcity to emerging contaminants, the demand for breakthrough technologies in water treatment and management is rising.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<style>
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 1s ease-out forwards;
+  }
+  
+  .animate-slide-up-delay {
+    animation: slide-up 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out 1.2s forwards;
+    opacity: 0;
+  }
+  
+  .parallax-text {
+    transform: translateZ(0);
+    transition: transform 0.3s ease-out;
+  }
+</style>
+
+<script>
+  // Parallax effect for text elements
+  document.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.parallax-text');
+    
+    parallaxElements.forEach(function(element) {
+      if (element instanceof HTMLElement) {
+        const rate = scrolled * -0.5;
+        element.style.transform = 'translateY(' + rate + 'px)';
+      }
+    });
+  });
+  
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.animate-fade-in-up, .opportunity-visual').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>

@@ -1,0 +1,75 @@
+---
+export interface Props {
+  sectionClass?: string;
+  containerClass?: string;
+}
+
+const { 
+  sectionClass = "py-8 px-4",
+  containerClass = "max-w-7xl mx-auto"
+} = Astro.props;
+---
+
+<!-- Key Metrics Grid -->
+<section class={sectionClass}>
+  <div class={containerClass}>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      
+      <!-- Crisis Indicator -->
+      <div class="message-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
+            <div class="w-6 h-6 bg-orange-700 rounded-full animate-pulse"></div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-orange-700">Critical</div>
+            <div class="text-sm text-muted-foreground">Status</div>
+          </div>
+        </div>
+        <div class="text-sm text-muted-foreground">Water scarcity & contamination rising globally</div>
+      </div>
+
+      <!-- Investment Surge -->
+      <div class="message-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+            <div class="text-green-500 font-bold">↗</div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-green-500">+247%</div>
+            <div class="text-sm text-muted-foreground">2024 Growth</div>
+          </div>
+        </div>
+        <div class="text-sm text-muted-foreground">Investor interest in water tech</div>
+      </div>
+
+      <!-- Market Opportunity -->
+      <div class="message-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <div class="text-blue-500 font-bold">$</div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-blue-500">∞B</div>
+            <div class="text-sm text-muted-foreground">Market Size</div>
+          </div>
+        </div>
+        <div class="text-sm text-muted-foreground">Unlimited growth potential</div>
+      </div>
+
+      <!-- Our Approach -->
+      <div class="message-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+            <div class="text-primary font-bold">3</div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-primary">Verticals</div>
+            <div class="text-sm text-muted-foreground">Integrated</div>
+          </div>
+        </div>
+        <div class="text-sm text-muted-foreground">Unsiloed finance approach</div>
+      </div>
+    </div>
+  </div>
+</section>
