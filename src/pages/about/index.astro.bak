@@ -9,7 +9,7 @@ import OurMissionJumbo from '../../layouts/sections/core-messages/OurMission--Ju
 import UnsiloedFinanceJumbo from '../../layouts/sections/core-messages/UnsiloedFinance--Jumbo.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="About Us | The Water Foundation"
   description="Learn about our mission, team, and the principles that guide our work."
   themeClass="theme-water"

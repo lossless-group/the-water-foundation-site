@@ -3,12 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import ColumnarMessages from '../../layouts/sections/message-grids/ColumnarMessages.astro';
 
 ---
-<BaseThemeLayout
-  title="First Princples"
-  description="Interactive water innovation dashboard"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
->
+<BaseThemeLayout title="First Princples" description="Interactive water innovation dashboard">
     <main>
         <ColumnarMessages contextSetterTxt="Strategy" headingTxt="First-Principles" columns={[
             {

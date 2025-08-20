@@ -3,10 +3,8 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 ---
 
 <BaseThemeLayout
-  title="Development Progress & Options - The Water Foundation"
-  description="Client showcase, progress updates, and feature options for The Water Foundation website development."
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+	title="Development Progress & Options - The Water Foundation"
+	description="Client showcase, progress updates, and feature options for The Water Foundation website development."
 >
 	<div class="py-8">
 		<div class="max-w-6xl mx-auto">

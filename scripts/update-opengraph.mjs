@@ -19,9 +19,8 @@ function updateFile(filePath) {
 
   // Find the BaseThemeLayout opening tag
   const baseLayoutRegex = /<BaseThemeLayout([^>]*)>/;
-  const match = content.match(baseLayoutRegex);
   
-  if (!match) {
+  if (!baseLayoutRegex.test(content)) {
     console.log(`Skipping ${filePath} - No BaseThemeLayout found`);
     return false;
   }

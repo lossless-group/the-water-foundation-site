@@ -10,9 +10,6 @@ const partners: LogoOnlyItem[] = (partnersData as any[]).map((p: any) => ({
   urlToPartnerSite: p.urlToPartnerSite,
 }));
 ---
-<BaseThemeLayout
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
->
+<BaseThemeLayout>
   <LogoGridOnly partners={partners} />
 </BaseThemeLayout>

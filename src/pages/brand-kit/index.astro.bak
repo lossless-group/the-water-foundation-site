@@ -4,7 +4,7 @@ import ColorVariableGrid from '../../components/design-system/ColorVariableGrid.
 import TextStylePatternsGrid from '../../components/design-system/TextStylePatternsGrid.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Brand Kit | The Water Foundation"
   description="Explore our brand assets and guidelines."
   themeClass="theme-water"

@@ -3,11 +3,9 @@
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Why Us Now? - Story Flow"
   description="An immersive journey through water innovation"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
   <main class="overflow-x-hidden">
     

@@ -7,11 +7,9 @@ import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.a
 ---
 
 <BaseThemeLayout
-  title="The Water Foundation - Water Independence for 1 Billion People by 2035"
-  description="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital. Join our mission for global water independence."
-  containerClass="w-full max-w-none p-0"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+	title="The Water Foundation - Water Independence for 1 Billion People by 2035"
+	description="Water underpins 70% of global GDP and 100% of food production, yet receives less than .01% of institutional capital. Join our mission for global water independence."
+	containerClass="w-full max-w-none p-0"
 >
 	<!-- Full-Width Hero Section (Mobile Pop-Out Variant) -->
 	<HeroCenteredLogoMobilePopOut 

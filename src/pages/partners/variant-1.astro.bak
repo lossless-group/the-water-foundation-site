@@ -9,11 +9,9 @@ const partners = partnersData;
 ---
 
 <BaseThemeLayout
-  title="Our Partners | The Water Foundation"
-  description="Explore our strategic partnerships driving systemic change through innovative water solutions and unsiloed financial strategies."
-  themeClass="theme-water"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+	title="Our Partners | The Water Foundation"
+	description="Explore our strategic partnerships driving systemic change through innovative water solutions and unsiloed financial strategies."
+	themeClass="theme-water"
 >
 	<Hero 
 		headerTxt="Our Current Partnerships"

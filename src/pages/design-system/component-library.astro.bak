@@ -68,11 +68,9 @@ const sampleFacts = [
 ] as any;
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Component Library - The Water Foundation"
   description="Visual showcase of reusable components and design patterns"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
   <main class="min-h-screen bg-background">
     

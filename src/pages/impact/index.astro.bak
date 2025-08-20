@@ -1,13 +1,13 @@
 ---
 // Interactive Dashboard Style
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import UnsiloedFinanceColumn from '../../layouts/sections/core-messages/UnsiloedFinanceColumn--Base.astro';
+import MessageCardRow from '../../layouts/sections/message-grids/MessageCardRow.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Why Us Now? - Dashboard"
   description="Interactive water innovation dashboard"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
   <main class="min-h-screen bg-background">
     
@@ -31,69 +31,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
       </div>
     </section>
 
-    <!-- Key Metrics Grid -->
-    <section class="py-8 px-4">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          
-          <!-- Crisis Indicator -->
-          <div class="metric-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
-                <div class="w-6 h-6 bg-red-500 rounded-full animate-pulse"></div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-red-500">Critical</div>
-                <div class="text-sm text-muted-foreground">Status</div>
-              </div>
-            </div>
-            <div class="text-sm text-muted-foreground">Water scarcity & contamination rising globally</div>
-          </div>
-
-          <!-- Investment Surge -->
-          <div class="metric-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                <div class="text-green-500 font-bold">↗</div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-green-500">+247%</div>
-                <div class="text-sm text-muted-foreground">2024 Growth</div>
-              </div>
-            </div>
-            <div class="text-sm text-muted-foreground">Investor interest in water tech</div>
-          </div>
-
-          <!-- Market Opportunity -->
-          <div class="metric-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                <div class="text-blue-500 font-bold">$</div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-blue-500">∞B</div>
-                <div class="text-sm text-muted-foreground">Market Size</div>
-              </div>
-            </div>
-            <div class="text-sm text-muted-foreground">Unlimited growth potential</div>
-          </div>
-
-          <!-- Our Approach -->
-          <div class="metric-card bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                <div class="text-primary font-bold">3</div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-primary">Verticals</div>
-                <div class="text-sm text-muted-foreground">Integrated</div>
-              </div>
-            </div>
-            <div class="text-sm text-muted-foreground">Unsiloed finance approach</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <MessageCardRow />
 
     <!-- Main Dashboard Content -->
     <section class="px-4 pb-8">
@@ -103,6 +41,18 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
           <!-- Left Column - Crisis Analysis -->
           <div class="lg:col-span-2 space-y-8">
             
+
+            <!-- Mission Statement -->
+            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
+              <h2 class="text-xl font-semibold text-foreground mb-4">Our Mission</h2>
+              <div class="space-y-4 text-sm text-muted-foreground">
+                <p>Water scarcity and impending degradation of our water systems.</p>
+                
+                <p>The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future.</p>
+                
+                <p>We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.</p>
+              </div>
+            </div>
             <!-- Crisis Overview -->
             <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
               <div class="flex items-center justify-between mb-6">
@@ -130,11 +80,18 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
                 <div class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-sm">High Impact</div>
               </div>
               
+              
               <div class="grid md:grid-cols-2 gap-4">
                 <div class="opportunity-card p-4 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
                   <h3 class="font-semibold text-foreground mb-2">Innovation Meets Impact</h3>
                   <p class="text-sm text-muted-foreground">This is more than a crisis. It's a call to invest in the future — where innovation meets impact.</p>
                 </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="opportunity-card p-4 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
+                    <h3 class="font-semibold text-foreground mb-2">Blended Finance</h3>
+                    <p class="text-sm text-muted-foreground">We break the patterns of the status quo. Systems thinking requires systems approaches.</p>
+                  </div>
                 
                 <div class="opportunity-card p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg hover:bg-blue-500/10 transition-colors cursor-pointer">
                   <h3 class="font-semibold text-foreground mb-2">Rising Demand</h3>
@@ -142,6 +99,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
                 </div>
               </div>
             </div>
+          </div>
 
             <!-- Technology Sectors -->
             <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
@@ -187,17 +145,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
           <!-- Right Column - Our Approach -->
           <div class="space-y-8">
             
-            <!-- Mission Statement -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-4">Our Mission</h2>
-              <div class="space-y-4 text-sm text-muted-foreground">
-                <p>We bring together exceptional people who are impatient with the way things are, embrace new ways of systems thinking across the water cycle and along the water tech stack - and have the courage to act.</p>
-                
-                <p>The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future.</p>
-                
-                <p>We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.</p>
-              </div>
-            </div>
+
 
             <!-- Strategy Overview -->
             <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
@@ -210,35 +158,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
             </div>
 
             <!-- Investment Verticals -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-4">Unsiloed Finance</h2>
-              
-              <div class="space-y-3">
-                <div class="vertical-item p-3 bg-primary/5 border border-primary/20 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer">
-                  <div class="flex items-center mb-2">
-                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs font-bold mr-3">1</div>
-                    <h3 class="font-semibold text-foreground">Venture Builder</h3>
-                  </div>
-                  <p class="text-xs text-muted-foreground ml-9">Identify best water IP/ideas, build teams, enable with capital</p>
-                </div>
-                
-                <div class="vertical-item p-3 bg-blue-500/5 border border-blue-500/20 rounded-lg hover:bg-blue-500/10 transition-colors cursor-pointer">
-                  <div class="flex items-center mb-2">
-                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3">2</div>
-                    <h3 class="font-semibold text-foreground">VC Fund</h3>
-                  </div>
-                  <p class="text-xs text-muted-foreground ml-9">Invest in existing teams, plug into venture ecosystem, scale</p>
-                </div>
-                
-                <div class="vertical-item p-3 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
-                  <div class="flex items-center mb-2">
-                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3">3</div>
-                    <h3 class="font-semibold text-foreground">PE Fund</h3>
-                  </div>
-                  <p class="text-xs text-muted-foreground ml-9">Buy incumbents and hidden champions, build something bigger</p>
-                </div>
-              </div>
-            </div>
+            <UnsiloedFinanceColumn containerClass="dashboard-panel bg-card border border-border rounded-xl p-6" />
 
             <!-- Call to Action -->
             <div class="dashboard-panel bg-gradient-to-br from-primary/10 to-blue-500/10 border border-primary/20 rounded-xl p-6">
@@ -255,28 +175,6 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Footer Stats -->
-    <section class="py-8 px-4 bg-card/50 border-t border-border">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div>
-            <div class="text-2xl font-bold text-primary">2024</div>
-            <div class="text-sm text-muted-foreground">Surge Year</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-green-500">3</div>
-            <div class="text-sm text-muted-foreground">Key Technologies</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-blue-500">∞</div>
-            <div class="text-sm text-muted-foreground">Market Potential</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-purple-500">1</div>
-            <div class="text-sm text-muted-foreground">Integrated Approach</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
 </BaseThemeLayout>

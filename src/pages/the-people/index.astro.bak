@@ -128,10 +128,7 @@ const teamMembers: TeamMember[] = [
 ];
 ---
 
-<BaseThemeLayout
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
->
+<BaseThemeLayout>
   <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
     <!-- Hero Section -->
     <section class="pt-12 pb-8 md:pt-16 md:pb-10 bg-primary/5">

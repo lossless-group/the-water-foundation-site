@@ -34,10 +34,7 @@ const pageDescription = 'We collaborate with leading organizations to drive inno
 
 ---
 
-<BaseThemeLayout
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
->
+<BaseThemeLayout title={pageTitle} description={pageDescription}>
   <div class="bg-background">
     <!-- Hero Section -->
     <Hero>

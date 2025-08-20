@@ -3,11 +3,9 @@
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Why Us Now? - Impact Report"
   description="The urgency and opportunity in water innovation"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
   <main class="min-h-screen bg-gradient-to-b from-background to-background/95">
     

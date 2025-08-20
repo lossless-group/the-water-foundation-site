@@ -8,10 +8,6 @@ const entries = (await getCollection('facts')).sort(
 );
 ---
 
-<BaseThemeLayout
-  title="Nerd Out: On Water"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
->
+<BaseThemeLayout title="Nerd Out: On Water">
   <FactsGrid entries={entries} />
 </BaseThemeLayout>

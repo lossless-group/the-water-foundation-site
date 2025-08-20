@@ -3,7 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import ArrowContainer from '../../components/infographic/ArrowContainer.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Arrow Container Test | The Water Foundation"
   description="Test page for arrow container component."
   themeClass="theme-water"

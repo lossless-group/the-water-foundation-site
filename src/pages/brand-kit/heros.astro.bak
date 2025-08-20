@@ -3,7 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import Hero from "../../components/basics/heros/Hero.astro";
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Brand Kit - Heroes | The Water Foundation"
   description="Explore our brand assets and guidelines."
   themeClass="theme-water"

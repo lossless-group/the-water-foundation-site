@@ -7,12 +7,13 @@ const description = "Catalyze the capital stack for innovation and impact on glo
 const ogImage = "/og_image--The-Water-Foundation_vnt1.jpg";
 ---
 
-<BaseThemeLayout
-  themeClass="theme-water"
+<BaseThemeLayout 
+  title={title}
+  description={description}
+  themeClass="theme-water" 
   containerClass="max-w-6xl mx-auto"
+  ogImage={ogImage}
   ogType="website"
-  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
-  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
   <OurMissionJumbo />
 </BaseThemeLayout>

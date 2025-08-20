@@ -3,7 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import HeroSplit from '../../components/basics/heros/Hero--SplitScreen.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="Brand Kit - Hero Splitscreen | The Water Foundation"
   description="Explore our brand assets and guidelines."
   themeClass="theme-water"

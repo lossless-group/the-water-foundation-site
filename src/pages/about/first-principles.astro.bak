@@ -3,7 +3,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import BrandTableDisplay from '../../layouts/sections/tables/BrandTableDisplay.astro';
 ---
 
-<BaseThemeLayout
+<BaseThemeLayout 
   title="First Principles | The Water Foundation"
   description="Our guiding principles that shape everything we do."
   themeClass="theme-water"
