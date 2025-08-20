@@ -1,0 +1,26 @@
+---
+interface Props {
+  className?: string;
+  index?: number | string;
+  indexString?: string;
+}
+
+const {
+  className = "",
+  index,
+  indexString,
+} = Astro.props;
+
+// Format the index to always be a 2-digit string
+const formatIndex = (value: string | number | undefined): string => {
+  if (value === undefined) return "01";
+  const num = typeof value === 'string' ? parseInt(value, 10) : value;
+  return isNaN(num) ? "01" : num.toString().padStart(2, '0');
+};
+
+const displayIndex = formatIndex(indexString ?? index);
+---
+
+<div class={`w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto mb-4 ${className}`}>
+    <span class="text-2xl font-bold text-green-600">{displayIndex}</span>
+</div>

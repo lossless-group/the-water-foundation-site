@@ -1,6 +1,5 @@
 ---
 // @ts-ignore - Astro component imports
-import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
 import SiteBrandMarkModeWrapper from '../ui/SiteBrandMarkModeWrapper.astro';
 import ModeToggle from '../ui/ModeToggle.astro';
 import InternalLink from '../ui/InternalLinkWrapper.astro';
@@ -26,8 +25,7 @@ const {
   navItems = [
     { text: 'About', href: '/about' },
     { text: 'People', href: '/the-people' },
-    { text: 'Impact', href: '/impact' },
-    { text: 'Slides', href: '/slides' }
+    { text: 'Impact', href: '/impact' }
   ],
   cta = {
     text: 'Partner with Us',
@@ -41,7 +39,8 @@ const {
 ---
 
 <header id="main-header" class={`bg-background/80 backdrop-blur-sm border-b border-border/10 sticky top-0 z-50 w-full ${className}`}>
-  <ResponsiveContainer class="relative flex h-16 items-center justify-between md:h-20">
+  <div class="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between md:h-20">
     <!-- Logo and mobile menu button -->
     <div class="flex items-center">
       <a href="/" class="flex items-center gap-2">
@@ -134,15 +133,16 @@ const {
         </svg>
       </button>
     </div>
-  </ResponsiveContainer>
+    </div>
+  </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div 
-    id="mobile-menu"
+    id="mobile-menu" 
     class="md:hidden hidden"
   >
     <div class="space-y-1 bg-background pb-3 pt-2">
-      <ResponsiveContainer>
+      <div class="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         {navItems.map((item) => (
           <InternalLink
             href={item.href}
@@ -172,7 +172,7 @@ const {
             </a>
           </div>
         ) : null}
-      </ResponsiveContainer>
+      </div>
     </div>
   </div>
 </header>

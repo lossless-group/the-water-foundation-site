@@ -1,0 +1,70 @@
+---
+import BaseThemeLayout from '../../../layouts/BaseThemeLayout.astro';
+import SignUpForThis from '../../../components/basics/signups/SignUpForThis.astro';
+import Bullet1 from '../../../components/basics/bullets/Bullet--Variant1.astro';
+import Bullet2 from '../../../components/basics/bullets/Bullet--Variant2.astro';
+import Bullet3 from '../../../components/basics/bullets/Bullet--Variant3.astro';
+---
+
+<BaseThemeLayout
+  title="The Artesians: a select group of influential supporters of The Water Foundation"
+  description="The Water Foundation's Artesians"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-foreground mb-4">The Artesians</h1>
+        <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+          A select group of influential supporters of The Water Foundation.
+          <br />
+          <br />
+          Bringing the network to network capital.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Supporter Card 1 -->
+        <div class="group bg-card border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+          <div class="mb-6 text-center">
+            <Bullet1 index="01" className="group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          <h3 class="text-2xl font-bold text-foreground mb-4 text-center">Visionary Partners</h3>
+          <p class="text-muted-foreground text-center flex-grow">
+            Join our network of forward-thinking individuals committed to sustainable water solutions.
+          </p>
+        </div>
+
+        <!-- Supporter Card 2 -->
+        <div class="group bg-card border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+          <div class="mb-6 text-center">
+            <Bullet2 index="02" className="group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          <h3 class="text-2xl font-bold text-foreground mb-4 text-center">Transformative Impact</h3>
+          <p class="text-muted-foreground text-center flex-grow">
+            Collaborate with industry leaders and experts driving meaningful change in water conservation.
+          </p>
+        </div>
+
+        <!-- Supporter Card 3 -->
+        <div class="group bg-card border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+          <div class="mb-6 text-center">
+            <Bullet3 index="03" className="group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          <h3 class="text-2xl font-bold text-foreground mb-4 text-center">Global Network</h3>
+          <p class="text-muted-foreground text-center flex-grow">
+            Connect with a diverse community passionate about water security and innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-16 px-40">
+    <SignUpForThis 
+      title="Join the Artesians"
+      description="Be part of a select group of influential supporters. See us at the World Economic Forum, COP (Conference of the Parties), Future Investment Initiative and other global events."
+      buttonText="Join the Artesians"
+    />
+  </section>
+</BaseThemeLayout>
