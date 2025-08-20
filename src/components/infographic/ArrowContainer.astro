@@ -1,41 +1,58 @@
 ---
 export interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   className?: string;
 }
 
 const { title, description, className = '' } = Astro.props;
 ---
 
-<div class={`arrow-container ${className}`}>
+<div class={`arrow-wrapper ${className}`}>
+  <svg class="arrow-shape" viewBox="0 0 100 20" preserveAspectRatio="none">
+    <polygon 
+      points="0,0 85,0 100,10 85,20 0,20" 
+      fill="rgba(4, 38, 50, 0.8)" 
+      stroke="#0891b2" 
+      stroke-width="0.5"
+    />
+  </svg>
   <div class="arrow-content">
-    <h4 class="arrow-title">{title}</h4>
-    <p class="arrow-description">{description}</p>
+    {title && <h4 class="arrow-title">{title}</h4>}
+    {description && <p class="arrow-description">{description}</p>}
+    <slot />
   </div>
 </div>
 
 <style>
-  .arrow-container {
+  .arrow-wrapper {
     position: relative;
-    background: rgba(4, 38, 50, 0.8);
-    border: 2px solid #0891b2;
-    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    width: 100%;
     margin: 0.5rem 0;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
-    backdrop-filter: blur(4px);
-    transition: all 0.3s ease;
   }
 
-  .arrow-container:hover {
-    background: rgba(4, 38, 50, 0.9);
-    border-color: #06b6d4;
+  .arrow-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .arrow-wrapper:hover .arrow-shape polygon {
+    fill: rgba(4, 38, 50, 0.9);
+    stroke: #06b6d4;
+  }
+
+  .arrow-wrapper:hover {
     transform: translateX(4px);
   }
 
   .arrow-content {
     position: relative;
     z-index: 1;
+    padding: 1.5rem 2.5rem 1.5rem 1.5rem;
   }
 
   .arrow-title {
@@ -56,7 +73,16 @@ const { title, description, className = '' } = Astro.props;
   @media (max-width: 768px) {
     .arrow-container {
       padding: 1.25rem 1.5rem 1.25rem 1.25rem;
-      clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    }
+
+    .arrow-container::after {
+      right: -15px;
+      border-left-width: 15px;
+    }
+
+    .arrow-container::before {
+      right: -17px;
+      border-left-width: 17px;
     }
     
     .arrow-title {

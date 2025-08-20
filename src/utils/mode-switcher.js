@@ -23,8 +23,8 @@ export class ModeSwitcher {
    * Get the system color scheme preference
    */
   getSystemPreference() {
-    if (typeof window === 'undefined') return 'light';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (typeof window === 'undefined') return 'dark';
+    return 'dark'; // Always default to dark mode
   }
 
   /**
@@ -111,8 +111,8 @@ export const modeSwitcher = new ModeSwitcher();
 // Auto-initialize on DOM content loaded
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    // Apply the stored mode or system preference
-    modeSwitcher.applyMode(modeSwitcher.getStoredMode() || modeSwitcher.getSystemPreference());
+    // Apply the stored mode or default to dark
+    modeSwitcher.applyMode(modeSwitcher.getStoredMode() || 'dark');
   });
 }
 

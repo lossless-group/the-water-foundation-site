@@ -9,7 +9,7 @@ export interface Props {
 const { title, description, themeClass, favicon } = Astro.props;
 
 // Get initial theme mode from cookies or system preference
-const initialTheme = 'light'; // Default to light theme
+const initialTheme = 'dark'; // Default to dark theme
 ---
 
 <html lang="en" class={themeClass} data-mode={initialTheme}>
@@ -42,7 +42,7 @@ const initialTheme = 'light'; // Default to light theme
       (function() {
         const savedMode = localStorage.getItem('mode');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const mode = savedMode || (systemPrefersDark ? 'dark' : 'light');
+        const mode = savedMode || 'dark';
         const html = document.documentElement;
         if (mode === 'dark') {
           html.setAttribute('data-mode', 'dark');
