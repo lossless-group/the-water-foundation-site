@@ -8,12 +8,53 @@ interface Props {
   description?: string;
 }
 
-const { entries, title = 'Water Facts', description } = Astro.props;
+const { entries, 
+    title = 'True Facts about Water', 
+    description = 'Explore the counter-intuitive true facts about how water impacts livelihoods everywhere.' 
+} = Astro.props;
 ---
 
 <section class="py-10">
   <div class="max-w-6xl mx-auto px-4">
-    <header class="mb-6">
+    <style>
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .fact-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: cardFadeIn 0.6s ease-out forwards;
+      }
+      
+      @keyframes cardFadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Stagger the animations for each card */
+      .fact-card:nth-child(1) { animation-delay: 0.2s; }
+      .fact-card:nth-child(2) { animation-delay: 0.4s; }
+      .fact-card:nth-child(3) { animation-delay: 0.6s; }
+      .fact-card:nth-child(4) { animation-delay: 0.8s; }
+      .fact-card:nth-child(5) { animation-delay: 1.0s; }
+      .fact-card:nth-child(6) { animation-delay: 1.2s; }
+    </style>
+    
+    <header class="mb-6 fade-in">
       <h2 class="text-2xl font-bold text-foreground">{title}</h2>
       {description && (
         <p class="text-foreground/70 mt-1">{description}</p>
@@ -21,8 +62,10 @@ const { entries, title = 'Water Facts', description } = Astro.props;
     </header>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {entries.map((entry) => (
-        <FactCardWithImage entry={entry} />
+      {entries.map((entry, index) => (
+        <div class="fact-card" style={`animation-delay: ${index * 0.15}s`}>
+          <FactCardWithImage entry={entry} />
+        </div>
       ))}
     </div>
   </div>
