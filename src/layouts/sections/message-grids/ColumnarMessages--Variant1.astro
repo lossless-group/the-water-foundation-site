@@ -1,0 +1,98 @@
+---
+interface Props {
+	contextSetterTxt: string;
+	headingTxt: string;
+	columns: {
+		title: string;
+		items: string[];
+	}[];
+}
+
+const { contextSetterTxt, headingTxt, columns } = Astro.props;
+---
+
+<section class="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900 text-white relative overflow-hidden">
+	<!-- Enhanced Background Pattern -->
+	<div class="absolute inset-0 opacity-20">
+		<div class="absolute inset-0" style="background-image: 
+			radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.4) 0%, transparent 40%),
+			radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.4) 0%, transparent 40%),
+			radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 60%);">
+		</div>
+	</div>
+	
+	<!-- Floating Elements -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none">
+		<div class="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+		<div class="absolute bottom-20 right-10 w-24 h-24 bg-teal-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+		<div class="absolute top-1/2 left-1/4 w-16 h-16 bg-cyan-500/10 rounded-full blur-lg animate-pulse delay-500"></div>
+	</div>
+	
+	<div class="relative z-10 max-w-7xl mx-auto px-6">
+		<!-- Enhanced Context Setter -->
+		<div class="text-center mb-8">
+			<span class="inline-block px-6 py-3 bg-gradient-to-r from-blue-600/20 to-teal-600/20 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-sm font-semibold tracking-wider uppercase shadow-lg">
+				{contextSetterTxt}
+			</span>
+		</div>
+
+		<!-- Enhanced Main Heading -->
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
+				{headingTxt}
+			</h2>
+			<div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto rounded-full"></div>
+		</div>
+
+		<!-- Enhanced Auto-Centering Grid -->
+		<div class="flex justify-center">
+			<div class="grid gap-8 justify-items-center items-stretch" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 100%;">
+				{columns.map((column, index) => (
+					<div class="group relative w-full max-w-sm h-full">
+						<!-- Card Container -->
+						<div class="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2 h-full flex flex-col">
+						<!-- Column Header -->
+						<div class="text-center mb-8">
+							<div class="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-teal-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+								<span class="text-2xl font-bold text-blue-300">{index + 1}</span>
+							</div>
+							<h3 class="text-xl font-bold text-blue-100 border-b border-white/20 pb-4 group-hover:text-blue-200 transition-colors duration-300">
+								{column.title}
+							</h3>
+						</div>
+						
+						<!-- Items List -->
+						<ul class="space-y-4 flex-grow">
+							{column.items.map((item) => (
+								<li class="flex items-start group/item">
+									<div class="flex-shrink-0 mr-4 mt-1">
+										<div class="w-2 h-2 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full group-hover/item:scale-150 transition-transform duration-300"></div>
+									</div>
+									<span class="text-white/90 text-sm leading-relaxed group-hover/item:text-white transition-colors duration-300">
+										{item}
+									</span>
+								</li>
+							))}
+						</ul>
+					</div>
+					
+					<!-- Hover Glow Effect -->
+					<div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-cyan-500/0 to-teal-500/0 rounded-2xl blur-xl group-hover:from-blue-500/20 group-hover:via-cyan-500/20 group-hover:to-teal-500/20 transition-all duration-500 -z-10"></div>
+				</div>
+			))}
+		</div>
+		
+
+	</div>
+</section>
+
+<style>
+	@keyframes float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-20px); }
+	}
+	
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+</style>
