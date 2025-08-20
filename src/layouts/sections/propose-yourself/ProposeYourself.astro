@@ -1,3 +1,7 @@
+---
+import SignUpForThis from "../../../components/basics/signups/SignUpForThis.astro"
+---
+    
     <!-- Join Us CTA -->
     <section class="py-16 bg-primary/5">
         <div class="container mx-auto px-4 text-center">
@@ -8,11 +12,10 @@
             <br>
             If you fit this description, you can probably propose to us roles and work that we can't even imagine yet. We've been waiting to hear from you!
           </p>
-          <a 
-            href="/careers" 
-            class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            View Open Positions
-          </a>
+          <SignUpForThis
+            title="Propose Yourself"
+            description="Tell us how you can help!"
+            buttonText="Propose Yourself"
+          />
         </div>
       </section>
