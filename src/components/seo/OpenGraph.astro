@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  imageLandscape?: string;
+  imagePortrait?: string;
+  type?: 'website' | 'article';
+  url?: string;
+}
+
+const {
+  title,
+  description,
+  imageLandscape = '/og_image--The-Water-Foundation_vnt1.jpg',
+  imagePortrait = '/og_image--The-Water-Foundation_vnt1--Portrait.jpg',
+  type = 'website',
+  url
+} = Astro.props;
+
+const fullUrl = url ? new URL(url, import.meta.env.SITE).toString() : '';
+const fullImageLandscapeUrl = new URL(imageLandscape, import.meta.env.SITE).toString();
+const fullImagePortraitUrl = new URL(imagePortrait, import.meta.env.SITE).toString();
+
+// Detect if the request is from a messaging app
+const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
+const isMessagingApp = (ua: string): boolean => {
+  if (!ua) return false;
+  const patterns = [
+    /WhatsApp/i,
+    /iMessage/i,
+    /Messenger\/[0-9.]/i,
+    /FBAN\/MessengerForiOS/i,
+    /Telegram/i,
+    /Slack/i,
+    /Discord/i,
+    /Viber/i,
+    /WeChat/i,
+    /Line\//i,
+    /KakaoTalk/i
+  ];
+  return patterns.some(pattern => pattern.test(ua));
+};
+
+const isFromMessagingApp = isMessagingApp(userAgent);
+const ogImage = isFromMessagingApp ? fullImagePortraitUrl : fullImageLandscapeUrl;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+{fullUrl && <meta property="og:url" content={fullUrl} />}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+{fullUrl && <meta property="twitter:url" content={fullUrl} />}
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Additional OpenGraph tags for better cross-platform support -->
+<meta property="og:image:width" content={isFromMessagingApp ? '1200' : '1200'} />
+<meta property="og:image:height" content={isFromMessagingApp ? '1600' : '630'} />

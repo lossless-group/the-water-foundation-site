@@ -1,15 +1,29 @@
 ---
+import OpenGraph from '../components/seo/OpenGraph.astro';
+
 export interface Props {
   title: string;
   description: string;
   themeClass: string;
   favicon?: string;
+  ogImage?: string;
+  ogImagePortrait?: string;
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, themeClass, favicon } = Astro.props;
+const { 
+  title, 
+  description, 
+  themeClass, 
+  favicon = 'favicon__The-Water-Foundation.svg',
+  ogImage = '/og_image--The-Water-Foundation_vnt1.jpg',
+  ogImagePortrait = '/og_image--The-Water-Foundation_vnt1--Portrait.jpg',
+  ogType = 'website'
+} = Astro.props;
 
 // Get initial theme mode from cookies or system preference
 const initialTheme = 'dark'; // Default to dark theme
+
 ---
 
 <html lang="en" class={themeClass} data-mode={initialTheme}>
@@ -18,8 +32,14 @@ const initialTheme = 'dark'; // Default to dark theme
 		<link rel="icon" type="image/svg+xml" href={favicon || "/favicon.svg"} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content={description} />
+		<OpenGraph 
+      title={title}
+      description={description}
+      imageLandscape={ogImage}
+      imagePortrait={ogImagePortrait}
+      type={ogType}
+      url={Astro.url.pathname}
+    />
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

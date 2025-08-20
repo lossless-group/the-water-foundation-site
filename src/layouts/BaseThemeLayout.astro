@@ -9,6 +9,9 @@ export interface Props {
 	themeClass?: string;
 	containerClass?: string;
 	favicon?: string;
+	ogImage?: string;
+	ogImagePortrait?: string;
+	ogType?: 'website' | 'article';
 }
 
 const { 
@@ -16,7 +19,10 @@ const {
 	description = "Water Foundation Theme System",
 	themeClass = "theme-water",
 	containerClass = "max-w-4xl mx-auto",
-	favicon = "favicon__The-Water-Foundation.svg"
+	favicon = "favicon__The-Water-Foundation.svg",
+	ogImage,
+	ogImagePortrait,
+	ogType
 } = Astro.props;
 
 import '../styles/global.css';
@@ -27,6 +33,9 @@ import '../styles/global.css';
 	description={description}
 	themeClass={themeClass}
 	favicon={favicon}
+	ogImage={ogImage}
+	ogImagePortrait={ogImagePortrait}
+	ogType={ogType}
 >
 	<style>
 		/* Default theme styles */
