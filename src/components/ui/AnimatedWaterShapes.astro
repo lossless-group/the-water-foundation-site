@@ -1,0 +1,97 @@
+---
+export interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  opacity?: 'low' | 'medium' | 'high';
+  animationSpeed?: 'slow' | 'normal' | 'fast';
+  colorScheme?: 'cyan' | 'blue' | 'teal' | 'mixed';
+}
+
+const { 
+  size = 'md', 
+  opacity = 'medium', 
+  animationSpeed = 'normal',
+  colorScheme = 'mixed'
+} = Astro.props;
+
+const sizeMap = {
+  sm: 'w-16 h-16',
+  md: 'w-24 h-24', 
+  lg: 'w-32 h-32'
+};
+
+const opacityMap = {
+  low: 'opacity-20',
+  medium: 'opacity-40',
+  high: 'opacity-60'
+};
+
+const speedMap = {
+  slow: 'animate-pulse',
+  normal: 'animate-pulse',
+  fast: 'animate-pulse'
+};
+
+const colorMap = {
+  cyan: {
+    fill: 'rgba(34,211,238,0.25)',
+    stroke: 'rgba(34,211,238,0.4)'
+  },
+  blue: {
+    fill: 'rgba(59,130,246,0.25)',
+    stroke: 'rgba(59,130,246,0.4)'
+  },
+  teal: {
+    fill: 'rgba(20,184,166,0.25)',
+    stroke: 'rgba(20,184,166,0.4)'
+  },
+  mixed: {
+    fill: 'rgba(255,255,255,0.15)',
+    stroke: 'rgba(255,255,255,0.3)'
+  }
+};
+
+const colors = colorMap[colorScheme];
+---
+
+<div class={`${sizeMap[size]} ${opacityMap[opacity]} ${speedMap[animationSpeed]} animate-float`}>
+  <svg viewBox="0 0 100 100" class="w-full h-full">
+    <!-- Large Four-Lobed Shape (Center) -->
+    <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z M20 50 Q15 40 20 30 Q30 25 40 30 Q45 40 40 50 Q30 55 20 50 Z" 
+          :fill="colors.fill" 
+          :stroke="colors.stroke" 
+          stroke-width="1.5"/>
+  </svg>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-10px) rotate(90deg) scale(1.05);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg) scale(1.1);
+    }
+    75% {
+      transform: translateY(-10px) rotate(270deg) scale(1.05);
+    }
+  }
+  
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float:nth-child(2) {
+    animation-delay: -2s;
+  }
+  
+  .animate-float:nth-child(3) {
+    animation-delay: -4s;
+  }
+  
+  .animate-float:nth-child(4) {
+    animation-delay: -6s;
+  }
+</style>
