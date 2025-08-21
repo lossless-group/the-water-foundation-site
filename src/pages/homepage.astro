@@ -214,7 +214,10 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
 
     <!-- Artesians Section - Directly on Homepage -->
     <section class="relative py-20 bg-gradient-to-br from-slate-600 via-blue-600 to-teal-600 overflow-hidden">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <p class="text-foreground/80 mb-8 font-avenir text-lg leading-relaxed text-white">
           The Water Foundation's supporters provide us with a <span class="text-cyan-300 font-semibold">strong financial base</span> to <span class="text-cyan-300 font-semibold">accelerate</span> this process. 
         </p>
@@ -222,26 +225,37 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
         <div class="text-center mb-8">
           <a href="/about/artesians" class="group inline-block">
             <div class="relative">
-              <!-- Geometric, interconnected typography inspired by HAUS DER KUNST -->
+              <!-- Enhanced Geometric, interconnected typography inspired by HAUS DER KUNST -->
               <div class="font-light tracking-[0.2em] leading-none">
-                <span class="text-2xl text-cyan-300 group-hover:text-cyan-200 transition-colors duration-700 font-light">Join our</span>
-                <div class="mt-2">
+                <span class="text-2xl text-cyan-300 group-hover:text-cyan-200 transition-colors duration-700 font-light opacity-90 group-hover:opacity-100">Join our</span>
+                <div class="mt-2 relative">
                   <span class="text-6xl font-extralight text-cyan-200 group-hover:text-white transition-all duration-1000 tracking-[0.15em] leading-none" style="font-feature-settings: 'liga' 1, 'kern' 1;">
                     Artesians
                   </span>
+                  
+                  <!-- Subtle geometric accent lines -->
+                  <div class="absolute -top-2 -right-2 w-8 h-px bg-gradient-to-r from-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+                  <div class="absolute -bottom-2 -left-2 w-8 h-px bg-gradient-to-r from-transparent to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-1000 transform scale-x-0 group-hover:scale-x-100 origin-right"></div>
                 </div>
               </div>
               
-              <!-- Geometric underline with art deco feel -->
+              <!-- Enhanced geometric underline with art deco feel -->
               <div class="mt-4">
                 <div class="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div class="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-700 mt-1"></div>
+                <div class="h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-20 group-hover:opacity-60 transition-opacity duration-700 mt-1"></div>
               </div>
               
-              <!-- Subtle subtitle with geometric spacing -->
+              <!-- Enhanced subtitle with geometric spacing and animation -->
               <p class="text-foreground/40 text-sm mt-6 font-extralight tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-2 group-hover:translate-y-0">
                 and become part of the solution
               </p>
+              
+              <!-- Subtle geometric corner accents -->
+              <div class="absolute -top-4 -left-4 w-2 h-2 border-l-2 border-t-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -top-4 -right-4 w-2 h-2 border-r-2 border-t-2 border-blue-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -bottom-4 -left-4 w-2 h-2 border-l-2 border-b-2 border-teal-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -bottom-4 -right-4 w-2 h-2 border-r-2 border-b-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
             </div>
           </a>
         </div>
