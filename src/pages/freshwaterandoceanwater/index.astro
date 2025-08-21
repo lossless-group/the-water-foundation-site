@@ -10,12 +10,12 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 >
   <main class="overflow-x-hidden">
     <!-- Hero Section -->
-    <section class="relative py-32 bg-gradient-to-br from-blue-900 via-cyan-800 to-teal-800 overflow-hidden">
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
       <!-- Background Elements -->
       <div class="absolute inset-0 z-0">
-        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-cyan-600/20 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
-        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-teal-600/15 to-transparent rounded-full blur-2xl animate-pulse-slow-2"></div>
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-600/15 rounded-full blur-2xl animate-pulse-slow-2"></div>
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
@@ -33,7 +33,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900">
+    <section class="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900">
       <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
@@ -41,7 +41,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
           </h2>
         </div>
         
-        <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-10">
+        <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-10">
           <p class="text-lg text-blue-100 leading-relaxed mb-6">
             Freshwater and saltwater are often treated as separate domains — rivers, lakes, and aquifers on one side; oceans, estuaries, and coasts on the other. In reality, they are part of a single, dynamic system.
           </p>
@@ -54,7 +54,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Freshwater Flows Section -->
-    <section class="py-20 bg-gradient-to-br from-slate-800 via-blue-800 to-teal-800">
+    <section class="py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
@@ -64,21 +64,21 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 
         <div class="grid lg:grid-cols-2 gap-16 items-start">
           <div class="space-y-8">
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-cyan-300 mb-4">Rivers and Lakes</h3>
               <p class="text-blue-100 leading-relaxed">
                 Supplying drinking water for billions, but threatened by pollution, over-extraction, and climate variability.
               </p>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-cyan-300 mb-4">Aquifers</h3>
               <p class="text-blue-100 leading-relaxed">
                 Critical "hidden reserves" that provide nearly 40% of irrigation water globally, yet increasingly depleted (UNESCO, 2022).
               </p>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-cyan-300 mb-4">Infrastructure</h3>
               <p class="text-blue-100 leading-relaxed">
                 Dams, irrigation canals, and treatment plants shape how societies manage and distribute freshwater — often with unintended downstream effects.
@@ -86,7 +86,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
             </div>
           </div>
           
-          <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8">
+          <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8">
             <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">System Lens</h3>
             <p class="text-blue-100 leading-relaxed text-center">
               Changes in agriculture, urbanisation, or energy use ripple through freshwater systems, altering both local access and coastal discharge.
@@ -97,7 +97,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Saltwater Flows Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-800">
+    <section class="py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
@@ -107,21 +107,21 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 
         <div class="grid lg:grid-cols-2 gap-16 items-start">
           <div class="space-y-8">
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-teal-300 mb-4">Estuaries and Deltas</h3>
               <p class="text-blue-100 leading-relaxed">
                 Transition zones where freshwater meets the sea, rich in biodiversity and carbon storage capacity.
               </p>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-teal-300 mb-4">Oceans</h3>
               <p class="text-blue-100 leading-relaxed">
                 Absorbing more than 90% of excess global heat and nearly a third of CO₂ emissions, making them critical to climate regulation (IPCC, 2021).
               </p>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
               <h3 class="text-xl font-semibold text-teal-300 mb-4">Marine Economies</h3>
               <p class="text-blue-100 leading-relaxed">
                 Fisheries, shipping, and desalination link saltwater health directly to global food, trade, and water security.
@@ -129,7 +129,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
             </div>
           </div>
           
-          <div class="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-xl border border-teal-400/30 rounded-3xl p-8">
+          <div class="bg-gradient-to-br from-teal-500/15 via-cyan-500/15 to-blue-500/15 backdrop-blur-xl border border-teal-400/40 rounded-3xl p-8">
             <h3 class="text-xl font-semibold text-teal-300 mb-4 text-center">System Lens</h3>
             <p class="text-blue-100 leading-relaxed text-center">
               Saltwater health is inseparable from freshwater inputs — nutrient overloads from rivers, for example, cause coastal dead zones.
@@ -140,7 +140,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Tidal Interface Section -->
-    <section class="py-20 bg-gradient-to-br from-teal-800 via-cyan-800 to-blue-800">
+    <section class="py-20 bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-800">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
@@ -149,21 +149,21 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8">
             <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Mangroves and Wetlands</h3>
             <p class="text-blue-100 leading-relaxed text-center">
               Natural buffers that filter pollutants, absorb storm surges, and connect freshwater catchments to ocean health.
             </p>
           </div>
           
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
             <h3 class="text-xl font-semibold text-teal-300 mb-4 text-center">Desalination</h3>
             <p class="text-blue-100 leading-relaxed text-center">
               Turning saltwater into freshwater, yet producing brine and energy footprints that flow back into ecosystems.
             </p>
           </div>
           
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+          <div class="bg-gradient-to-br from-indigo-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
             <h3 class="text-xl font-semibold text-blue-300 mb-4 text-center">Wastewater</h3>
             <p class="text-blue-100 leading-relaxed text-center">
               Untreated discharge from cities and industries often reaches the sea, completing a negative cycle of freshwater mismanagement and marine degradation.
@@ -172,7 +172,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
         </div>
         
         <div class="mt-12 text-center">
-          <div class="bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-blue-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8 max-w-4xl mx-auto">
+          <div class="bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8 max-w-4xl mx-auto">
             <h3 class="text-xl font-semibold text-cyan-300 mb-4">System Lens</h3>
             <p class="text-blue-100 leading-relaxed">
               The tidal zone is both literal and metaphorical — a place where boundaries blur and systemic trade-offs are most visible.
@@ -183,7 +183,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Integrated Water Thinking Section -->
-    <section class="py-20 bg-gradient-to-br from-indigo-800 via-purple-800 to-slate-800">
+    <section class="py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
@@ -192,28 +192,28 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
             <h3 class="text-lg font-semibold text-cyan-300 mb-3 text-center">Circularity</h3>
             <p class="text-blue-100 text-center text-sm leading-relaxed">
               Designing wastewater reuse and nutrient recovery so that freshwater withdrawal is reduced and coastal pollution declines.
             </p>
           </div>
           
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+          <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-6">
             <h3 class="text-lg font-semibold text-teal-300 mb-3 text-center">Resilience</h3>
             <p class="text-blue-100 text-center text-sm leading-relaxed">
               Aligning climate adaptation strategies across river basins and coastal zones.
             </p>
           </div>
           
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-6">
             <h3 class="text-lg font-semibold text-blue-300 mb-3 text-center">Governance</h3>
             <p class="text-blue-100 text-center text-sm leading-relaxed">
               Bridging freshwater and marine policy silos to reflect the connected reality of the hydrological cycle.
             </p>
           </div>
           
-          <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
             <h3 class="text-lg font-semibold text-indigo-300 mb-3 text-center">Investment</h3>
             <p class="text-blue-100 text-center text-sm leading-relaxed">
               Directing capital to integrated projects — from watershed restoration to blue economy innovation.
@@ -224,13 +224,13 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Closing Note Section -->
-    <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900">
+    <section class="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-medium mb-8 tracking-wide text-cyan-300">
           Closing Note: A Living Tide
         </h2>
         
-        <div class="bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-10">
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-10">
           <p class="text-lg text-blue-100 leading-relaxed mb-6">
             Freshwater and saltwater systems are not competing domains. They are tides of the same global ecosystem, ebbing and flowing across human and natural boundaries.
           </p>
@@ -243,7 +243,7 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-br from-slate-800 via-blue-800 to-teal-800">
+    <section class="py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
           Join the Systems Thinking
@@ -255,13 +255,13 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
         
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
           <a href="/howwework" class="inline-block">
-            <div class="bg-gradient-to-r from-cyan-500/80 to-teal-500/80 hover:from-cyan-500/90 hover:to-teal-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
               Learn More
             </div>
           </a>
           
           <a href="/contact" class="inline-block">
-            <div class="bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-white/30">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
               Get Involved
             </div>
           </a>
