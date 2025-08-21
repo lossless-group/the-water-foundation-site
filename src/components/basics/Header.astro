@@ -114,7 +114,7 @@ const {
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            d="M3.75 6.75c2.75 0 2.75-1.5 5.5-1.5s2.75 1.5 5.5 1.5 2.75-1.5 5.25-1.5M3.75 12c2.75 0 2.75-1.5 5.5-1.5s2.75 1.5 5.5 1.5 2.75-1.5 5.25-1.5M3.75 17.25c2.75 0 2.75-1.5 5.5-1.5s2.75 1.5 5.5 1.5 2.75-1.5 5.25-1.5"
           />
         </svg>
         <svg
@@ -188,8 +188,11 @@ const {
     // Check if we're on the index page
     const isIndexPage = window.location.pathname === '/' || window.location.pathname === '/index.html';
     
-    if (!isIndexPage) {
-      // Non-index pages: Set logo to normal header position
+    // Check if mobile/tablet using matchMedia to match Tailwind's breakpoints
+    const isMobileOrTablet = window.matchMedia('(max-width: 1023px)').matches;
+    
+    if (!isIndexPage || isMobileOrTablet) {
+      // For non-index pages or mobile/tablet devices: Set logo to normal header position
       if (logoWrapper && logo) {
         logoWrapper.style.position = 'relative';
         logoWrapper.style.top = '0';
@@ -200,6 +203,7 @@ const {
         logoWrapper.style.background = 'transparent';
         logoWrapper.style.borderRadius = '0.25rem';
         logoWrapper.style.zIndex = 'auto';
+        logoWrapper.style.transform = 'none';
         logo.style.position = 'static';
         logo.style.top = 'auto';
         logo.style.left = 'auto';
