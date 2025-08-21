@@ -1,5 +1,6 @@
 ---
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '../../components/ui/AnimatedWaterBackground.astro';
 ---
 
 <BaseThemeLayout
@@ -11,6 +12,9 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
   <main class="overflow-x-hidden">
     <!-- Hero Section -->
     <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
       <!-- Background Elements -->
       <div class="absolute inset-0 z-0">
         <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -33,8 +37,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900">
-      <div class="max-w-4xl mx-auto px-6">
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
             Introduction: Where Rivers Meet the Sea
@@ -54,8 +61,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Freshwater Flows Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
             Freshwater Flows: Source of Life
@@ -97,8 +107,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Saltwater Flows Section -->
-    <section class="py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
             Saltwater Flows: Oceans as Regulators
@@ -140,8 +153,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Tidal Interface Section -->
-    <section class="py-20 bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-800">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="relative py-20 bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
             The Tidal Interface: Where Systems Collide
@@ -183,8 +199,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Integrated Water Thinking Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
             Towards Integrated Water Thinking
@@ -224,8 +243,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Closing Note Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-medium mb-8 tracking-wide text-cyan-300">
           Closing Note: A Living Tide
         </h2>
@@ -243,8 +265,11 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
     </section>
 
     <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
           Join the Systems Thinking
         </h2>
