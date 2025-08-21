@@ -1,0 +1,586 @@
+---
+// New Creative Homepage Variant
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import HeroCenteredLogoMobilePopOut from '../components/basics/heros/HeroCenteredLogo--MobilePopOut.astro';
+import BlindSpotStoryVariant2 from '../layouts/sections/core-messages/BlindSpotV2.astro';
+import WhoWeAreExtendedV3 from '../layouts/sections/who-we-are/WhoWeAreExtendedV3.astro';
+import AtCrisisPoint from '../layouts/sections/core-messages/AtCrisisPoint--Jumbo.astro';
+import InvestInTransformation from '../layouts/sections/core-messages/InvestInTransformation--Jumbo.astro';
+import SolutionSurge from '../layouts/sections/core-messages/SolutionSurge--Jumbo.astro';
+import UnsiloedFinance from '../layouts/sections/core-messages/UnsiloedFinance--Jumbo.astro';
+import InnovationToScale from '../layouts/sections/core-messages/InnovationToScale--Jumbo.astro';
+import GlobalFootprint from '../layouts/sections/message-grids/GlobalFootprintRowTags.astro';
+import ArrowContainer from '../components/infographic/ArrowContainer.astro';
+import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.astro';
+---
+
+<BaseThemeLayout
+  title="The Water Foundation - Tackling Humanity's Core Blind Spot"
+  description="We bring together exceptional people to tackle water scarcity through innovation, collaboration, and strategic action. Water is the last big scarcity play."
+  themeClass="theme-water"
+  containerClass="max-w-none mx-auto"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="overflow-x-hidden font-avenir">
+    
+    <!-- Full-Width Hero Section with Enhanced Animations -->
+    <section class="relative overflow-hidden">
+      <!-- Animated Background Elements -->
+      <div class="absolute inset-0 z-0">
+        <!-- Floating Water Particles -->
+        <div class="absolute top-20 left-20 w-3 h-3 bg-blue-400/40 rounded-full animate-float opacity-60"></div>
+        <div class="absolute top-40 right-32 w-2 h-2 bg-teal-400/40 rounded-full animate-float-delay opacity-40"></div>
+        <div class="absolute bottom-32 left-1/4 w-4 h-4 bg-cyan-400/40 rounded-full animate-float-slow opacity-50"></div>
+        <div class="absolute top-1/2 right-1/3 w-1 h-1 bg-blue-300/40 rounded-full animate-float-fast opacity-30"></div>
+        <div class="absolute top-1/3 left-1/3 w-2 h-2 bg-teal-300/40 rounded-full animate-float-delay-2 opacity-35"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-3 h-3 bg-cyan-300/40 rounded-full animate-float-slow-2 opacity-45"></div>
+        
+        <!-- Gradient Orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-teal-600/10 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-600/8 to-transparent rounded-full blur-2xl animate-pulse-slow-2"></div>
+      </div>
+
+      <!-- Existing Hero Component -->
+      <HeroCenteredLogoMobilePopOut 
+        contextSetterTxt="Global Impact"
+        headerLogoSrc="/trademark__The-Water-Foundation--Darker--Wide.svg"
+        headerTxt="Water independence for 1 billion people by 2035"
+        subHeaderTxt="Securing our water future through innovation, investment, and impact."
+        supportingCopyTxt="The Water Foundation is pioneering a new approach to water security that combines cutting-edge technology, blended & sustainable finance, and networked capital to create lasting solutions."
+        targetActionsArray={[
+          { 
+            text: 'Think with Us', 
+            href: '/nerd-out/on-water', 
+            type: 'accent',
+            size: 'md',
+            external: false
+          },
+          { 
+            text: 'Invest with Us', 
+            href: '/about', 
+            type: 'primary',
+            size: 'md',
+            external: false
+          },
+          { 
+            text: 'Partner with Us', 
+            href: '/partners', 
+            type: 'secondary',
+            size: 'md',
+            external: false
+          }
+        ]}
+        backgroundsArray={[
+          { 
+            type: 'image', 
+            src: '/heroes/imageOf__Whale-pair-under-wave.jpeg',
+            overlay: true,
+            overlayOpacity: 0.1,
+            overlayGradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.6) 50%, rgba(59, 130, 246, 0.4) 100%)'
+          }
+        ]}
+        paddingClasses="py-8 md:py-12 lg:py-16"
+      >
+      </HeroCenteredLogoMobilePopOut>
+    </section>
+
+    <!-- Enhanced Blind Spot Story -->
+    <section class="relative py-20 sm:py-24 md:py-32 overflow-visible bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-right">
+          <!-- Main Message -->
+          <h3 class="mb-8 text-4xl lg:text-5xl xl:text-6xl font-light text-white uppercase tracking-widest leading-tight">
+            THE WATER FOUNDATION IS SET UP TO TACKLE A CORE BLIND SPOT OF HUMANKIND.
+          </h3>
+          
+          <!-- Collaboration Cities -->
+          <div class="mb-8">
+            <p class="text-lg text-blue-200 mb-6 font-light tracking-wide">Collaborating from</p>
+            <div class="flex flex-wrap justify-end gap-4">
+              <div class="group transform transition-all duration-300 hover:scale-110">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500/30 to-cyan-600/30 text-cyan-100 text-sm font-medium rounded-2xl border border-cyan-400/50 hover:bg-gradient-to-r hover:from-cyan-500/40 hover:to-cyan-600/40 hover:border-cyan-400/70 hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 backdrop-blur-sm">
+                  Dubai
+                </span>
+              </div>
+              <div class="group transform transition-all duration-300 hover:scale-110">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500/30 to-blue-600/30 text-blue-100 text-sm font-medium rounded-2xl border border-blue-400/50 hover:bg-gradient-to-r hover:from-blue-500/40 hover:to-blue-600/40 hover:border-blue-400/70 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 backdrop-blur-sm">
+                  Delhi
+                </span>
+              </div>
+              <div class="group transform transition-all duration-300 hover:scale-110">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-teal-500/30 to-teal-600/30 text-teal-100 text-sm font-medium rounded-2xl border border-teal-400/50 hover:bg-gradient-to-r hover:from-teal-500/40 hover:to-teal-600/40 hover:border-teal-400/70 hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 backdrop-blur-sm">
+                  Vaduz
+                </span>
+              </div>
+              <div class="group transform transition-all duration-300 hover:scale-110">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-indigo-500/30 to-indigo-600/30 text-indigo-100 text-sm font-medium rounded-2xl border border-indigo-400/50 hover:bg-gradient-to-r hover:from-indigo-500/40 hover:to-indigo-600/40 hover:border-indigo-400/70 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 backdrop-blur-sm">
+                  Munich
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+          <!-- Elegant BlindSpot Content Section -->
+          <div class="w-full overflow-visible">
+            <div class="relative py-16 lg:py-20">
+              <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                  
+                  <!-- Left Column - Visual Impact -->
+                  <div class="text-center lg:text-left">
+                    <div class="relative mb-8">
+                      <div class="text-6xl lg:text-8xl font-light mb-6 tracking-tight" style="color: #22d3ee !important;">
+                        WATER
+                      </div>
+                      <div class="w-32 h-px bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto lg:mx-0 mb-8" style="background: linear-gradient(to right, #22d3ee, #3b82f6);"></div>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl text-blue-100 font-light leading-tight max-w-sm mx-auto lg:mx-0">
+                      The defining issue of our time
+                    </h2>
+                  </div>
+                  
+                  <!-- Right Column - Content -->
+                  <div class="space-y-8">
+                    <div>
+                      <h3 class="text-3xl lg:text-4xl font-light text-white mb-6 leading-tight">
+                        Humanity's Biggest Blind Spot
+                      </h3>
+                      <p class="text-lg text-blue-200 mb-8 font-light">
+                        The unrecognised consequences:
+                      </p>
+                      
+                      <!-- Impact Cards -->
+                      <div class="space-y-6">
+                        <div class="group transform transition-all duration-500 hover:scale-105">
+                          <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                            <h4 class="text-xl font-light text-cyan-300 mb-3">Financing Mismatch</h4>
+                            <p class="text-blue-100 leading-relaxed font-light">
+                              90% of climate adaptation needs are water-based, yet less than 5% of climate finance is directed toward water.
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div class="group transform transition-all duration-500 hover:scale-105">
+                          <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                            <h4 class="text-xl font-light text-blue-300 mb-3">Resilience Gap</h4>
+                            <p class="text-blue-100 leading-relaxed font-light">
+                              Wide-open weak spots in water strategies and implementation.
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div class="group transform transition-all duration-500 hover:scale-105">
+                          <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                            <h4 class="text-xl font-light text-teal-300 mb-3">Asset Neglect</h4>
+                            <p class="text-blue-100 leading-relaxed font-light">
+                              Water assets are underpriced, fragmented, and underprotected.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="pt-8 border-t border-white/10">
+                      <p class="text-lg text-blue-200 mb-6 leading-relaxed font-light">
+                        The Water Foundation is stepping up to fill this gap at a systems level, utilizing systems level & first principles thinking.
+                      </p>
+                      <a href="/about" class="inline-flex items-center text-cyan-300 font-light text-lg hover:text-cyan-200 transition-colors group">
+                        Learn about our approach
+                        <svg class="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www/w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
+
+    <!-- Who We Are - Variant 3 -->
+    <div>
+      <WhoWeAreExtendedV3 />
+    </div>
+
+    <!-- Artesians Section - Directly on Homepage -->
+    <section class="relative py-20 bg-gradient-to-br from-slate-600 via-blue-600 to-teal-600 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <p class="text-foreground/80 mb-8 font-avenir text-lg leading-relaxed text-white">
+          The Water Foundation's supporters provide us with a <span class="text-cyan-300 font-semibold">strong financial base</span> to <span class="text-cyan-300 font-semibold">accelerate</span> this process. 
+        </p>
+        
+        <div class="text-center mb-8">
+          <a href="/about/artesians" class="group inline-block">
+            <div class="relative">
+              <!-- Enhanced Geometric, interconnected typography inspired by HAUS DER KUNST -->
+              <div class="font-light tracking-[0.2em] leading-none">
+                <span class="text-2xl text-cyan-300 group-hover:text-cyan-200 transition-colors duration-700 font-light opacity-90 group-hover:opacity-100">Join our</span>
+                <div class="mt-2 relative">
+                  <span class="text-6xl font-extralight text-cyan-200 group-hover:text-white transition-all duration-1000 tracking-[0.15em] leading-none" style="font-feature-settings: 'liga' 1, 'kern' 1;">
+                    Artesians
+                  </span>
+                  
+                  <!-- Subtle geometric accent lines -->
+                  <div class="absolute -top-2 -right-2 w-8 h-px bg-gradient-to-r from-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+                  <div class="absolute -bottom-2 -left-2 w-8 h-px bg-gradient-to-r from-transparent to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-1000 transform scale-x-0 group-hover:scale-x-100 origin-right"></div>
+                </div>
+              </div>
+              
+              <!-- Enhanced geometric underline with art deco feel -->
+              <div class="mt-4">
+                <div class="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div class="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-700 mt-1"></div>
+                <div class="h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-20 group-hover:opacity-60 transition-opacity duration-700 mt-1"></div>
+              </div>
+              
+              <!-- Enhanced subtitle with geometric spacing and animation -->
+              <p class="text-foreground/40 text-sm mt-6 font-extralight tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-2 group-hover:translate-y-0">
+                and become part of the solution
+              </p>
+              
+              <!-- Subtle geometric corner accents -->
+              <div class="absolute -top-4 -left-4 w-2 h-2 border-l-2 border-t-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -top-4 -right-4 w-2 h-2 border-r-2 border-t-2 border-blue-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -bottom-4 -left-4 w-2 h-2 border-l-2 border-b-2 border-teal-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+              <div class="absolute -bottom-4 -right-4 w-2 h-2 border-r-2 border-b-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-0 group-hover:scale-100"></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Non For Profit / For Profit Cards -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="group transform transition-all duration-500 hover:scale-105">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 hover:border-white/20 transition-all duration-500">
+              <h3 class="text-2xl font-light text-teal-300 mb-4">Non For Profit</h3>
+              <p class="text-blue-100 leading-relaxed font-light">
+                We accept donations and employ best practices in blended finance for development and impact, enabling us to drive sustainable change through charitable initiatives and strategic partnerships.
+              </p>
+            </div>
+          </div>
+          
+          <div class="group transform transition-all duration-500 hover:scale-105">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 hover:border-white/20 transition-all duration-500">
+              <h3 class="text-2xl font-light text-cyan-300 mb-4">For Profit</h3>
+              <p class="text-blue-100 leading-relaxed font-light">
+                We accept direct capital investments into closed-end venture and PE funds, as well as participate with our principals in an evergreen structure, creating opportunities for financial returns alongside impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elegant Investment Opportunity Section -->
+    <section class="relative py-24 bg-gradient-to-br from-slate-800 via-blue-800 to-teal-800 overflow-hidden">
+      <!-- Subtle Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+      
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20">
+          <!-- Elegant Divider -->
+          <div class="w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-8"></div>
+          
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide">
+            The <span class="text-cyan-300 font-normal">Investment Opportunity</span> of Our Time
+          </h2>
+          <p class="text-xl text-blue-200 max-w-3xl mx-auto font-light leading-relaxed">
+            Water is the last big scarcity play - where innovation meets impact meets returns
+          </p>
+          
+          <!-- Elegant Divider -->
+          <div class="w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mt-8"></div>
+        </div>
+        
+        <!-- Elegant Investment Metrics -->
+        <div class="grid md:grid-cols-3 gap-10 mb-20">
+          <div class="group transform transition-all duration-700 hover:scale-105 hover:-translate-y-3">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 h-full hover:bg-white/10 hover:border-white/20 transition-all duration-700">
+              <div class="text-5xl font-light text-cyan-300 mb-4">$1T+</div>
+              <h3 class="text-xl font-light text-white mb-4 tracking-wide">Water Tech Market by 2030</h3>
+              <p class="text-blue-200 text-sm font-light leading-relaxed">Global water technology market projected to exceed USD 1 trillion</p>
+            </div>
+          </div>
+          
+          <div class="group transform transition-all duration-700 hover:scale-105 hover:-translate-y-3">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 h-full hover:bg-white/10 hover:border-white/20 transition-all duration-700">
+              <div class="text-5xl font-light text-blue-300 mb-4">$114B</div>
+              <h3 class="text-xl font-light text-white mb-4 tracking-wide">Annual Investment Gap</h3>
+              <p class="text-blue-200 text-sm font-light leading-relaxed">Required annually until 2030 to achieve SDG 6</p>
+            </div>
+          </div>
+          
+          <div class="group transform transition-all duration-700 hover:scale-105 hover:-translate-y-3">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 h-full hover:bg-white/10 hover:border-white/20 transition-all duration-700">
+              <div class="text-5xl font-light text-teal-300 mb-4">300K+</div>
+              <h3 class="text-xl font-light text-white mb-4 tracking-wide">Lives at Risk Annually</h3>
+              <p class="text-blue-200 text-sm font-light leading-relaxed">Children under 5 die from water-related diseases</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creative Call to Action -->
+    <section class="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide">
+          Ready to <span class="text-cyan-300 font-normal">Act</span>?
+        </h2>
+        <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto font-light">
+          Join us in tackling humanity's core blind spot. Water is the last big scarcity play - and the time to act is now.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+          <!-- Learn More Button - Morphing Blob -->
+          <a href="/about" class="group relative">
+            <div class="relative">
+              <!-- Main Button Container -->
+              <div class="relative px-12 py-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-light text-xl overflow-hidden transition-all duration-700 transform hover:scale-110">
+                <!-- Base Blob Shape -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-600 blob-shape-1"></div>
+                
+                <!-- Layered Organic Elements -->
+                <div class="absolute top-2 left-2 w-4 h-4 bg-white/20 rounded-full animate-pulse"></div>
+                <div class="absolute top-2 right-2 w-3 h-3 bg-cyan-300/40 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                <div class="absolute bottom-2 left-2 w-3 h-3 bg-blue-300/40 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute bottom-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
+                
+                <!-- Floating Detached Blobs -->
+                <div class="absolute -top-3 -left-3 w-6 h-6 bg-cyan-400/60 blob-float-1 animate-float-slow group-hover:scale-125 group-hover:blob-morph-1 transition-all duration-700"></div>
+                <div class="absolute -top-2 -right-2 w-4 h-4 bg-blue-400/60 blob-float-2 animate-float-delay group-hover:scale-150 group-hover:-translate-x-2 transition-all duration-700"></div>
+                <div class="absolute -bottom-3 -right-3 w-5 h-5 bg-teal-400/60 blob-float-3 animate-float-slow-2 group-hover:scale-125 group-hover:blob-morph-2 transition-all duration-700"></div>
+                
+                <!-- Text -->
+                <span class="relative z-10">Learn More</span>
+              </div>
+            </div>
+          </a>
+          
+          <!-- Get Involved Button - Morphing Blob -->
+          <a href="/nerd-out/on-water" class="group relative">
+            <div class="relative">
+              <!-- Main Button Container -->
+              <div class="relative px-12 py-6 border-2 border-cyan-400 text-cyan-300 font-light text-xl overflow-hidden transition-all duration-700 transform hover:scale-110">
+                <!-- Base Blob Shape -->
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 blob-shape-2"></div>
+                
+                <!-- Layered Organic Elements -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"></div>
+                <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-blue-400/20 rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+                <div class="absolute top-1/4 right-1/4 w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+                <div class="absolute bottom-1/4 left-1/4 w-2 h-2 bg-blue-400/20 rounded-full animate-pulse" style="animation-delay: 0.9s;"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-3 h-3 bg-cyan-400/30 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
+                
+                <!-- Floating Detached Blobs -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400/50 blob-float-4 animate-float-fast group-hover:scale-150 group-hover:-translate-y-1 transition-all duration-700"></div>
+                <div class="absolute top-1/2 -left-4 w-3 h-3 bg-blue-400/40 blob-float-5 animate-float-delay-2 group-hover:scale-125 group-hover:translate-x-1 transition-all duration-700"></div>
+                <div class="absolute top-1/2 -right-4 w-3 h-3 bg-cyan-400/40 blob-float-6 animate-float-delay-2 group-hover:scale-125 group-hover:-translate-x-1 transition-all duration-700"></div>
+                <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-400/50 blob-float-7 animate-float-slow group-hover:scale-150 group-hover:translate-y-1 transition-all duration-700"></div>
+                
+                <!-- Text -->
+                <span class="relative z-10">Get Involved</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(180deg);
+    }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(180deg);
+    }
+  }
+  
+  @keyframes float-fast {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-25px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-35px) rotate(270deg);
+    }
+  }
+  
+  @keyframes float-delay-2 {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-18px) rotate(180deg);
+    }
+  }
+  
+  @keyframes float-slow-2 {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-22px) rotate(180deg);
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-slow-2 {
+    0%, 100% {
+      opacity: 0.08;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.03);
+    }
+  }
+  
+  /* Interactive Button Shapes */
+  .blob-shape-1 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-shape-2 {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-1 {
+    border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-2 {
+    border-radius: 40% 60% 40% 60% / 50% 50% 50% 50%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-3 {
+    border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-4 {
+    border-radius: 50% 50% 50% 50% / 40% 60% 40% 60%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-5 {
+    border-radius: 60% 40% 60% 40% / 50% 50% 50% 50%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-6 {
+    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-float-7 {
+    border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
+    transition: border-radius 0.7s ease-in-out;
+  }
+  
+  .blob-morph-1 {
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+  }
+  
+  .blob-morph-2 {
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
+  }
+  
+  /* Button Hover Effects */
+  .group:hover .blob-shape-1 {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  
+  .group:hover .blob-shape-2 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  
+  .wave-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+    animation: wave 20s ease-in-out infinite alternate;
+    opacity: 0.5;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translateX(-10px) translateY(-10px);
+    }
+    100% {
+      transform: translateX(10px) translateY(10px);
+    }
+  }
+</style>

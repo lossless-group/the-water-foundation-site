@@ -1,0 +1,136 @@
+---
+// Global Indicators Tracker Component
+import AnimatedWaterBackground from '../../../components/ui/AnimatedWaterBackground.astro';
+---
+
+<section class="relative py-20 bg-gradient-to-br from-slate-400 via-blue-400 to-teal-400 overflow-hidden">
+  <!-- Animated Water Background -->
+  <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-5xl md:text-6xl font-bold text-white mb-8">Key Global Indicators</h2>
+      <p class="text-xl text-blue-50">Critical data points driving water innovation investment</p>
+    </div>
+    
+    <!-- Indicators Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Access to Safe Drinking Water -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-red-600/30 text-red-700 text-sm font-semibold rounded-full border border-red-600/50 mb-4 inline-block">
+              Critical
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Access to Safe Drinking Water</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">2.2B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">people without access</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">UNICEF/WHO JMP, 2023</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sanitation Access -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-orange-600/30 text-orange-700 text-sm font-semibold rounded-full border border-orange-600/50 mb-4 inline-block">
+              Critical
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Sanitation Access</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">3.5B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">lack safe sanitation</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">WHO/UNICEF JMP, 2023</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Wastewater -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-yellow-600/30 text-yellow-700 text-sm font-semibold rounded-full border border-yellow-600/50 mb-4 inline-block">
+              Severe
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Wastewater</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">80%</p>
+            <p class="text-blue-50 text-sm leading-relaxed">untreated globally</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">UNESCO WWDR, 2023</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Economic Losses -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-700 text-sm font-semibold rounded-full border border-purple-600/50 mb-4 inline-block">
+              Severe
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Economic Losses</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">$260B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">annually</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">World Bank, 2021</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Market Growth -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-green-600/30 text-green-700 text-sm font-semibold rounded-full border border-green-600/50 mb-4 inline-block">
+              Opportunity
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Market Growth</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">$1T+</p>
+            <p class="text-blue-50 text-sm leading-relaxed">water tech market by 2030</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">BNEF, 2023</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Climate Impact -->
+      <div class="vertical-card group cursor-pointer">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-6">
+            <span class="px-3 py-1 bg-cyan-600/30 text-cyan-700 text-sm font-semibold rounded-full border border-cyan-600/50 mb-4 inline-block">
+              Critical
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Climate Impact</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">74%</p>
+            <p class="text-blue-50 text-sm leading-relaxed">of climate disasters water-related</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">UNDRR, 2022</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
