@@ -17,6 +17,7 @@ interface PersonProps {
   socialLinks?: Array<{
     name: string;
     href: string;
+    icon?: SocialPlatform;
   }>;
   className?: string;
   maxWords?: number;
@@ -48,7 +49,7 @@ const truncatedBio = truncateText(bio, maxWords);
 const mappedSocialLinks = socialLinks.map(link => ({
   name: link.name,
   href: link.href,
-  icon: link.name.toLowerCase() as SocialPlatform
+  icon: link.icon || link.name.toLowerCase() as SocialPlatform
 }));
 ---
 
