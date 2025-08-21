@@ -1,6 +1,21 @@
 ---
 import PersonCard from './PersonCard.astro';
-import type { PersonProps } from './PersonCard.astro';
+
+type SocialPlatform = 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'github';
+
+interface PersonProps {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks?: Array<{
+    name: string;
+    href: string;
+    icon?: SocialPlatform;
+  }>;
+  className?: string;
+  maxWords?: number;
+}
 
 export interface TeamGridProps {
   teamMembers: PersonProps[];
@@ -16,9 +31,8 @@ const { teamMembers, className = '' } = Astro.props;
   'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12',
   className
 ]}>
-  {teamMembers.map((member, index) => (
+  {teamMembers.map((member: PersonProps, index: number) => (
     <PersonCard 
-      key={member.name}
       {...member}
       class={index === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : ''}
     />
