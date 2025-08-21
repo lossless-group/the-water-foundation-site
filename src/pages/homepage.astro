@@ -88,7 +88,7 @@ import ArrowContainer from '../components/infographic/ArrowContainer.astro';
     <!-- Enhanced Blind Spot Story -->
     <section class="relative py-20 sm:py-24 md:py-32 overflow-visible bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900">
       <div class="relative z-10 max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-right mb-16">
             
             <h3 class="mb-8 text-4xl lg:text-5xl xl:text-6xl font-light text-white uppercase tracking-widest leading-tight">
               THE WATER FOUNDATION IS SET UP TO TACKLE A CORE BLIND SPOT OF HUMANKIND.
@@ -97,30 +97,15 @@ import ArrowContainer from '../components/infographic/ArrowContainer.astro';
             <!-- Collaboration Locations -->
             <div class="mb-12">
               <p class="text-lg text-blue-200 mb-6 font-light tracking-wide">Collaborating from</p>
-              <div class="flex flex-wrap justify-center gap-8">
-                <div class="group transform transition-all duration-500 hover:scale-105">
-                  <div class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500">
-                    <span class="text-blue-200 font-light text-lg tracking-wide">Dubai</span>
-                  </div>
-                </div>
-                <div class="group transform transition-all duration-500 hover:scale-105">
-                  <div class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500">
-                    <span class="text-teal-200 font-light text-lg tracking-wide">Delhi</span>
-                  </div>
-                </div>
-                <div class="group transform transition-all duration-500 hover:scale-105">
-                  <div class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500">
-                    <span class="text-cyan-200 font-light text-lg tracking-wide">Vaduz</span>
-                  </div>
-                </div>
-                <div class="group transform transition-all duration-500 hover:scale-105">
-                  <div class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500">
-                    <span class="text-indigo-200 font-light text-lg tracking-wide">Munich</span>
-                  </div>
-                </div>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-cyan-400/20 text-cyan-200 text-sm font-light rounded-full border border-cyan-400/30">Dubai</span>
+                <span class="px-4 py-2 bg-blue-400/20 text-blue-200 text-sm font-light rounded-full border border-blue-400/30">Delhi</span>
+                <span class="px-4 py-2 bg-teal-400/20 text-teal-200 text-sm font-light rounded-full border border-teal-400/30">Vaduz</span>
+                <span class="px-4 py-2 bg-indigo-400/20 text-indigo-200 text-sm font-light rounded-full border border-indigo-400/30">Munich</span>
               </div>
             </div>
           </div>
+        </div>
           
           <!-- Elegant BlindSpot Content Section -->
           <div class="w-full overflow-visible">
@@ -262,122 +247,68 @@ import ArrowContainer from '../components/infographic/ArrowContainer.astro';
     </section>
 
     <!-- Our Investment Verticals Section -->
-    <section class="relative py-24 bg-gradient-to-br from-slate-600 via-blue-600 to-teal-600 overflow-hidden">
+    <section class="relative py-24 bg-gradient-to-br from-slate-700 via-blue-700 to-teal-700 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide">
-            Our <span class="text-purple-300 font-normal">Investment Verticals</span>
+            Our <span class="text-cyan-300 font-normal">Investment Verticals</span>
           </h2>
           <p class="text-xl text-blue-100 max-w-3xl mx-auto font-light">
             Strategic focus areas where we deploy capital and expertise to maximize impact and returns
           </p>
         </div>
         
-        <!-- Investment Verticals Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          <!-- Water Treatment & Purification -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-purple-500/30 to-purple-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">🔬</div>
+        <!-- Investment Verticals Grid - Three Standout Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <!-- Water Venture Builder -->
+          <div class="group transform transition-all duration-700 hover:scale-110 hover:-translate-y-4">
+            <div class="bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-teal-500/20 backdrop-blur-2xl border border-cyan-400/30 rounded-3xl p-10 h-full hover:bg-gradient-to-br hover:from-cyan-500/25 hover:via-blue-500/25 hover:to-teal-500/25 hover:border-cyan-400/50 transition-all duration-500 shadow-2xl hover:shadow-cyan-500/25">
+              <div class="w-24 h-24 bg-gradient-to-br from-cyan-400/40 to-cyan-600/40 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-125 transition-transform duration-700">
+                <div class="w-12 h-12 bg-gradient-to-br from-cyan-300 to-cyan-500 rounded-xl"></div>
               </div>
-              <h3 class="text-2xl font-light text-white text-center mb-4">Water Treatment & Purification</h3>
-              <p class="text-purple-100 text-center leading-relaxed mb-4">
-                Advanced filtration, desalination, and contamination removal technologies
+              <h3 class="text-3xl font-light text-white text-center mb-6 tracking-wide">Water Venture Builder</h3>
+              <p class="text-blue-100 text-center leading-relaxed mb-6 text-lg">
+                We identify the best water IP/ideas, build teams around them, and provide the necessary capital and resources for success.
               </p>
               <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-purple-500/30 text-purple-200 text-sm font-light rounded-full border border-purple-400/50">
-                  Core Focus
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500/40 to-blue-500/40 text-cyan-100 text-lg font-light rounded-full border border-cyan-400/50">
+                  Core Strategy
                 </span>
               </div>
             </div>
           </div>
           
-          <!-- Smart Water Infrastructure -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-indigo-500/30 to-indigo-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">🏗️</div>
+          <!-- Water VC Fund -->
+          <div class="group transform transition-all duration-700 hover:scale-110 hover:-translate-y-4">
+            <div class="bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-2xl border border-blue-400/30 rounded-3xl p-10 h-full hover:bg-gradient-to-br hover:from-blue-500/25 hover:via-indigo-500/25 hover:to-purple-500/25 hover:border-blue-400/50 transition-all duration-500 shadow-2xl hover:shadow-blue-500/25">
+              <div class="w-24 h-24 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-700">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-300 to-blue-500 rounded-xl"></div>
               </div>
-              <h3 class="text-2xl font-light text-white text-center mb-4">Smart Water Infrastructure</h3>
-              <p class="text-indigo-100 text-center leading-relaxed mb-4">
-                IoT sensors, monitoring systems, and intelligent distribution networks
+              <h3 class="text-3xl font-light text-white text-center mb-6 tracking-wide">Water VC Fund</h3>
+              <p class="text-blue-100 text-center leading-relaxed mb-6 text-lg">
+                We invest in the most promising existing teams and technologies, integrating them into the venture ecosystem to accelerate their growth.
               </p>
               <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-indigo-500/30 text-indigo-200 text-sm font-light rounded-full border border-indigo-400/50">
-                  Emerging
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500/40 to-indigo-500/40 text-blue-100 text-lg font-light rounded-full border border-blue-400/50">
+                  Growth Focus
                 </span>
               </div>
             </div>
           </div>
           
-          <!-- Water Recycling & Reuse -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-cyan-500/30 to-cyan-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">♻️</div>
+          <!-- Water PE Fund -->
+          <div class="group transform transition-all duration-700 hover:scale-110 hover:-translate-y-4">
+            <div class="bg-gradient-to-br from-teal-500/20 via-emerald-500/20 to-cyan-500/20 backdrop-blur-2xl border border-teal-400/30 rounded-3xl p-10 h-full hover:bg-gradient-to-br hover:from-teal-500/25 hover:via-emerald-500/25 hover:to-cyan-500/25 hover:border-teal-400/50 transition-all duration-500 shadow-2xl hover:shadow-teal-500/25">
+              <div class="w-24 h-24 bg-gradient-to-br from-teal-400/40 to-teal-600/40 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-125 transition-transform duration-700">
+                <div class="w-12 h-12 bg-gradient-to-br from-teal-300 to-teal-500 rounded-xl"></div>
               </div>
-              <h3 class="text-2xl font-light text-white text-center mb-4">Water Recycling & Reuse</h3>
-              <p class="text-cyan-100 text-center leading-relaxed mb-4">
-                Circular economy solutions for industrial and municipal water systems
+              <h3 class="text-3xl font-light text-white text-center mb-6 tracking-wide">Water PE Fund</h3>
+              <p class="text-blue-100 text-center leading-relaxed mb-6 text-lg">
+                We acquire and enhance established players and hidden champions within the water cycle to build even greater impact and value.
               </p>
               <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-cyan-500/30 text-cyan-200 text-sm font-light rounded-full border border-cyan-400/50">
-                  High Growth
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Agricultural Water Solutions -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">🌱</div>
-              </div>
-              <h3 class="text-2xl font-light text-white mb-4 text-center">Agricultural Water Solutions</h3>
-              <p class="text-blue-100 text-center leading-relaxed mb-4">
-                Precision irrigation, soil moisture management, and drought-resistant systems
-              </p>
-              <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-emerald-500/30 text-emerald-200 text-sm font-light rounded-full border border-emerald-400/50">
-                  Strategic
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Climate-Resilient Water Systems -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-teal-500/30 to-teal-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">🌊</div>
-              </div>
-              <h3 class="text-2xl font-light text-white text-center mb-4">Climate-Resilient Systems</h3>
-              <p class="text-teal-100 text-center leading-relaxed mb-4">
-                Adaptation technologies for extreme weather and climate change impacts
-              </p>
-              <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-teal-500/30 text-teal-200 text-sm font-light rounded-full border border-teal-400/50">
-                  Future-Proof
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Water Data & Analytics -->
-          <div class="group transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full hover:bg-white/15 transition-all duration-300">
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-500/30 to-blue-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <div class="text-3xl">📊</div>
-              </div>
-              <h3 class="text-2xl font-light text-white text-center mb-4">Water Data & Analytics</h3>
-              <p class="text-blue-100 text-center leading-relaxed mb-4">
-                AI-powered insights, predictive modeling, and decision support systems
-              </p>
-              <div class="text-center">
-                <span class="inline-block px-3 py-1 bg-blue-500/30 text-blue-200 text-sm font-light rounded-full border border-blue-400/50">
-                  Innovation
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-teal-500/40 to-emerald-500/40 text-teal-100 text-lg font-light rounded-full border border-teal-400/50">
+                  Scale & Impact
                 </span>
               </div>
             </div>
@@ -390,9 +321,9 @@ import ArrowContainer from '../components/infographic/ArrowContainer.astro';
             <h3 class="text-2xl font-light text-white mb-4">Our Investment Strategy</h3>
             <p class="text-blue-100 leading-relaxed mb-6 font-light">
               We focus on <span class="text-cyan-300 font-normal">early-stage to growth-stage</span> companies that demonstrate 
-              <span class="text-purple-300 font-normal">proven technology</span>, 
-              <span class="text-green-300 font-normal">scalable business models</span>, and 
-              <span class="text-blue-300 font-normal">measurable impact</span> on water security.
+              <span class="text-cyan-300 font-normal">proven technology</span>, 
+              <span class="text-cyan-300 font-normal">scalable business models</span>, and 
+              <span class="text-cyan-300 font-normal">measurable impact</span> on water security.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
               <span class="px-4 py-2 bg-gradient-to-r from-blue-500/30 to-teal-500/30 text-white font-light rounded-full border border-blue-400/50">
