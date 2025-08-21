@@ -1,0 +1,322 @@
+---
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.astro';
+---
+
+<BaseThemeLayout
+  title="Water Solutions - The Water Foundation"
+  description="Discover comprehensive solutions for water challenges across the entire hydrological cycle"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <!-- Background Elements -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-600/15 rounded-full blur-2xl animate-pulse-slow-2"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-light text-white mb-8 tracking-wide leading-tight">
+          Water <span class="text-cyan-300 font-normal">Solutions</span>
+        </h1>
+        
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8"></div>
+        
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light">
+          Comprehensive solutions that address water challenges at every stage of the hydrological cycle
+        </p>
+      </div>
+    </section>
+
+    <!-- Water Cycle Visualization Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            The Complete Water Cycle
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Understanding the interconnected nature of water systems is key to developing effective solutions
+          </p>
+        </div>
+
+        <!-- Interactive Water Cycle Diagram -->
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-16 mb-16">
+          <div class="relative max-w-6xl mx-auto">
+            <!-- Ocean Base -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-32 bg-gradient-to-t from-blue-600/40 to-blue-400/20 rounded-t-full border-t-4 border-blue-500/60"></div>
+            
+            <!-- Evaporation Arrows -->
+            <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+              <div class="flex space-x-8">
+                <div class="w-1 h-24 bg-gradient-to-t from-blue-400/60 to-transparent transform rotate-12"></div>
+                <div class="w-1 h-24 bg-gradient-to-t from-blue-400/60 to-transparent transform -rotate-12"></div>
+                <div class="w-1 h-24 bg-gradient-to-t from-blue-400/60 to-transparent"></div>
+              </div>
+            </div>
+
+            <!-- Clouds -->
+            <div class="absolute top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div class="flex space-x-4">
+                <div class="w-20 h-16 bg-gradient-to-br from-gray-300/40 to-gray-400/30 rounded-full blur-sm"></div>
+                <div class="w-24 h-20 bg-gradient-to-br from-gray-300/40 to-gray-400/30 rounded-full blur-sm"></div>
+                <div class="w-20 h-16 bg-gradient-to-br from-gray-300/40 to-gray-400/30 rounded-full blur-sm"></div>
+              </div>
+            </div>
+
+            <!-- Precipitation -->
+            <div class="absolute top-16 left-1/2 transform -translate-x-1/2">
+              <div class="flex space-x-6">
+                <div class="w-1 h-16 bg-gradient-to-b from-blue-400/60 to-transparent transform rotate-6"></div>
+                <div class="w-1 h-16 bg-gradient-to-b from-blue-400/60 to-transparent transform -rotate-6"></div>
+                <div class="w-1 h-16 bg-gradient-to-b from-blue-400/60 to-transparent"></div>
+              </div>
+            </div>
+
+            <!-- Mountains and Land -->
+            <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2">
+              <div class="flex space-x-4">
+                <div class="w-16 h-24 bg-gradient-to-b from-gray-600/40 to-gray-500/30 transform rotate-12"></div>
+                <div class="w-20 h-32 bg-gradient-to-b from-gray-600/40 to-gray-500/30 transform -rotate-12"></div>
+                <div class="w-16 h-24 bg-gradient-to-b from-gray-600/40 to-gray-500/30 transform rotate-8"></div>
+              </div>
+            </div>
+
+            <!-- Rivers -->
+            <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+              <div class="flex space-x-6">
+                <div class="w-2 h-20 bg-gradient-to-b from-blue-400/60 to-blue-600/40 transform rotate-45"></div>
+                <div class="w-2 h-20 bg-gradient-to-b from-blue-400/60 to-blue-600/40 transform -rotate-45"></div>
+              </div>
+            </div>
+
+            <!-- Solution Cards Around the Cycle -->
+            <!-- Evaporation Solutions -->
+            <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
+              <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-cyan-300 mb-2">Evaporation Management</h3>
+                <p class="text-blue-100 text-xs">Smart irrigation, shade systems, wind barriers</p>
+              </div>
+            </div>
+
+            <!-- Condensation Solutions -->
+            <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+              <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-blue-300 mb-2">Cloud Seeding</h3>
+                <p class="text-blue-100 text-xs">Atmospheric moisture enhancement</p>
+              </div>
+            </div>
+
+            <!-- Precipitation Solutions -->
+            <div class="absolute top-16 left-1/4 transform -translate-x-1/2">
+              <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-indigo-300 mb-2">Rainwater Harvesting</h3>
+                <p class="text-blue-100 text-xs">Collection systems, storage tanks</p>
+              </div>
+            </div>
+
+            <!-- Runoff Solutions -->
+            <div class="absolute top-16 right-1/4 transform translate-x-1/2">
+              <div class="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-purple-300 mb-2">Stormwater Management</h3>
+                <p class="text-blue-100 text-xs">Green infrastructure, permeable surfaces</p>
+              </div>
+            </div>
+
+            <!-- Groundwater Solutions -->
+            <div class="absolute bottom-8 left-1/4 transform -translate-x-1/2">
+              <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-cyan-300 mb-2">Aquifer Recharge</h3>
+                <p class="text-blue-100 text-xs">Managed infiltration, injection wells</p>
+              </div>
+            </div>
+
+            <!-- Ocean Solutions -->
+            <div class="absolute bottom-8 right-1/4 transform translate-x-1/2">
+              <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-4 w-40 text-center">
+                <h3 class="text-sm font-semibold text-blue-300 mb-2">Ocean Protection</h3>
+                <p class="text-blue-100 text-xs">Marine conservation, pollution prevention</p>
+              </div>
+            </div>
+
+            <!-- Center Icon -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cycle Description -->
+        <div class="text-center">
+          <div class="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4">Understanding the Water Cycle</h3>
+            <p class="text-blue-100 leading-relaxed">
+              Water continuously moves through our environment in a complex cycle. Each stage presents unique challenges and opportunities 
+              for innovative solutions. By understanding these interconnected processes, we can develop comprehensive strategies that 
+              address water issues at their source while creating multiple benefits throughout the system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Categories -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Solution Categories
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Our comprehensive approach addresses water challenges across all sectors and scales
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Technology Solutions -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Technology Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Advanced filtration systems</li>
+              <li>• Smart monitoring networks</li>
+              <li>• AI-powered optimization</li>
+              <li>• IoT-enabled infrastructure</li>
+            </ul>
+          </div>
+
+          <!-- Infrastructure Solutions -->
+          <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-blue-300 mb-4 text-center">Infrastructure Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Green infrastructure</li>
+              <li>• Water treatment plants</li>
+              <li>• Distribution networks</li>
+              <li>• Storage systems</li>
+            </ul>
+          </div>
+
+          <!-- Policy Solutions -->
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-indigo-300 mb-4 text-center">Policy Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Water rights frameworks</li>
+              <li>• Conservation incentives</li>
+              <li>• Regulatory standards</li>
+              <li>• International cooperation</li>
+            </ul>
+          </div>
+
+          <!-- Community Solutions -->
+          <div class="bg-gradient-to-br from-purple-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-purple-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-purple-300 mb-4 text-center">Community Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Local water committees</li>
+              <li>• Education programs</li>
+              <li>• Capacity building</li>
+              <li>• Participatory planning</li>
+            </ul>
+          </div>
+
+          <!-- Financial Solutions -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V5m0 14v-2.5M9 11h.01M15 11h.01M12 12a9 9 0 110 18 9 9 0 010-18z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-blue-300 mb-4 text-center">Financial Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Water bonds</li>
+              <li>• Impact investment</li>
+              <li>• Public-private partnerships</li>
+              <li>• Risk sharing mechanisms</li>
+            </ul>
+          </div>
+
+          <!-- Nature-Based Solutions -->
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Nature-Based Solutions</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+              <li>• Wetland restoration</li>
+              <li>• Forest conservation</li>
+              <li>• Riparian buffers</li>
+              <li>• Natural filtration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+          Ready to Implement Solutions?
+        </h2>
+        
+        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+          Discover how our comprehensive approach can address your specific water challenges
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="inline-block">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
+              Get Started
+            </div>
+          </a>
+          
+          <a href="/impactII" class="inline-block">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
+              View Our Impact
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>

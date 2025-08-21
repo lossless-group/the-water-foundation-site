@@ -1,0 +1,387 @@
+---
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.astro';
+---
+
+<BaseThemeLayout
+  title="Solutions Along the Water Cycle - The Water Foundation"
+  description="Discover innovative solutions and technologies that address water challenges at every stage of the hydrological cycle"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <!-- Background Elements -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-600/15 rounded-full blur-2xl animate-pulse-slow-2"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-light text-white mb-8 tracking-wide leading-tight">
+          Solutions Along the <span class="text-cyan-300 font-normal">Water Cycle</span>
+        </h1>
+        
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8"></div>
+        
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light">
+          From source to sea, innovative technologies and approaches that transform how we manage Earth's most precious resource
+        </p>
+      </div>
+    </section>
+
+    <!-- Water Cycle Overview -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            The Complete Water Journey
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Every drop of water follows a continuous cycle. Our solutions address challenges at each stage, creating a resilient and sustainable water future.
+          </p>
+        </div>
+
+        <!-- Water Cycle Diagram -->
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-10 mb-16">
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Evaporation -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-cyan-300 mb-2">Evaporation</h3>
+              <p class="text-blue-100 text-sm">Water rises from oceans, lakes, and land</p>
+            </div>
+
+            <!-- Condensation -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-blue-300 mb-2">Condensation</h3>
+              <p class="text-blue-100 text-sm">Vapor forms clouds in the atmosphere</p>
+            </div>
+
+            <!-- Precipitation -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-indigo-300 mb-2">Precipitation</h3>
+              <p class="text-blue-100 text-sm">Rain, snow, and hail return to Earth</p>
+            </div>
+
+            <!-- Collection -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-purple-300 mb-2">Collection</h3>
+              <p class="text-blue-100 text-sm">Water flows back to oceans and lakes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source Solutions -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Source Protection & Management
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Protecting water at its source through innovative conservation and management strategies
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Watershed Restoration</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Reforestation, wetland restoration, and soil conservation techniques that improve water quality and quantity at the source.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Smart Agriculture</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Precision irrigation, soil moisture sensors, and regenerative farming practices that reduce water consumption while maintaining yields.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Urban Planning</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Green infrastructure, permeable surfaces, and rainwater harvesting systems that manage stormwater sustainably in cities.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Innovation Spotlight</h3>
+            <p class="text-blue-100 leading-relaxed text-center mb-4">
+              AI-powered monitoring systems track water quality in real-time, enabling proactive protection of critical water sources.
+            </p>
+            <div class="text-center">
+              <span class="inline-block bg-cyan-500/20 text-cyan-300 text-sm px-3 py-1 rounded-full border border-cyan-400/30">
+                Emerging Technology
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Treatment & Distribution -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
+            Treatment & Distribution Innovation
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Advanced technologies that ensure clean, safe water reaches communities efficiently
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-teal-300 mb-4">Advanced Filtration</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Nanofiltration, reverse osmosis, and biofiltration systems that remove contaminants while maintaining essential minerals.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-teal-300 mb-4">Smart Grids</h3>
+              <p class="text-blue-100 leading-relaxed">
+                IoT-enabled monitoring, leak detection, and pressure optimization that reduce water loss and improve distribution efficiency.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-teal-300 mb-4">Decentralized Systems</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Community-scale treatment plants and point-of-use purification that bring clean water closer to where it's needed.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-teal-500/15 via-cyan-500/15 to-blue-500/15 backdrop-blur-xl border border-teal-400/40 rounded-3xl p-8">
+            <h3 class="text-xl font-semibold text-teal-300 mb-4 text-center">Success Story</h3>
+            <p class="text-blue-100 leading-relaxed text-center mb-4">
+              Solar-powered water treatment units in rural communities have increased access to clean water by 300% while reducing costs by 60%.
+            </p>
+            <div class="text-center">
+              <span class="inline-block bg-teal-500/20 text-teal-300 text-sm px-3 py-1 rounded-full border border-teal-400/30">
+                Proven Impact
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wastewater & Recycling -->
+    <section class="relative py-20 bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Wastewater & Circular Solutions
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Transforming waste into resources through innovative recycling and recovery systems
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Nutrient Recovery</h3>
+            <p class="text-blue-100 leading-relaxed text-center">
+              Extracting phosphorus, nitrogen, and other valuable nutrients from wastewater for use as agricultural fertilizers.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold text-teal-300 mb-4 text-center">Energy Generation</h3>
+            <p class="text-blue-100 leading-relaxed text-center">
+              Anaerobic digestion and microbial fuel cells that convert organic waste into biogas and electricity.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-indigo-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold text-blue-300 mb-4 text-center">Water Reuse</h3>
+            <p class="text-blue-100 leading-relaxed text-center">
+              Advanced treatment systems that produce high-quality recycled water for industrial, agricultural, and potable use.
+            </p>
+          </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+          <div class="bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4">Circular Economy Impact</h3>
+            <p class="text-blue-100 leading-relaxed">
+              These solutions can reduce freshwater demand by up to 40% while creating new revenue streams from recovered resources.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coastal & Marine Solutions -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Coastal & Marine Protection
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Solutions that protect marine ecosystems and coastal communities from water-related challenges
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Mangrove Restoration</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Replanting and protecting mangrove forests that act as natural barriers against storm surges and filter coastal pollution.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Ocean Cleanup</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Innovative technologies for removing plastic waste and microplastics from marine environments.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Sustainable Aquaculture</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Integrated multi-trophic aquaculture systems that produce food while improving water quality and ecosystem health.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4 text-center">Blue Economy</h3>
+            <p class="text-blue-100 leading-relaxed text-center">
+              Marine-based economic activities that generate sustainable value while preserving ocean health and biodiversity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Integration -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Technology Integration
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            How digital innovation accelerates water solutions across the entire cycle
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-cyan-300 mb-3 text-center">IoT Sensors</h3>
+            <p class="text-blue-100 text-center text-sm leading-relaxed">
+              Real-time monitoring of water quality, flow rates, and system performance across entire networks.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-teal-300 mb-3 text-center">AI & Machine Learning</h3>
+            <p class="text-blue-100 text-center text-sm leading-relaxed">
+              Predictive analytics for water demand, leak detection, and optimization of treatment processes.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-blue-300 mb-3 text-center">Blockchain</h3>
+            <p class="text-blue-100 text-center text-sm leading-relaxed">
+              Transparent tracking of water rights, quality certifications, and sustainable sourcing claims.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-indigo-300 mb-3 text-center">Digital Twins</h3>
+            <p class="text-blue-100 text-center text-sm leading-relaxed">
+              Virtual replicas of water systems for simulation, optimization, and predictive maintenance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+          Join the Water Innovation Movement
+        </h2>
+        
+        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+          These solutions represent the cutting edge of water technology. Together, we can create a future where clean water flows abundantly for all.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="inline-block">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
+              Get Involved
+            </div>
+          </a>
+          
+          <a href="/about" class="inline-block">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
+              Learn More
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>
