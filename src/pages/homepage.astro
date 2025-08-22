@@ -402,6 +402,54 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
         </div>
       </div>
     </section>
+
+    <!-- We Commit to Tangible Change Section -->
+    <section class="relative py-24 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Column: Image -->
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-cyan-400/30 shadow-2xl">
+              <!-- Actual photo -->
+              <img 
+                src="/heroes/imageOf__Christoph-and-colleague-blue-economy-forum.jpeg" 
+                alt="Christoph Schnager and colleague at the Blue Economy & Finance Forum, Monaco 2025" 
+                class="w-full h-full object-cover"
+              />
+              <!-- Photo overlay with "View Full Size" button -->
+              <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <button class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg border border-white/30 hover:bg-white/30 transition-all duration-300">
+                  View Full Size
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Text Content -->
+          <div class="text-left">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+              We commit to <span class="text-cyan-300">tangible change</span>
+            </h2>
+            
+            <p class="text-xl text-blue-100 mb-8 leading-relaxed font-light">
+              We want to create real and measurable transformations. To achieve this, we connect the brightest minds, 
+              set priorities, provide action impulses, and thus create sustainable and effective results.
+            </p>
+            
+            <!-- Call to Action Button -->
+            <a href="/about" class="inline-flex items-center space-x-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+              <span>About The Water Foundation</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </BaseThemeLayout>
 
