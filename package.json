@@ -18,6 +18,7 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@types/node": "^24.3.0",
     "@vitest/ui": "^3.2.4",
     "jsdom": "^26.1.0",
     "vitest": "^3.2.4"
