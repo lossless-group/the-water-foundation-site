@@ -8,6 +8,70 @@ const entries = (await getCollection('facts')).sort(
 );
 ---
 
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(120deg); }
+    66% { transform: translateY(-10px) rotate(240deg); }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(-120deg); }
+    66% { transform: translateY(-25px) rotate(-240deg); }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-25px) rotate(90deg); }
+    50% { transform: translateY(-15px) rotate(180deg); }
+    75% { transform: translateY(-35px) rotate(270deg); }
+  }
+  
+  @keyframes float-delay-2 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-18px) rotate(60deg); }
+    66% { transform: translateY(-28px) rotate(120deg); }
+  }
+  
+  @keyframes float-slow-2 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-22px) rotate(-180deg); }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.1); }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.05); }
+  }
+  
+  @keyframes pulse-slow-2 {
+    0%, 100% { opacity: 0.08; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.08); }
+  }
+  
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-float-delay { animation: float-delay 8s ease-in-out infinite; }
+  .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
+  .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+  .animate-float-delay-2 { animation: float-delay-2 7s ease-in-out infinite; }
+  .animate-float-slow-2 { animation: float-slow-2 12s ease-in-out infinite; }
+  .animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
+  .animate-pulse-delay { animation: pulse-delay 10s ease-in-out infinite; }
+  .animate-pulse-slow-2 { animation: pulse-slow-2 12s ease-in-out infinite; }
+</style>
+
+---
+
 <BaseThemeLayout
   title="Dive into Water"
   description="Explore the counter-intuitive true facts about how water impacts livelihoods everywhere."
