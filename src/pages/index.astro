@@ -1,7 +1,7 @@
 ---
 import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
 import HeroCenteredLogoMobilePopOut from '../components/basics/heros/HeroCenteredLogo--MobilePopOut.astro';
-import BlindSpotStoryVariant2 from '../layouts/sections/core-messages/BlindSpotV2.astro';
+import BlindSpotStoryVariant4 from '../layouts/sections/core-messages/BlindSpotV4.astro';
 import WhoWeAreExtendedV3 from '../layouts/sections/who-we-are/WhoWeAreExtendedV3.astro';
 import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.astro';
 ---
@@ -58,19 +58,9 @@ import CrisisByNumbers from '../layouts/sections/core-messages/CrisisByNumbers.a
 	</HeroCenteredLogoMobilePopOut>
 
 	<!-- Blind Spot Story -->
-	<section class="relative py-16 sm:py-20 md:py-24 overflow-visible">
-		<div class="w-full overflow-visible">
-			<BlindSpotStoryVariant2 />
-		</div>
-	</section>
-
-
-	<hr class="my-16 border-t border-border/30 max-w-4xl mx-auto" />
-
+	<BlindSpotStoryVariant4 />
 
 	<!-- Who We Are - Variant 3 -->
-	<div>
 	<WhoWeAreExtendedV3 />
-	</div>
 
 </BaseThemeLayout>
