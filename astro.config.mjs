@@ -16,6 +16,14 @@ export default defineConfig({
   trailingSlash: 'ignore',
   
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@': '/src',
+        '@components': '/src/components',
+        '@layouts': '/src/layouts',
+        '@assets': '/src/assets'
+      }
+    }
   }
 });
