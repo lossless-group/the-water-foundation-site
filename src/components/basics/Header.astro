@@ -107,14 +107,27 @@ const {
           class="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           aria-hidden="true"
         >
+          <!-- Top wavy line - more pronounced -->
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            d="M2 7 Q5 4 8 7 T14 7 Q17 4 20 7"
+          />
+          <!-- Middle wavy line - more pronounced -->
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2 12 Q5 9 8 12 T14 12 Q17 9 20 12"
+          />
+          <!-- Bottom wavy line - more pronounced -->
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2 17 Q5 14 8 17 T14 17 Q17 14 20 17"
           />
         </svg>
         <svg
@@ -122,14 +135,21 @@ const {
           class="h-6 w-6 hidden"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           aria-hidden="true"
         >
+          <!-- Left flowing X line - more pronounced -->
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
+            d="M5 5 Q8 8 12 12 Q16 16 19 19"
+          />
+          <!-- Right flowing X line - more pronounced -->
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19 5 Q16 8 12 12 Q8 16 5 19"
           />
         </svg>
       </button>
@@ -188,9 +208,37 @@ const {
     // Check if we're on the index page
     const isIndexPage = window.location.pathname === '/' || window.location.pathname === '/index.html';
     
-    if (!isIndexPage) {
-      // Non-index pages: Set logo to normal header position
-      if (logoWrapper && logo) {
+          if (!isIndexPage) {
+        // Non-index pages: Set logo to normal header position
+        if (logoWrapper && logo) {
+          const isMobile = window.innerWidth < 768;
+          logoWrapper.style.position = 'relative';
+          logoWrapper.style.top = '0';
+          logoWrapper.style.left = '0';
+          logoWrapper.style.width = 'auto';
+          logoWrapper.style.height = 'auto';
+          logoWrapper.style.padding = '0.25rem';
+          logoWrapper.style.background = 'transparent';
+          logoWrapper.style.borderRadius = '0.25rem';
+          logoWrapper.style.zIndex = 'auto';
+          logo.style.position = 'static';
+          logo.style.top = 'auto';
+          logo.style.left = 'auto';
+          logo.style.marginTop = '0';
+          logo.style.width = isMobile ? '8rem' : '11.7rem';
+          logo.style.height = 'auto';
+        }
+        return;
+      }
+    
+    function updateLogoContainer() {
+      if (!logo || !logoWrapper || !header) return;
+      
+      // Check if we're on mobile (disable fancy animation)
+      const isMobile = window.innerWidth < 768;
+      
+      if (isMobile) {
+        // Mobile: Simple, clean logo without animation
         logoWrapper.style.position = 'relative';
         logoWrapper.style.top = '0';
         logoWrapper.style.left = '0';
@@ -204,36 +252,37 @@ const {
         logo.style.top = 'auto';
         logo.style.left = 'auto';
         logo.style.marginTop = '0';
-        logo.style.width = '11.7rem';
+        logo.style.width = '8rem'; // Smaller logo for mobile
         logo.style.height = 'auto';
+        
+        // Mobile header styling
+        header.classList.add('bg-background/90', 'shadow-md');
+        header.classList.remove('bg-background/80');
+        return;
       }
-      return;
-    }
-    
-    function updateLogoContainer() {
-      if (!logo || !logoWrapper || !header) return;
       
+      // Desktop: Keep the fancy animation
       const scrollY = window.scrollY;
-      const shrinkThreshold = 200; // Original slower transition speed
+      const shrinkThreshold = 200;
       const scrollProgress = Math.min(scrollY / shrinkThreshold, 1);
       
       if (scrollProgress === 0) {
         // Initial state - tall container extending up to header
         logoWrapper.style.position = 'fixed';
-        logoWrapper.style.top = '0rem'; // Start from top of viewport
-        logoWrapper.style.left = '12rem'; // Better alignment with content area
-        logoWrapper.style.width = '26rem'; // Fixed width to contain logo
-        logoWrapper.style.height = '15rem'; // Very tall container
-        logoWrapper.style.padding = '3rem 3rem 3rem 3rem'; // Full padding for proper spacing
+        logoWrapper.style.top = '0rem';
+        logoWrapper.style.left = '12rem';
+        logoWrapper.style.width = '26rem';
+        logoWrapper.style.height = '15rem';
+        logoWrapper.style.padding = '3rem 3rem 3rem 3rem';
         logoWrapper.style.background = '#042632';
-        logoWrapper.style.borderRadius = '0rem 0rem 1.5rem 1.5rem'; // Only bottom corners rounded
+        logoWrapper.style.borderRadius = '0rem 0rem 1.5rem 1.5rem';
         logoWrapper.style.zIndex = '1000';
         
         // Position logo within the tall container
         logo.style.position = 'static';
         logo.style.top = 'auto';
         logo.style.left = 'auto';
-        logo.style.marginTop = '5rem'; // Push logo down within container
+        logo.style.marginTop = '5rem';
         logo.style.width = '20rem';
         logo.style.height = 'auto';
         
@@ -242,16 +291,16 @@ const {
         header.classList.add('bg-background/80');
       } else if (scrollProgress < 1) {
         // Transitioning - shooting up dramatically to header position
-        const easeOut = 1 - Math.pow(1 - scrollProgress, 3); // Cubic ease-out for dramatic effect
-        const containerHeight = 15 - (easeOut * 11); // 15rem to 4rem
-        const logoWidth = 20 - (easeOut * 8.3); // 20rem to 11.7rem
-        const borderRadius = 1.5 - (easeOut * 1.25); // 1.5rem to 0.25rem
-        const leftPosition = 12 - (easeOut * 12); // 12rem to 0rem (shoots left)
-        const logoTop = 5 - (easeOut * 4.5); // Logo moves up within container
-        const logoLeft = 3 - (easeOut * 2.75); // Logo moves left within container
+        const easeOut = 1 - Math.pow(1 - scrollProgress, 3);
+        const containerHeight = 15 - (easeOut * 11);
+        const logoWidth = 20 - (easeOut * 8.3);
+        const borderRadius = 1.5 - (easeOut * 1.25);
+        const leftPosition = 12 - (easeOut * 12);
+        const logoTop = 5 - (easeOut * 4.5);
+        const logoLeft = 3 - (easeOut * 2.75);
         
         logoWrapper.style.position = 'fixed';
-        logoWrapper.style.top = '0rem'; // Container stays at top
+        logoWrapper.style.top = '0rem';
         logoWrapper.style.left = leftPosition + 'rem';
         logoWrapper.style.height = containerHeight + 'rem';
         logoWrapper.style.padding = '0rem';
@@ -275,7 +324,7 @@ const {
           header.classList.remove('bg-background/80');
         }
       } else {
-        // Final state - locked in header position (perfect as-is)
+        // Final state - locked in header position
         logoWrapper.style.position = 'relative';
         logoWrapper.style.top = '0';
         logoWrapper.style.left = '0';
@@ -295,6 +344,9 @@ const {
     
     // Update on scroll
     window.addEventListener('scroll', updateLogoContainer);
+    
+    // Update on resize (for mobile orientation changes)
+    window.addEventListener('resize', updateLogoContainer);
     
     // Initialize
     updateLogoContainer();
@@ -402,6 +454,27 @@ const {
     .header-lg {
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+  }
+  
+  /* Mobile logo adjustments */
+  @media (max-width: 767px) {
+    #logo-container {
+      height: 2.5rem;
+    }
+    
+    #logo-wrapper {
+      padding: 0.25rem;
+      background: transparent;
+      border-radius: 0.25rem;
+      top: 0 !important;
+      left: 0 !important;
+      position: relative !important;
+    }
+    
+    #logo {
+      width: 8rem;
+      height: auto;
     }
   }
   

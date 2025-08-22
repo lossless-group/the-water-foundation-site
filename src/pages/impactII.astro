@@ -51,58 +51,61 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
         </div>
 
         <!-- Flywheel Diagram -->
-        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-16 mb-16">
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-8 md:p-16 mb-16">
           <div class="relative max-w-4xl mx-auto">
-            <!-- Circular Arrow Background -->
-            <div class="absolute inset-0 flex items-center justify-center">
+            <!-- LAYER 1: Circular Arrow Background (Bottom Layer) -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div class="w-96 h-96 border-8 border-blue-600/30 rounded-full"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="w-80 h-80 border-8 border-transparent border-t-blue-600 border-r-blue-600 border-b-blue-600 rounded-full animate-spin-slow"></div>
               </div>
             </div>
 
-            <!-- Foundation - Top -->
-            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 text-center">
-              <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-6 mb-4">
-                <h3 class="text-xl font-bold text-cyan-300 mb-2">THE WATER FOUNDATION</h3>
-                <p class="text-blue-100 text-sm">Anchor, capital, thought leadership</p>
-              </div>
-            </div>
-
-            <!-- Venture Builder - Right -->
-            <div class="absolute top-1/2 right-0 transform translate-y-1/2 text-center">
-              <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-6 mb-4">
-                <h3 class="text-xl font-bold text-blue-300 mb-2">WATERTECH VENTURE BUILDER</h3>
-                <p class="text-blue-100 text-sm">Early innovation & validation engine</p>
-              </div>
-            </div>
-
-            <!-- VC Fund - Bottom -->
-            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center">
-              <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-400/40 rounded-2xl p-6 mb-4">
-                <h3 class="text-xl font-bold text-indigo-300 mb-2">WATER VC FUND</h3>
-                <p class="text-blue-100 text-sm">Scaling-stage investment</p>
-              </div>
-            </div>
-
-            <!-- PE Fund - Left -->
-            <div class="absolute top-1/2 left-0 transform -translate-y-1/2 text-center">
-              <div class="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-400/40 rounded-2xl p-6 mb-4">
-                <h3 class="text-xl font-bold text-purple-300 mb-2">WATER PE FUND</h3>
-                <p class="text-blue-100 text-sm">Industrial execution & infrastructure integration</p>
-              </div>
-            </div>
-
-            <!-- Center Content -->
-            <div class="relative z-10 flex items-center justify-center h-96">
-              <div class="text-center">
-                <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
+            <!-- LAYER 2: Content Components (Top Layer) -->
+            <div class="relative z-20 grid grid-cols-3 grid-rows-3 gap-8 items-center justify-items-center min-h-[500px]">
+              <!-- Foundation - Top (Row 1, Column 2) -->
+              <div class="col-start-2 row-start-1">
+                <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-cyan-300 mb-2">THE WATER FOUNDATION</h3>
+                  <p class="text-blue-100 text-sm">Anchor, capital, thought leadership</p>
                 </div>
-                <h3 class="text-lg font-semibold text-cyan-300">Continuous Innovation</h3>
-                <p class="text-blue-100 text-sm">Perpetual motion of water solutions</p>
+              </div>
+
+              <!-- PE Fund - Left (Row 2, Column 1) -->
+              <div class="col-start-1 row-start-2">
+                <div class="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-purple-300 mb-2">WATER PE FUND</h3>
+                  <p class="text-blue-100 text-sm">Industrial execution & infrastructure integration</p>
+                </div>
+              </div>
+
+              <!-- Center Content (Row 2, Column 2) -->
+              <div class="col-start-2 row-start-2 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-cyan-300">Continuous Innovation</h3>
+                  <p class="text-blue-100 text-sm">Perpetual motion of water solutions</p>
+                </div>
+              </div>
+
+              <!-- Venture Builder - Right (Row 2, Column 3) -->
+              <div class="col-start-3 row-start-2">
+                <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-blue-300 mb-2">WATERTECH VENTURE BUILDER</h3>
+                  <p class="text-blue-100 text-sm">Early innovation & validation engine</p>
+                </div>
+              </div>
+
+              <!-- VC Fund - Bottom (Row 3, Column 2) -->
+              <div class="col-start-2 row-start-3">
+                <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-indigo-300 mb-2">WATER VC FUND</h3>
+                  <p class="text-blue-100 text-sm">Scaling-stage investment</p>
+                </div>
               </div>
             </div>
           </div>
