@@ -1,0 +1,9 @@
+---
+import Chip from './Chip.astro';
+
+const { children } = Astro.props;
+---
+
+<Chip variant="hope">
+  <slot>{children}</slot>
+</Chip>

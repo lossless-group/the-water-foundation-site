@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  titleHighlight?: string;
+  description: string;
+  indicatorText?: string;
+}
+
+const {
+  title = 'The Critical Resource Crisis',
+  titleHighlight = 'Resource',
+  description = 'Water is quickly becoming the world\'s most critical resource...',
+  indicatorText = 'Crisis Indicator'
+} = Astro.props;
+---
+
+<div class="bg-gradient-to-br from-red-950/5 to-background rounded-xl p-8 border border-red-500/10">
+  <div class="grid lg:grid-cols-2 gap-8 items-center">
+    <div>
+      <h4 class="text-3xl font-bold text-foreground mb-4">
+        {title.split(titleHighlight)[0]}
+        {titleHighlight && <span class="text-red-400">{titleHighlight}</span>}
+        {title.split(titleHighlight)[1]}
+      </h4>
+      <p class="text-muted-foreground">{description}</p>
+    </div>
+    <div class="flex justify-center">
+      <div class="bg-gradient-to-br from-red-500/15 to-orange-500/15 rounded-xl p-6 text-center">
+        <div class="text-4xl font-black text-red-400 mb-4">!</div>
+        <div class="text-sm font-semibold text-foreground">{indicatorText}</div>
+      </div>
+    </div>
+  </div>
+</div>

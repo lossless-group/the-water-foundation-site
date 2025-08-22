@@ -1,0 +1,67 @@
+---
+import StaticFactCard from '@components/facts/StaticFactCard.astro';
+
+// Define the fact data interface
+interface FactData {
+  id: string;
+  title?: string;
+  zinger: string;
+  companion_image_url?: string;
+  source_org: string;
+  source_title: string;
+  source_url: string;
+  sources: Array<{ org: string; title: string; url: string }>;
+  index: number;
+}
+
+// Create mock data
+const firstFact: FactData = {
+  id: 'fact-1',
+  title: 'Global Water Crisis',
+  zinger: 'Water scarcity affects 40% of the global population',
+  source_org: 'UN Water',
+  source_title: 'The United Nations World Water Development Report',
+  source_url: 'https://www.unwater.org/',
+  sources: [
+    {
+      org: 'UN Water',
+      title: 'The United Nations World Water Development Report',
+      url: 'https://www.unwater.org/'
+    }
+  ],
+  index: 1
+};
+
+const secondFact: FactData = {
+  id: 'fact-2',
+  title: 'Ocean Pollution',
+  zinger: 'Over 8 million tons of plastic waste enter our oceans each year',
+  companion_image_url: '/heroes/imageOf__Whale-pair-under-wave.jpeg',
+  source_org: 'Ocean Conservancy',
+  source_title: 'Stemming the Tide',
+  source_url: 'https://oceanconservancy.org/',
+  sources: [
+    {
+      org: 'Ocean Conservancy',
+      title: 'Stemming the Tide',
+      url: 'https://oceanconservancy.org/'
+    }
+  ],
+  index: 2
+};
+---
+
+<div class="space-y-6">
+  <div>
+    <h3 class="text-lg font-medium mb-3">Basic Fact Card</h3>
+    <StaticFactCard fact={firstFact} />
+  </div>
+  
+  <div>
+    <h3 class="text-lg font-medium mb-3">Fact Card with Image</h3>
+    <StaticFactCard fact={{
+      ...secondFact,
+      companion_image_url: secondFact.companion_image_url
+    }} />
+  </div>
+</div>

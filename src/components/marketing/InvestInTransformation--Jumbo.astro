@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  titleHighlight?: string;
+  description: string;
+  indicatorText?: string;
+  indicatorIcon?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
+  borderColor?: string;
+  highlightColor?: string;
+}
+
+const {
+  title = 'More Than A Crisis',
+  titleHighlight = 'Crisis',
+  description = 'This is a call to invest in the future...',
+  indicatorText = 'Innovation',
+  indicatorIcon = '→',
+  gradientFrom = 'from-green-500/15',
+  gradientTo = 'to-blue-500/15',
+  borderColor = 'border-green-500/10',
+  highlightColor = 'text-green-400'
+} = Astro.props;
+
+const bgGradient = `bg-gradient-to-br ${gradientFrom} ${gradientTo}`;
+---
+
+<div class={`bg-gradient-to-br from-green-950/5 to-background rounded-xl p-8 border ${borderColor}`}>
+  <div class="grid lg:grid-cols-2 gap-8 items-center">
+    <div class="flex justify-center">
+      <div class={`${bgGradient} rounded-xl p-6 text-center`}>
+        <div class="text-4xl font-black text-green-400 mb-4">{indicatorIcon}</div>
+        <div class="text-sm font-semibold text-foreground">{indicatorText}</div>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-3xl font-bold text-foreground mb-4">
+        {title.split(titleHighlight)[0]}
+        {titleHighlight && <span class={highlightColor}> {titleHighlight}</span>}
+        {title.split(titleHighlight)[1]}
+      </h4>
+      <p class="text-muted-foreground">{description}</p>
+    </div>
+  </div>
+</div>
