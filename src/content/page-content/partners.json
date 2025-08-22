@@ -1,20 +1,5 @@
 [
   {
-    "logoLightMode": "/trademarks/trademark__TUM-International--Brand.png",
-    "logoDarkMode": "/trademarks/trademark__TUM-International--Lightest.png",
-    "conventionalName": "Technical University of Munich",
-    "officialName": "Technical University of Munich",
-    "urlToPartnerSite": "https://www.tum.de/en/",
-    "blurbShortTxt": "Description of partnership and what they do.",
-    "listOfPeopleData": [
-      {
-        "name": "John Doe",
-        "role": "CEO",
-        "image": "/path/to/avatar.jpg"
-      }
-    ]
-  },
-  {
     "logoLightMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network--Darker.png",
     "logoDarkMode": "/trademarks/trademark__Hellenic-Impact-Investor-Network--Lightest.png",
     "conventionalName": "HIIN",
@@ -60,11 +45,64 @@
     ]
   },
   {
+    "logoLightMode": "/trademarks/trademark__Aqua-Predict.png",
+    "logoDarkMode": "/trademarks/trademark__Aqua-Predict.png",
+    "conventionalName": "Aqua Predict",
+    "officialName": "Aqua Predict",
+    "urlToPartnerSite": "https://aqua-predict.com/",
+    "blurbShortTxt": "Description of partnership and what they do.",
+    "listOfPeopleData": [
+      {
+        "name": "John Doe",
+        "role": "CEO",
+        "image": "/path/to/avatar.jpg"
+      }
+    ]
+  },
+  {
     "logoLightMode": "/trademarks/trademark__Seastrees-org.svg",
     "logoDarkMode": "/trademarks/trademark__Seastrees-org.svg",
     "conventionalName": "Seastrees",
     "officialName": "Seastrees",
     "urlToPartnerSite": "https://seastrees.org/",
+    "blurbShortTxt": "Description of partnership and what they do.",
+    "listOfPeopleData": [
+      {
+        "name": "John Doe",
+        "role": "CEO",
+        "image": "/path/to/avatar.jpg"
+      }
+    ]
+  },
+  {
+    "logoLightMode": "/trademarks/trademark__TUM-International--Brand.png",
+    "logoDarkMode": "/trademarks/trademark__TUM-International--Lightest.png",
+    "conventionalName": "Technical University of Munich",
+    "officialName": "Technical University of Munich",
+    "urlToPartnerSite": "https://www.tum.de/en/",
+    "blurbShortTxt": "Description of partnership and what they do.",
+    "listOfPeopleData": [
+      {
+        "name": "John Doe",
+        "role": "CEO",
+        "image": "/path/to/avatar.jpg"
+      }
+    ]
+  },
+  {
+    "logoLightMode": "/trademarks/trademark__Wild-Assetts.webp",
+    "logoDarkMode": "/trademarks/trademark__Wild-Assetts.webp",
+    "conventionalName": "Wild Assets",
+    "officialName": "Wild Assets",
+    "urlToPartnerSite": "https://www.wild-assets.com/",
+    "blurbShortTxt": "Description of partnership and what they do."
+  },
+  {
+    "logoLightMode": "/trademarks/trademark__GreenVault-Holding.svg",
+    "logoDarkMode": "/trademarks/trademark__GreenVault-Holding.svg",
+    "conventionalName": "GreenVault Holding",
+    "officialName": "GreenVault Holding",
+    "urlToPartnerSite": "https://gvaultholding.com/",
     "blurbShortTxt": "Description of partnership and what they do.",
     "listOfPeopleData": [
       {
@@ -120,41 +158,11 @@
     ]
   },
   {
-    "logoLightMode": "/trademarks/trademark__Aqua-Predict.png",
-    "logoDarkMode": "/trademarks/trademark__Aqua-Predict.png",
-    "conventionalName": "Aqua Predict",
-    "officialName": "Aqua Predict",
-    "urlToPartnerSite": "https://aqua-predict.com/",
-    "blurbShortTxt": "Description of partnership and what they do.",
-    "listOfPeopleData": [
-      {
-        "name": "John Doe",
-        "role": "CEO",
-        "image": "/path/to/avatar.jpg"
-      }
-    ]
-  },
-  {
-    "logoLightMode": "/trademarks/trademark__GreenVault-Holding.svg",
-    "logoDarkMode": "/trademarks/trademark__GreenVault-Holding.svg",
-    "conventionalName": "GreenVault Holding",
-    "officialName": "GreenVault Holding",
-    "urlToPartnerSite": "https://gvaultholding.com/",
-    "blurbShortTxt": "Description of partnership and what they do.",
-    "listOfPeopleData": [
-      {
-        "name": "John Doe",
-        "role": "CEO",
-        "image": "/path/to/avatar.jpg"
-      }
-    ]
-  },
-  {
-    "logoLightMode": "/trademarks/trademark__Wild-Assetts.webp",
-    "logoDarkMode": "/trademarks/trademark__Wild-Assetts.webp",
-    "conventionalName": "Wild Assets",
-    "officialName": "Wild Assets",
-    "urlToPartnerSite": "https://www.wild-assets.com/",
+    "logoLightMode": "/trademarks/AC-White.png",
+    "logoDarkMode": "/trademarks/AC-White.png",
+    "conventionalName": "Avestu Capital",
+    "officialName": "Avestu Capital",
+    "urlToPartnerSite": "https://avestucapital.com/",
     "blurbShortTxt": "Description of partnership and what they do."
   }
 ]
