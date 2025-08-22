@@ -4,6 +4,8 @@ import MessageCardRow from '../../layouts/sections/message-grids/MessageCardRow.
 import UnsiloedFinanceColumn from '../../layouts/sections/core-messages/UnsiloedFinanceColumn--Base.astro';
 import Timeline from '../../layouts/sections/Timeline.astro';
 import BrandTableDisplay from '../../layouts/sections/tables/BrandTableDisplay.astro';
+import IndicatorsGrid from '../../components/infographic/IndicatorsGrid.astro';
+import IndicatorCard from '../../components/infographic/IndicatorCard.astro';
 
 const timelineExample = [
   {
@@ -305,6 +307,103 @@ const sampleFacts = [
                       <span class="text-xs text-primary hover:underline cursor-pointer">UN Water: "World Water Report 2023"</span>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Infographics Category -->
+        <div class="component-category">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-foreground mb-4">
+              📊 Infographics
+            </h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Data visualization components for water-related statistics and indicators
+            </p>
+          </div>
+
+          <div class="grid gap-8">
+            <!-- Indicators Grid -->
+            <div class="component-showcase bg-card border border-border rounded-2xl p-8 hover:shadow-xl transition-all duration-500">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h3 class="text-2xl font-semibold text-foreground">IndicatorsGrid</h3>
+                  <p class="text-muted-foreground">Responsive grid of key water indicators with severity levels</p>
+                </div>
+                <div class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+                  New
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <IndicatorsGrid />
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-border">
+                <h4 class="font-medium text-foreground mb-3">Usage</h4>
+                <div class="bg-muted/50 p-4 rounded-lg overflow-x-auto">
+                  <pre class="text-sm"><code class="language-astro">
+{`import IndicatorsGrid from '@components/infographic/IndicatorsGrid.astro';
+
+<IndicatorsGrid />`}
+                  </code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Indicator Card -->
+            <div class="component-showcase bg-card border border-border rounded-2xl p-8 hover:shadow-xl transition-all duration-500">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h3 class="text-2xl font-semibold text-foreground">IndicatorCard</h3>
+                  <p class="text-muted-foreground">Individual indicator card component with severity levels</p>
+                </div>
+                <div class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+                  New
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
+                    <div class="text-center mb-4">
+                      <span class="px-3 py-1 text-sm font-semibold rounded-full border mb-3 inline-block bg-red-600/30 text-red-700 border-red-600/50">
+                        Critical
+                      </span>
+                      <h3 class="text-xl font-bold text-white mb-2">Water Scarcity</h3>
+                      <p class="text-3xl font-bold text-white my-3">2.2B</p>
+                      <p class="text-blue-50 text-sm">People affected globally</p>
+                    </div>
+                  </div>
+                  <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
+                    <div class="text-center mb-4">
+                      <span class="px-3 py-1 text-sm font-semibold rounded-full border mb-3 inline-block bg-green-600/30 text-green-700 border-green-600/50">
+                        Opportunity
+                      </span>
+                      <h3 class="text-xl font-bold text-white mb-2">Market Growth</h3>
+                      <p class="text-3xl font-bold text-white my-3">$1T+</p>
+                      <p class="text-blue-50 text-sm">Water tech market by 2030</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-border">
+                <h4 class="font-medium text-foreground mb-3">Usage</h4>
+                <div class="bg-muted/50 p-4 rounded-lg overflow-x-auto">
+                  <pre class="text-sm"><code class="language-astro">
+{`import IndicatorCard from '@components/infographic/IndicatorCard.astro';
+
+<IndicatorCard
+  severity="critical"
+  title="Water Scarcity"
+  value="2.2B"
+  description="People affected globally"
+  source="UN Water, 2023"
+/>`}
+                  </code></pre>
                 </div>
               </div>
             </div>
