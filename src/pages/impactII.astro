@@ -51,15 +51,9 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
             </span>
           </h1>
           
-          <!-- Enhanced Divider with Animation -->
+          <!-- Enhanced Divider -->
           <div class="relative mx-auto mb-8">
             <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto"></div>
-            <!-- Animated dots on divider -->
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-2">
-              <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
-              <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse delay-150"></div>
-              <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse delay-300"></div>
-            </div>
           </div>
         </div>
         
@@ -75,7 +69,7 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
         
         <!-- Call to Action Button -->
         <div class="mt-12">
-          <a href="#water-innovation-flywheel" class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 border border-cyan-400/30 hover:border-cyan-400/50 text-cyan-300 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25">
+          <a href="#sdg-section" class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 border border-cyan-400/30 hover:border-cyan-400/50 text-cyan-300 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25">
             <span>Explore Our Impact</span>
             <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -185,7 +179,7 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
     </section>
 
     <!-- UN Sustainable Development Goals Section -->
-    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+    <section id="sdg-section" class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
       <!-- Animated Water Background -->
       <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
       
@@ -400,28 +394,33 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
       <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
       
       <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
-          Join Our Impact Journey
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-cyan-100">
+          Ready to Make Waves? 🌊
         </h2>
         
-        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
-          Be part of the transformation. Whether you're an innovator, investor, or advocate, 
-          there's a place for you in our water innovation ecosystem.
+        <p class="text-xl text-blue-50 mb-8 leading-relaxed max-w-3xl mx-auto">
+          Join a community of visionaries, innovators, and changemakers who are reshaping the future of water. 
+          Whether you're an entrepreneur with breakthrough ideas, an investor seeking meaningful impact, 
+          or someone passionate about protecting our most precious resource, we want to hear from you.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
           <a href="/contact" class="inline-block">
-            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
-              Get Involved
+            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-lg">
+              Start Your Journey →
             </div>
           </a>
           
           <a href="/about" class="inline-block">
-            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
-              Learn More
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/40 hover:to-indigo-500/40 text-cyan-100 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl border-2 border-cyan-300/50 hover:border-cyan-300 text-lg">
+              Explore Opportunities
             </div>
           </a>
         </div>
+        
+        <p class="text-sm text-blue-200 mt-8 opacity-80">
+          🌊 Together, we're building a future where clean water flows freely for all
+        </p>
       </div>
     </section>
   </main>
