@@ -144,17 +144,27 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
           <!-- Concentric Circles Diagram -->
           <div class="relative flex items-center justify-center">
             <div class="relative w-80 h-80">
-              <!-- Outermost Circle - Dark Orange/Brown -->
-              <div class="absolute inset-0 w-80 h-80 bg-gradient-to-br from-orange-800/40 to-orange-900/40 rounded-full border-4 border-orange-600/60"></div>
+              <!-- Outermost Circle - Dark Blue/Purple -->
+              <div class="absolute inset-0 w-80 h-80 bg-gradient-to-br from-blue-800/40 to-purple-900/40 rounded-full border-4 border-blue-600/60 animate-pulse-slow"></div>
               
-              <!-- Third Circle - Orange -->
-              <div class="absolute inset-8 w-64 h-64 bg-gradient-to-br from-orange-600/40 to-orange-700/40 rounded-full border-4 border-orange-500/60"></div>
+              <!-- Third Circle - Blue -->
+              <div class="absolute inset-8 w-64 h-64 bg-gradient-to-br from-blue-600/40 to-indigo-700/40 rounded-full border-4 border-blue-500/60 animate-pulse-delay"></div>
               
-              <!-- Second Circle - Light Beige/Cream -->
-              <div class="absolute inset-16 w-48 h-48 bg-gradient-to-br from-amber-200/40 to-amber-300/40 rounded-full border-4 border-amber-400/60"></div>
+              <!-- Second Circle - Indigo -->
+              <div class="absolute inset-16 w-48 h-48 bg-gradient-to-br from-indigo-400/40 to-indigo-500/40 rounded-full border-4 border-indigo-400/60 animate-pulse-slow-2"></div>
               
-              <!-- Innermost Circle - Light Blue -->
-              <div class="absolute inset-24 w-32 h-32 bg-gradient-to-br from-blue-300/40 to-blue-400/40 rounded-full border-4 border-blue-500/60"></div>
+              <!-- Innermost Circle - Cyan -->
+              <div class="absolute inset-24 w-32 h-32 bg-gradient-to-br from-cyan-300/40 to-cyan-400/40 rounded-full border-4 border-cyan-500/60 animate-pulse"></div>
+              
+              <!-- Ripple Effects -->
+              <div class="absolute inset-0 w-80 h-80 rounded-full">
+                <!-- Ripple 1 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-cyan-400/30 rounded-full animate-ripple-1"></div>
+                <!-- Ripple 2 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-blue-400/30 rounded-full animate-ripple-2"></div>
+                <!-- Ripple 3 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-indigo-400/30 rounded-full animate-ripple-3"></div>
+              </div>
               
               <!-- Center Icon -->
               <div class="absolute inset-0 flex items-center justify-center">
@@ -169,29 +179,29 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
 
           <!-- SDG Descriptions -->
           <div class="space-y-8">
-            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
-              <h3 class="text-xl font-semibold text-orange-300 mb-3">Clean Water & Sanitation</h3>
+            <div class="bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-indigo-700/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-3">Clean Water & Sanitation</h3>
               <p class="text-blue-100 leading-relaxed">
                 Ensuring access to clean water and proper sanitation for communities worldwide through innovative technologies and infrastructure development.
               </p>
             </div>
             
-            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
-              <h3 class="text-xl font-semibold text-orange-300 mb-3">Sustainable Communities</h3>
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-600/10 to-purple-700/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-blue-300 mb-3">Sustainable Communities</h3>
               <p class="text-blue-100 leading-relaxed">
                 Promoting sustainable development in local communities by building resilient water systems that support long-term growth and prosperity.
               </p>
             </div>
             
-            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
-              <h3 class="text-xl font-semibold text-orange-300 mb-3">Climate Action</h3>
+            <div class="bg-gradient-to-br from-indigo-500/10 via-purple-600/10 to-cyan-700/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-indigo-300 mb-3">Climate Action</h3>
               <p class="text-blue-100 leading-relaxed">
                 Addressing water-related impacts of climate change through adaptive technologies and resilient infrastructure that can withstand extreme weather events.
               </p>
             </div>
             
-            <div class="bg-gradient-to-br from-amber-500/10 via-amber-600/10 to-amber-700/10 backdrop-blur-xl border border-amber-400/30 rounded-2xl p-6">
-              <h3 class="text-xl font-semibold text-amber-300 mb-3">Partnerships for the Goals</h3>
+            <div class="bg-gradient-to-br from-purple-500/10 via-cyan-600/10 to-blue-700/10 backdrop-blur-xl border border-purple-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-purple-300 mb-3">Partnerships for the Goals</h3>
               <p class="text-blue-100 leading-relaxed">
                 Fostering global collaboration to achieve the SDGs by bringing together governments, businesses, NGOs, and communities in coordinated water initiatives.
               </p>
