@@ -19,13 +19,10 @@ const variants = {
 const v = variants[variant];
 ---
 <!-- Timeline -->
-<section class="py-12 md:py-16 bg-gradient-to-b from-cyan-400 via-teal-900 to-purple-600">
+<section class="py-12 md:py-16 bg-gradient-to-b from-cyan-400 via-teal-900 to-blue-900">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative">
-      <!-- Timeline Line (desktop/tablet) -->
-      <div class="hidden md:block absolute left-1/2 w-1 h-full bg-gradient-to-b from-cyan-300 to-purple-400 -ml-px"></div>
-      <!-- Simple left rail on small screens -->
-      <div class="md:hidden absolute left-4 w-[3px] h-full bg-gradient-to-b from-cyan-300 to-purple-400"></div>
+
 
       <!-- Timeline Items -->
       <div class={v.gap}>
@@ -33,11 +30,11 @@ const v = variants[variant];
         <div class="relative md:flex md:items-center">
           <div class="hidden md:flex md:w-1/2"></div>
           <!-- Marker (hidden on mobile for cleaner stack) -->
-          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-white border-4 border-blue-200 mx-auto md:mx-0"></div>
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-primary border-4 border-background mx-auto md:mx-0"></div>
           <div class="md:w-1/2 md:pl-12">
-            <div class={`bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl ${v.pad} shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/15`}>
-              <h3 class={`font-extralight text-white mb-2 tracking-wider ${v.title}`}>The Beginning</h3>
-              <p class={`text-blue-100/90 leading-relaxed ${v.body}`}>
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>The Beginning</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
                 A group of systems thinkers met at COP29, united by a shared vision to address the global water crisis through innovation and collaboration.
               </p>
             </div>
@@ -47,15 +44,15 @@ const v = variants[variant];
         <!-- Item 2 -->
         <div class="relative md:flex md:items-center">
           <div class="md:w-1/2 md:pr-12 text-left md:text-right">
-            <div class={`bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl ${v.pad} shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/15`}>
-              <h3 class={`font-extralight text-white mb-2 tracking-wider ${v.title}`}>Our Mission</h3>
-              <p class={`text-blue-100/90 leading-relaxed ${v.body}`}>
+            <div class={`bg-card/50 border border-border/50 rounded-xl ${v.pad} shadow-sm hover:shadow-md transition-shadow`}>
+              <h3 class={`font-semibold text-foreground mb-2 ${v.title}`}>Our Mission</h3>
+              <p class={`text-foreground/80 leading-relaxed ${v.body}`}>
                 We committed to advancing SDG 6 and improving the lives of 1 billion people through resilient, equitable access to clean water.
               </p>
             </div>
           </div>
           <!-- Marker (hidden on mobile) -->
-          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-blue-400 border-4 border-white mx-auto md:mx-0"></div>
+          <div class="hidden md:flex z-10 items-center justify-center w-6 h-6 rounded-full bg-blue-500 border-4 border-background mx-auto md:mx-0"></div>
           <div class="hidden md:flex md:w-1/2"></div>
         </div>
 
