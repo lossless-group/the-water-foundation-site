@@ -1,9 +1,9 @@
 ---
-import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
-import TeamGrid from '../../components/team/TeamGrid.astro';
-import type { SocialLink } from '../../components/ui/SocialIcons.astro';
-import WhoWeAreTimeline from '../../layouts/sections/who-we-are/WhoWeAreTimeline.astro';
-import ProposeYourself from '../../layouts/sections/propose-yourself/ProposeYourself.astro';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import TeamGrid from '@components/team/TeamGrid.astro';
+import type { SocialLink } from '@components/ui/SocialIcons.astro';
+import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
 
 interface TeamMember {
   name: string;
@@ -15,26 +15,6 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Verena Sturm',
-    role: 'Managing Partner, Co-Founder, Co-Chair',
-    image: '/headshots/headshotOf__Verena-Sturm.jpeg',
-    bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.',    socialLinks: [
-      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
-      { name: 'GitHub', href: 'https://github.com', icon: 'github' }
-    ]
-  },
-          {
-          name: 'Christoph Schwager',
-          role: 'Managing Partner, Co-Founder, Co-Chair',
-          image: '/headshots/headshotOf__Christoph-Schwager.jpg',
-    bio: 'Strategic leader with deep expertise in operational, financial, and technological domains, shaped by an extensive career across global corporate, management consulting, and digital start-up ecosystems. As former Chief Risk Officer at Airbus, he cultivated high-performance cultures attuned to both opportunity and risk. With over 30 years in finance, transactions, and audit, including roles as EY Partner and PwC senior leader, Christoph is a serial entrepreneur and co-founder of think tank beyondRM.org. He holds a Diplom-Kaufmann (MBA equivalent) from the University of Augsburg and is a Certified Public Accountant.',
-    socialLinks: [
-      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
-    ]
-  },
-  {
     name: 'Cristophe C. Meeus',
     role: 'Trustee',
     image: '/headshots/headshotOf__Christophe-C-Meeus.webp',
@@ -45,14 +25,34 @@ const teamMembers: TeamMember[] = [
     ]
   },
   {
-    name: 'Sarah Beth Brockley',
-    role: 'Director of Strategy, Partnerships, ESG, Impact',
-    image: '/headshots/headshotOf__Sarah-Beth-Brockley.jpeg',
-    bio: 'Sarah Beth Brockley Advising, Rising and Investing in things that matter.',
+    name: 'Christoph Schwager',
+    role: 'Co-Chair & Co-Founder',
+    image: '/headshots/headshotOf__Christoph-Schwager.jpg',
+    bio: 'Strategic leader with deep expertise in operational, financial, and technological domains, shaped by an extensive career across global corporate, management consulting, and digital start-up ecosystems. As former Chief Risk Officer at Airbus, he cultivated high-performance cultures attuned to both opportunity and risk. With over 30 years in finance, transactions, and audit, including roles as EY Partner and PwC senior leader, Christoph is a serial entrepreneur and co-founder of think tank beyondRM.org. He holds a Diplom-Kaufmann (MBA equivalent) from the University of Augsburg and is a Certified Public Accountant.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  },
+  {
+    name: 'Verena Sturm',
+    role: 'Managing Partner, Co-Founder, Co-Chair',
+    image: '/headshots/headshotOf__Verena-Sturm.jpeg',
+    bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.',    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+      { name: 'GitHub', href: 'https://github.com', icon: 'github' }
+    ]
+  },
+  {
+    name: 'Rahman Wynberg',
+    role: 'Co-Founder & VP Technologies',
+    image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
+    bio: 'A serial entrepreneur, he has founded multiple companies and co-founded the think tank beyondRM.org. With more than 30 years of experience in finance, transactions, and audit — and over 20 years leading complex strategy, M&A, and infrastructure projects — Christoph is recognised as a results-driven strategist and problem-solver who combines clarity of vision with collaborative leadership..',
     socialLinks: [
       { name: 'twitter', href: 'https://twitter.com', icon: 'twitter' },
-      { name: 'linkedin', href: 'https://www.linkedin.com/in/sarabethbrockley/', icon: 'linkedin' },
-      { name: 'github', href: 'https://github.com', icon: 'github' }
+      { name: 'instagram', href: 'https://instagram.com', icon: 'instagram' },
+      { name: 'linkedin', href: 'https://linkedin.com', icon: 'linkedin' }
     ]
   },
   {
@@ -82,25 +82,24 @@ const teamMembers: TeamMember[] = [
     bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
     socialLinks: [
       { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
-      { name: 'GitHub', href: 'https://github.com', icon: 'github' }
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
     ]
   },
   {
-    name: 'Rahman Wynberg',
-    role: 'Co-Founder & VP Technologies',
-    image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
-    bio: 'A serial entrepreneur, Rahman has founded multiple companies and co-founded the think tank beyondRM.org. With more than 30 years of experience in finance, transactions, and audit — and over 20 years leading complex strategy, M&A, and infrastructure projects — Rahman is recognised as a results-driven strategist and problem-solver who combines clarity of vision with collaborative leadership.',
+    name: 'Sarah Beth Brockley',
+    role: 'Director of Strategy, Partnerships, ESG, Impact',
+    image: '/headshots/headshotOf__Sarah-Beth-Brockley.jpeg',
+    bio: 'Sarah Beth Brockley Advising, Rising and Investing in things that matter.',
     socialLinks: [
       { name: 'twitter', href: 'https://twitter.com', icon: 'twitter' },
-      { name: 'instagram', href: 'https://instagram.com', icon: 'instagram' },
-      { name: 'linkedin', href: 'https://linkedin.com', icon: 'linkedin' }
+      { name: 'linkedin', href: 'https://www.linkedin.com/in/sarabethbrockley/', icon: 'linkedin' },
+      { name: 'github', href: 'https://github.com', icon: 'github' }
     ]
   },
   {
     name: 'Corinna Schwager',
     role: 'Co-Director of Philanthropies',
-    image: '/headshots/headshotOf__Corinna-Schwager.JPG',
+    image: '/headshots/headshotOf__Corinna-Schwager.jpeg',
     bio: 'Corinna Schwager is a Co-Director of Philanthropies at The Water Foundation. She is responsible for leading the development and implementation of The Water Foundation’s philanthropic initiatives.',
     socialLinks: [
       { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
@@ -121,7 +120,7 @@ const teamMembers: TeamMember[] = [
     name: 'Divyakshi Nath',
     role: 'Impact Operations',
     image: '/headshots/headshotOf__Divyakshi-Nath.png',
-    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she\'s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
+    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she’s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
     socialLinks: [
       { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
     ]
@@ -137,10 +136,11 @@ const teamMembers: TeamMember[] = [
 >
   <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
     <!-- Hero Section -->
-    <section class="pt-12 pb-8 md:pt-16 md:pb-10 bg-primary/5">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-2">Our People</h1>
-        <p class="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-tight">
+    <section class="relative pt-20 pb-16 md:pt-24 md:pb-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 overflow-hidden">
+      <div class="relative z-10 container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider leading-tight">Our People</h1>
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8 opacity-60"></div>
+        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
           Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people.
         </p>
       </div>
@@ -177,5 +177,51 @@ const teamMembers: TeamMember[] = [
     --color-background: 8 47 73;  /* Dark blue-950 */
     --color-foreground: 248 250 252;  /* Slate-50 */
     --color-border: 30 58 138;  /* Blue-900 */
+  }
+
+  /* Animation keyframes for background elements */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-slow-2 {
+    0%, 100% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.08);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 4s ease-in-out infinite 1s;
+  }
+  
+  .animate-pulse-slow-2 {
+    animation: pulse-slow-2 4s ease-in-out infinite 2s;
   }
 </style>
