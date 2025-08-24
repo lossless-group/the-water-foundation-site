@@ -81,9 +81,9 @@ const mappedSocialLinks = socialLinks.map(link => ({
       <p class="text-blue-50/80 text-sm leading-relaxed text-center group-hover:text-blue-50/95 transition-colors duration-300" id={`bio-${name.toLowerCase().replace(/\s+/g, '-')}`}>
         {truncatedBio.isTruncated ? (
           <>
-            {truncatedBio.text}
+            <span class="truncated-text">{truncatedBio.text}</span>
             <button 
-              onclick="this.previousElementSibling.textContent = this.previousElementSibling.getAttribute('data-full-bio') || this.previousElementSibling.textContent; this.remove()"
+              onclick="expandBio(this)"
               class="text-blue-200 font-medium hover:text-blue-100 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300/50 rounded ml-1 transition-colors duration-300"
               data-full-bio={bio}
             >
@@ -107,3 +107,15 @@ const mappedSocialLinks = socialLinks.map(link => ({
     )}
   </div>
 </article>
+
+<script>
+  function expandBio(button) {
+    const fullBio = button.getAttribute('data-full-bio');
+    const truncatedText = button.previousElementSibling;
+    
+    if (truncatedText && fullBio) {
+      truncatedText.textContent = fullBio;
+      button.remove();
+    }
+  }
+</script>
