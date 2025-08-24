@@ -29,7 +29,7 @@ const {
   bio, 
   socialLinks = [], 
   className = '',
-  maxWords = 25
+  maxWords = 15
 } = Astro.props as PersonProps;
 
 // Function to truncate text to a certain number of words
@@ -79,20 +79,14 @@ const mappedSocialLinks = socialLinks.map(link => ({
     
     <div class="mb-4 flex-1">
       <p class="text-blue-50/80 text-sm leading-relaxed text-center group-hover:text-blue-50/95 transition-colors duration-300" id={`bio-${name.toLowerCase().replace(/\s+/g, '-')}`}>
-        {truncatedBio.isTruncated ? (
-          <>
-            <span class="truncated-text">{truncatedBio.text}</span>
-            <button 
-              onclick="expandBio(this)"
-              class="text-blue-200 font-medium hover:text-blue-100 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300/50 rounded ml-1 transition-colors duration-300"
-              data-full-bio={bio}
-            >
-              Read more
-            </button>
-          </>
-        ) : (
-          bio
-        )}
+        <span class="truncated-text">{truncatedBio.text}</span>
+        <button 
+          onclick="(function(btn){const bio=btn.getAttribute('data-full-bio');const modal=document.createElement('div');modal.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:1000';const textBox=document.createElement('div');textBox.style.cssText='background:white;color:#1f2937;padding:2rem;border-radius:1rem;max-width:500px;max-height:80vh;overflow-y:auto;position:relative;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1)';const closeBtn=document.createElement('button');closeBtn.innerHTML='×';closeBtn.style.cssText='position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#6b7280;padding:0.25rem;border-radius:0.25rem';closeBtn.onclick=()=>modal.remove();const bioText=document.createElement('p');bioText.style.cssText='margin:0;line-height:1.6;font-size:1rem;white-space:pre-line';bioText.textContent=bio;textBox.appendChild(closeBtn);textBox.appendChild(bioText);modal.appendChild(textBox);document.body.appendChild(modal);modal.onclick=(e)=>{if(e.target===modal)modal.remove()};})(this)"
+          class="text-blue-200 font-medium hover:text-blue-100 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300/50 rounded ml-1 transition-colors duration-300 read-more-btn"
+          data-full-bio={bio}
+        >
+          Read more
+        </button>
       </p>
     </div>
     
@@ -108,14 +102,6 @@ const mappedSocialLinks = socialLinks.map(link => ({
   </div>
 </article>
 
-<script>
-  function expandBio(button) {
-    const fullBio = button.getAttribute('data-full-bio');
-    const truncatedText = button.previousElementSibling;
-    
-    if (truncatedText && fullBio) {
-      truncatedText.textContent = fullBio;
-      button.remove();
-    }
-  }
-</script>
+
+
+
