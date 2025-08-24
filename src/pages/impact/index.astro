@@ -1,266 +1,547 @@
 ---
-// Interactive Dashboard Style
-import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
-import UnsiloedFinanceColumn from '../../layouts/sections/core-messages/UnsiloedFinanceColumn--Base.astro';
-import MessageCardRow from '../../layouts/sections/message-grids/MessageCardRow.astro';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
 ---
 
 <BaseThemeLayout
-  title="Why Us Now? - Dashboard"
-  description="Interactive water innovation dashboard"
+  title="Our Impact II - The Water Foundation"
+  description="Discover how The Water Foundation is driving water innovation and creating lasting impact across the global water ecosystem"
   ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
   ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
 >
-  <main class="min-h-screen bg-background">
-    
-    <!-- Dashboard Header -->
-    <section class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div class="max-w-7xl mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-2xl font-bold text-foreground">Water Innovation Dashboard</h1>
-            <p class="text-sm text-muted-foreground">Why Us Now? - Market Analysis & Strategy</p>
-          </div>
-          <div class="flex items-center space-x-4">
-            <div class="px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-sm font-medium">
-              Live Data
-            </div>
-            <div class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
-              2024 Report
-            </div>
-          </div>
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <!-- Enhanced Background Elements -->
+      <div class="absolute inset-0 z-0">
+        <!-- Floating Orbs -->
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-600/15 rounded-full blur-2xl animate-pulse-slow-2"></div>
+        
+        <!-- Additional Floating Elements -->
+        <div class="absolute top-1/4 right-1/4 w-32 h-32 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-xl animate-float"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-24 h-24 bg-gradient-to-br from-indigo-500/15 to-purple-500/15 rounded-full blur-lg animate-float-delay"></div>
+        
+        <!-- Subtle Grid Pattern -->
+        <div class="absolute inset-0 opacity-5">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 50px 50px;"></div>
         </div>
       </div>
-    </section>
 
-    <MessageCardRow />
+      <!-- Floating Particles -->
+      <div class="absolute inset-0 z-5 pointer-events-none">
+        <div class="absolute top-1/3 left-1/4 w-2 h-2 bg-cyan-400/60 rounded-full animate-float-slow"></div>
+        <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-blue-400/50 rounded-full animate-float-delay-2"></div>
+        <div class="absolute bottom-1/3 left-2/3 w-1 h-1 bg-indigo-400/40 rounded-full animate-float-slow-2"></div>
+        <div class="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-purple-400/50 rounded-full animate-float"></div>
+      </div>
 
-    <!-- Main Dashboard Content -->
-    <section class="px-4 pb-8">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-3 gap-8">
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <!-- Enhanced Title with Glow Effect -->
+        <div class="mb-8">
+          <h1 class="text-5xl md:text-6xl font-light text-white mb-4 tracking-wide leading-tight relative">
+            Our <span class="text-cyan-300 font-normal relative">
+              Impact
+              <!-- Glow Effect -->
+              <div class="absolute inset-0 bg-cyan-300/20 blur-2xl -z-10 animate-pulse-slow"></div>
+            </span>
+          </h1>
           
-          <!-- Left Column - Crisis Analysis -->
-          <div class="lg:col-span-2 space-y-8">
-            
+          <!-- Enhanced Divider -->
+          <div class="relative mx-auto mb-8">
+            <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto"></div>
+          </div>
+        </div>
+        
+        <!-- Enhanced Description with Typography -->
+        <div class="relative">
+          <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light relative z-10">
+            We accelerate the transition from water innovation to global resilience by turning bold ideas into bankable infrastructure and lasting equity.
+          </p>
+          
+          <!-- Subtle underline effect -->
+          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-blue-300/30 to-transparent"></div>
+        </div>
+        
+        <!-- Call to Action Button -->
+        <div class="mt-12">
+          <a href="#sdg-section" class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 border border-cyan-400/30 hover:border-cyan-400/50 text-cyan-300 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25">
+            <span>Explore Our Impact</span>
+            <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Bottom Wave Effect -->
+      <div class="absolute bottom-0 left-0 right-0 z-10">
+        <svg class="w-full h-16 text-blue-900" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.46,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+        </svg>
+      </div>
+    </section>
 
-            <!-- Mission Statement -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-4">Our Mission</h2>
-              <div class="space-y-4 text-sm text-muted-foreground">
-                <p>Water scarcity and impending degradation of our water systems.</p>
-                
-                <p>The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future.</p>
-                
-                <p>We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.</p>
+    <!-- Water Innovation Flywheel Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Water Innovation Flywheel
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Our integrated approach creates a continuous cycle of innovation, investment, and impact across the water ecosystem
+          </p>
+        </div>
+
+        <!-- Flywheel Diagram -->
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-8 md:p-16 mb-16">
+          <div class="relative max-w-4xl mx-auto">
+            <!-- LAYER 1: Circular Arrow Background (Bottom Layer) -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-96 h-96 border-8 border-blue-600/30 rounded-full"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-80 h-80 border-8 border-transparent border-t-blue-600 border-r-blue-600 border-b-blue-600 rounded-full animate-spin-slow"></div>
               </div>
             </div>
-            <!-- Crisis Overview -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold text-foreground">Crisis Analysis</h2>
-                <div class="px-3 py-1 bg-red-500/20 text-red-500 rounded-full text-sm">High Priority</div>
-              </div>
-              
-              <div class="space-y-4">
-                <div class="crisis-item p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
-                  <h3 class="font-semibold text-foreground mb-2">Resource Scarcity</h3>
-                  <p class="text-sm text-muted-foreground">Water is quickly becoming the world's most critical resource. As scarcity and contamination rise, so does the urgency for bold, scalable solutions.</p>
-                </div>
-                
-                <div class="crisis-item p-4 bg-orange-500/5 border border-orange-500/20 rounded-lg">
-                  <h3 class="font-semibold text-foreground mb-2">Market Response</h3>
-                  <p class="text-sm text-muted-foreground">In 2024, investor interest surged in technologies like desalination, advanced treatment, and PFAS destruction — solutions that are vital for environmental resilience and rich with market potential.</p>
-                </div>
-              </div>
-            </div>
 
-            <!-- Opportunity Matrix -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold text-foreground">Opportunity Matrix</h2>
-                <div class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-sm">High Impact</div>
-              </div>
-              
-              
-              <div class="grid md:grid-cols-2 gap-4">
-                <div class="opportunity-card p-4 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
-                  <h3 class="font-semibold text-foreground mb-2">Innovation Meets Impact</h3>
-                  <p class="text-sm text-muted-foreground">This is more than a crisis. It's a call to invest in the future — where innovation meets impact.</p>
+            <!-- LAYER 2: Content Components (Top Layer) -->
+            <div class="relative z-20 grid grid-cols-3 grid-rows-3 gap-8 items-center justify-items-center min-h-[500px]">
+              <!-- Foundation - Top (Row 1, Column 2) -->
+              <div class="col-start-2 row-start-1">
+                <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-cyan-300 mb-2">THE WATER FOUNDATION</h3>
+                  <p class="text-blue-100 text-sm">Anchor, capital, thought leadership</p>
                 </div>
+              </div>
 
-                <div class="grid md:grid-cols-2 gap-4">
-                  <div class="opportunity-card p-4 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
-                    <h3 class="font-semibold text-foreground mb-2">Blended Finance</h3>
-                    <p class="text-sm text-muted-foreground">We break the patterns of the status quo. Systems thinking requires systems approaches.</p>
+              <!-- PE Fund - Left (Row 2, Column 1) -->
+              <div class="col-start-1 row-start-2">
+                <div class="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-purple-300 mb-2">WATER PE FUND</h3>
+                  <p class="text-blue-100 text-sm">Industrial execution & infrastructure integration</p>
+                </div>
+              </div>
+
+              <!-- Center Content (Row 2, Column 2) -->
+              <div class="col-start-2 row-start-2 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
                   </div>
-                
-                <div class="opportunity-card p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg hover:bg-blue-500/10 transition-colors cursor-pointer">
-                  <h3 class="font-semibold text-foreground mb-2">Rising Demand</h3>
-                  <p class="text-sm text-muted-foreground">As global water challenges intensify, the demand for breakthrough technologies in water treatment and management is rising.</p>
+                  <h3 class="text-lg font-semibold text-cyan-300">Continuous Innovation</h3>
+                  <p class="text-blue-100 text-sm">Perpetual motion of water solutions</p>
+                </div>
+              </div>
+
+              <!-- Venture Builder - Right (Row 2, Column 3) -->
+              <div class="col-start-3 row-start-2">
+                <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-blue-300 mb-2">WATERTECH VENTURE BUILDER</h3>
+                  <p class="text-blue-100 text-sm">Early innovation & validation engine</p>
+                </div>
+              </div>
+
+              <!-- VC Fund - Bottom (Row 3, Column 2) -->
+              <div class="col-start-2 row-start-3">
+                <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-400/40 rounded-2xl p-6 max-w-xs text-center">
+                  <h3 class="text-xl font-bold text-indigo-300 mb-2">WATER VC FUND</h3>
+                  <p class="text-blue-100 text-sm">Scaling-stage investment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flywheel Description -->
+        <div class="text-center">
+          <div class="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4">How the Flywheel Works</h3>
+            <p class="text-blue-100 leading-relaxed">
+              Each component of our ecosystem feeds into the next, creating a self-reinforcing cycle that accelerates water innovation. 
+              From early-stage ideation to industrial-scale deployment, we ensure that promising solutions receive the support they need 
+              at every stage of their journey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UN Sustainable Development Goals Section -->
+    <section id="sdg-section" class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Achieving the UN Sustainable Development Goals
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Our work directly contributes to multiple SDGs, creating a ripple effect across global development targets
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Concentric Circles Diagram -->
+          <div class="relative flex items-center justify-center">
+            <div class="relative w-80 h-80">
+              <!-- Outermost Circle - Dark Blue/Purple -->
+              <div class="absolute inset-0 w-80 h-80 bg-gradient-to-br from-blue-800/40 to-purple-900/40 rounded-full border-4 border-blue-600/60 animate-pulse-slow"></div>
+              
+              <!-- Third Circle - Blue -->
+              <div class="absolute inset-8 w-64 h-64 bg-gradient-to-br from-blue-600/40 to-indigo-700/40 rounded-full border-4 border-blue-500/60 animate-pulse-delay"></div>
+              
+              <!-- Second Circle - Indigo -->
+              <div class="absolute inset-16 w-48 h-48 bg-gradient-to-br from-indigo-400/40 to-indigo-500/40 rounded-full border-4 border-indigo-400/60 animate-pulse-slow-2"></div>
+              
+              <!-- Innermost Circle - Cyan -->
+              <div class="absolute inset-24 w-32 h-32 bg-gradient-to-br from-cyan-300/40 to-cyan-400/40 rounded-full border-4 border-cyan-500/60 animate-pulse"></div>
+              
+              <!-- Ripple Effects -->
+              <div class="absolute inset-0 w-80 h-80 rounded-full">
+                <!-- Ripple 1 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-cyan-400/30 rounded-full animate-ripple-1"></div>
+                <!-- Ripple 2 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-blue-400/30 rounded-full animate-ripple-2"></div>
+                <!-- Ripple 3 -->
+                <div class="absolute inset-0 w-80 h-80 border-2 border-indigo-400/30 rounded-full animate-ripple-3"></div>
+              </div>
+              
+              <!-- Center Icon -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
 
-            <!-- Technology Sectors -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-6">2024 Investment Surge - Key Sectors</h2>
-              
-              <div class="space-y-4">
-                <div class="tech-sector flex items-center justify-between p-4 bg-primary/5 border border-primary/20 rounded-lg hover:bg-primary/10 transition-colors">
-                  <div>
-                    <h3 class="font-semibold text-foreground">Desalination Technologies</h3>
-                    <p class="text-sm text-muted-foreground">Advanced desalination addressing water scarcity</p>
-                  </div>
-                  <div class="text-right">
-                    <div class="text-lg font-bold text-primary">+180%</div>
-                    <div class="text-xs text-muted-foreground">Growth</div>
-                  </div>
-                </div>
-                
-                <div class="tech-sector flex items-center justify-between p-4 bg-green-500/5 border border-green-500/20 rounded-lg hover:bg-green-500/10 transition-colors">
-                  <div>
-                    <h3 class="font-semibold text-foreground">Advanced Treatment</h3>
-                    <p class="text-sm text-muted-foreground">Next-gen wastewater treatment solutions</p>
-                  </div>
-                  <div class="text-right">
-                    <div class="text-lg font-bold text-green-500">+220%</div>
-                    <div class="text-xs text-muted-foreground">Growth</div>
-                  </div>
-                </div>
-                
-                <div class="tech-sector flex items-center justify-between p-4 bg-purple-500/5 border border-purple-500/20 rounded-lg hover:bg-purple-500/10 transition-colors">
-                  <div>
-                    <h3 class="font-semibold text-foreground">PFAS Destruction</h3>
-                    <p class="text-sm text-muted-foreground">Eliminating forever chemicals from water</p>
-                  </div>
-                  <div class="text-right">
-                    <div class="text-lg font-bold text-purple-500">+340%</div>
-                    <div class="text-xs text-muted-foreground">Growth</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column - Our Approach -->
+          <!-- SDG Descriptions -->
           <div class="space-y-8">
-            
-
-
-            <!-- Strategy Overview -->
-            <div class="dashboard-panel bg-card border border-border rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-4">Strategic Approach</h2>
-              <p class="text-sm text-muted-foreground mb-4">We develop water strategies and solutions across the water cycle and for each and every water challenge. We enable the research, development and scaling of new or hidden technologies.</p>
-              
-              <div class="mt-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                <p class="text-sm text-muted-foreground">Our unique setup enables us to take in donations, employ best practises in blended finance for development and impact.</p>
-              </div>
+            <div class="bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-indigo-700/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-3">Clean Water & Sanitation</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Ensuring access to clean water and proper sanitation for communities worldwide through innovative technologies and infrastructure development.
+              </p>
             </div>
-
-            <!-- Investment Verticals -->
-            <UnsiloedFinanceColumn containerClass="dashboard-panel bg-card border border-border rounded-xl p-6" />
-
-            <!-- Call to Action -->
-            <div class="dashboard-panel bg-gradient-to-br from-primary/10 to-blue-500/10 border border-primary/20 rounded-xl p-6">
-              <h2 class="text-xl font-semibold text-foreground mb-4">Join the Ecosystem</h2>
-              <p class="text-sm text-muted-foreground mb-4">The Water Foundation's supporters provide us with a solid financial base to supercharge this process.</p>
-              
-              <button class="w-full bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                Partner With Us
-              </button>
+            
+            <div class="bg-gradient-to-br from-blue-500/10 via-indigo-600/10 to-purple-700/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-blue-300 mb-3">Sustainable Communities</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Promoting sustainable development in local communities by building resilient water systems that support long-term growth and prosperity.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-indigo-500/10 via-purple-600/10 to-cyan-700/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-indigo-300 mb-3">Climate Action</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Addressing water-related impacts of climate change through adaptive technologies and resilient infrastructure that can withstand extreme weather events.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-500/10 via-cyan-600/10 to-blue-700/10 backdrop-blur-xl border border-purple-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-purple-300 mb-3">Partnerships for the Goals</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Fostering global collaboration to achieve the SDGs by bringing together governments, businesses, NGOs, and communities in coordinated water initiatives.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer Stats -->
+    <!-- Circular Water Technology Section -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
+            Investing in Circular Water Technology
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            The Water Foundation's Vision for a Sustainable Future
+          </p>
+        </div>
 
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <!-- Left Content -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-3xl p-8">
+              <p class="text-lg text-blue-100 leading-relaxed">
+                The Water Foundation's commitment to investing in circular water technology is a crucial step towards addressing the global water crisis. 
+                By supporting innovative solutions, empowering local communities, and fostering global partnerships, the Foundation is working to create 
+                a more sustainable and equitable water future for all.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-teal-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-teal-300 mb-3">Circular Economy Benefits</h3>
+              <ul class="text-blue-100 space-y-2 text-sm">
+                <li>• Reduced water waste and pollution</li>
+                <li>• Energy recovery from wastewater</li>
+                <li>• Nutrient recycling for agriculture</li>
+                <li>• Sustainable urban water systems</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: One Water Approach Diagram -->
+          <div class="relative">
+                          <div class="p-4">
+                              <h3 class="text-xl font-semibold text-cyan-300 mb-2 text-center">One Water Approach</h3>
+              
+              <div class="relative w-[800px] h-[600px] mx-auto">
+                <!-- Extended Background Container -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/15 to-cyan-900/20 backdrop-blur-sm rounded-3xl border border-blue-400/20"></div>
+                
+                <!-- Central One Water Strategy Hub -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                  <div class="bg-gradient-to-br from-cyan-500/40 to-blue-600/40 backdrop-blur-xl border-2 border-cyan-400/60 rounded-full p-10 shadow-2xl shadow-cyan-500/30">
+                                        <div class="text-center">
+                        <!-- Enhanced Central Message -->
+                        <h3 class="text-2xl font-bold text-cyan-200 mb-2">ONE WATER</h3>
+                        <p class="text-xl font-semibold text-blue-200 mb-4">STRATEGY</p>
+                        
+                        <!-- Strategic Description -->
+                        <div class="bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-xl p-4 border border-cyan-400/40">
+                          <p class="text-sm text-cyan-100 leading-tight">
+                            Integrated approach to water<br/>
+                            sustainability & resilience
+                          </p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- Top Row - 3 Elements -->
+                <div class="absolute top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-8">
+                  <!-- Position 1: Top Left - Healthy Waterways -->
+                  <div class="bg-gradient-to-br from-blue-400/30 to-indigo-500/30 backdrop-blur-xl border border-blue-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-blue-300 mb-2">#6</div>
+                    <h4 class="text-base font-semibold text-blue-200">Healthy Waterways</h4>
+                  </div>
+
+                  <!-- Position 2: Top Center - Reliable Water Utilities -->
+                  <div class="bg-gradient-to-br from-cyan-400/30 to-blue-500/30 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-cyan-300 mb-2">#1</div>
+                    <h4 class="text-base font-semibold text-cyan-200">Reliable Water Utilities</h4>
+                  </div>
+
+                  <!-- Position 3: Top Right - Thriving Cities -->
+                  <div class="bg-gradient-to-br from-indigo-400/30 to-purple-500/30 backdrop-blur-xl border border-indigo-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-indigo-300 mb-2">#2</div>
+                    <h4 class="text-base font-semibold text-indigo-200">Thriving Cities</h4>
+                  </div>
+                </div>
+
+                <!-- Bottom Row - 3 Elements -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 translate-y-1/2 flex space-x-8">
+                  <!-- Position 4: Bottom Left - Social Inclusion -->
+                  <div class="bg-gradient-to-br from-green-400/30 to-blue-500/30 backdrop-blur-xl border border-green-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-green-300 mb-2">#5</div>
+                    <h4 class="text-base font-semibold text-green-200">Social Inclusion</h4>
+                  </div>
+
+                  <!-- Position 5: Bottom Center - Sustainable Agriculture -->
+                  <div class="bg-gradient-to-br from-purple-400/30 to-cyan-500/30 backdrop-blur-xl border border-purple-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-purple-300 mb-2">#4</div>
+                    <h4 class="text-base font-semibold text-purple-200">Sustainable Agriculture</h4>
+                  </div>
+
+                  <!-- Position 6: Bottom Right - Competitive Business -->
+                  <div class="bg-gradient-to-br from-blue-400/30 to-indigo-500/30 backdrop-blur-xl border border-blue-400/50 rounded-2xl p-6 w-40 text-center shadow-lg">
+                    <div class="text-2xl font-bold text-blue-300 mb-2">#3</div>
+                    <h4 class="text-base font-semibold text-blue-200">Competitive Business</h4>
+                  </div>
+                </div>
+
+                <!-- Enhanced Connecting Lines -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600">
+                  <!-- Lines from center to each element -->
+                  <line x1="400" y1="300" x2="200" y2="80" stroke="rgba(59, 130, 246, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                  <line x1="400" y1="300" x2="400" y2="80" stroke="rgba(34, 211, 238, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                  <line x1="400" y1="300" x2="600" y2="80" stroke="rgba(99, 102, 241, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                  <line x1="400" y1="300" x2="200" y2="520" stroke="rgba(34, 197, 94, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                  <line x1="400" y1="300" x2="400" y2="520" stroke="rgba(147, 51, 234, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                  <line x1="400" y1="300" x2="600" y2="520" stroke="rgba(59, 130, 246, 0.3)" stroke-width="3" stroke-dasharray="8,8"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-cyan-100">
+          Ready to Make Waves? 🌊
+        </h2>
+        
+        <p class="text-xl text-blue-50 mb-8 leading-relaxed max-w-3xl mx-auto">
+          Join a community of visionaries, innovators, and changemakers who are reshaping the future of water. 
+          Whether you're an entrepreneur with breakthrough ideas, an investor seeking meaningful impact, 
+          or someone passionate about protecting our most precious resource, we want to hear from you.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="inline-block">
+            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-lg">
+              Start Your Journey →
+            </div>
+          </a>
+          
+          <a href="/about" class="inline-block">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/40 hover:to-indigo-500/40 text-cyan-100 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl border-2 border-cyan-300/50 hover:border-cyan-300 text-lg">
+              Explore Opportunities
+            </div>
+          </a>
+        </div>
+        
+        <p class="text-sm text-blue-200 mt-8 opacity-80">
+          🌊 Together, we're building a future where clean water flows freely for all
+        </p>
+      </div>
+    </section>
   </main>
 </BaseThemeLayout>
 
 <style>
-  .metric-card, .dashboard-panel {
-    animation: slideInUp 0.6s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .metric-card:nth-child(1) { animation-delay: 0.1s; }
-  .metric-card:nth-child(2) { animation-delay: 0.2s; }
-  .metric-card:nth-child(3) { animation-delay: 0.3s; }
-  .metric-card:nth-child(4) { animation-delay: 0.4s; }
-  
-  .dashboard-panel:nth-child(1) { animation-delay: 0.5s; }
-  .dashboard-panel:nth-child(2) { animation-delay: 0.6s; }
-  .dashboard-panel:nth-child(3) { animation-delay: 0.7s; }
-  
-  @keyframes slideInUp {
-    to {
+  /* Ripple Animations */
+  @keyframes ripple-1 {
+    0% {
+      transform: scale(0.8);
       opacity: 1;
-      transform: translateY(0);
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
     }
   }
   
-  .crisis-item, .opportunity-card, .tech-sector, .vertical-item {
-    transition: all 0.3s ease;
+  @keyframes ripple-2 {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
   }
   
-  .crisis-item:hover, .opportunity-card:hover, .tech-sector:hover, .vertical-item:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  @keyframes ripple-3 {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
   }
   
-  /* Interactive hover effects */
-  .dashboard-panel:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  .animate-ripple-1 {
+    animation: ripple-1 3s ease-out infinite;
   }
   
-  /* Pulse animation for live indicators */
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+  .animate-ripple-2 {
+    animation: ripple-2 3s ease-out infinite 1s;
+  }
+  
+  .animate-ripple-3 {
+    animation: ripple-3 3s ease-out infinite 2s;
+  }
+
+  /* Floating Animations for Hero Section */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(10px) rotate(-1deg);
+    }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-15px) rotate(-1deg);
+    }
+    66% {
+      transform: translateY(15px) rotate(1deg);
+    }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-30px) translateX(10px);
+    }
+  }
+  
+  @keyframes float-slow-2 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-25px) translateX(-15px);
+    }
+  }
+  
+  @keyframes float-delay-2 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-20px) translateX(20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delay {
+    animation: float-delay 8s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+  
+  .animate-float-slow-2 {
+    animation: float-slow-2 12s ease-in-out infinite;
+  }
+  
+  .animate-float-delay-2 {
+    animation: float-delay-2 9s ease-in-out infinite;
   }
 </style>
-
-<script>
-  // Interactive dashboard functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // Counter animation utility (if needed for future enhancements)
-    // Currently not used in this dashboard version
-    
-    // Add click handlers for interactive elements
-    document.querySelectorAll('.opportunity-card, .tech-sector, .vertical-item').forEach(function(card) {
-      card.addEventListener('click', function() {
-        if (card instanceof HTMLElement) {
-          card.style.transform = 'scale(0.98)';
-          setTimeout(function() {
-            card.style.transform = '';
-          }, 150);
-        }
-      });
-    });
-    
-    // Intersection Observer for staggered animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-          entry.target.style.animationPlayState = 'running';
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.metric-card, .dashboard-panel').forEach(function(el) {
-      observer.observe(el);
-    });
-  });
-</script>

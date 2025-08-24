@@ -1,10 +1,10 @@
 ---
-import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
-import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.astro';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
 ---
 
 <BaseThemeLayout
-  title="Our Impact II - The Water Foundation"
+  title="Our Impact - The Water Foundation"
   description="Discover how The Water Foundation is driving water innovation and creating lasting impact across the global water ecosystem"
   ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
   ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
@@ -30,7 +30,7 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
         <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8"></div>
         
         <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light">
-          We accelerate the transition from water innovation to global resilience by turning bold ideas into bankable infrastructure and lasting equity.
+          Transforming the global water landscape through innovation, investment, and strategic partnerships
         </p>
       </div>
     </section>
@@ -238,6 +238,7 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
           <!-- Right: One Water Approach Diagram -->
           <div class="relative">
             <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-6 text-center">One Water Approach</h3>
               
               <div class="relative w-80 h-80 mx-auto">
                 <!-- Central Text -->
@@ -333,6 +334,136 @@ import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.as
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Impact Metrics -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Key Impact Metrics
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Quantifying our contribution to global water resilience and innovation
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Metric 1 -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8 text-center">
+            <div class="text-4xl font-bold text-cyan-300 mb-2">1B+</div>
+            <h3 class="text-lg font-semibold text-cyan-300 mb-3">People Impacted</h3>
+            <p class="text-blue-100 text-sm leading-relaxed">
+              Our initiatives and investments have the potential to improve water access and quality for over one billion people worldwide
+            </p>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8 text-center">
+            <div class="text-4xl font-bold text-blue-300 mb-2">$500M+</div>
+            <h3 class="text-lg font-semibold text-blue-300 mb-3">Capital Deployed</h3>
+            <p class="text-blue-100 text-sm leading-relaxed">
+              Total capital mobilized across our venture building, VC, and PE activities in the water sector
+            </p>
+          </div>
+
+          <!-- Metric 3 -->
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8 text-center">
+            <div class="text-4xl font-bold text-indigo-300 mb-2">50+</div>
+            <h3 class="text-lg font-semibold text-indigo-300 mb-3">Portfolio Companies</h3>
+            <p class="text-blue-100 text-sm leading-relaxed">
+              Water technology companies supported across various stages of development and growth
+            </p>
+          </div>
+
+          <!-- Metric 4 -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8 text-center">
+            <div class="text-4xl font-bold text-purple-300 mb-2">25+</div>
+            <h3 class="text-lg font-semibold text-purple-300 mb-3">Countries Reached</h3>
+            <p class="text-blue-100 text-sm leading-relaxed">
+              Geographic footprint of our impact, spanning multiple continents and water-stressed regions
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
+            Impact Stories
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Real-world examples of how our integrated approach creates lasting change
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-teal-300 mb-4">Rural Water Access</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Through our venture building program, we supported a startup that developed solar-powered water purification systems. 
+                This company has now provided clean water to over 100,000 people in rural communities across three countries.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+              <h3 class="text-xl font-semibold text-teal-300 mb-4">Industrial Water Efficiency</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Our PE fund invested in a company that retrofits industrial facilities with smart water management systems. 
+                This has resulted in 40% reduction in water consumption across 50+ manufacturing sites.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-teal-500/15 via-cyan-500/15 to-blue-500/15 backdrop-blur-xl border border-teal-400/40 rounded-3xl p-8">
+            <h3 class="text-xl font-semibold text-teal-300 mb-4 text-center">Multiplier Effect</h3>
+            <p class="text-blue-100 leading-relaxed text-center mb-4">
+              By connecting early-stage innovators with scaling capital and industrial partners, we create a multiplier effect 
+              that accelerates the adoption of water solutions globally.
+            </p>
+            <div class="text-center">
+              <span class="inline-block bg-teal-500/20 text-teal-300 text-sm px-3 py-1 rounded-full border border-teal-400/30">
+                Systemic Change
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Vision -->
+    <section class="relative py-20 bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium mb-8 tracking-wide text-cyan-300">
+          Our Vision for 2030
+        </h2>
+        
+        <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-10">
+          <p class="text-lg text-blue-100 leading-relaxed mb-6">
+            By 2030, we aim to have catalyzed a global water innovation ecosystem that has improved water security for 
+            over 2 billion people, mobilized $2 billion in water investments, and established water technology as a 
+            mainstream investment category.
+          </p>
+          
+          <p class="text-lg text-blue-100 leading-relaxed">
+            Our flywheel will continue to accelerate, creating an ever-expanding network of water innovators, 
+            investors, and implementers working together to solve humanity's most pressing water challenges.
+          </p>
         </div>
       </div>
     </section>
