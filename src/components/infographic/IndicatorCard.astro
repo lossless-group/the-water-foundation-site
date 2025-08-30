@@ -1,0 +1,47 @@
+---
+type Severity = 'critical' | 'severe' | 'opportunity';
+
+interface Props {
+  severity: Severity;
+  title: string;
+  value: string;
+  description: string;
+  source: string;
+  class?: string;
+}
+
+export type { Props as IndicatorCardProps };
+
+const { 
+    severity, 
+    title, 
+    value, 
+    description, 
+    source, 
+    class: className = '' 
+} = Astro.props;
+
+const severityClasses: Record<Severity, string> = {
+  critical: 'bg-red-600/30 text-red-700 border-red-600/50',
+  severe: 'bg-yellow-600/30 text-yellow-700 border-yellow-600/50',
+  opportunity: 'bg-green-600/30 text-green-700 border-green-600/50'
+};
+---
+
+<div class={`group cursor-pointer ${className}`}>
+  <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-8 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+    <div class="text-center mb-6">
+      <span class={`px-3 py-1 text-sm font-semibold rounded-full border mb-4 inline-block ${severityClasses[severity]}`}>
+        {severity.charAt(0).toUpperCase() + severity.slice(1)}
+      </span>
+      <h3 class="text-2xl font-bold text-white mb-2">{title}</h3>
+    </div>
+    <div class="text-center mb-4">
+      <p class="text-4xl font-bold text-white mb-2">{value}</p>
+      <p class="text-blue-50 text-sm leading-relaxed">{description}</p>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/30 text-center">
+      <p class="text-xs text-blue-50/80">{source}</p>
+    </div>
+  </div>
+</div>

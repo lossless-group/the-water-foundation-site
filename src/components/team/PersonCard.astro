@@ -17,7 +17,6 @@ interface PersonProps {
   socialLinks?: Array<{
     name: string;
     href: string;
-    icon?: SocialPlatform;
   }>;
   className?: string;
   maxWords?: number;
@@ -30,7 +29,7 @@ const {
   bio, 
   socialLinks = [], 
   className = '',
-  maxWords = 25
+  maxWords = 15
 } = Astro.props as PersonProps;
 
 // Function to truncate text to a certain number of words
@@ -49,54 +48,50 @@ const truncatedBio = truncateText(bio, maxWords);
 const mappedSocialLinks = socialLinks.map(link => ({
   name: link.name,
   href: link.href,
-  icon: link.icon || link.name.toLowerCase() as SocialPlatform
+  icon: link.name.toLowerCase() as SocialPlatform
 }));
 ---
 
 <article class:list={[
-  'bg-background/80 backdrop-blur-sm rounded-xl overflow-hidden border border-border/10',
-  'transition-all duration-300 hover:shadow-lg hover:shadow-primary/10',
-  'flex flex-col h-full',
+  'bg-white/20 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/30 shadow-lg',
+  'transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-white/25',
+  'flex flex-col h-full group',
   className
 ]}>
+  <!-- Photo section -->
   <div class="relative aspect-square overflow-hidden">
     <img 
       src={image} 
       alt={`Portrait of ${name}`}
-      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+      class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
       loading="lazy"
       width="400"
       height="400"
     />
   </div>
   
+  <!-- Content section -->
   <div class="p-6 flex-1 flex flex-col">
-    <div class="mb-2">
-      <h3 class="text-xl font-semibold text-foreground">{name}</h3>
-      <p class="text-primary/80 text-sm font-medium">{role}</p>
+    <div class="mb-3">
+      <h3 class="text-xl font-semibold text-white text-center group-hover:text-blue-100 transition-colors duration-300">{name}</h3>
+      <p class="text-blue-100/90 text-sm font-medium text-center group-hover:text-blue-100 transition-colors duration-300 mt-1">{role}</p>
     </div>
     
     <div class="mb-4 flex-1">
-      <p class="text-foreground/80 text-sm mb-2" id={`bio-${name.toLowerCase().replace(/\s+/g, '-')}`}>
-        {truncatedBio.isTruncated ? (
-          <>
-            {truncatedBio.text}
-            <button 
-              onclick="this.previousElementSibling.textContent = this.previousElementSibling.getAttribute('data-full-bio') || this.previousElementSibling.textContent; this.remove()"
-              class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50 rounded ml-1"
-              data-full-bio={bio}
-            >
-              Read more
-            </button>
-          </>
-        ) : (
-          bio
-        )}
+      <p class="text-blue-50/80 text-sm leading-relaxed text-center group-hover:text-blue-50/95 transition-colors duration-300" id={`bio-${name.toLowerCase().replace(/\s+/g, '-')}`}>
+        <span class="truncated-text">{truncatedBio.text}</span>
+        <button 
+          onclick="(function(btn){const bio=btn.getAttribute('data-full-bio');const modal=document.createElement('div');modal.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:1000';const textBox=document.createElement('div');textBox.style.cssText='background:white;color:#1f2937;padding:2rem;border-radius:1rem;max-width:500px;max-height:80vh;overflow-y:auto;position:relative;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1)';const closeBtn=document.createElement('button');closeBtn.innerHTML='×';closeBtn.style.cssText='position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#6b7280;padding:0.25rem;border-radius:0.25rem';closeBtn.onclick=()=>modal.remove();const bioText=document.createElement('p');bioText.style.cssText='margin:0;line-height:1.6;font-size:1rem;white-space:pre-line';bioText.textContent=bio;textBox.appendChild(closeBtn);textBox.appendChild(bioText);modal.appendChild(textBox);document.body.appendChild(modal);modal.onclick=(e)=>{if(e.target===modal)modal.remove()};})(this)"
+          class="text-blue-200 font-medium hover:text-blue-100 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300/50 rounded ml-1 transition-colors duration-300 read-more-btn"
+          data-full-bio={bio}
+        >
+          Read more
+        </button>
       </p>
     </div>
     
     {mappedSocialLinks.length > 0 && (
-      <div class="mt-auto pt-4 border-t border-border/10">
+      <div class="mt-auto pt-4 border-t border-white/20 group-hover:border-white/30 transition-colors duration-300">
         <SocialIcons 
           socialLinks={mappedSocialLinks}
           iconSize="sm"
@@ -106,3 +101,7 @@ const mappedSocialLinks = socialLinks.map(link => ({
     )}
   </div>
 </article>
+
+
+
+

@@ -1,0 +1,21 @@
+---
+import Chip from './Chip.astro';
+---
+
+<Chip variant="animated" {...Astro.props}>
+  <span class="relative z-10">
+    <slot />
+  </span>
+</Chip>
+
+<style>
+  @keyframes gradientX {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient-x {
+    animation: gradientX 3s ease infinite;
+  }
+</style>

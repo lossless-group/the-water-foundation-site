@@ -1,0 +1,59 @@
+---
+import IndicatorCard from './IndicatorCard.astro';
+
+const indicators = [
+  {
+    severity: 'critical',
+    title: 'Access to Safe Drinking Water',
+    value: '2.2B',
+    description: 'people without access',
+    source: 'UNICEF/WHO JMP, 2023'
+  },
+  {
+    severity: 'critical',
+    title: 'Sanitation Access',
+    value: '3.5B',
+    description: 'lack safe sanitation',
+    source: 'WHO/UNICEF JMP, 2023'
+  },
+  {
+    severity: 'severe',
+    title: 'Wastewater',
+    value: '80%',
+    description: 'untreated globally',
+    source: 'UNESCO WWDR, 2023'
+  },
+  {
+    severity: 'severe',
+    title: 'Economic Losses',
+    value: '$260B',
+    description: 'annually',
+    source: 'World Bank, 2021'
+  },
+  {
+    severity: 'opportunity',
+    title: 'Market Growth',
+    value: '$1T+',
+    description: 'water tech market by 2030',
+    source: 'BNEF, 2023'
+  },
+  {
+    severity: 'critical',
+    title: 'Climate Impact',
+    value: '74%',
+    description: 'of climate disasters water-related',
+    source: 'UNDRR, 2022'
+  }
+];
+---
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {indicators.map((indicator, index) => (
+    <IndicatorCard 
+      {...indicator} 
+      class="vertical-card"
+      data-aos="fade-up" 
+      data-aos-delay={index * 100}
+    />
+  ))}
+</div>

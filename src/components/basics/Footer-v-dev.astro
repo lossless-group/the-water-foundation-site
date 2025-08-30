@@ -1,0 +1,225 @@
+---
+import ResponsiveContainer from '../../layouts/ResponsiveContainer.astro';
+import SocialIcons from '../ui/SocialIcons.astro';
+import ThemeImage from '../ui/ThemeImage.astro';
+
+// Import SocialLink type from SocialIcons component
+type SocialLink = import('../ui/SocialIcons.astro').SocialLink;
+
+// Props
+export interface Props {
+  siteTitle?: string;
+  logo?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  };
+  description?: string;
+  links?: Array<{
+    title: string;
+    items: Array<{
+      text: string;
+      href: string;
+      isExternal?: boolean;
+    }>;
+  }>;
+  socialLinks?: SocialLink[];
+  copyright?: string;
+  class?: string;
+  className?: string; // For backward compatibility
+}
+
+const {
+  siteTitle = 'The Water Foundation',
+  logo = {
+    src: '/trademark__The-Water-Foundation.svg',
+    alt: 'The Water Foundation Logo',
+    width: 180,
+    height: 40
+  },
+  description = 'The Water Foundation, based in Dubai, Delhi, Vaduz, and Munich, is a global organization working to ensure clean, accessible water for all through blended, unsiloed financial strategies.',
+  links = [
+    {
+      title: 'About',
+      items: [
+        { text: 'Our Mission', href: '/mission' },
+        { text: 'Our People', href: '/the-people' },
+        { text: 'Investment Strategy', href: '/strategy' },
+        { text: 'Artesians', href: '/about/artesians' },
+      ]
+    },
+    {
+      title: 'Pattern Breakers',
+      items: [
+        { text: 'Saltwater & Freshwater', href: '/freshwaterandoceanwater' },
+        { text: 'For-Profit & Non-Profit', href: '/beliefs/forprofit-non-forprofit' },
+        { text: 'Private Sector & Public Sector', href: '/beliefs/private-public' },
+        { text: 'Evergreen & Closed-End Funds', href: '/beliefs/public-private' },
+      ]
+    },
+    {
+      title: 'Get Involved',
+      items: [
+        { text: 'Partner', href: '/partner' },
+        { text: 'Events', href: '/events' },
+        { text: 'Propose Yourself', href: '/propose-yourself' },
+        { text: 'Fellowship', href: '/our-fellowship-program' },
+        { text: 'Slides', href: '/slides' },
+      ]
+    }
+  ],
+  socialLinks = [
+    { name: 'Twitter', href: 'https://twitter.com/the-water-foundation', icon: 'twitter' },
+    { name: 'Facebook', href: 'https://facebook.com/the-water-foundation', icon: 'facebook' },
+    { name: 'Instagram', href: 'https://instagram.com/the-water-foundation', icon: 'instagram' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/the-water-foundation', icon: 'linkedin' },
+  ],
+  copyright = `© ${new Date().getFullYear()} The Water Foundation. All rights reserved.`,
+  class: className = ''
+} = Astro.props as Props;
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
+---
+
+<footer 
+  class:list={[
+    'bg-background border-t border-border/10 text-foreground/80',
+    'mt-8 pt-8 md:mt-12 md:pt-12 lg:mt-16 lg:pt-16',
+    className
+  ]}
+>
+  <ResponsiveContainer class="pb-16 md:pb-20 lg:pb-24">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
+      <!-- Logo and description -->
+      <div class="md:col-span-2 lg:col-span-4">
+        <div class="flex flex-col space-y-4">
+          <a href="/" class="inline-block">
+            {logo?.src ? (
+              <ThemeImage
+                lightSrc="/trademark__The-Water-Foundation--Darker.svg"
+                darkSrc="/trademark__The-Water-Foundation--Lighter.svg"
+                alt={logo.alt || siteTitle}
+                width={logo.width || 180}
+                height={logo.height || 40}
+                class="h-[70px] w-auto"
+                loading="lazy"
+              />
+            ) : (
+              <span class="text-2xl font-bold text-foreground">{siteTitle}</span>
+            )}
+          </a>
+          
+          <p class="text-sm leading-relaxed">
+            {description}
+          </p>
+          
+          <!-- Social links -->
+          <div class="mt-4">
+            <SocialIcons socialLinks={socialLinks} />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Links grid -->
+      <div class="grid grid-cols-2 gap-8 md:col-span-2 lg:col-span-8 lg:grid-cols-3">
+        {links.map((section) => (
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-foreground">
+              {section.title}
+            </h3>
+            <ul class="mt-4 space-y-2">
+              {section.items.map((item) => (
+                <li>
+                  <a 
+                    href={item.href}
+                    class:list={[
+                      'text-sm hover:text-primary transition-colors',
+                      item.isExternal ? 'flex items-center gap-1' : ''
+                    ]}
+                    target={item.isExternal ? '_blank' : '_self'}
+                    rel={item.isExternal ? 'noopener noreferrer' : ''}
+                  >
+                    {item.text}
+                    {item.isExternal && (
+                      <svg 
+                        class="h-3.5 w-3.5" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path 
+                          stroke-linecap="round" 
+                          stroke-linejoin="round" 
+                          stroke-width="2" 
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Bottom bar -->
+    <div class="mt-12 border-t border-border/10 py-10" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
+      <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+        <p class="text-sm text-foreground/60">
+          {copyright.replace('{year}', currentYear.toString())}
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-6 text-sm sm:justify-end">
+          <a href="/about/our-charter" class="hover:text-primary transition-colors">
+            Our Charter
+          </a>
+          <a href="/privacy" class="hover:text-primary transition-colors">
+            Privacy Policy
+          </a>
+          <a href="/imprint" class="hover:text-primary transition-colors">
+            Imprint
+          </a>
+          <a href="/terms" class="hover:text-primary transition-colors">
+            Terms of Service
+          </a>
+          <a href="/accessibility" class="hover:text-primary transition-colors">
+            Accessibility
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Easter Egg Quote -->
+    <div class="text-center mt-8 opacity-30 hover:opacity-70 transition-opacity duration-500">
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto mb-3"></div>
+      <p class="text-xs text-foreground/40 font-light tracking-widest leading-relaxed max-w-sm mx-auto">
+        "You are a guest of nature - behave."
+      </p>
+      <p class="text-xs text-foreground/30 font-extralight tracking-wider mt-1">
+        — Friedensreich Hundertwasser
+      </p>
+    </div>
+  </ResponsiveContainer>
+</footer>
+
+<!-- No script needed - social links are handled by the SocialIcons component -->
+
+<style>
+  /* Container query adjustments */
+  @container (min-width: 64rem) {
+    .footer-content {
+      padding-inline: 2rem;
+    }
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    a, button {
+      transition: none !important;
+    }
+  }
+</style>

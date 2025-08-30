@@ -1,0 +1,250 @@
+---
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '../components/ui/AnimatedWaterBackground.astro';
+---
+
+<BaseThemeLayout
+  title="Water Fellowship Program - The Water Foundation"
+  description="Join our Water Fellowship Program and gain hands-on experience in venture capital, private equity, philanthropy, and creating business opportunities in the global water crisis"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="absolute inset-0 z-0">
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-light text-white mb-8 tracking-wide leading-tight">
+          Water <span class="text-cyan-300 font-normal">Fellowship</span> Program
+        </h1>
+        
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8"></div>
+        
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light">
+          Accelerate your career while solving humanity's most pressing water challenges
+        </p>
+      </div>
+    </section>
+
+    <!-- Program Overview Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Shape the Future of Water Innovation
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Water Fellows bring their unique experience, motivation, and skills to create meaningful impact in the global water ecosystem
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Program Structure -->
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-8">
+              <h3 class="text-xl font-semibold text-cyan-300 mb-4">Flexible Program Structure</h3>
+              <div class="space-y-4">
+                <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-4">
+                  <h4 class="text-lg font-medium text-cyan-300 mb-2">Part-Time Track</h4>
+                  <p class="text-blue-100 text-sm">Up to 1 year commitment, perfect for working professionals and students</p>
+                </div>
+                <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl p-4">
+                  <h4 class="text-lg font-medium text-blue-300 mb-2">Full-Time Immersion</h4>
+                  <p class="text-blue-100 text-sm">3-month intensive program for deep-dive experience</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Outcomes -->
+          <div class="bg-gradient-to-br from-indigo-500/15 via-blue-500/15 to-cyan-500/15 backdrop-blur-xl border border-indigo-400/40 rounded-3xl p-8">
+            <h3 class="text-xl font-semibold text-indigo-300 mb-6">What You'll Learn</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-blue-300 font-medium">Venture Capital</h4>
+                  <p class="text-blue-100 text-sm">Deal sourcing, due diligence, and portfolio management in water tech</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-indigo-300 font-medium">Private Equity</h4>
+                  <p class="text-blue-100 text-sm">Industrial water infrastructure and scaling operations</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-purple-400 to-cyan-400 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-purple-300 font-medium">Philanthropy</h4>
+                  <p class="text-blue-100 text-sm">Impact measurement and strategic giving in water access</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-cyan-300 font-medium">Crisis Innovation</h4>
+                  <p class="text-blue-100 text-sm">Creating business opportunities within global water challenges</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fellowship Experience Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Your Fellowship Journey
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Hands-on experience across our entire water innovation flywheel
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Experience 1 -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-cyan-300 mb-3 text-center">Innovation Scouting</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Identify and evaluate emerging water technologies, work directly with entrepreneurs, and contribute to our venture building pipeline
+            </p>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-blue-300 mb-3 text-center">Investment Analysis</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Conduct due diligence on water companies, build financial models, and participate in investment committee meetings
+            </p>
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-indigo-300 mb-3 text-center">Portfolio Support</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Work alongside portfolio companies to accelerate growth, develop partnerships, and scale water solutions globally
+            </p>
+          </div>
+
+          <!-- Experience 4 -->
+          <div class="bg-gradient-to-br from-purple-500/10 via-indigo-500/10 to-blue-500/10 backdrop-blur-xl border border-purple-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-purple-300 mb-3 text-center">Global Impact</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Contribute to philanthropic initiatives, measure impact across our portfolio, and help achieve UN Sustainable Development Goals
+            </p>
+          </div>
+
+          <!-- Experience 5 -->
+          <div class="bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-teal-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-teal-300 mb-3 text-center">Industry Networks</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Build relationships with water industry leaders, attend global conferences, and expand your professional network
+            </p>
+          </div>
+
+          <!-- Experience 6 -->
+          <div class="bg-gradient-to-br from-green-500/10 via-teal-500/10 to-cyan-500/10 backdrop-blur-xl border border-green-400/30 rounded-2xl p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-green-300 mb-3 text-center">Thought Leadership</h3>
+            <p class="text-blue-100 text-sm leading-relaxed text-center">
+              Publish research, speak at events, and contribute to policy discussions shaping the future of water innovation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+          Ready to Make Waves?
+        </h2>
+        
+        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+          Join the next generation of water innovators and help us create a water-secure future for all. 
+          Applications are reviewed on a rolling basis.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="inline-block">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
+              Apply Now
+            </div>
+          </a>
+          
+          <a href="/impact" class="inline-block">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
+              Learn About Our Impact
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>

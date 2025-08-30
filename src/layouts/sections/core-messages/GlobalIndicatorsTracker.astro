@@ -1,0 +1,19 @@
+---
+import IndicatorsGrid from '@components/infographic/IndicatorsGrid.astro';
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
+---
+
+<section class="relative py-20 bg-gradient-to-br from-slate-400 via-blue-400 to-teal-400 overflow-hidden">
+  <!-- Animated Water Background -->
+  <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-5xl md:text-6xl font-bold text-white mb-8">Key Global Indicators</h2>
+      <p class="text-xl text-blue-50">Critical data points driving water innovation investment</p>
+    </div>
+    
+    <IndicatorsGrid />
+  </div>
+</section>
+

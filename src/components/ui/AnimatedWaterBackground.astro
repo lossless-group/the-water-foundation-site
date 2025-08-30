@@ -1,0 +1,236 @@
+---
+export interface Props {
+  intensity?: 'subtle' | 'moderate' | 'prominent';
+  colorScheme?: 'cyan' | 'blue' | 'teal' | 'mixed';
+  pattern?: 'scattered' | 'clustered' | 'flowing';
+}
+
+const { 
+  intensity = 'moderate', 
+  colorScheme = 'mixed',
+  pattern = 'scattered'
+} = Astro.props;
+
+const intensityMap = {
+  subtle: 'opacity-10',
+  moderate: 'opacity-20',
+  prominent: 'opacity-30'
+};
+
+const opacity = intensityMap[intensity];
+---
+
+<div class={`absolute inset-0 ${opacity} pointer-events-none overflow-hidden`}>
+  <!-- Scattered Pattern -->
+  {pattern === 'scattered' && (
+    <>
+      <!-- Large Four-Lobed Shape (Center) -->
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-float">
+        <svg viewBox="0 0 100 100" class="w-32 h-32">
+          <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z M20 50 Q15 40 20 30 Q30 25 40 30 Q45 40 40 50 Q30 55 20 50 Z" 
+                fill="rgba(255,255,255,0.15)" 
+                stroke="rgba(255,255,255,0.3)" 
+                stroke-width="1.5"/>
+        </svg>
+      </div>
+      
+      <!-- Small Jagged Four-Lobed (Top Left) -->
+      <div class="absolute top-1/4 left-1/4 w-16 h-16 animate-float" style="animation-delay: 0.5s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 15 Q65 10 75 20 Q80 35 70 45 Q55 50 45 40 Q35 50 20 45 Q10 35 15 20 Q25 10 50 15 Z M85 50 Q90 65 80 75 Q65 80 55 70 Q50 55 60 45 Q70 50 85 50 Z M50 85 Q35 90 25 80 Q20 65 30 55 Q45 50 55 60 Q65 50 80 60 Q90 65 85 80 Q75 90 50 85 Z M15 50 Q10 35 20 25 Q35 20 45 30 Q50 45 40 55 Q30 60 15 50 Z" 
+                fill="rgba(173,216,230,0.25)" 
+                stroke="rgba(173,216,230,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+      
+      <!-- Small Rounded Five-Lobed (Bottom Left) -->
+      <div class="absolute bottom-1/4 left-1/4 w-16 h-16 animate-float" style="animation-delay: 1s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z M20 50 Q15 40 20 30 Q30 25 40 30 Q45 40 40 50 Q30 55 20 50 Z M50 50 Q45 45 50 40 Q55 45 50 50 Z" 
+                fill="rgba(135,206,250,0.25)" 
+                stroke="rgba(135,206,250,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+      
+      <!-- Large Jagged Four-Lobed (Right) -->
+      <div class="absolute top-1/2 right-1/4 w-24 h-24 animate-float" style="animation-delay: 1.5s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 20 Q65 12 75 25 Q82 40 75 55 Q65 68 50 60 Q35 68 25 55 Q18 40 25 25 Q35 12 50 20 Z M85 50 Q92 65 80 75 Q65 82 50 75 Q35 82 20 75 Q8 65 15 50 Q8 35 20 25 Q35 18 50 25 Q65 18 80 25 Q92 35 85 50 Z" 
+                fill="rgba(64,224,208,0.25)" 
+                stroke="rgba(64,224,208,0.4)" 
+                stroke-width="1.5"/>
+        </svg>
+      </div>
+      
+      <!-- Small Jagged Four-Lobed (Top Right) -->
+      <div class="absolute top-1/4 right-1/4 w-16 h-16 animate-float" style="animation-delay: 0.5s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 15 Q65 10 75 20 Q80 35 70 45 Q55 50 45 40 Q35 50 20 45 Q10 35 15 20 Q25 10 50 15 Z M85 50 Q90 65 80 75 Q65 80 55 70 Q50 55 60 45 Q70 50 85 50 Z M50 85 Q35 90 25 80 Q20 65 30 55 Q45 50 55 60 Q65 50 80 60 Q90 65 85 80 Q75 90 50 85 Z M15 50 Q10 35 20 25 Q35 20 45 30 Q50 45 40 55 Q30 60 15 50 Z" 
+                fill="rgba(173,216,230,0.25)" 
+                stroke="rgba(173,216,230,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+      
+      <!-- Small Rounded Five-Lobed (Bottom Right) -->
+      <div class="absolute bottom-1/4 right-1/4 w-16 h-16 animate-float" style="animation-delay: 1s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z M20 50 Q15 40 20 30 Q30 25 40 30 Q45 40 40 50 Q30 55 20 50 Z M50 50 Q45 45 50 40 Q55 45 50 50 Z" 
+                fill="rgba(135,206,250,0.25)" 
+                stroke="rgba(135,206,250,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+    </>
+  )}
+  
+  <!-- Clustered Pattern -->
+  {pattern === 'clustered' && (
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div class="relative">
+        <!-- Center Cluster -->
+        <div class="w-40 h-40 animate-float">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z M20 50 Q15 40 20 30 Q30 25 40 30 Q45 40 40 50 Q30 55 20 50 Z" 
+                  fill="rgba(255,255,255,0.15)" 
+                  stroke="rgba(255,255,255,0.3)" 
+                  stroke-width="1.5"/>
+          </svg>
+        </div>
+        
+        <!-- Orbiting Shapes -->
+        <div class="absolute top-0 left-0 w-20 h-20 animate-orbit" style="animation-delay: 0s;">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M50 15 Q65 10 75 20 Q80 35 70 45 Q55 50 45 40 Q35 50 20 45 Q10 35 15 20 Q25 10 50 15 Z" 
+                  fill="rgba(173,216,230,0.25)" 
+                  stroke="rgba(173,216,230,0.4)" 
+                  stroke-width="1"/>
+          </svg>
+        </div>
+        
+        <div class="absolute top-0 right-0 w-20 h-20 animate-orbit" style="animation-delay: -2s;">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z" 
+                  fill="rgba(135,206,250,0.25)" 
+                  stroke="rgba(135,206,250,0.4)" 
+                  stroke-width="1"/>
+          </svg>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-20 h-20 animate-orbit" style="animation-delay: -4s;">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z" 
+                  fill="rgba(64,224,208,0.25)" 
+                  stroke="rgba(64,224,208,0.4)" 
+                  stroke-width="1"/>
+          </svg>
+        </div>
+        
+        <div class="absolute bottom-0 right-0 w-20 h-20 animate-orbit" style="animation-delay: -6s;">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M80 50 Q85 60 80 70 Q70 75 60 70 Q55 60 60 50 Q70 45 80 50 Z" 
+                  fill="rgba(255,255,255,0.15)" 
+                  stroke="rgba(255,255,255,0.3)" 
+                  stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  )}
+  
+  <!-- Flowing Pattern -->
+  {pattern === 'flowing' && (
+    <div class="absolute inset-0">
+      <!-- Flow Line 1 -->
+      <div class="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-flow" style="animation-delay: 0s;"></div>
+      
+      <!-- Flow Line 2 -->
+      <div class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent animate-flow" style="animation-delay: -2s;"></div>
+      
+      <!-- Flow Line 3 -->
+      <div class="absolute top-3/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-400/30 to-transparent animate-flow" style="animation-delay: -4s;"></div>
+      
+      <!-- Floating Shapes along flow lines -->
+      <div class="absolute top-1/4 left-1/4 w-12 h-12 animate-float" style="animation-delay: 0s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 20 Q60 15 70 20 Q75 30 70 40 Q60 45 50 40 Q40 45 30 40 Q25 30 30 20 Q40 15 50 20 Z" 
+                fill="rgba(34,211,238,0.25)" 
+                stroke="rgba(34,211,238,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+      
+      <div class="absolute top-1/2 left-1/2 w-12 h-12 animate-float" style="animation-delay: -2s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 15 Q65 10 75 20 Q80 35 70 45 Q55 50 45 40 Q35 50 20 45 Q10 35 15 20 Q25 10 50 15 Z" 
+                fill="rgba(59,130,246,0.25)" 
+                stroke="rgba(59,130,246,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+      
+      <div class="absolute top-3/4 left-3/4 w-12 h-12 animate-float" style="animation-delay: -4s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full">
+          <path d="M50 80 Q40 85 30 80 Q25 70 30 60 Q40 55 50 60 Q60 55 70 60 Q75 70 70 80 Q60 85 50 80 Z" 
+                fill="rgba(20,184,166,0.25)" 
+                stroke="rgba(20,184,166,0.4)" 
+                stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-10px) rotate(90deg) scale(1.05);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg) scale(1.1);
+    }
+    75% {
+      transform: translateY(-10px) rotate(270deg) scale(1.05);
+    }
+  }
+  
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(30px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(30px) rotate(-360deg);
+    }
+  }
+  
+  @keyframes flow {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-orbit {
+    animation: orbit 12s linear infinite;
+  }
+  
+  .animate-flow {
+    animation: flow 6s ease-in-out infinite;
+  }
+</style>

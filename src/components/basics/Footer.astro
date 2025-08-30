@@ -47,24 +47,25 @@ const {
         { text: 'Our People', href: '/the-people' },
         { text: 'Investment Strategy', href: '/strategy' },
         { text: 'Artesians', href: '/about/artesians' },
+        { text: 'Our Impact Goals', href: '/impact/dashboard' },
       ]
     },
     {
       title: 'Pattern Breakers',
       items: [
-        { text: 'Saltwater & Freshwater', href: '/beliefs/saltwater-freshwater' },
-        { text: 'For-Profit & Non-Profit', href: '/beliefs/for-profit-non-profit' },
+        { text: 'Saltwater & Freshwater', href: '/beliefs/freshwaterandoceanwater' },
+        { text: 'For-Profit & Non-Profit', href: '/beliefs/forprofit-non-forprofit' },
         { text: 'Private Sector & Public Sector', href: '/beliefs/private-public' },
-        { text: 'Evergreen & Closed-End Funds', href: '/beliefs/public-private' },
+        { text: 'Funds as Instruments', href: '/beliefs/funds-as-instruments' },
       ]
     },
     {
       title: 'Get Involved',
       items: [
-        { text: 'Partner', href: '/partner' },
+        { text: 'Partner', href: '/partners' },
         { text: 'Events', href: '/events' },
         { text: 'Propose Yourself', href: '/propose-yourself' },
-        { text: 'Fellowship', href: '/our-fellowship-program' },
+        { text: 'Fellowship', href: '/fellowship' },
         { text: 'Slides', href: '/slides' },
       ]
     }
@@ -91,9 +92,9 @@ const currentYear = new Date().getFullYear();
   ]}
 >
   <ResponsiveContainer class="pb-16 md:pb-20 lg:pb-24">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
       <!-- Logo and description -->
-      <div class="md:col-span-2 lg:col-span-4">
+      <div class="md:col-span-2 lg:col-span-5 xl:col-span-4">
         <div class="flex flex-col space-y-4">
           <a href="/" class="inline-block">
             {logo?.src ? (
@@ -103,7 +104,7 @@ const currentYear = new Date().getFullYear();
                 alt={logo.alt || siteTitle}
                 width={logo.width || 180}
                 height={logo.height || 40}
-                class="h-[70px] w-auto"
+                class="h-[70px] w-[180px] flex items-center justify-center"
                 loading="lazy"
               />
             ) : (
@@ -123,13 +124,13 @@ const currentYear = new Date().getFullYear();
       </div>
       
       <!-- Links grid -->
-      <div class="grid grid-cols-2 gap-8 md:col-span-2 lg:col-span-8 lg:grid-cols-3">
+      <div class="grid grid-cols-2 gap-x-6 gap-y-8 md:col-span-2 lg:col-span-7 xl:col-span-8 lg:grid-cols-4">
         {links.map((section) => (
           <div>
             <h3 class="text-sm font-semibold uppercase tracking-wider text-foreground">
               {section.title}
             </h3>
-            <ul class="mt-4 space-y-2">
+            <ul class="mt-3 space-y-1.5">
               {section.items.map((item) => (
                 <li>
                   <a 
@@ -167,7 +168,22 @@ const currentYear = new Date().getFullYear();
     </div>
     
     <!-- Bottom bar -->
-    <div class="mt-12 border-t border-border/10 py-10" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
+    <div class="mt-12 border-t border-border/20 pt-10" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
+      <div class="text-center mb-8">
+        <p class="text-base font-medium text-foreground/90 mb-1">
+          A special thank you to Hussain Aga Khan and 
+          <a 
+            href="https://focusedonnature.org/maintenance/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-primary font-semibold hover:text-primary/90 transition-colors border-b border-primary/30 hover:border-primary/60"
+          >
+            Focused on Nature Foundation
+          </a> 
+          for our world class photo library.
+        </p>
+        <div class="w-24 h-0.5 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20 mx-auto mt-3 rounded-full"></div>
+      </div>
       <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
         <p class="text-sm text-foreground/60">
           {copyright.replace('{year}', currentYear.toString())}
@@ -191,6 +207,17 @@ const currentYear = new Date().getFullYear();
           </a>
         </div>
       </div>
+    </div>
+    
+    <!-- Easter Egg Quote -->
+    <div class="text-center mt-8 opacity-30 hover:opacity-70 transition-opacity duration-500">
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto mb-3"></div>
+      <p class="text-xs text-foreground/40 font-light tracking-widest leading-relaxed max-w-sm mx-auto">
+        "You are a guest of nature - behave."
+      </p>
+      <p class="text-xs text-foreground/30 font-extralight tracking-wider mt-1">
+        — Friedensreich Hundertwasser
+      </p>
     </div>
   </ResponsiveContainer>
 </footer>

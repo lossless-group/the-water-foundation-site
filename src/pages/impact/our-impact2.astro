@@ -1,0 +1,371 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
+---
+
+<BaseThemeLayout
+  title="Our Impact II - The Water Foundation"
+  description="Discover how The Water Foundation is driving water innovation and creating lasting impact across the global water ecosystem"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-blue-950 via-indigo-900 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <!-- Background Elements -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-600/25 to-indigo-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-indigo-600/25 to-blue-600/20 rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-600/15 rounded-full blur-2xl animate-pulse-slow-2"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-light text-white mb-8 tracking-wide leading-tight">
+          Our <span class="text-cyan-300 font-normal">Impact</span>
+        </h1>
+        
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8"></div>
+        
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed font-light">
+          We accelerate the transition from water innovation to global resilience by turning bold ideas into bankable infrastructure and lasting equity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Water Innovation Flywheel Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="subtle" pattern="scattered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Water Innovation Flywheel
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Our integrated approach creates a continuous cycle of innovation, investment, and impact across the water ecosystem
+          </p>
+        </div>
+
+        <!-- Flywheel Diagram -->
+        <div class="bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-blue-600/15 backdrop-blur-xl border border-blue-400/40 rounded-3xl p-16 mb-16">
+          <div class="relative max-w-4xl mx-auto">
+            <!-- Circular Arrow Background -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-96 h-96 border-8 border-blue-600/30 rounded-full"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-80 h-80 border-8 border-transparent border-t-blue-600 border-r-blue-600 border-b-blue-600 rounded-full animate-spin-slow"></div>
+              </div>
+            </div>
+
+            <!-- Foundation - Top -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 text-center">
+              <div class="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/40 rounded-2xl p-6 mb-4">
+                <h3 class="text-xl font-bold text-cyan-300 mb-2">THE WATER FOUNDATION</h3>
+                <p class="text-blue-100 text-sm">Anchor, capital, thought leadership</p>
+              </div>
+            </div>
+
+            <!-- Venture Builder - Right -->
+            <div class="absolute top-1/2 right-0 transform translate-y-1/2 text-center">
+              <div class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-xl border border-blue-400/40 rounded-2xl p-6 mb-4">
+                <h3 class="text-xl font-bold text-blue-300 mb-2">WATERTECH VENTURE BUILDER</h3>
+                <p class="text-blue-100 text-sm">Early innovation & validation engine</p>
+              </div>
+            </div>
+
+            <!-- VC Fund - Bottom -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center">
+              <div class="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-400/40 rounded-2xl p-6 mb-4">
+                <h3 class="text-xl font-bold text-indigo-300 mb-2">WATER VC FUND</h3>
+                <p class="text-blue-100 text-sm">Scaling-stage investment</p>
+              </div>
+            </div>
+
+            <!-- PE Fund - Left -->
+            <div class="absolute top-1/2 left-0 transform -translate-y-1/2 text-center">
+              <div class="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-400/40 rounded-2xl p-6 mb-4">
+                <h3 class="text-xl font-bold text-purple-300 mb-2">WATER PE FUND</h3>
+                <p class="text-blue-100 text-sm">Industrial execution & infrastructure integration</p>
+              </div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="relative z-10 flex items-center justify-center h-96">
+              <div class="text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-cyan-300">Continuous Innovation</h3>
+                <p class="text-blue-100 text-sm">Perpetual motion of water solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flywheel Description -->
+        <div class="text-center">
+          <div class="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 class="text-xl font-semibold text-cyan-300 mb-4">How the Flywheel Works</h3>
+            <p class="text-blue-100 leading-relaxed">
+              Each component of our ecosystem feeds into the next, creating a self-reinforcing cycle that accelerates water innovation. 
+              From early-stage ideation to industrial-scale deployment, we ensure that promising solutions receive the support they need 
+              at every stage of their journey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UN Sustainable Development Goals Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+            Achieving the UN Sustainable Development Goals
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            Our work directly contributes to multiple SDGs, creating a ripple effect across global development targets
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Concentric Circles Diagram -->
+          <div class="relative flex items-center justify-center">
+            <div class="relative w-80 h-80">
+              <!-- Outermost Circle - Dark Orange/Brown -->
+              <div class="absolute inset-0 w-80 h-80 bg-gradient-to-br from-orange-800/40 to-orange-900/40 rounded-full border-4 border-orange-600/60"></div>
+              
+              <!-- Third Circle - Orange -->
+              <div class="absolute inset-8 w-64 h-64 bg-gradient-to-br from-orange-600/40 to-orange-700/40 rounded-full border-4 border-orange-500/60"></div>
+              
+              <!-- Second Circle - Light Beige/Cream -->
+              <div class="absolute inset-16 w-48 h-48 bg-gradient-to-br from-amber-200/40 to-amber-300/40 rounded-full border-4 border-amber-400/60"></div>
+              
+              <!-- Innermost Circle - Light Blue -->
+              <div class="absolute inset-24 w-32 h-32 bg-gradient-to-br from-blue-300/40 to-blue-400/40 rounded-full border-4 border-blue-500/60"></div>
+              
+              <!-- Center Icon -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SDG Descriptions -->
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-orange-300 mb-3">Clean Water & Sanitation</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Ensuring access to clean water and proper sanitation for communities worldwide through innovative technologies and infrastructure development.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-orange-300 mb-3">Sustainable Communities</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Promoting sustainable development in local communities by building resilient water systems that support long-term growth and prosperity.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-700/10 backdrop-blur-xl border border-orange-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-orange-300 mb-3">Climate Action</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Addressing water-related impacts of climate change through adaptive technologies and resilient infrastructure that can withstand extreme weather events.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-amber-500/10 via-amber-600/10 to-amber-700/10 backdrop-blur-xl border border-amber-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-amber-300 mb-3">Partnerships for the Goals</h3>
+              <p class="text-blue-100 leading-relaxed">
+                Fostering global collaboration to achieve the SDGs by bringing together governments, businesses, NGOs, and communities in coordinated water initiatives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Circular Water Technology Section -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="flowing" />
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-teal-300">
+            Investing in Circular Water Technology
+          </h2>
+          <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+            The Water Foundation's Vision for a Sustainable Future
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <!-- Left Content -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-xl border border-indigo-400/30 rounded-3xl p-8">
+              <p class="text-lg text-blue-100 leading-relaxed">
+                The Water Foundation's commitment to investing in circular water technology is a crucial step towards addressing the global water crisis. 
+                By supporting innovative solutions, empowering local communities, and fostering global partnerships, the Foundation is working to create 
+                a more sustainable and equitable water future for all.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-teal-400/30 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-teal-300 mb-3">Circular Economy Benefits</h3>
+              <ul class="text-blue-100 space-y-2 text-sm">
+                <li>• Reduced water waste and pollution</li>
+                <li>• Energy recovery from wastewater</li>
+                <li>• Nutrient recycling for agriculture</li>
+                <li>• Sustainable urban water systems</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: One Water Approach Diagram -->
+          <div class="relative">
+            <div class="bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-indigo-500/15 backdrop-blur-xl border border-cyan-400/40 rounded-3xl p-8">
+              
+              <div class="relative w-80 h-80 mx-auto">
+                <!-- Central Text -->
+                <div class="absolute inset-0 flex items-center justify-center z-20">
+                  <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                      </svg>
+                    </div>
+                    <p class="text-sm font-semibold text-cyan-300">One Water</p>
+                    <p class="text-xs text-blue-200">Approach</p>
+                  </div>
+                </div>
+
+                <!-- Bubble 1: Water Utilities (Top) -->
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#1</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Reliable Water Utilities</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble 2: Thriving Cities (Top Right) -->
+                <div class="absolute top-8 right-8">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#2</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Thriving Cities</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble 3: Business & Industry (Bottom Right) -->
+                <div class="absolute bottom-8 right-8">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#3</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Competitive Business</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble 4: Agricultural Systems (Bottom) -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#4</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Sustainable Agriculture</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble 5: Social Inclusion (Bottom Left) -->
+                <div class="absolute bottom-8 left-8">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#5</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Social Inclusion</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble 6: Healthy Waterways (Top Left) -->
+                <div class="absolute top-8 left-8">
+                  <div class="bg-gradient-to-br from-green-400/20 to-blue-400/20 backdrop-blur-xl border border-green-400/30 rounded-2xl p-4 w-32 text-center">
+                    <div class="text-lg font-bold text-green-300 mb-1">#6</div>
+                    <h4 class="text-sm font-semibold text-green-300 mb-1">Healthy Waterways</h4>
+                    <div class="w-6 h-6 bg-green-400/30 rounded-full flex items-center justify-center mx-auto">
+                      <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+      <!-- Animated Water Background -->
+      <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+          Join Our Impact Journey
+        </h2>
+        
+        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+          Be part of the transformation. Whether you're an innovator, investor, or advocate, 
+          there's a place for you in our water innovation ecosystem.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="inline-block">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500/90 hover:to-blue-500/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-cyan-400/30">
+              Get Involved
+            </div>
+          </a>
+          
+          <a href="/about" class="inline-block">
+            <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/30">
+              Learn More
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>

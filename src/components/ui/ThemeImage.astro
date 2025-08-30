@@ -26,7 +26,7 @@ const decoding = props.decoding || 'async';
 const fetchpriority = props.fetchpriority || 'auto';
 ---
 
-<div class="theme-image-container relative" class:list={[className]}>
+<div class="theme-image-container relative w-full h-full" class:list={[className]}>
   <!-- Light mode image (hidden in dark mode) -->
   <img
     src={lightSrc}
@@ -37,7 +37,7 @@ const fetchpriority = props.fetchpriority || 'auto';
     decoding={decoding}
     fetchpriority={fetchpriority}
     class:list={[
-      'light-image object-contain',
+      'light-image object-contain max-h-full max-w-full',
     ]}
   />
   
@@ -51,7 +51,7 @@ const fetchpriority = props.fetchpriority || 'auto';
     decoding={decoding}
     fetchpriority={fetchpriority}
     class:list={[
-      'dark-image object-contain',
+      'dark-image object-contain max-h-full max-w-full',
     ]}
   />
 </div>
@@ -59,6 +59,9 @@ const fetchpriority = props.fetchpriority || 'auto';
 <style is:global>
   .theme-image-container {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Default: light image visible */

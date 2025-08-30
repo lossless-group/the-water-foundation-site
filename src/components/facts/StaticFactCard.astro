@@ -1,0 +1,56 @@
+---
+interface FactData {
+  id: string;
+  index: number;
+  title?: string;
+  zinger: string;
+  companion_image_url?: string;
+  source_org?: string;
+  source_title?: string;
+  source_url?: string;
+  sources?: Array<{ org: string; title?: string; url?: string }>;
+}
+
+interface Props {
+  fact: FactData;
+}
+
+const { fact } = Astro.props;
+
+const effectiveSources = fact.sources?.length 
+  ? fact.sources 
+  : fact.source_org 
+    ? [{ org: fact.source_org, title: fact.source_title, url: fact.source_url }] 
+    : [];
+
+const displayTitle = fact.title ?? fact.zinger ?? `Fact ${fact.index}`;
+---
+
+<article class="h-full bg-card border border-border rounded-xl shadow-sm p-5 flex flex-col">
+  <header class="mb-3">
+    <div class="text-xs text-foreground/60 uppercase tracking-wide">Fact {fact.index}</div>
+    <h3 class="text-lg font-semibold text-foreground mt-1">{displayTitle}</h3>
+  </header>
+
+  <div class="prose prose-invert max-w-none text-foreground/80 text-sm leading-relaxed flex-1">
+    {fact.zinger}
+  </div>
+
+  {effectiveSources.length > 0 && (
+    <footer class="mt-4 pt-3 border-t border-border/60">
+      <ul class="space-y-1">
+        {effectiveSources.map((s) => (
+          <li class="text-xs text-primary/90 hover:text-primary">
+            {s.url ? (
+              <a href={s.url} target="_blank" rel="noopener noreferrer">
+                {s.org}{s.title ? ` — ${s.title}` : ''}
+              </a>
+            ) : (
+              <span>{s.org}{s.title ? ` — ${s.title}` : ''}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </footer>
+  )}
+</article>

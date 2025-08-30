@@ -1,0 +1,181 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import TeamGrid from '../../components/team/TeamGrid.astro';
+import type { SocialLink } from '../../components/ui/SocialIcons.astro';
+import WhoWeAreTimeline from '../../layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '../../layouts/sections/propose-yourself/ProposeYourself.astro';
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks: SocialLink[];
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: 'Verena Sturm',
+    role: 'Managing Partner, Co-Founder, Co-Chair',
+    image: '/headshots/headshotOf__Verena-Sturm.jpeg',
+    bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.',    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+      { name: 'GitHub', href: 'https://github.com', icon: 'github' }
+    ]
+  },
+          {
+          name: 'Christoph Schwager',
+          role: 'Managing Partner, Co-Founder, Co-Chair',
+          image: '/headshots/headshotOf__Christoph-Schwager.jpg',
+    bio: 'Strategic leader with deep expertise in operational, financial, and technological domains, shaped by an extensive career across global corporate, management consulting, and digital start-up ecosystems. As former Chief Risk Officer at Airbus, he cultivated high-performance cultures attuned to both opportunity and risk. With over 30 years in finance, transactions, and audit, including roles as EY Partner and PwC senior leader, Christoph is a serial entrepreneur and co-founder of think tank beyondRM.org. He holds a Diplom-Kaufmann (MBA equivalent) from the University of Augsburg and is a Certified Public Accountant.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  },
+  {
+    name: 'Cristophe C. Meeus',
+    role: 'Trustee',
+    image: '/headshots/headshotOf__Christophe-C-Meeus.webp',
+    bio: 'Managing Director, CFO, General Counsel, and Board Member with international executive experience. Specializes in providing comprehensive legal and financial guidance to international companies, with expertise in Company and Commercial Law, Employment Law, Mergers and Acquisitions, Computer Law, License Law, Copyright Law, and Unfair Competition.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/christophe-c-meeus-7031b1/', icon: 'linkedin' }
+    ]
+  },
+  {
+    name: 'Sarah Beth Brockley',
+    role: 'Director of Strategy, Partnerships, ESG, Impact',
+    image: '/headshots/headshotOf__Sarah-Beth-Brockley.jpeg',
+    bio: 'Sarah Beth Brockley Advising, Rising and Investing in things that matter.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'linkedin', href: 'https://www.linkedin.com/in/sarabethbrockley/', icon: 'linkedin' },
+      { name: 'github', href: 'https://github.com', icon: 'github' }
+    ]
+  },
+  {
+    name: 'Felix Famira',
+    role: 'Co-Founder & Director of Operations',
+    image: '/headshots/headshotOf__Felix-Famira.png',
+    bio: 'Mechanical engineer specializing in sustainable water infrastructure design and implementation.',
+    socialLinks: [
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  }, 
+  {
+    name: 'Michael P. Staton',
+    role: 'Founding Advisor, Trustee of Fund of Funds and Venture Capital strategies.',
+    image: '/headshots/headshotOf__Michael-Staton.jpeg',
+    bio: 'Advising the Fund of Funds portion of The Water Foundations integrated Blended Finance Strategy. Maintaing a cutting edge tech stack for us all.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com/mpstaton', icon: 'twitter' },
+      { name: 'linkedin', href: 'https://linkedin.com/in/mpstaton', icon: 'linkedin' },
+      { name: 'github', href: 'https://github.com/mpstaton', icon: 'github' }
+    ]
+  },
+  {
+    name: 'David Schwager',
+    role: 'Founding Partner & Director Technologies',
+    image: '/headshots/headshotOf__David-Schwager.jpeg',
+    bio: 'Tech innovator specializing in water purification systems. Leads our R&D team in developing cutting-edge solutions for clean water access.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+      { name: 'GitHub', href: 'https://github.com', icon: 'github' }
+    ]
+  },
+  {
+    name: 'Rahman Wynberg',
+    role: 'Co-Founder & VP Technologies',
+    image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
+    bio: 'A serial entrepreneur, Rahman has founded multiple companies and co-founded the think tank beyondRM.org. With more than 30 years of experience in finance, transactions, and audit — and over 20 years leading complex strategy, M&A, and infrastructure projects — Rahman is recognised as a results-driven strategist and problem-solver who combines clarity of vision with collaborative leadership.',
+    socialLinks: [
+      { name: 'twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'instagram', href: 'https://instagram.com', icon: 'instagram' },
+      { name: 'linkedin', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  },
+  {
+    name: 'Corinna Schwager',
+    role: 'Co-Director of Philanthropies',
+    image: '/headshots/headshotOf__Corinna-Schwager.JPG',
+    bio: 'Corinna Schwager is a Co-Director of Philanthropies at The Water Foundation. She is responsible for leading the development and implementation of The Water Foundation’s philanthropic initiatives.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  },
+  {
+    name: 'Lisa Niedenfuehr',
+    role: 'Director PR & Co-Director of Philanthropies',
+    image: '/headshots/headshotOf__Lisa-Niedenfuehr.jpeg',
+    bio: 'Building strong relationships with communities and partners to maximize our impact.',
+    socialLinks: [
+      { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+      { name: 'Instagram', href: 'https://instagram.com', icon: 'instagram' }
+    ]
+  },
+  {
+    name: 'Divyakshi Nath',
+    role: 'Impact Operations',
+    image: '/headshots/headshotOf__Divyakshi-Nath.png',
+    bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she\'s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
+    socialLinks: [
+      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
+    ]
+  },
+];
+---
+
+<BaseThemeLayout
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+  title="The People of The Water Foundation"
+  description="Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people."
+>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="pt-12 pb-8 md:pt-16 md:pb-10 bg-primary/5">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-2">Our People</h1>
+        <p class="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-tight">
+          Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="pt-0 pb-12 md:pt-0 md:pb-16">
+      <TeamGrid teamMembers={teamMembers} />
+    </section>
+
+    <!-- Timeline -->
+    <WhoWeAreTimeline />
+
+    <!-- Propose Yourself -->
+    <ProposeYourself />
+
+
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Water theme specific styles */
+  :global(html[data-theme="water"]) {
+    --color-primary: 14 116 144;  /* Cyan-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-background: 240 249 255;  /* Light blue-50 */
+    --color-foreground: 3 7 18;  /* Gray-950 */
+    --color-border: 224 242 254;  /* Light blue-100 */
+  }
+  
+  /* Dark mode overrides */
+  :global(html[data-theme="water"].dark) {
+    --color-primary: 8 145 178;  /* Cyan-600 */
+    --color-background: 8 47 73;  /* Dark blue-950 */
+    --color-foreground: 248 250 252;  /* Slate-50 */
+    --color-border: 30 58 138;  /* Blue-900 */
+  }
+</style>

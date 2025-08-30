@@ -22,22 +22,31 @@ const { Content } = await entry.render();
 const rawImgUrl = entry.data.companion_image_url;
 const imgAlt = `${displayTitle}`;
 
-let displaySrc: string | undefined;
-if (rawImgUrl?.startsWith('https://source.unsplash.com/')) {
-  // Extract query segment after '?' like "water,drop,essential" and turn into a search string
-  const querySegment = rawImgUrl.split('?')[1] ?? '';
-  const terms = querySegment.replace(/[+,]+/g, ' ').trim();
-  const normalized = terms ? await findFirstNormalized(terms, 1200, 800, 80) : null;
-  displaySrc = normalized?.src;
-} else if (rawImgUrl && /^https?:\/\//.test(rawImgUrl)) {
-  // Proxy external images via server to avoid client-side CORS/policy issues
-  displaySrc = `/api/image?url=${encodeURIComponent(rawImgUrl)}`;
-} else if (rawImgUrl) {
-  // Local or relative path provided
-  displaySrc = rawImgUrl;
-}
+let displaySrc = '/heroes/imageOf__Whale-pair-under-wave.jpeg';
 
-if (!displaySrc) {
+try {
+  if (rawImgUrl?.startsWith('https://source.unsplash.com/')) {
+    // Extract query segment after '?' like "water,drop,essential" and turn into a search string
+    const querySegment = rawImgUrl.split('?')[1] ?? '';
+    const terms = querySegment.replace(/[+,]+/g, ' ').trim();
+    if (terms) {
+      const normalized = await findFirstNormalized(terms, 1200, 800, 80);
+      if (normalized?.src) {
+        displaySrc = normalized.src;
+      }
+    }
+  } else if (rawImgUrl) {
+    if (/^https?:\/\//.test(rawImgUrl)) {
+      // Proxy external images via server to avoid client-side CORS/policy issues
+      displaySrc = `/api/image?url=${encodeURIComponent(rawImgUrl)}`;
+    } else {
+      // Local or relative path provided
+      displaySrc = rawImgUrl;
+    }
+  }
+} catch (error) {
+  console.error('Error loading image:', error);
+  // Fallback to default image if there's an error
   displaySrc = '/heroes/imageOf__Whale-pair-under-wave.jpeg';
 }
 

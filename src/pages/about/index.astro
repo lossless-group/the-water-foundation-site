@@ -3,11 +3,13 @@
 import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 import WhyNowJumbo from '../../layouts/sections/core-messages/WhyNow--Jumbo.astro';
 import AtCrisisPointJumbo from '../../layouts/sections/core-messages/AtCrisisPoint--Jumbo.astro';
+import GlobalIndicatorsTracker from '../../layouts/sections/core-messages/GlobalIndicatorsTracker.astro';
 import InvestInTransformationJumbo from '../../layouts/sections/core-messages/InvestInTransformation--Jumbo.astro';
 import SolutionSurgeJumbo from '../../layouts/sections/core-messages/SolutionSurge--Jumbo.astro';
 import OurMissionJumbo from '../../layouts/sections/core-messages/OurMission--Jumbo.astro';
 import UnsiloedFinanceJumbo from '../../layouts/sections/core-messages/UnsiloedFinance--Jumbo.astro';
 import InnovationToScaleJumbo from '../../layouts/sections/core-messages/InnovationToScale--Jumbo.astro';
+import WatersTripleChallenge from '@sections/core-messages/WatersTripleChallenge.astro';
 ---
 
 <BaseThemeLayout
@@ -20,14 +22,22 @@ import InnovationToScaleJumbo from '../../layouts/sections/core-messages/Innovat
 >
   <main class="overflow-x-hidden">
     
+    <OurMissionJumbo />
+    <section class="relative py-16 bg-gradient-to-br from-slate-800 via-blue-800 to-teal-800 overflow-hidden">
+      <!-- Subtle Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+      <WatersTripleChallenge />
+    </section>
+    
     <WhyNowJumbo />
     <AtCrisisPointJumbo />
+    <GlobalIndicatorsTracker />
     <InvestInTransformationJumbo />
     <SolutionSurgeJumbo />   
-    <OurMissionJumbo />
     <UnsiloedFinanceJumbo />
     <InnovationToScaleJumbo />
-
     
   </main>
 </BaseThemeLayout>

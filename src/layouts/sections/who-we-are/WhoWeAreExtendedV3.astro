@@ -1,136 +1,113 @@
 ---
-// Who We Are - Visual Timeline Layout
+import TodayTomorrow from '@infographic/TodayTomorrow.astro';
+import OpeningQuotes from '@icons/opening-quotes.svg';
+import ClosingQuotes from '@icons/closing-quotes.svg';
+import Rhetoric from '@infographic/Rhetoric.astro';
+import RhetoricOneLine from '@infographic/Rhetoric--OneLine.astro';
+import MissionStatement from './MissionStatement.astro';
+import MoreThanCrisisCallToAction from '@core-messages/MoreThanCrisisCallToAction.astro';
+import UnsiloedFinance from '@core-messages/Unsiloed-Finance--Bedazzled.astro';
+import SystemsThinkers from './SystemsThinkers.astro';
 ---
 
-<section class="py-12 px-4 bg-background">
-  <div class="max-w-3xl mx-auto prose prose-lg text-foreground/90">
+<section class="relative py-20 bg-gradient-to-br from-slate-700 via-blue-700 to-teal-700 overflow-hidden" style="margin-bottom: 0;">
+  <!-- Subtle Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
     <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide">
+        Who <span class="text-cyan-300 font-normal">We Are</span>
+      </h1>
+      <div class="w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto"></div>
+    </div>
      
-    <div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r">
-      <p class="italic">Water is becoming the world's most critical resource. As scarcity and contamination rise, so does the 
-        urgency for bold, scalable solutions.</p>
-    </div>
-<p class="lead">The Water Foundation is a mission-driven entity acting as both a charitable organisation and strategic investor - anchoring a global capital stack to advance SDG 6 (Clean Water and Sanitation) and improve the lives of 1 billion people through resilient, equitable access to clean water.</p>
-    <br>
-    <p>The Water Foundation, based in Dubai, Delhi, Vaduz, and Munich, is an initiative 
-    to enhance water resilience, affecting peace through socio-political stability, and creating net gains in shared prosperity through positive impacts on health, food, and land. 
-    <br>
-    <br>
-    <p>Water is quickly becoming the world's most critical resource. As scarcity and contamination rise, so does the urgency for bold, scalable solutions.</p>
+    <!-- Opening Statement -->
+    <RhetoricOneLine />
 
-    <!-- Three column grid with Earth image and call to action -->
-    <div class="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-      <!-- Earth image in first column -->
-      <div class="relative w-full aspect-square overflow-hidden rounded-xl border border-border/50">
-        <img 
-          src="/imageOf_Earth-with-no-Water.png" 
-          alt="Earth without water visualization"
-          class="absolute inset-0 w-full h-full object-cover object-center scale-110"
-        />
-      </div>
+
+
+    <!-- Mission Statement -->
+    <MissionStatement />
+
+    <SystemsThinkers />
+
+    <!-- Earth Image and Call to Action -->
+    <MoreThanCrisisCallToAction />
+
+    <!-- Investment Verticals Section -->
+    <UnsiloedFinance />
       
-      <!-- Call to action text in next two columns -->
-      <div class="md:col-span-2">
-        <p class="text-xl font-medium text-foreground/90">This is more than a crisis. </p>
-          <br>
-          <br>
-          <p class="text-lg italic text-foreground/90">It's a call to invest in the future - where innovation meets impact.</p>
-        </p>
-      </div>
+    <!-- Redefining Water Solutions Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide">
+        Redefining <span class="text-cyan-300 font-normal">Water Solutions</span>
+      </h2>
+      <p class="text-xl text-blue-200 max-w-3xl mx-auto font-light">
+        A new paradigm for water security, resilience, and prosperity
+      </p>
+      <div class="w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mt-8"></div>
     </div>
-
-    <!-- Rest of the content -->
-    <p>As global water challenges intensify, from increasing scarcity to emerging contaminants, the demand for breakthrough technologies in water treatment and management is rising. 
-      <br>
-      <br>
-      <p class="text-foreground/90 mb-2">In 2024 alone, investor interest in water innovation surged across key areas like desalination, advanced wastewater treatment, and PFAs destruction. These technologies are critical for environmental resilience and present high-growth market opportunities for innovators and stakeholders in the water sector.</p>
-    </p>
-    <br>
-    <br>
-    
-      <!-- Header -->
-      <div class="text-center mb-4">
-        <h2 class="text-4xl font-bold text-foreground mb-2">
-          Redefining Water Solutions
-        </h2>
-        <p class="text-xl text-foreground/80 max-w-3xl mx-auto">
-          A new paradigm for water security, resilience, and prosperity
-        </p>
-      </div>
   
 
-    <div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r">
-      <p class="italic">What began as an improbable group of systems thinkers finding each other at COP30, grew into a targeted global initiative. We bring together exceptional people who are impatient with the way things are, embrace new ways of systems thinking across the water cycle and along the water tech stack - and have the courage to act.</p>
-    </div>
+ 
 
-    <p class="text-foreground/90 leading-relaxed">The Water Foundation empowers individuals, organisations, and states to develop strategic capacity, increase resilience, and shape circular water and resource infrastructures for the future - through knowledge, cooperation, and systemic innovation.</p>
-    <br>
-    <p class="text-foreground/90 leading-relaxed">We develop water strategies and solutions across the water cycle and for each and every water challenge. We enable the research, development and scaling of new or hidden technologies. We build an ecosystem that addresses one of the least appreciated challenges of our time: water scarcity and impending degradation of our water systems.</p>
-    <br>
-    <div class="relative my-12 py-8 px-4">
-        <!-- Opening quote SVG -->
-        <div class="absolute -top-2 left-0 w-20 h-20 text-primary/10 -z-10">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </svg>
-        </div>
-        
-        <p class="text-xl italic text-center text-foreground/80 relative z-10 px-8">
-          Where water security is achieved, <br> peace, socio-political stability and health follows.<br>
-          <br>
-          Where resilience is built by a water innovation ecosystem, <br> returns stabilize and become sustainable.<br>
-          <br>
-          And where water circularity drives productivity, <br> prosperity scales - both in impact and investment potential.
-        </p>
-        
-        <!-- Closing quote SVG -->
-        <div class="absolute -bottom-2 right-0 w-20 h-20 text-primary/10 -z-10 transform rotate-180">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </svg>
-        </div>
+    <!-- Quote Section -->
+    <div class="relative my-20 py-12 px-8">
+      <!-- Opening quote SVG -->
+      <div class="absolute -top-4 left-0 w-24 h-24 text-cyan-400/20 -z-10">
+        <OpeningQuotes class="w-full h-full" />
       </div>
-    </ul>
-
-    <div class="my-12 p-8 bg-background border rounded-lg">
-      <h3 class="text-xl font-semibold mb-4">Our Investment Verticals</h3>
-      <div class="space-y-6">
-        <div>
-          <h4 class="font-medium text-foreground/90">1. The Water Venture Builder</h4>
-          <p class="text-foreground/80">We identify the best water IP/ideas, build teams around them, and provide the necessary capital and resources for success.</p>
-        </div>
-        <div>
-          <h4 class="font-medium text-foreground/90">2. The Water VC Fund</h4>
-          <p class="text-foreground/80">We invest in the most promising existing teams and technologies, integrating them into the venture ecosystem to accelerate their growth.</p>
-        </div>
-        <div>
-          <h4 class="font-medium text-foreground/90">3. The Water PE Fund</h4>
-          <p class="text-foreground/80">We acquire and enhance established players and hidden champions within the water cycle to build even greater impact and value.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="text-2xl font-semibold text-foreground mb-4">The Water Crisis Today</h3>
-    <p class="text-foreground/80 mb-2">
-      While 90% of climate adaptation needs are water-based, less than 5% of climate finance is directed toward water solutions. 
-      This critical gap is where we focus our efforts.
-    </p>
-    <div class="w-24 h-1 bg-primary mx-auto my-2"></div>
-    <h4 class="text-xl font-semibold text-foreground mb-4">Our Vision for the Future</h4>
-    <p class="text-foreground/80 mb-6">
-      We envision a world where water security drives peace, stability, and prosperity for all. 
-      Through innovation, investment, and collaboration, we're making this vision a reality.
-    </p>
-    <p class="bg-background p-6 rounded-lg border mt-6">
-      The Water Foundation's supporters provide us with a solid financial base to supercharge this process. Join them. 
-      <br>
-      <br>
-      Our unique setup enables us to take in donations, employ best practices in blended finance for development and impact, and accept direct For Profit capital investments into closed-end venture and PE funds, as well as participate with our principals in an evergreen structure.
-      <br>
-      <br>
-      As we grow, we intend to open vehcils dedicated to individual verticals, strategies, regions and structures.
       
-    </p>
+      <Rhetoric />
+      
+      <!-- Closing quote SVG -->
+      <div class="absolute -bottom-4 right-0 w-24 h-24 text-cyan-400/20 -z-10 transform rotate-180">
+        <ClosingQuotes class="w-full h-full" />
+      </div>
+    </div>
+
+    <!-- Blue Economy & Finance Forum Photo with New Text -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <!-- Photo - Left Side -->
+      <div class="text-center">
+        <a href="https://beff2025monaco.org/programme/provisional-programme" target="_blank" rel="noopener noreferrer" class="block group">
+          <img 
+            src="/headshots/blue-economy-forum-monaco-2025.jpg" 
+            alt="Christoph Schwager and Verena Sturm at the Blue Economy & Finance Forum Monaco 2025" 
+            class="w-full max-w-lg mx-auto h-auto rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-blue-400/50 transition-all duration-300"
+          />
+          <p class="text-lg text-blue-200 mt-4 font-light italic group-hover:text-cyan-300 transition-colors duration-300">
+            Christoph Schwager and Verena Sturm representing The Water Foundation at the Blue Economy & Finance Forum Monaco 2025
+          </p>
+        </a>
+      </div>
+      
+      <!-- New Text - Right Side -->
+      <div class="space-y-6">
+        <h2 class="text-4xl font-light text-white mb-6">
+          We commit to <span class="text-cyan-300 font-normal">tangible change</span>
+        </h2>
+        <p class="text-xl text-blue-100 leading-relaxed font-light">
+          We want to create real and measurable transformation. To achieve this, we connect the brightest minds, set priorities, provide action impulses, and thus create sustainable and effective results.
+        </p>
+        <div class="pt-4">
+          <a href="/about" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 font-semibold">
+            About The Water Foundation
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <TodayTomorrow />
+    
+    <div class="w-24 h-1 bg-primary mx-auto my-8"></div>
 
       <div class="max-w-3xl mx-auto text-center">
         <a href="/about" class="inline-flex items-center px-6 py-8 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
@@ -140,5 +117,4 @@
           </svg>
         </a>
       </div>
-  </div>
-</section>
+    </section>

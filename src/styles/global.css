@@ -269,6 +269,11 @@ html {
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Font utility classes */
+.font-avenir {
+  font-family: var(--font-family-brand);
+}
+
 /* Dark mode overrides for default theme */
 .theme-default[data-mode="dark"] {
   --color-background: rgb(15, 23, 42);

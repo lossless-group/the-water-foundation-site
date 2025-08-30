@@ -1,6 +1,4 @@
 ---
-import { isMessagingApp } from '../../utils/detect-messaging-app';
-
 interface Props {
   title: string;
   description: string;
@@ -23,17 +21,17 @@ const fullUrl = url ? new URL(url, import.meta.env.SITE).toString() : '';
 const fullImageLandscapeUrl = new URL(imageLandscape, import.meta.env.SITE).toString();
 const fullImagePortraitUrl = new URL(imagePortrait, import.meta.env.SITE).toString();
 
-// Get user agent from headers for server-side rendering
-const userAgent = Astro.request.headers.get('user-agent') || '';
+// For static generation, we'll use landscape as default
+// Client-side JS will update this if needed
+const ogImage = fullImageLandscapeUrl;
+const imageWidth = '1200';
+const imageHeight = '630';
 
-// Always use portrait for WhatsApp and iMessage, landscape for others
-const isWhatsApp = /WhatsApp/i.test(userAgent);
-const isIMessage = /iMessage/i.test(userAgent);
-const usePortrait = isWhatsApp || isIMessage;
-
-const ogImage = usePortrait ? fullImagePortraitUrl : fullImageLandscapeUrl;
-const imageWidth = usePortrait ? '1200' : '1200';
-const imageHeight = usePortrait ? '1600' : '630';
+// Add data attributes for client-side updates
+const ogImageData = JSON.stringify({
+  landscape: fullImageLandscapeUrl,
+  portrait: fullImagePortraitUrl
+});
 
 ---
 
@@ -47,15 +45,72 @@ const imageHeight = usePortrait ? '1600' : '630';
 {fullUrl && <meta property="og:url" content={fullUrl} />}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={ogImage} data-og-images={ogImageData} id="dynamic-og-image" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 {fullUrl && <meta property="twitter:url" content={fullUrl} />}
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:image" content={ogImage} id="dynamic-twitter-image" />
 
 <!-- Additional OpenGraph tags for better cross-platform support -->
 <meta property="og:image:width" content={imageWidth} />
-<meta property="og:image:height" content={imageHeight} />
+<meta property="og:image:width" content={imageWidth} id="og-image-width" />
+<meta property="og:image:height" content={imageHeight} id="og-image-height" />
+
+<script is:inline>
+  // Client-side detection for social media platforms
+  document.addEventListener('DOMContentLoaded', () => {
+    // Only run on the client side
+    if (typeof window === 'undefined') return;
+
+    // Get the current URL
+    const currentUrl = window.location.href;
+    
+    // Check if this is a direct link from a social platform
+    const isFromSocialMedia = (referrer) => {
+      return /(facebook|twitter|whatsapp|telegram|linkedin|pinterest|tumblr|reddit|pocket)/i.test(referrer);
+    };
+
+    // Get the referrer
+    const referrer = document.referrer;
+    
+    // Check if this is a social media crawler or direct link
+    const isSocialMediaBot = isFromSocialMedia(referrer) || 
+      /(facebookexternalhit|Twitterbot|WhatsApp|Slackbot|Discordbot|TelegramBot|LinkedInBot|Pinterest|redditbot|Tumblr|SkypeUriPreview)/i.test(navigator.userAgent);
+
+    // Get the image elements
+    const ogImage = document.getElementById('dynamic-og-image');
+    const twitterImage = document.getElementById('dynamic-twitter-image');
+    const ogImageWidth = document.getElementById('og-image-width');
+    const ogImageHeight = document.getElementById('og-image-height');
+
+    if (isSocialMediaBot && ogImage && twitterImage) {
+      try {
+        // Get the image data from the data attribute
+        const imageData = JSON.parse(ogImage.dataset.ogImages || '{}');
+        
+        // For WhatsApp, iMessage, or mobile devices, use portrait
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isMessagingApp = /WhatsApp|iMessage|FBAN|FBAV|Line|WeChat|Viber|Telegram|Signal|Messenger/i.test(navigator.userAgent);
+        
+        if ((isMobile || isMessagingApp) && imageData.portrait) {
+          // Use portrait for mobile and messaging apps
+          ogImage.content = imageData.portrait;
+          twitterImage.content = imageData.portrait;
+          ogImageWidth.content = '1200';
+          ogImageHeight.content = '1600';
+        } else if (imageData.landscape) {
+          // Default to landscape for everything else
+          ogImage.content = imageData.landscape;
+          twitterImage.content = imageData.landscape;
+          ogImageWidth.content = '1200';
+          ogImageHeight.content = '630';
+        }
+      } catch (e) {
+        console.error('Error updating OG images:', e);
+      }
+    }
+  });
+</script>

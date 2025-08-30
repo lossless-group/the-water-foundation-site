@@ -1,6 +1,6 @@
 ---
-import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
-import LogoGridOnly, { type LogoOnlyItem } from '../../components/basics/grids/LogoGrid--LogoOnly.astro';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import LogoGridOnly, { type LogoOnlyItem } from '@components/basics/grids/LogoGrid--LogoOnly.astro';
 import partnersData from '../../content/page-content/partners.json';
 
 const partners: LogoOnlyItem[] = (partnersData as any[]).map((p: any) => ({
