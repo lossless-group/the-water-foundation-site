@@ -1,0 +1,273 @@
+---
+/**
+ * OurTeam Component - Variant 1
+ * Displays team members in a grid layout
+ */
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks?: Array<{name: string; href: string; icon: string;}>;
+}
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  teamMembers?: TeamMember[];
+}
+
+const {
+  mainTitle = "Our",
+  titleHighlight = "Team",
+  teamMembers = [
+    {
+      name: 'Christoph Schwager',
+      role: 'Managing Partner, Co-Founder, Co-Chair',
+      image: '/headshots/headshotOf__Christoph-Schwager.jpg',
+      bio: 'Strategic leader with deep expertise in operational, financial, and technological domains.',
+      socialLinks: [
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/christophschwager/', icon: 'linkedin' }
+      ]
+    },
+    {
+      name: 'Verena A. Sturm',
+      role: 'Managing Partner, Co-Founder, Co-Chair',
+      image: '/headshots/headshotOf__Verena-Sturm.jpeg',
+      bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement.',
+      socialLinks: [
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/verena-alice-sturm/', icon: 'linkedin' }
+      ]
+    },
+    {
+      name: 'Christophe C. Meeus',
+      role: 'Trustee',
+      image: '/headshots/headshotOf__Christophe-C-Meeus.webp',
+      bio: 'Managing Director, CFO, General Counsel, and Board Member with international executive experience.',
+      socialLinks: [
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/christophe-c-meeus-7031b1/', icon: 'linkedin' }
+      ]
+    },
+    {
+      name: 'Felix Famira',
+      role: 'Co-Founder & Director of Operations',
+      image: '/headshots/headshotOf__Felix-Famira.png',
+      bio: 'Expert in operations and strategic development for water-related initiatives.',
+      socialLinks: []
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="our-team-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <div class="slide-header">
+      <h1 class="main-title">
+        <span class="title-our">{mainTitle}</span>
+        <span class="title-team">{titleHighlight}</span>
+      </h1>
+    </div>
+
+    <div class="team-grid">
+      {teamMembers.map(member => (
+        <div class="team-member">
+          <div class="member-image-container">
+            <img 
+              src={member.image} 
+              alt={`Portrait of ${member.name}`} 
+              class="member-image"
+              width="200"
+              height="200"
+              loading="lazy"
+            />
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">{member.name}</h3>
+            <p class="member-role">{member.role}</p>
+            <p class="member-bio">{member.bio}</p>
+            {member.socialLinks && member.socialLinks.length > 0 && (
+              <div class="social-links">
+                {member.socialLinks.map(link => (
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="social-link"
+                    title={link.name}
+                  >
+                    <span class="sr-only">{link.name}</span>
+                    <span class="social-icon" data-icon={link.icon}></span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-team-slide {
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: var(--color-primary-50);
+  }
+
+  .slide-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--color-primary-50)
+  }
+
+  .slide-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .main-title {
+    font-size: 4rem;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+
+  .title-our {
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    margin-right: 0.5rem;
+  }
+
+  .title-team {
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .team-member {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    z-index: -1;
+    border-radius: 12px;
+  }
+
+  .team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .member-image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .team-member:hover .member-image {
+    transform: scale(1.05);
+  }
+
+  .member-info {
+    padding: 1.5rem;
+  }
+
+  .member-name {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 0.5rem;
+  }
+
+  .member-role {
+    font-size: 0.9rem;
+    color: rgb(var(--color-accent-600));
+    margin: 0 0 1rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .member-bio {
+    font-size: 0.9rem;
+    color: rgb(var(--color-primary-700));
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    color: rgb(var(--color-accent-500));
+    transition: color 0.2s ease;
+  }
+
+  .social-link:hover {
+    color: rgb(var(--color-accent-700));
+  }
+
+  .social-icon {
+    font-size: 1.25rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  @media (max-width: 768px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .main-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

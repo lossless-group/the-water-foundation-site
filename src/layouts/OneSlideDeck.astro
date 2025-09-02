@@ -24,8 +24,8 @@ const { title = "Presentation", description } = Astro.props;
   {description ? <meta name="description" content={description} /> : null}
   
   <!-- Water Theme Styles -->
-  <link rel="stylesheet" href="/src/styles/global.css">
-  <link rel="stylesheet" href="/src/styles/water-theme.css">
+  <link rel="stylesheet" href="/styles/global.css">
+  <link rel="stylesheet" href="/styles/water-theme.css">
   
   <!-- RevealJS Core Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
@@ -87,7 +87,7 @@ const { title = "Presentation", description } = Astro.props;
   <style>
     /* Water Theme Integration for Slides */
     :root {
-      --slide-bg-primary: rgb(var(--color-primary-950));
+      --slide-bg-primary: rgb(var(--color-background));
       --slide-bg-secondary: rgb(var(--color-primary-900));
       --slide-text-primary: rgb(var(--color-primary-50));
       --slide-text-secondary: rgb(var(--color-primary-100));

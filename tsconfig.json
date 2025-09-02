@@ -8,7 +8,8 @@
       "@sections/*": ["src/layouts/sections/*"],
       "@components/*": ["src/components/*"],
       "@infographic/*": ["src/components/infographic/*"],
-      "@core-messages/*": ["src/layouts/sections/core-messages/*"]
+      "@core-messages/*": ["src/layouts/sections/core-messages/*"],
+      "@styles/*": ["src/styles/*"]
     },
     "types": ["vite/client"]
   },

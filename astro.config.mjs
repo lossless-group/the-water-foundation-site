@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,17 @@ export default defineConfig({
   trailingSlash: 'ignore',
   
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      viteStaticCopy({
+        targets: [
+          {
+            src: 'src/styles/*.css',
+            dest: 'styles'
+          }
+        ]
+      })
+    ],
     resolve: {
       alias: {
         '@layouts': path.resolve('./src/layouts'),
