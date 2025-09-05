@@ -1,0 +1,190 @@
+---
+import { Fragment } from 'astro/jsx-runtime';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import PersonCard from '@components/team/PersonCard.astro';
+import PersonCardSmall from '@components/team/PersonCard--Small.astro';
+import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
+import type { SocialLink } from '@components/ui/SocialIcons.astro';
+
+interface TeamMember {
+  name: string;
+  role: string;
+  classifiers: string;
+  image: string;
+  bio: string;
+  socialLinks: SocialLink[];
+}
+
+// Import team data from JSON file
+import teamData from '../../content/people/team.json';
+
+// Type assertion to ensure type safety
+const teamMembers: TeamMember[] = teamData as TeamMember[];
+
+const groupByClassifier = (members: TeamMember[], classifier: string): TeamMember[] => {
+  return members.filter(member => 
+    member.classifiers && member.classifiers.includes(classifier)
+  );
+};
+
+const teamSections = [
+  { 
+    title: "Managing Partners", 
+    classifier: "Managing Partner",
+    cardComponent: PersonCard
+  },
+  { 
+    title: "Founding Team", 
+    classifier: "Founding Principal",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Advisory Board", 
+    classifier: "Founding Advisor",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Vertical Partners", 
+    classifier: "Vertical Partner",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Philanthropy Team", 
+    classifier: "Philanthropies",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Visiting Fellows", 
+    classifier: "Visiting Fellow",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Trustees", 
+    classifier: "Trustee",
+    cardComponent: PersonCard
+  }
+];
+---
+
+<BaseThemeLayout
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+  title="The People of The Water Foundation"
+  description="Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people."
+>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 md:pt-24 md:pb-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 overflow-hidden">
+      <div class="relative z-10 container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider leading-tight">Our People</h1>
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8 opacity-60"></div>
+        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
+          Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people.
+        </p>
+      </div>
+    </section>
+
+    <!-- Masonry Grid Layout -->
+    <section class="py-12">
+      <div class="container mx-auto px-4">
+        <div class="masonry-container">
+          {teamSections.map((section) => {
+            const sectionMembers = groupByClassifier(teamMembers, section.classifier);
+            if (sectionMembers.length === 0) return null;
+            
+            return (
+              <div class="masonry-section">
+                <h2 class="masonry-header">
+                  {section.title}
+                </h2>
+                <div class="masonry-items">
+                  {sectionMembers.map((member) => (
+                    <div class="masonry-item">
+                      <section.cardComponent {...member} class="h-full" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .masonry-container {
+        column-count: 1;
+        column-gap: 1.5rem;
+      }
+      
+      @media (min-width: 640px) {
+        .masonry-container {
+          column-count: 2;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .masonry-container {
+          column-count: 3;
+        }
+      }
+      
+      @media (min-width: 1280px) {
+        .masonry-container {
+          column-count: 4;
+        }
+      }
+      
+      .masonry-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 2rem;
+      }
+      
+      .masonry-header {
+        color: var(--color-foreground);
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0 0 1rem 0;
+      }
+      
+      .masonry-section:first-child .masonry-header {
+        margin-top: 0;
+      }
+      
+      .masonry-items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    </style>
+
+    <WhoWeAreTimeline />
+    <ProposeYourself />
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Water theme specific styles */
+  :global(html[data-theme="water"]) {
+    --color-primary: 14 116 144;  /* Cyan-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-background: 240 249 255;  /* Light blue-50 */
+    --color-foreground: 3 7 18;  /* Gray-950 */
+    --color-border: 224 242 254;  /* Light blue-100 */
+  }
+  
+  /* Dark mode overrides */
+  :global(html[data-theme="water"].dark) {
+    --color-primary: 8 145 178;  /* Cyan-600 */
+    --color-background: 8 47 73;  /* Dark blue-950 */
+    --color-foreground: 248 250 252;  /* Slate-50 */
+    --color-border: 30 58 138;  /* Blue-900 */
+  }
+
+  /* Smooth scrolling for section headers */
+  h2 {
+    scroll-margin-top: 2rem;
+  }
+</style>

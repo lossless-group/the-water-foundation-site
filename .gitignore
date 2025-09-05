@@ -5,6 +5,10 @@ dist/
 
 # dependencies
 node_modules/
+.aider.*
+.aider.tags.cache.v4/
+.aider.input.history
+.aider.chat.history.md
 
 # logs
 npm-debug.log*
