@@ -1,5 +1,7 @@
 ---
 import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import PersonCard from '../../components/team/PersonCard.astro';
+import PersonCardSmall from '../../components/team/PersonCard--Small.astro';
 import TeamGrid from '@components/team/TeamGrid.astro';
 import type { SocialLink } from '@components/ui/SocialIcons.astro';
 import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
@@ -8,6 +10,7 @@ import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.
 interface TeamMember {
   name: string;
   role: string;
+  classifiers: string;
   image: string;
   bio: string;
   socialLinks: SocialLink[];
@@ -17,6 +20,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Christoph Schwager',
     role: 'Managing Partner, Co-Founder, Co-Chair',
+    classifiers: 'Managing Partner',
     image: '/headshots/headshotOf__Christoph-Schwager.jpg',
     bio: 'Strategic leader with deep expertise in operational, financial, and technological domains, shaped by an extensive career across global corporate, management consulting, and digital start-up ecosystems. He is a passionate creator of new ways forward and a strong catalyst for moving people and organisations. Under his leadership, Airbus made significant progress towards a more resilient business model, cultivating high-performance cultures. With over 30 years in finance, transactions, and audit, including roles as Chief Rsik Officer Airbus, EY Partner and PwC, Christoph is a serial entrepreneur and co-founder of think tank beyondRM.org. He holds a Diplom-Kaufmann (MBA equivalent) from the University of Augsburg and is a Certified Public Accountant.',
     socialLinks: [
@@ -27,8 +31,10 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Verena A. Sturm',
     role: 'Managing Partner, Co-Founder, Co-Chair',
+    classifiers: 'Managing Partner',
     image: '/headshots/headshotOf__Verena-Sturm.jpeg',
-    bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.',    socialLinks: [
+    bio: 'Guiding the platform\'s capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.',
+    socialLinks: [
       { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
       { name: 'LinkedIn', href: 'https://www.linkedin.com/in/verena-alice-sturm/', icon: 'linkedin' },
       { name: 'GitHub', href: 'https://github.com', icon: 'github' }
@@ -37,6 +43,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Christophe C. Meeus',
     role: 'Trustee',
+    classifiers: 'Trustee',
     image: '/headshots/headshotOf__Christophe-C-Meeus.webp',
     bio: 'Managing Director, CFO, General Counsel, and Board Member with international executive experience. Specializes in providing comprehensive legal and financial guidance to international companies, with expertise in Company and Commercial Law, Employment Law, Mergers and Acquisitions, Computer Law, License Law, Copyright Law, and Unfair Competition.',
     socialLinks: [
@@ -47,6 +54,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Felix Famira',
     role: 'Co-Founder & Director of Operations',
+    classifiers: 'Founding Advisor',
     image: '/headshots/headshotOf__Felix-Famira.png',
     bio: 'Over the past years, Felix Famira has been actively investing in numerous companies and venture capital funds, making him a seasoned VC expert with deep insights into early‑stage growth, financing strategies, and scaling innovative business models. Leveraging his broad network of founders, investors, and industry executives, he supports high‑impact ventures and drives transformative, tech‑enabled innovation across multiple sectors.\n\nFelix is also the Chief Financial Officer and Co‑Founder of Gradient Zero, an advisory firm specializing in guiding businesses through the adoption of artificial intelligence solutions (gradient0.com). Based in Vienna, Austria, he brings extensive expertise in business development, sales management, and leadership. At Gradient Zero, he plays a pivotal role in shaping financial strategy, operational execution, and market expansion.',
     socialLinks: [
@@ -56,6 +64,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Rahman Wynberg',
     role: 'Co-Founder & VP Technologies',
+    classifiers: 'Founding Principal',
     image: '/headshots/headshotOf__Rahman-Wynberg.jpeg',
     bio: 'Dr. R. Wynberg is an accomplished researcher and technology leader with a PhD in Physical Oceanography from UiT – The Arctic University of Norway. He brings extensive expertise in oceanography, scientific computing, programming, and entrepreneurship. At Green Vault Holding (gvaultholding.com), he drives the development of innovative technological solutions and sustainable investment strategies.\n\nIn addition to his scientific and technological expertise, Dr. Wynberg leverages an extensive global network of influential decision-makers, high-net-worth families, and strategic partners to foster collaborations that accelerate climate-focused innovation and systemic impact.',
     socialLinks: [
@@ -68,6 +77,7 @@ const teamMembers: TeamMember[] = [
     name: 'David Schwager',
     role: 'Co-Founder & Chief Solutions Strategist',
     image: '/headshots/headshotOf__David-Schwager.jpeg',
+    classifiers: 'Founding Advisor',
     bio: 'David Schwager is a pioneering technologist and entrepreneur specializing in water-tech systems and solutions. He coordinates top-tier experts in developing cutting-edge innovations to advance clean water access worldwide.\n\nIn his  role as Managing Director at Rotreat and Aqua Predict— leaders in sustainable, AI-powered water treatment and disinfection systems and groundwater prediction—David contributes to delivering efficient, eco-friendly water management solutions that enhance operational resilience and industry performance.\n\nBringing together scientific rigor and entrepreneurial insight, David designs and implements scalable strategies that address water scarcity with resilient infrastructure. His leadership extends across the entire ecosystem of The Water Foundation, ensuring measurable impact in sustainable water infrastructure, technology innovation, and ecosystem resilience.',
     socialLinks: [
       { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
@@ -77,6 +87,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Sarabeth Brockley',
     role: 'Director of Partnerships, ESG & Impact Strategy, Head of VC Strategies (Water Strategies) I General Partner - The Water Venture Fund',
+    classifiers: 'Vertical Partner',
     image: '/headshots/headshotOf__Sarah-Beth-Brockley.jpeg',
     bio: 'Sarabeth Brockley is an international ESG and climate finance expert with a career spanning the United Nations and Nasdaq. At Nasdaq, she served as Head of Carbon Strategy and ESG Advisory, where she led initiatives to embed carbon procurement and climate risk into corporate value chains, and as Lead Advisor on Carbon Markets and ESG. Earlier, she was a Climate and Water Programme Officer at the United Nations Department of Economic and Social Affairs, advancing global work on water, energy, and capacity development.\n\nBuilding on this institutional foundation, Sarabeth has positioned herself at the frontier of climate innovation. She is a Partner at Wild Assets, an investor with Investors for Climate, and a Senior Advisor to several ventures, including Gigablue, Residual, Alcove, and BIOME. She also serves on the board of Sinkco Labs and advises Women and Climate.\n\nAs Director of Partnerships, ESG & Impact Strategy at the Water Foundation and General Partner of the Water Venture Fund, Sarabeth bridges institutional platforms and entrepreneurial ventures, leveraging her expertise in carbon markets, ESG integration, and impact investment to drive transformative solutions at the intersection of water, climate, and finance.',
     socialLinks: [
@@ -88,6 +99,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Nicolai Bode',
     role: 'Head of PE Strategy / General Partner, The Water PE Fund',
+    classifiers: 'Vertical Partner',
     image: '/headshots/headshotOf_Nicolai-Bode.jpeg',
     bio: 'Nicolai Bode is a serial entrepreneur with a focus on conscious leadership, business transformation, and personal growth. He is part of the third generation leading REMAV GmbH, a family business that develops compact mobile systems for recycling and processing construction waste into valuable raw materials — reducing disposal and transport costs while advancing circular economy solutions. In addition, he serves on the board of Aktiv für Afrika e.V., underscoring his commitment to sustainable development and social impact on the African continent. Nicolai has also founded technology ventures such as Appstamatic and established the Bodewell Academy and Bodewell Stiftung to advance leadership development and systemic transformation. His combined expertise in entrepreneurship, sustainable infrastructure, and values-driven leadership makes him a strong contributor to advancing scalable and sustainable water solutions.',
     socialLinks: [
@@ -98,6 +110,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Michael Jackson',
     role: 'Head of Deep Tech Investment & Venture Capital Strategy at The Water Foundation and Venture Partner at The Water Venture Fund',
+    classifiers: 'Founding Advisor',
     image: '/headshots/headshotOf_Michael-Jackson.jpeg',
     bio: 'Michael Jackson is an American entrepreneur-turned-investor and one of Europe\'s most followed and respected voices in venture capital and deep tech innovation. As Head of Deep Tech Investment and Venture Capital Strategy at The Water Foundation, he co-strategises and oversees the design and execution of our investment approach, ensuring that capital is deployed strategically and responsibly - giving investors confidence that their funds are protected, impact-driven, and positioned for long-term success.\n\nBased in Paris, Michael is Venture Partner at Multiple Capital and Wilbe, Advisory Board Member and Investment Committee member at QAI Ventures and Redstone Quantum, and part of the European Defense Investor Network. Over his 25-year career, he has supported and scaled hundreds of startups through leading accelerators such as Seedcamp, Startup Bootcamp, Wayra, Techstars, and Le Camping. He also sits on the boards of venture funds, non-profits, educational institutions, a private bank, and numerous high-growth companies.\n\nBeyond his investment leadership, Michael is a recognised thought leader whose perspectives on the European and global innovation landscape influence founders, investors, and policymakers alike.',
     socialLinks: [
@@ -108,6 +121,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Martin Klässner',
     role: 'Head of Venture Builder, The Water Foundation (Water Strategies) / General Partner, Water Venture Builder',
+    classifiers: 'Vertical Partner',
     image: '/headshots/headshotOf_Martin-Klaessner2.jpeg',
     bio: 'Martin Klässner is an entrepreneur and investor best known for achieving the largest startup exit in Austria. As Co-Founder and CEO of has·to·be, an e-mobility software company acquired by ChargePoint in 2021 for more than €250 million, he scaled the business from inception into a European market leader in EV charging solutions.  Today, Martin is CEO of make visions capital gmbh and GrowthSquare GmbH, where he invests in and supports high-growth companies across MedTech, Life Sciences, Energy, and Robotics – always with a strong focus on software. Beyond his CEO roles, he serves on multiple boards, primarily in the startup ecosystem, shaping strategy and scaling innovation-driven ventures.  In his role as Head of Venture Builder at The Water Foundation (Water Strategies platform) and General Partner of the Water Venture Builder, Martin applies his proven capacity to build and scale transformative companies to the water sector, driving the creation and growth of ventures that address systemic challenges in water infrastructure, technology, and sustainability.',
     socialLinks: [
@@ -118,6 +132,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Michael P. Staton',
     role: 'Founding Advisor, Trustee of Fund of Funds and Venture Capital strategies.',
+    classifiers: 'Founding Trustee',
     image: '/headshots/headshotOf__Michael-Staton.jpeg',
     bio: 'Advising the Fund of Funds portion of The Water Foundations integrated Blended Finance Strategy. Maintaing a cutting edge tech stack for us all.',
     socialLinks: [
@@ -129,6 +144,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Corinna Schwager',
     role: 'Co-Director of Philanthropies',
+    classifiers: 'Philanthropies',
     image: '/headshots/headshotOf__Corinna-Schwager.JPG',
     bio: 'Corinna Schwager is a Co-Director of Philanthropies at The Water Foundation. She is responsible for leading the development and implementation of The Water Foundation’s philanthropic initiatives.',
     socialLinks: [
@@ -139,6 +155,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Lisa Niedenfuehr',
     role: 'Director PR & Co-Director of Philanthropies',
+    classifiers: 'Philanthropies',
     image: '/headshots/headshotOf__Lisa-Niedenfuehr.jpeg',
     bio: 'Building strong relationships with communities and partners to maximize our impact.',
     socialLinks: [
@@ -149,6 +166,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Nick Stübbe',
     role: 'Head of Government Relations, Water Foundation',
+    classifiers: 'Founding Advisor',
     image: '/headshots/headshotOf_Nick-Stuebbe.jpg',
     bio: 'Nick Stübbe is Co-Founder and Head of Strategy and Finance at Hydreatio GmbH, a Munich-based water management technology company developing circular water recycling systems for industry and the public sector. He is also Co-Founder of Aquapredict, an AI-driven firm for water and climate prediction, founded together with colleagues and former employers from Gradient Zero in Vienna, where he previously led the sales department.\n\nNick\'s background in financial relations and advertising includes five years of work with the Republic of Maldives, where he gained first-hand experience navigating government partnerships, international communications, and climate resilience priorities. This grounding in small island state diplomacy and finance underpins his role as Head of Government Relations at the Water Foundation, bridging innovation, policy, and global climate agendas.',
     socialLinks: [
@@ -159,6 +177,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Divyakshi Nath',
     role: 'Impact Operations',
+    classifiers: 'Visiting Fellow',
     image: '/headshots/headshotOf__Divyakshi-Nath.png',
     bio: 'Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she\'s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
     socialLinks: [
@@ -169,6 +188,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Tilman Griesel',
     role: 'Product & Technology Strategist',
+    classifiers: 'Founding Advisor',
     image: '/headshots/headshotOf_Tilman-Griesel.jpeg',
     bio: 'Tilman Griesel is a seasoned product and technology strategist with over a decade of experience in building scalable, cross-platform communication systems and leading product design innovation. Currently at alfaview® Video Conferencing Systems, he drives product development initiatives and oversees the creation of seamless meeting experiences through user-centric design and agile methodologies.\n\nPreviously, Tilman played a key role in shaping alfaview\'s client architecture and leading the development of a reusable, cross-platform UI framework that has supported the company\'s growth to more than 70 team members. Before joining alfaview, he served as Lead Software Engineer at dozeo, where he helped develop a web-based video conferencing solution that was later acquired by one of Germany\'s largest education providers.\n\nWith a strong background in software architecture, product design, and UX strategy, Tilman combines technical expertise with a passion for creating scalable solutions that drive innovation and enhance user experiences.',
     socialLinks: [
@@ -177,6 +197,51 @@ const teamMembers: TeamMember[] = [
   }
 
 ];
+
+const groupByClassifier = (members, classifier) => {
+  return members.filter(member => 
+    member.classifiers && member.classifiers.includes(classifier)
+  );
+};
+
+const teamSections = [
+  { 
+    title: "Managing Partners", 
+    classifier: "Managing Partner",
+    cardComponent: PersonCard
+  },
+  { 
+    title: "Founding Team", 
+    classifier: "Founding Principal",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Advisory Board", 
+    classifier: "Founding Advisor",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Vertical Partners", 
+    classifier: "Vertical Partner",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Philanthropy Team", 
+    classifier: "Philanthropies",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Visiting Fellows", 
+    classifier: "Visiting Fellow",
+    cardComponent: PersonCardSmall
+  },
+  { 
+    title: "Trustees", 
+    classifier: "Trustee",
+    cardComponent: PersonCard
+  }
+];
+
 ---
 
 <BaseThemeLayout
@@ -197,18 +262,29 @@ const teamMembers: TeamMember[] = [
       </div>
     </section>
 
-    <!-- Team Grid -->
-    <section class="pt-0 pb-12 md:pt-0 md:pb-16">
-      <TeamGrid teamMembers={teamMembers} />
-    </section>
+    <!-- Team Sections -->
+    {teamSections.map((section) => {
+      const sectionMembers = groupByClassifier(teamMembers, section.classifier);
+      if (sectionMembers.length === 0) return null;
+      
+      return (
+        <section key={section.title} class="pt-12 pb-8">
+          <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-light text-center mb-12 text-gray-800 dark:text-white">
+              {section.title}
+            </h2>
+            <TeamGrid 
+              teamMembers={sectionMembers} 
+              cardComponent={section.cardComponent} 
+            />
+          </div>
+        </section>
+      );
+    })}
 
-    <!-- Timeline -->
+    <!-- Timeline and other sections -->
     <WhoWeAreTimeline />
-
-    <!-- Propose Yourself -->
     <ProposeYourself />
-
-
   </main>
 </BaseThemeLayout>
 

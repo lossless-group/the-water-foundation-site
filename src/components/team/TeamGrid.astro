@@ -3,7 +3,7 @@ import PersonCard from './PersonCard.astro';
 
 type SocialPlatform = 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'github';
 
-interface PersonProps {
+export interface PersonProps {
   name: string;
   role: string;
   image: string;
@@ -20,9 +20,14 @@ interface PersonProps {
 export interface TeamGridProps {
   teamMembers: PersonProps[];
   className?: string;
+  cardComponent?: any; 
 }
 
-const { teamMembers, className = '' } = Astro.props;
+const { 
+  teamMembers, 
+  className = '',
+  cardComponent: CardComponent = PersonCard 
+} = Astro.props;
 ---
 
 <div class:list={[
@@ -31,10 +36,7 @@ const { teamMembers, className = '' } = Astro.props;
   'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12',
   className
 ]}>
-  {teamMembers.map((member: PersonProps, index: number) => (
-    <PersonCard 
-      {...member}
-      class={index === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : ''}
-    />
+  {teamMembers.map((member, index) => (
+    <CardComponent {...member} />
   ))}
 </div>

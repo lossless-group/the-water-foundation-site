@@ -1,0 +1,89 @@
+---
+import SocialIcons from '../ui/SocialIcons.astro';
+
+type SocialPlatform = 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'github';
+
+interface SocialLink {
+  name: string;
+  href: string;
+  icon: SocialPlatform;  
+}
+
+interface PersonProps {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks?: SocialLink[];  
+  className?: string;
+  maxWords?: number;
+}
+
+const bioId = `bio-${Math.random().toString(36).substring(2, 9)}`;
+
+const { 
+  name, 
+  role, 
+  image, 
+  bio, 
+  socialLinks = [],
+  className = ''
+} = Astro.props as PersonProps;
+---
+
+<div class="person-card bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors duration-300">
+  <div class="flex items-start gap-4">
+    <!-- Profile Image -->
+    <img 
+      src={image} 
+      alt={name}
+      class="w-16 h-16 rounded-full object-cover border-2 border-white/20"
+      loading="lazy"
+    />
+    
+    <!-- Content -->
+    <div class="flex-1 min-w-0">
+      <h3 class="text-lg font-medium text-white">{name}</h3>
+      <p class="text-blue-200 text-sm mb-2">{role}</p>
+      
+      <!-- Social Icons -->
+      {socialLinks.length > 0 && (
+        <div class="flex gap-2 mt-1">
+          <SocialIcons socialLinks={socialLinks} iconSize="sm" />
+        </div>
+      )}
+    </div>
+    
+    <!-- Bio Toggle Button -->
+    <button 
+        data-bio-target={bioId}
+        class="bio-toggle text-xs text-blue-300 hover:text-white px-3 py-1 rounded-full border border-blue-300/30 hover:bg-blue-500/20 transition-colors"
+    >
+    Bio
+    </button>
+  </div>
+  
+  <!-- Bio Content (Hidden by default) -->
+  <div 
+    id={bioId}
+    class="bio-content mt-3 pt-3 border-t border-white/10 text-sm text-gray-300 hidden"
+    >
+  {bio}
+    </div>
+</div>
+
+<!-- Simple JavaScript for toggling bio -->
+<script>
+    document.querySelectorAll('.bio-toggle').forEach(button => {
+      const targetId = button.getAttribute('data-bio-target');
+      if (!targetId) return;
+      
+      const bioContent = document.getElementById(targetId);
+      if (!bioContent) return;
+      
+      button.addEventListener('click', () => {
+        bioContent.classList.toggle('hidden');
+        button.textContent = bioContent.classList.contains('hidden') ? 'Bio' : 'Hide Bio';
+      });
+    });
+  </script>
