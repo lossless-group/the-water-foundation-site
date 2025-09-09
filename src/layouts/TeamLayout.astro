@@ -1,0 +1,24 @@
+---
+// src/layouts/TeamLayout.astro
+import BaseThemeLayout from './BaseThemeLayout.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Our Team | The Water Foundation",
+  description = "Meet the team behind The Water Foundation, working towards water resilience through innovative financial strategies."
+} = Astro.props;
+---
+
+<BaseThemeLayout {title} {description}>
+  <main class="px-4 py-8 max-w-7xl mx-auto">
+    <slot />
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Additional team-specific styles can go here */
+</style>

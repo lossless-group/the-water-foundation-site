@@ -1,0 +1,25 @@
+---
+// src/components/team/ManagingPartnersSpan.astro
+import PersonCard from './PersonCard.astro';
+import type { TeamMember } from '../../types/team';
+import "@styles/team-spans.css";
+
+interface Props {
+  members: TeamMember[];
+}
+
+const { members } = Astro.props;
+---
+
+<span class="team-span">
+  <h2 class="role-header">Managing Partners</h2>
+  <span class="person-cards">
+    {members.map(member => (
+      <PersonCard {...member} />
+    ))}
+  </span>
+</span>
+
+<style>
+  /* Additional component-specific styles can go here */
+</style>

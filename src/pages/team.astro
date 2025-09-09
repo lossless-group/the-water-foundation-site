@@ -1,0 +1,78 @@
+---
+// src/pages/team.astro
+import TeamLayout from '../layouts/TeamLayout.astro';
+import ManagingPartnersSpan from '../components/team/ManagingPartnersSpan.astro';
+import VerticalPartnersSpan from '../components/team/VerticalPartnersSpan.astro';
+import TrusteesSpan from '../components/team/TrusteesSpan.astro';
+import AdvisoryBoardSpan from '../components/team/AdvisoryBoardSpan.astro';
+import FoundingTeamSpan from '../components/team/FoundingTeamSpan.astro';
+import ActiveFellowsSpan from '../components/team/ActiveFellowsSpan.astro';
+import PhilanthropiesSpan from '../components/team/PhilanthropiesSpan.astro';
+
+import teamData from '../content/people/team.json';
+import type { TeamMember } from '../types/team';
+
+const teamMembers = teamData as TeamMember[];
+
+const groupByRole = (members: TeamMember[]) => {
+  const initialValue: Record<string, TeamMember[]> = {
+    managingPartners: [],
+    verticalPartners: [],
+    trustees: [],
+    advisoryBoard: [],
+    foundingTeam: [],
+    activeFellows: [],
+    philanthropies: []
+  };
+
+  return members.reduce((acc, member) => {
+    if (!member.classifiers) return acc;
+    
+    // Convert classifiers to array if it's a string
+    const classifiers = Array.isArray(member.classifiers) 
+      ? member.classifiers 
+      : [member.classifiers];
+    
+    // Map of classifier values to their corresponding array keys
+    const classifierMap: Record<string, keyof typeof acc> = {
+      'Managing Partner': 'managingPartners',
+      'Vertical Partner': 'verticalPartners',
+      'Trustee': 'trustees',
+      'Advisory Board': 'advisoryBoard',
+      'Founding Team': 'foundingTeam',
+      'Active Fellow': 'activeFellows',
+      'Philanthropy': 'philanthropies',
+      'Founding Trustee': 'trustees',
+      'Founding Advisor': 'advisoryBoard',
+      'Founding Principal': 'foundingTeam'
+    };
+    
+    // Find the first matching role in the classifiers
+    const matchedRole = Object.keys(classifierMap).find(role => 
+      classifiers.some(c => c.toLowerCase() === role.toLowerCase())
+    );
+    
+    if (!matchedRole) return acc;
+    
+    const groupKey = classifierMap[matchedRole];
+    
+    if (!acc[groupKey]) {
+      acc[groupKey] = [];
+    }
+    
+    acc[groupKey].push(member);
+    return acc;
+  }, initialValue);
+};
+
+const groupedTeamData = groupByRole(teamMembers);
+---
+<TeamLayout>
+  <ManagingPartnersSpan members={groupedTeamData.managingPartners} />
+  <VerticalPartnersSpan members={groupedTeamData.verticalPartners} />
+  <TrusteesSpan members={groupedTeamData.trustees} />
+  <AdvisoryBoardSpan members={groupedTeamData.advisoryBoard} />
+  <FoundingTeamSpan members={groupedTeamData.foundingTeam} />
+  <ActiveFellowsSpan members={groupedTeamData.activeFellows} />
+  <PhilanthropiesSpan members={groupedTeamData.philanthropies} />
+</TeamLayout>

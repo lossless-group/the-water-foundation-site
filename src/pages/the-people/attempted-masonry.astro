@@ -6,7 +6,6 @@ import PersonCard from '@components/team/PersonCard.astro';
 import PersonCardSmall from '@components/team/PersonCardSmall.astro';
 import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
 import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
-import type { SocialLink } from '@components/ui/SocialIcons.astro';
 
 // 2. Type Definitions
 interface TeamMember {
@@ -15,7 +14,11 @@ interface TeamMember {
   classifiers: string;
   image: string;
   bio: string;
-  socialLinks: SocialLink[];
+  socialLinks: Array<{
+    name: string;
+    href: string;
+    icon: string;
+  }>;
 }
 
 interface TeamSection {
@@ -116,12 +119,10 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
             
             return [
               // Section header
-              <div class="masonry-item masonry-item--header">
-                <h2 class="masonry-header">
-                  {section.title}
-                </h2>
-              </div>,
-              // Section members
+              <h2 class="masonry-header">
+                {section.title}
+              </h2>,
+              // Team members
               ...sectionMembers.map((member) => (
                 <div class="masonry-item">
                   {section.useSmallCard ? (
@@ -163,14 +164,13 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
 
       /* Grid container */
       .masonry-grid {
-        margin: 0 auto;
-        max-width: 1440px;
-        padding: 0 2rem;
-        width: 100%;
-        box-sizing: border-box;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 1.5rem;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2rem;
       }
       
       /* Grid items */
@@ -181,10 +181,9 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
       
       /* Card container */
       .masonry-item > article {
-        width: 100%;
-        height: 100%;
         display: flex;
         flex-direction: column;
+        height: 100%;
       }
       
       /* Ensure images stay contained */
@@ -195,24 +194,18 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
       }
       
       /* Section headers */
-      .masonry-item--header {
-        width: 100%;
-        margin: 3rem 0 1.5rem;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-      
-      .masonry-item--header:first-child {
-        margin-top: 0;
-      }
-      
       .masonry-header {
+        grid-column: 1 / -1;
+        margin: 3rem 0 1rem;
         color: var(--color-foreground);
         font-size: 1.75rem;
         font-weight: 300;
-        margin: 0;
         padding-bottom: 0.5rem;
         position: relative;
+      }
+      
+      .masonry-header:first-child {
+        margin-top: 0;
       }
       
       .masonry-header:after {

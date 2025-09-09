@@ -12,6 +12,8 @@
       "@styles/*": ["src/styles/*"],
       "@scripts/*": ["src/scripts/*"],
       "@content/*": ["src/content/*"],
+      "@types/*": ["src/types/*"],
+      "styles/*": ["src/styles/*"], 
     },
     "types": ["vite/client"]
   },

@@ -1,0 +1,32 @@
+/* Shared styles for all team span components */
+.team-span {
+  margin-bottom: 2rem;
+  width: 100%;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.role-header {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem 0;
+  color: var(--color-foreground);
+  width: 100%;
+}
+
+.team-span:first-child .role-header {
+  margin-top: 0;
+}
+
+.person-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .person-cards {
+    grid-template-columns: 1fr;
+  }
+}

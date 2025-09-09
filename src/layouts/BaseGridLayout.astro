@@ -1,0 +1,69 @@
+---
+// src/components/layout/BaseGridLayout.astro
+
+interface Props {
+  children: any;
+  minColumnWidth?: string;
+  gap?: string;
+}
+
+const { 
+  children, 
+  minColumnWidth = 'minmax(300px, 1fr)', 
+  gap = '1.5rem' 
+} = Astro.props;
+---
+
+<div class="grid-container">
+  <slot />
+</div>
+
+<style>
+  .grid-container {
+    --min-column-width: min(100%, ${minColumnWidth});
+    --gap: ${gap};
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-flow: row;
+    align-items: start;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Ensure consistent card sizing and proper flow */
+  .grid-container > * {
+    min-width: 0; /* Prevent content from overflowing */
+  }
+  
+  /* Ensure team sections have proper spacing */
+  .team-span {
+    display: contents; /* Allow grid to handle the layout */
+    width: 100%;
+  }
+  
+  .team-span > h2.role-header {
+    grid-column: 1 / -1; /* Make headers span full width */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .team-span:first-child > h2.role-header {
+    margin-top: 0; /* Remove top margin for the first section */
+  }
+  
+  .person-cards {
+    display: contents; /* Let the cards participate in the grid directly */
+  }
+  
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .grid-container {
+      padding: 0 2rem;
+    }
+  }
+</style>
