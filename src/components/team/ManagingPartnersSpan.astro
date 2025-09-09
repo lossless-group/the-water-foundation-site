@@ -11,14 +11,14 @@ interface Props {
 const { members } = Astro.props;
 ---
 
-<span class="team-span">
+<div class="team-span">
   <h2 class="role-header">Managing Partners</h2>
-  <span class="person-cards">
+  <div class="person-cards">
     {members.map(member => (
       <PersonCard {...member} />
     ))}
-  </span>
-</span>
+  </div>
+</div>
 
 <style>
   /* Additional component-specific styles can go here */

@@ -8,6 +8,8 @@ import AdvisoryBoardSpan from '../components/team/AdvisoryBoardSpan.astro';
 import FoundingTeamSpan from '../components/team/FoundingTeamSpan.astro';
 import ActiveFellowsSpan from '../components/team/ActiveFellowsSpan.astro';
 import PhilanthropiesSpan from '../components/team/PhilanthropiesSpan.astro';
+import BaseThemeLayout from '../layouts/BaseThemeLayout.astro';
+import BaseGridLayout from '../layouts/BaseGridLayout.astro';
 
 import teamData from '../content/people/team.json';
 import type { TeamMember } from '../types/team';
@@ -67,7 +69,8 @@ const groupByRole = (members: TeamMember[]) => {
 
 const groupedTeamData = groupByRole(teamMembers);
 ---
-<TeamLayout>
+<BaseThemeLayout>
+  <BaseGridLayout>
   <ManagingPartnersSpan members={groupedTeamData.managingPartners} />
   <VerticalPartnersSpan members={groupedTeamData.verticalPartners} />
   <TrusteesSpan members={groupedTeamData.trustees} />
@@ -75,4 +78,5 @@ const groupedTeamData = groupByRole(teamMembers);
   <FoundingTeamSpan members={groupedTeamData.foundingTeam} />
   <ActiveFellowsSpan members={groupedTeamData.activeFellows} />
   <PhilanthropiesSpan members={groupedTeamData.philanthropies} />
-</TeamLayout>
+</BaseGridLayout>
+</BaseThemeLayout>

@@ -1,8 +1,6 @@
 /* Shared styles for all team span components */
 .team-span {
   margin-bottom: 2rem;
-  width: 100%;
-  break-inside: avoid;
   page-break-inside: avoid;
 }
 
@@ -18,15 +16,19 @@
 }
 
 .person-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  display: contents; /* Let the parent handle the layout */
+}
+
+/* Ensure team spans take full width and don't break across columns */
+.team-span {
   width: 100%;
+  break-inside: avoid;
+  margin-bottom: 2rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .person-cards {
-    grid-template-columns: 1fr;
+  .team-span {
+    margin-bottom: 1.5rem;
   }
 }

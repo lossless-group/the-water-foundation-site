@@ -14,56 +14,59 @@ const {
 } = Astro.props;
 ---
 
-<div class="grid-container">
+<div class="container">
   <slot />
 </div>
 
 <style>
-  .grid-container {
-    --min-column-width: min(100%, ${minColumnWidth});
-    --gap: ${gap};
-    
+  .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-flow: row;
-    align-items: start;
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
   }
   
-  /* Ensure consistent card sizing and proper flow */
-  .grid-container > * {
-    min-width: 0; /* Prevent content from overflowing */
-  }
-  
-  /* Ensure team sections have proper spacing */
   .team-span {
-    display: contents; /* Allow grid to handle the layout */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
     width: 100%;
   }
   
-  .team-span > h2.role-header {
-    grid-column: 1 / -1; /* Make headers span full width */
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .team-span:first-child > h2.role-header {
-    margin-top: 0; /* Remove top margin for the first section */
+  .role-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    grid-column: 1 / -1;
   }
   
   .person-cards {
-    display: contents; /* Let the cards participate in the grid directly */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    grid-column: 1 / -1;
   }
   
+  .team-span:first-child > .role-header {
+    margin-top: 0;
+  }
   
   /* Responsive adjustments */
-  @media (min-width: 768px) {
-    .grid-container {
-      padding: 0 2rem;
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 0.5rem;
+      gap: 2rem;
+    }
+    
+    .person-cards {
+      grid-template-columns: 1fr;
     }
   }
 </style>
