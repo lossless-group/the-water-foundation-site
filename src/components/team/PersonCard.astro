@@ -18,7 +18,7 @@ interface PersonProps {
     name: string;
     href: string;
   }>;
-  className?: string;
+  class?: string;
   maxWords?: number;
 }
 
@@ -28,7 +28,7 @@ const {
   image, 
   bio, 
   socialLinks = [], 
-  className = '',
+  class: className = '',
   maxWords = 15
 } = Astro.props as PersonProps;
 
@@ -50,14 +50,10 @@ const mappedSocialLinks = socialLinks.map(link => ({
   href: link.href,
   icon: link.name.toLowerCase() as SocialPlatform
 }));
+
 ---
 
-<article class:list={[
-  'bg-white/20 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/30 shadow-lg',
-  'transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-white/25',
-  'flex flex-col h-full group',
-  className
-]}>
+<article class={`bg-white/20 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-white/25 flex flex-col h-full group ${className}`}>
   <!-- Photo section -->
   <div class="relative aspect-square overflow-hidden">
     <img 

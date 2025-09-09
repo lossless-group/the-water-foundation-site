@@ -1,12 +1,14 @@
 ---
+// 1. Imports
 import { Fragment } from 'astro/jsx-runtime';
 import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
 import PersonCard from '@components/team/PersonCard.astro';
-import PersonCardSmall from '@components/team/PersonCard--Small.astro';
+import PersonCardSmall from '@components/team/PersonCardSmall.astro';
 import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
 import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
 import type { SocialLink } from '@components/ui/SocialIcons.astro';
 
+// 2. Type Definitions
 interface TeamMember {
   name: string;
   role: string;
@@ -16,56 +18,70 @@ interface TeamMember {
   socialLinks: SocialLink[];
 }
 
-// Import team data from JSON file
-import teamData from '../../content/people/team.json';
+interface TeamSection {
+  title: string;
+  classifier: string;
+  useSmallCard: boolean;
+}
 
-// Type assertion to ensure type safety
-const teamMembers: TeamMember[] = teamData as TeamMember[];
-
-const groupByClassifier = (members: TeamMember[], classifier: string): TeamMember[] => {
-  return members.filter(member => 
-    member.classifiers && member.classifiers.includes(classifier)
-  );
-};
-
-const teamSections = [
+// 3. Team Data
+const teamSections: TeamSection[] = [
   { 
     title: "Managing Partners", 
     classifier: "Managing Partner",
-    cardComponent: PersonCard
+    useSmallCard: false
   },
   { 
     title: "Founding Team", 
     classifier: "Founding Principal",
-    cardComponent: PersonCardSmall
+    useSmallCard: true
   },
   { 
     title: "Advisory Board", 
     classifier: "Founding Advisor",
-    cardComponent: PersonCardSmall
+    useSmallCard: true
   },
   { 
     title: "Vertical Partners", 
     classifier: "Vertical Partner",
-    cardComponent: PersonCardSmall
+    useSmallCard: true
   },
   { 
     title: "Philanthropy Team", 
     classifier: "Philanthropies",
-    cardComponent: PersonCardSmall
+    useSmallCard: true
   },
   { 
     title: "Visiting Fellows", 
     classifier: "Visiting Fellow",
-    cardComponent: PersonCardSmall
+    useSmallCard: true
   },
   { 
     title: "Trustees", 
     classifier: "Trustee",
-    cardComponent: PersonCard
+    useSmallCard: false
   }
 ];
+
+
+// Import team members from JSON file
+import teamData from '../../content/people/team.json';
+
+const teamMembers = teamData;
+
+
+if (import.meta.env.DEV && teamMembers.length === 0) {
+  console.warn('No team members found. The grid will be empty.');
+}
+
+// 5. Helper Functions
+function groupByClassifier(members: TeamMember[], classifier: string): TeamMember[] {
+  return members.filter(member => 
+    member.classifiers && member.classifiers.includes(classifier)
+  );
+}
 ---
+
 
 <BaseThemeLayout
   ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
@@ -88,75 +104,142 @@ const teamSections = [
     <!-- Masonry Grid Layout -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div class="masonry-container">
-          {teamSections.map((section) => {
-            const sectionMembers = groupByClassifier(teamMembers, section.classifier);
-            if (sectionMembers.length === 0) return null;
+        <div class="masonry-grid">
+          {!teamMembers || teamMembers.length === 0 ? (
+            <div class="masonry-item w-full text-center py-8">
+              <p class="text-gray-500">No team members found.</p>
+            </div>
+          ) : teamSections.flatMap((section) => {
             
-            return (
-              <div class="masonry-section">
+            const sectionMembers = groupByClassifier(teamMembers, section.classifier);
+            if (sectionMembers.length === 0) return [];
+            
+            return [
+              // Section header
+              <div class="masonry-item masonry-item--header">
                 <h2 class="masonry-header">
                   {section.title}
                 </h2>
-                <div class="masonry-items">
-                  {sectionMembers.map((member) => (
-                    <div class="masonry-item">
-                      <section.cardComponent {...member} class="h-full" />
-                    </div>
-                  ))}
+              </div>,
+              // Section members
+              ...sectionMembers.map((member) => (
+                <div class="masonry-item">
+                  {section.useSmallCard ? (
+                    <PersonCardSmall {...member} maxWords={15} />
+                  ) : (
+                    <PersonCard {...member} />
+                  )}
                 </div>
-              </div>
-            );
+              ))
+            ];
           })}
         </div>
       </div>
     </section>
 
     <style>
-      .masonry-container {
-        column-count: 1;
-        column-gap: 1.5rem;
+      /* Ensure images maintain aspect ratio */
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      /* Card hover effects */
+      .masonry-item > div {
+        transition: all 0.3s ease;
+        height: 100%;
+        background: var(--card-bg, #fff);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .masonry-item:hover > div {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Grid container */
+      .masonry-grid {
+        margin: 0 auto;
+        max-width: 1440px;
+        padding: 0 2rem;
+        width: 100%;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
       }
       
-      @media (min-width: 640px) {
-        .masonry-container {
-          column-count: 2;
-        }
+      /* Grid items */
+      .masonry-item {
+        width: 100%;
+        transition: transform 0.2s ease-in-out;
       }
       
-      @media (min-width: 1024px) {
-        .masonry-container {
-          column-count: 3;
-        }
+      /* Card container */
+      .masonry-item > article {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
       
-      @media (min-width: 1280px) {
-        .masonry-container {
-          column-count: 4;
-        }
+      /* Ensure images stay contained */
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
       }
       
-      .masonry-section {
+      /* Section headers */
+      .masonry-item--header {
+        width: 100%;
+        margin: 3rem 0 1.5rem;
         break-inside: avoid;
         page-break-inside: avoid;
-        margin-bottom: 2rem;
+      }
+      
+      .masonry-item--header:first-child {
+        margin-top: 0;
       }
       
       .masonry-header {
         color: var(--color-foreground);
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 300;
-        margin: 0 0 1rem 0;
+        margin: 0;
+        padding-bottom: 0.5rem;
+        position: relative;
       }
       
-      .masonry-section:first-child .masonry-header {
-        margin-top: 0;
+      .masonry-header:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 3rem;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), transparent);
       }
       
-      .masonry-items {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+      /* Responsive columns */
+      @media (min-width: 640px) {
+        .masonry-grid {
+          grid-template-columns: repeat(2, minmax(300px, 1fr));
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .masonry-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+        
+        .masonry-header {
+          font-size: 2rem;
+        }
       }
     </style>
 

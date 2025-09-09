@@ -1,31 +1,13 @@
 ---
-import BaseThemeLayout from '@/components/BaseThemeLayout.astro';
-import TeamGrid from '@/components/TeamGrid.astro';
-import WhoWeAreTimeline from '@/components/WhoWeAreTimeline.astro';
-import ProposeYourself from '@/components/ProposeYourself.astro';
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import TeamGrid from '@components/team/TeamGrid.astro';
+import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
 
-const teamMembers = [
-  {
-    name: 'Divyaksshi Sharma',
-    role: 'Program Manager, Water Resilience',
-    image: '/headshots/headshotOf_Divyaksshi-Sharma.jpeg',
-    bio: 'Divyaksshi Sharma is a dynamic program manager with a passion for water resilience and sustainable development. Her journey includes leading initiatives in Kenya through UNODC, establishing the ORF Middle East office in Dubai, participating in Cybercrime Convention negotiations at UNODC New York, and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she\'s on a perpetual quest to discover the best food spots in all the 10 cities she has called home.',
-    socialLinks: [
-      { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' }
-    ]
-  },
+// Import team members from JSON file
+import teamData from '../../content/people/team.json';
 
-  {
-    name: 'Tilman Griesel',
-    role: 'Product & Technology Strategist',
-    image: '/headshots/headshotOf_Tilman-Griesel.jpeg',
-    bio: 'Tilman Griesel is a seasoned product and technology strategist with over a decade of experience in building scalable, cross-platform communication systems and leading product design innovation. Currently at alfaview® Video Conferencing Systems, he drives product development initiatives and oversees the creation of seamless meeting experiences through user-centric design and agile methodologies.\n\nPreviously, Tilman played a key role in shaping alfaview\'s client architecture and leading the development of a reusable, cross-platform UI framework that has supported the company\'s growth to more than 70 team members. Before joining alfaview, he served as Lead Software Engineer at dozeo, where he helped develop a web-based video conferencing solution that was later acquired by one of Germany\'s largest education providers.\n\nWith a strong background in software architecture, product design, and UX strategy, Tilman combines technical expertise with a passion for creating scalable solutions that drive innovation and enhance user experiences.',
-    socialLinks: [
-      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/griesel/?originalSubdomain=de', icon: 'linkedin' }
-    ]
-  }
-
-];
+const teamMembers = teamData;
 ---
 
 <BaseThemeLayout

@@ -9,14 +9,17 @@
       "@components/*": ["src/components/*"],
       "@infographic/*": ["src/components/infographic/*"],
       "@core-messages/*": ["src/layouts/sections/core-messages/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@scripts/*": ["src/scripts/*"],
+      "@content/*": ["src/content/*"],
     },
     "types": ["vite/client"]
   },
   "include": [
     ".astro/types.d.ts",
     "**/*",
-    "./node_modules/.pnpm/**/*.d.ts"
+    "./node_modules/.pnpm/**/*.d.ts",
+    "src/types/*.d.ts"
   ],
   "exclude": ["dist", "node_modules"]
 }
