@@ -4,6 +4,8 @@
  * Recreates the Water Fund presentation title slide design
  * Features: Split layout with water droplet image, social icons, and elegant typography
  */
+import WaterDropletAnimation from '../../../../decorators/WaterDropletAnimation.astro';
+import DotsPattern from '../../../../decorators/DotsPattern.astro';
 
 interface Props {
   title?: string;
@@ -49,17 +51,9 @@ const {
         </div>
       </div>
       
-      <!-- Water droplet image area -->
+      <!-- Water droplet animation -->
       <div class="image-container">
-        <div class="water-droplet-bg">
-          <!-- Simulated water droplet pattern with CSS -->
-          <div class="droplet droplet-1"></div>
-          <div class="droplet droplet-2"></div>
-          <div class="droplet droplet-3"></div>
-          <div class="droplet droplet-4"></div>
-          <div class="droplet droplet-5"></div>
-          <div class="droplet droplet-6"></div>
-        </div>
+        <WaterDropletAnimation width="300px" height="400px" />
       </div>
     </div>
 
@@ -82,29 +76,7 @@ const {
       </div>
       
       <!-- Decorative dots pattern -->
-      <div class="dots-pattern">
-        <div class="dot-row">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-        <div class="dot-row">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-        <div class="dot-row">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
+      <DotsPattern />
     </div>
   </div>
 </section>
@@ -169,33 +141,13 @@ const {
     position: relative;
   }
 
-  .water-droplet-bg {
-    width: 300px;
-    height: 400px;
-    background: linear-gradient(135deg, rgb(var(--color-accent-600)) 0%, rgb(var(--color-accent-400)) 100%);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Water droplet effects */
-  .droplet {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .droplet-1 { width: 12px; height: 12px; top: 20%; left: 25%; animation-delay: 0s; }
-  .droplet-2 { width: 8px; height: 8px; top: 35%; left: 70%; animation-delay: 0.5s; }
-  .droplet-3 { width: 16px; height: 16px; top: 60%; left: 30%; animation-delay: 1s; }
-  .droplet-4 { width: 10px; height: 10px; top: 75%; left: 60%; animation-delay: 1.5s; }
-  .droplet-5 { width: 14px; height: 14px; top: 45%; left: 50%; animation-delay: 2s; }
-  .droplet-6 { width: 6px; height: 6px; top: 85%; left: 40%; animation-delay: 2.5s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
-    50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+  /* Image container styles */
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 
   /* Right Panel Styling */
@@ -264,29 +216,6 @@ const {
     font-size: 0.95rem;
     color: rgb(var(--color-primary-600));
     margin: 0.5rem 0;
-  }
-
-  /* Decorative dots pattern */
-  .dots-pattern {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .dot-row {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    background: rgb(var(--color-primary-300));
-    border-radius: 50%;
-    opacity: 0.6;
   }
 
   /* Responsive Design */

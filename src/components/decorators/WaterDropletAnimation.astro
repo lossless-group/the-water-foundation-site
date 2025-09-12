@@ -1,0 +1,62 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  color1?: string;
+  color2?: string;
+}
+
+const {
+  width = "300px",
+  height = "400px",
+  color1 = "#1e40af",  // blue-800
+  color2 = "#3b82f6"   // blue-500
+} = Astro.props;
+
+// Create style string for the container
+const containerStyle = {
+  width,
+  height,
+  background: `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`,
+  borderRadius: '20px',
+  position: 'relative',
+  overflow: 'hidden'
+} as const;
+---
+
+<div class="water-droplet-animation" style={containerStyle}>
+  <div class="droplet droplet-1"></div>
+  <div class="droplet droplet-2"></div>
+  <div class="droplet droplet-3"></div>
+  <div class="droplet droplet-4"></div>
+  <div class="droplet droplet-5"></div>
+  <div class="droplet droplet-6"></div>
+</div>
+
+<style>
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(5px); }
+  }
+
+  /* Water droplet effects */
+  .droplet {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .droplet-1 { width: 12px; height: 12px; top: 20%; left: 25%; animation-delay: 0s; }
+  .droplet-2 { width: 8px; height: 8px; top: 35%; left: 70%; animation-delay: 0.5s; }
+  .droplet-3 { width: 16px; height: 16px; top: 60%; left: 30%; animation-delay: 1s; }
+  .droplet-4 { width: 10px; height: 10px; top: 75%; left: 60%; animation-delay: 1.5s; }
+  .droplet-5 { width: 14px; height: 14px; top: 45%; left: 50%; animation-delay: 2s; }
+  .droplet-6 { width: 6px; height: 6px; top: 85%; left: 40%; animation-delay: 2.5s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+  }
+</style>
