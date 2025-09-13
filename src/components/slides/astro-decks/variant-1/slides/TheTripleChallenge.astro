@@ -1,0 +1,388 @@
+---
+/**
+ * TheTripleChallenge Component - Variant 1
+ * Slide highlighting water's triple challenge and our approach
+ * Features: Three-column layout with challenge categories and dual approach section
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  challenges?: Array<{
+    title: string;
+    description: string;
+    color: string;
+  }>;
+  approachTitle?: string;
+  approaches?: Array<{
+    title: string;
+    description: string;
+    color: string;
+  }>;
+}
+
+const {
+  mainTitle = "Water's",
+  titleHighlight = "Triple Challenge",
+  subtitle = "The core blind spot of humankind manifests in three critical dimensions",
+  challenges = [
+    {
+      title: "Under-Prioritized",
+      description: "Water security remains absent from most global agendas, despite being fundamental to human survival",
+      color: "cyan"
+    },
+    {
+      title: "Underfunded", 
+      description: "Less than 1% of climate capital flows to water solutions, creating a massive investment gap",
+      color: "blue"
+    },
+    {
+      title: "Under-Strategized",
+      description: "No comprehensive global strategy exists for water security, leaving solutions fragmented and ineffective", 
+      color: "indigo"
+    }
+  ],
+  approachTitle = "Our Approach",
+  approaches = [
+    {
+      title: "Non For Profit",
+      description: "We accept donations and employ best practices in blended finance for development and impact, enabling us to drive sustainable change through charitable initiatives and strategic partnerships.",
+      color: "cyan"
+    },
+    {
+      title: "For Profit", 
+      description: "We accept direct capital investments into closed-end venture and PE funds, as well as participate with our principals in an evergreen structure, creating opportunities for financial returns alongside impact.",
+      color: "blue"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="triple-challenge-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Main Title Section -->
+    <div class="title-section">
+      <h1 class="main-title">
+        {mainTitle} <span class="title-highlight">{titleHighlight}</span>
+      </h1>
+      <p class="subtitle">{subtitle}</p>
+    </div>
+
+    <!-- Three Challenges Grid -->
+    <div class="challenges-grid">
+      {challenges.map((challenge, index) => (
+        <div class="challenge-card" style={`--delay: ${index * 0.2}s`}>
+          <div class={`card-content ${challenge.color}`}>
+            <h3 class="challenge-title">{challenge.title}</h3>
+            <p class="challenge-description">{challenge.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Elegant Divider -->
+    <div class="divider"></div>
+
+    <!-- Our Approach Section -->
+    <div class="approach-section">
+      <h2 class="approach-title">
+        Our <span class="approach-highlight">Approach</span>
+      </h2>
+      
+      <div class="approach-grid">
+        {approaches.map((approach, index) => (
+          <div class="approach-card" style={`--delay: ${(index + 3) * 0.2}s`}>
+            <div class={`card-content ${approach.color}`}>
+              <h4 class="approach-card-title">{approach.title}</h4>
+              <p class="approach-description">{approach.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .triple-challenge-slide {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, 
+      rgb(var(--color-primary-50)) 0%, 
+      rgb(var(--color-primary-100)) 50%, 
+      rgb(var(--color-primary-50)) 100%);
+    font-family: var(--font-family-primary);
+    padding: 2rem 1rem;
+    overflow: hidden;
+    color: rgb(var(--color-primary-950));
+    box-sizing: border-box;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .slide-container {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* Title Section */
+  .title-section {
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .main-title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+  }
+
+  .title-highlight {
+    font-weight: 400;
+    background: linear-gradient(90deg, rgb(var(--color-accent-400)), rgb(var(--color-accent-300)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Challenges Grid */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    justify-items: center;
+  }
+
+  .challenge-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .card-content {
+    background: rgba(var(--color-primary-100), 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(var(--color-primary-300), 0.4);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    text-align: center;
+  }
+
+  .card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    opacity: 0.6;
+  }
+
+  .card-content.cyan {
+    border-color: rgba(var(--color-accent-600), 0.5);
+    color: rgb(var(--color-accent-800));
+    background: rgba(var(--color-primary-100), 0.9);
+  }
+
+  .card-content.blue {
+    border-color: rgba(59, 130, 246, 0.5);
+    color: rgb(147, 197, 253);
+    background: rgba(var(--color-primary-100), 0.9);
+  }
+
+  .card-content.indigo {
+    border-color: rgba(99, 102, 241, 0.5);
+    color: rgb(165, 180, 252);
+    background: rgba(var(--color-primary-100), 0.9);
+  }
+
+  .card-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .challenge-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    color: currentColor;
+  }
+
+  .challenge-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: white;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Divider */
+  .divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(var(--color-accent-400)), transparent);
+    margin: 1rem 0;
+    opacity: 0.6;
+  }
+
+  /* Approach Section */
+  .approach-section {
+    width: 100%;
+    text-align: center;
+    animation: slideIn 0.8s ease-out 1s both;
+  }
+
+  .approach-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: white;
+    margin: 0 0 2rem 0;
+    letter-spacing: 0.5px;
+  }
+
+  .approach-highlight {
+    font-weight: 400;
+    background: linear-gradient(90deg, rgb(var(--color-accent-400)), rgb(var(--color-accent-300)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  .approach-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .approach-card .card-content {
+    background: rgba(var(--color-primary-100), 0.8);
+    border: 1px solid rgba(var(--color-accent-600), 0.4);
+  }
+
+  .approach-card-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    color: currentColor;
+  }
+
+  .approach-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: white;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2rem;
+    }
+    
+    .approach-title {
+      font-size: 1.6rem;
+    }
+    
+    .challenges-grid,
+    .approach-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .card-content {
+      padding: 1.5rem 1rem;
+    }
+    
+    .slide-container {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 1.8rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .challenge-title,
+    .approach-card-title {
+      font-size: 1.2rem;
+    }
+    
+    .challenge-description,
+    .approach-description {
+      font-size: 0.8rem;
+    }
+  }
+</style>
