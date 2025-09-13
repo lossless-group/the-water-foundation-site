@@ -1,0 +1,446 @@
+---
+/**
+ * InvestWithUs Slide Component
+ * Investment opportunity presentation with call to action
+ */
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Invest with Us",
+  subtitle = "Join us in our mission to address the global water crisis"
+} = Astro.props;
+---
+
+<section class="invest-slide" data-background-color="rgb(4, 31, 42)">
+  <div class="slide-container">
+    <!-- Header Section -->
+    <div class="header-section">
+      <h1 class="main-title">{title}</h1>
+      <p class="subtitle">{subtitle}</p>
+    </div>
+
+    <!-- Investment Points -->
+    <div class="investment-section">
+      <div class="investment-grid">
+        <!-- Invest Card -->
+        <div class="investment-card card-primary">
+          <div class="card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Invest</h3>
+            <p class="card-description">We invite mission-aligned capital to join us at this pivotal moment.</p>
+          </div>
+        </div>
+
+        <!-- Use of Funds Card -->
+        <div class="investment-card card-secondary">
+          <div class="card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6"/>
+              <path d="m21 12-6-3-6 3-6-3"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Use of Funds</h3>
+            <p class="card-description">Strategic allocation across nonprofit think tank, venture, and private equity fund layers with full transparency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Proof Section -->
+    <div class="social-proof-section">
+      <h2 class="section-title">What Leaders Are Saying</h2>
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-content">
+            <div class="quote-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+            <p class="quote-text">"This is exactly the model the water sector needs."</p>
+            <p class="quote-author">Global Investor</p>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-content">
+            <div class="quote-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+            <p class="quote-text">"TWF aligns capital and justice in a way we've never seen."</p>
+            <p class="quote-author">Policy Expert</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <div class="cta-content">
+        <h3 class="cta-title">Ready to Make an Impact?</h3>
+        <p class="cta-description">Join us in creating systemic change for global water security</p>
+        <div class="cta-buttons">
+          <button class="cta-button primary">Get Started</button>
+          <button class="cta-button secondary">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .invest-slide {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, 
+      rgb(4, 31, 42) 0%, 
+      rgb(8, 51, 68) 50%, 
+      rgb(4, 31, 42) 100%) !important;
+    font-family: var(--font-family-primary);
+    padding: 2rem 1rem;
+    overflow: hidden;
+    color: rgb(var(--color-primary-950));
+    box-sizing: border-box;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .slide-container {
+    width: 100%;
+    max-width: 1600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  /* Header Section */
+  .header-section {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .main-title {
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    max-width: 700px;
+    line-height: 1.5;
+  }
+
+  /* Investment Section */
+  .investment-section {
+    width: 100%;
+    animation: slideIn 0.8s ease-out 0.3s both;
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .investment-card {
+    background: rgba(19, 90, 118, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .investment-card:nth-child(1) { --delay: 0.4s; }
+  .investment-card:nth-child(2) { --delay: 0.6s; }
+
+  .investment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-primary {
+    border-left: 4px solid rgb(var(--color-accent-400));
+  }
+
+  .card-secondary {
+    border-left: 4px solid rgb(var(--color-accent-600));
+  }
+
+  .card-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--color-accent-400));
+  }
+
+  .card-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card-content {
+    flex: 1;
+    text-align: left;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Social Proof Section */
+  .social-proof-section {
+    width: 100%;
+    animation: scaleIn 0.8s ease-out 0.8s both;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: white;
+    margin: 0 0 1.2rem 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .quote-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .quote-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .quote-content {
+    text-align: left;
+  }
+
+  .quote-icon {
+    color: rgb(var(--color-accent-400));
+    margin-bottom: 1rem;
+  }
+
+  .quote-text {
+    font-size: 1.2rem;
+    color: white;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Call to Action Section */
+  .cta-section {
+    animation: fadeInUp 0.8s ease-out 1.2s both;
+  }
+
+  .cta-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 550px;
+  }
+
+  .cta-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .cta-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+  }
+
+  .cta-button.primary {
+    background: rgb(var(--color-accent-500));
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background: rgb(var(--color-accent-600));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(var(--color-accent-500), 0.4);
+  }
+
+  .cta-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
+
+    .investment-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .investment-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .card-content {
+      text-align: center;
+    }
+
+    .quotes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slide-container {
+      gap: 2rem;
+    }
+  }
+</style>
