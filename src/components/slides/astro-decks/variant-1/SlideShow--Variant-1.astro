@@ -15,6 +15,7 @@ import KeyFigures from './slides/KeyFigures.astro';
 import OurSystemsThinkingSolution from './slides/OurSystemsThinkingSolution.astro';
 import GeopoliticalTrends from './slides/GeopoliticalTrends.astro';
 import OurTeam from './slides/OurTeam.astro';
+import InstitutionalGrade from './slides/InstitutionalGrade.astro';
 
 interface Props {
   title?: string;
@@ -108,6 +109,20 @@ const {
         ]}
         panel1Text="Catalyze Innovation"
         panel2Text="Build Resilience"
+      />
+    </section>
+
+    <!-- Slide 6: Institutional Grade -->
+    <section data-transition="slide">
+      <InstitutionalGrade 
+        title="Institutional-Grade"
+        subtitle="Designed for institutional investors who demand excellence"
+        complianceTitle="Compliance"
+        complianceDesc="Full alignment with financial, ESG, and cross-border regulatory standards"
+        ethicsTitle="Ethics"
+        ethicsDesc="Mission-locked governance and impact-first principles at every level"
+        legalTitle="Legal"
+        legalDesc="Structured for compliance, protection, and transparency across jurisdictions"
       />
     </section>
 

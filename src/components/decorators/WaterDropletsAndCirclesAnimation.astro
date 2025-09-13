@@ -1,0 +1,142 @@
+---
+// src/components/decorators/WaterDropletsAndCirclesAnimation.astro
+// A reusable water droplets and circles animation component
+
+interface Props {
+  class?: string;
+  color?: string;
+  opacity?: number;
+}
+
+const { 
+  class: className = '',
+  color = 'currentColor',
+  opacity = 0.8
+} = Astro.props;
+---
+
+<div class={`water-animation ${className}`}>
+  <!-- Water droplet icons -->
+  <div class="water-icon icon-1">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+    </svg>
+  </div>
+  <div class="water-icon icon-2">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+    </svg>
+  </div>
+  <div class="water-icon icon-3">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+    </svg>
+  </div>
+  
+  <!-- Network connection lines -->
+  <div class="connection-line line-1"></div>
+  <div class="connection-line line-2"></div>
+  <div class="connection-line line-3"></div>
+  
+  <!-- Circular tech elements -->
+  <div class="tech-circle circle-1"></div>
+  <div class="tech-circle circle-2"></div>
+  <div class="tech-circle circle-3"></div>
+</div>
+
+<style>
+  .water-animation {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .water-icon {
+    position: absolute;
+    color: ${color};
+    opacity: ${opacity};
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .icon-1 { top: 20%; left: 25%; animation-delay: 0s; }
+  .icon-2 { top: 60%; left: 70%; animation-delay: 1s; }
+  .icon-3 { top: 40%; left: 50%; animation-delay: 2s; }
+
+  .connection-line {
+    position: absolute;
+    background: currentColor;
+    opacity: 0.3;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .line-1 {
+    width: 80px;
+    height: 2px;
+    top: 35%;
+    left: 35%;
+    transform: rotate(25deg);
+  }
+
+  .line-2 {
+    width: 60px;
+    height: 2px;
+    top: 55%;
+    left: 45%;
+    transform: rotate(-15deg);
+  }
+
+  .line-3 {
+    width: 2px;
+    height: 50px;
+    top: 25%;
+    left: 60%;
+  }
+
+  .tech-circle {
+    position: absolute;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: rotate 8s linear infinite;
+  }
+
+  .circle-1 {
+    width: 40px;
+    height: 40px;
+    top: 15%;
+    right: 20%;
+  }
+
+  .circle-2 {
+    width: 70px;
+    height: 70px;
+    bottom: 15%;
+    left: 20%;
+    animation-duration: 12s;
+  }
+
+  .circle-3 {
+    width: 30px;
+    height: 30px;
+    top: 70%;
+    right: 30%;
+    animation-direction: reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); opacity: 0.8; }
+    50% { transform: translateY(-8px); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>

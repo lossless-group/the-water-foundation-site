@@ -1,0 +1,141 @@
+---
+// src/components/decorators/TechOverlay.astro
+// A reusable tech overlay component with animated water droplets and connection lines
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`tech-overlay ${className}`}>
+  <!-- Water droplet icons -->
+  <div class="water-icon icon-1">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+    </svg>
+  </div>
+  <div class="water-icon icon-2">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+    </svg>
+  </div>
+  <div class="water-icon icon-3">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+    </svg>
+  </div>
+  
+  <!-- Network connection lines -->
+  <div class="connection-line line-1"></div>
+  <div class="connection-line line-2"></div>
+  <div class="connection-line line-3"></div>
+  
+  <!-- Circular tech elements -->
+  <div class="tech-circle circle-1"></div>
+  <div class="tech-circle circle-2"></div>
+  <div class="tech-circle circle-3"></div>
+</div>
+
+<style is:global>
+  .tech-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .water-icon {
+    position: absolute;
+    color: rgba(var(--color-accent-400), 0.8);
+    opacity: 0.6;
+    animation: float 8s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .water-icon svg {
+    display: block;
+    filter: drop-shadow(0 0 4px rgba(var(--color-accent-400), 0.3));
+  }
+
+  .icon-1 { top: 20%; left: 15%; animation-delay: 0s; }
+  .icon-2 { top: 60%; left: 80%; animation-delay: -2s; }
+  .icon-3 { top: 30%; left: 70%; animation-delay: -4s; }
+
+  .connection-line {
+    position: absolute;
+    background: linear-gradient(90deg, rgba(var(--color-accent-400), 0.2), transparent);
+    height: 1px;
+    transform-origin: left center;
+    z-index: 1;
+  }
+
+  .line-1 {
+    top: 35%;
+    left: 25%;
+    width: 30%;
+    transform: rotate(15deg);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .line-2 {
+    top: 45%;
+    left: 60%;
+    width: 25%;
+    transform: rotate(-10deg);
+    animation: pulse 5s ease-in-out infinite 1s;
+  }
+
+  .line-3 {
+    top: 70%;
+    left: 30%;
+    width: 40%;
+    transform: rotate(5deg);
+    animation: pulse 6s ease-in-out infinite 2s;
+  }
+
+  .tech-circle {
+    position: absolute;
+    border: 1px solid rgba(var(--color-accent-400), 0.3);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .circle-1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .circle-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    right: 10%;
+    animation-delay: -2s;
+  }
+
+  .circle-3 {
+    width: 70px;
+    height: 70px;
+    top: 60%;
+    left: 20%;
+    animation-delay: -4s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.1; }
+  }
+</style>

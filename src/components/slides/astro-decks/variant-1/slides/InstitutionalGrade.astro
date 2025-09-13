@@ -1,0 +1,280 @@
+---
+/**
+ * InstitutionalGrade Component - Variant 1
+ * Institutional trust and compliance slide
+ * Features: Three-panel layout with trust indicators for institutional investors
+ */
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  description?: string;
+  pillars?: Array<{
+    title: string;
+    description: string;
+    variant: 'blue' | 'light' | 'dark' | 'accent';
+  }>;
+}
+
+const {
+  mainTitle = "Institutional",
+  titleHighlight = "Grade",
+  subtitle = "Building Trust Through Excellence",
+  description = "We are building an Institutional Grade set of Financial Instruments",
+  pillars = [
+    {
+      title: "Compliance",
+      description: "Full alignment with financial, ESG, and cross-border regulatory standards.",
+      variant: "blue"
+    },
+    {
+      title: "Ethics",
+      description: "Mission-locked governance and impact-first principles at every level.",
+      variant: "light"
+    },
+    {
+      title: "Legal",
+      description: "Structured for compliance, protection, and transparency across jurisdictions.",
+      variant: "dark"
+    },
+    {
+      title: "Reporting",
+      description: "ESG, SDG, Audited Financials, Accurate Forecasts, the works.",
+      variant: "accent"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="institutional-grade-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left content panel -->
+    <div class="content-panel">
+      <div class="title-section">
+        <h1 class="main-title">
+          <span class="title-main">{mainTitle}</span>
+          <span class="title-highlight">{titleHighlight}</span>
+        </h1>
+      </div>
+
+      <div class="subtitle-section">
+        <h2 class="subtitle">{subtitle}</h2>
+      </div>
+
+      <div class="description">
+        <p>{description}</p>
+      </div>
+    </div>
+
+    <!-- Right content panel -->
+    <div class="pillars-panel">
+      <div class="pillars-grid">
+        {pillars.map((pillar) => (
+          <div class={`pillar-card card-${pillar.variant}`}>
+            <h3 class="pillar-title">{pillar.title}</h3>
+            <p class="pillar-description">{pillar.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .institutional-grade-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    font-family: var(--font-family-primary);
+    padding: 2rem;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .content-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem 0;
+  }
+
+  .pillars-panel {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .title-section {
+    margin-bottom: 2rem;
+  }
+
+  .main-title {
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .title-main {
+    font-weight: var(--font-weight-normal);
+  }
+
+  .title-highlight {
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-accent-600));
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: rgb(var(--color-primary-700));
+    margin: 0 0 1.5rem 0;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .description {
+    font-size: 1.25rem;
+    color: rgb(var(--color-primary-600));
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  /* Pillars Grid */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+  }
+
+  .pillar-card {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(var(--color-primary-900), 0.15);
+  }
+
+  .card-blue {
+    background: rgb(var(--color-accent-500));
+    color: white;
+  }
+
+  .card-light {
+    background: rgb(var(--color-primary-50));
+    color: rgb(var(--color-primary-900));
+    border: 2px solid rgb(var(--color-primary-200));
+  }
+
+  .card-dark {
+    background: rgb(var(--color-primary-400));
+    color: white;
+  }
+  
+  .card-accent {
+    background: rgb(var(--color-accent-300));
+    color: white;
+  }
+
+  .pillar-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 1rem 0;
+  }
+
+  .pillar-description {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    opacity: 0.95;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .slide-container {
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+    }
+
+    .content-panel, .pillars-panel {
+      max-width: 100%;
+      padding-right: 0;
+      margin-bottom: 2rem;
+    }
+
+    .main-title {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .pillar-card {
+      padding: 1.5rem;
+    }
+  }
+  /* Removed duplicate styles - using the ones defined earlier */
+
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 3rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+
+    .pillar-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

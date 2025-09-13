@@ -63,20 +63,14 @@ const {
       <!-- World map section -->
       <div class="map-section">
         <div class="world-map">
-          <!-- CSS-based world map with highlighted regions -->
+          <!-- World map image with overlay -->
           <div class="map-container">
-            <!-- Base world map silhouette -->
-            <div class="continent north-america"></div>
-            <div class="continent south-america"></div>
-            <div class="continent europe"></div>
-            <div class="continent africa"></div>
-            <div class="continent asia highlighted"></div>
-            <div class="continent australia"></div>
-            
-            <!-- Water stress indicators -->
-            <div class="stress-indicator indicator-1"></div>
-            <div class="stress-indicator indicator-2"></div>
-            <div class="stress-indicator indicator-3"></div>
+            <img 
+              src="/images/imageOf__Barren-Earth--Most.png" 
+              alt="World Map showing geopolitical water stress areas"
+              class="world-map-image"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -198,115 +192,30 @@ const {
 
   .world-map {
     width: 100%;
-    max-width: 600px;
-    height: 350px;
+    max-width: 800px;
+    height: 600px;
     position: relative;
+    margin: 0 auto;
   }
 
   .map-container {
     width: 100%;
     height: 100%;
     position: relative;
-    background: rgb(var(--color-primary-100));
-    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
     overflow: hidden;
+    aspect-ratio: 4/3;
+    margin: 0 auto;
   }
 
-  .continent {
-    position: absolute;
-    background: rgb(var(--color-primary-300));
-    border-radius: 4px;
-  }
-
-  /* Simplified continent shapes using CSS */
-  .north-america {
-    width: 120px;
-    height: 80px;
-    top: 20%;
-    left: 15%;
-    clip-path: polygon(20% 0%, 80% 10%, 90% 40%, 70% 80%, 30% 90%, 10% 60%);
-  }
-
-  .south-america {
-    width: 60px;
-    height: 100px;
-    top: 45%;
-    left: 25%;
-    clip-path: polygon(40% 0%, 70% 20%, 80% 60%, 60% 100%, 20% 90%, 30% 40%);
-  }
-
-  .europe {
-    width: 80px;
-    height: 60px;
-    top: 15%;
-    left: 45%;
-    clip-path: polygon(0% 60%, 30% 0%, 80% 20%, 100% 80%, 60% 100%, 20% 80%);
-  }
-
-  .africa {
-    width: 70px;
-    height: 120px;
-    top: 30%;
-    left: 48%;
-    clip-path: polygon(30% 0%, 70% 10%, 80% 40%, 90% 80%, 60% 100%, 40% 90%, 20% 60%, 10% 20%);
-  }
-
-  .asia {
-    width: 180px;
-    height: 120px;
-    top: 10%;
-    left: 55%;
-    clip-path: polygon(0% 40%, 20% 0%, 60% 10%, 100% 30%, 90% 70%, 70% 100%, 30% 90%, 10% 60%);
-  }
-
-  .australia {
-    width: 60px;
-    height: 40px;
-    top: 65%;
-    left: 75%;
-    clip-path: polygon(20% 30%, 80% 0%, 100% 70%, 60% 100%, 0% 80%);
-  }
-
-  .highlighted {
-    background: rgb(var(--color-accent-500)) !important;
-    animation: pulse-highlight 3s ease-in-out infinite;
-  }
-
-  @keyframes pulse-highlight {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
-  }
-
-  .stress-indicator {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #FF6B6B;
-    border-radius: 50%;
-    animation: pulse-stress 2s ease-in-out infinite;
-  }
-
-  .indicator-1 {
-    top: 25%;
-    left: 60%;
-    animation-delay: 0s;
-  }
-
-  .indicator-2 {
-    top: 45%;
-    left: 50%;
-    animation-delay: 0.7s;
-  }
-
-  .indicator-3 {
-    top: 35%;
-    left: 70%;
-    animation-delay: 1.4s;
-  }
-
-  @keyframes pulse-stress {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.3); opacity: 1; }
+  .world-map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   /* Indicators Section Styling */
