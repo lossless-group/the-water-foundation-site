@@ -14,10 +14,5 @@ export const componentDecks: Record<string, ComponentDeck> = {
     title: 'Sample Presentation',
     description: 'A sample slide deck to test the Water Theme integration',
     component: 'sample'
-  },
-  'unique-judgement': {
-    title: 'Unique Judgement in Evaluating Opportunities',
-    description: 'Why we see opportunities differently, and have unique judgement in water investments',
-    component: 'unique-judgement'
   }
 };

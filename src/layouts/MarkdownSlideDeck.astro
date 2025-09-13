@@ -1,0 +1,170 @@
+---
+import BaseThemeLayout from './BaseThemeLayout.astro';
+import OneSlideDeck from './OneSlideDeck.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  content: string;
+}
+
+const { title, description, content } = Astro.props as Props;
+
+if (!content) {
+  throw new Error('No content provided to MarkdownSlideDeck');
+}
+
+// Simple markdown to HTML converter
+function markdownToHtml(markdown: string): string {
+  return markdown
+    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gm, '</section><section class="slide"><h2>$1</h2>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\s*\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}
+
+const htmlContent = markdownToHtml(content);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  
+  <style>
+    :root {
+      --slide-background: #0f172a;
+      --slide-text: #f8fafc;
+      --accent: #60a5fa;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--slide-background);
+      color: var(--slide-text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+    }
+    
+    .slide-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--accent);
+      margin: 0 0 1rem 0;
+    }
+    
+    p {
+      margin: 0.5rem 0;
+    }
+    
+    pre, code {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 0.5rem;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: left;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    
+    pre {
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .slide-navigation {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .nav-button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .nav-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <BaseThemeLayout title={title} description={description}>
+    <OneSlideDeck title={title} description={description}>
+      <div class="markdown-content" set:html={htmlContent} />
+    </OneSlideDeck>
+  </BaseThemeLayout>
+  
+  <style>
+    .markdown-content {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .markdown-content :global(h1) {
+      color: var(--color-primary-800);
+      margin-bottom: 1.5rem;
+    }
+    
+    .markdown-content :global(h2) {
+      color: var(--color-primary-700);
+      margin: 2rem 0 1rem;
+    }
+    
+    .markdown-content :global(p) {
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    
+    .markdown-content :global(ul),
+    .markdown-content :global(ol) {
+      margin: 1rem 0 1rem 2rem;
+    }
+    
+    .markdown-content :global(li) {
+      margin: 0.5rem 0;
+    }
+    
+    .markdown-content :global(strong) {
+      color: var(--color-primary-900);
+    }
+    
+    .markdown-content :global(em) {
+      color: var(--color-primary-700);
+      font-style: italic;
+    }
+  </style>
+</body>
+</html>

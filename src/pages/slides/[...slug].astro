@@ -2,47 +2,71 @@
 // Import necessary components and utilities
 import type { GetStaticPaths } from 'astro';
 import OneSlideDeck from '../../layouts/OneSlideDeck.astro';
+import MarkdownSlideDeck from '../../layouts/MarkdownSlideDeck.astro';
 import SlideShowVariant1 from '../../components/slides/astro-decks/variant-1/SlideShow--Variant-1.astro';
-import { loadMarkdownSlides } from '../../utils/loadMarkdownSlides';
 import { componentDecks } from '../../data/componentDecks';
+import { markdownDecks, getMarkdownDeck } from '../../data/markdownDecks';
 
 // Define the shape of our component props
 interface SlideDeckProps {
   slideshow: string;
   title: string;
   description: string;
+  isComponentDeck: boolean;
 }
 
 // Generate static paths for Astro's static site generation
-export const getStaticPaths = (): { params: { slug: string }, props: SlideDeckProps }[] => {
-  return Object.entries(componentDecks).map(([slug, meta]) => ({
+export const getStaticPaths = async (): Promise<{ params: { slug: string }, props: SlideDeckProps }[]> => {
+  // Get all component decks
+  const componentDeckPaths = Object.entries(componentDecks).map(([slug, meta]) => ({
     params: { slug },
     props: { 
       slideshow: slug,
       title: meta.title,
-      description: meta.description
+      description: meta.description,
+      isComponentDeck: true
     }
   }));
+
+  // Get all markdown decks
+  const markdownDeckPaths = Object.entries(markdownDecks).map(([slug, deck]) => ({
+    params: { slug },
+    props: {
+      slideshow: slug,
+      title: deck.title,
+      description: deck.description,
+      isComponentDeck: false
+    }
+  }));
+
+  return [...componentDeckPaths, ...markdownDeckPaths];
 };
 
 // Get the current props from Astro
-const { slideshow, title, description } = Astro.props as SlideDeckProps;
+const { slideshow, title, description, isComponentDeck } = Astro.props as SlideDeckProps;
 
-// Try to load markdown if not an Astro component
+// Try to load markdown content if it's a markdown deck
 let markdownContent: string | null = null;
-if (!(slideshow in componentDecks)) {
-  markdownContent = await loadMarkdownSlides(slideshow);
+if (!isComponentDeck) {
+  const deck = await getMarkdownDeck(slideshow);
+  console.log('Loading markdown deck:', { slug: slideshow, deckExists: !!deck });
+  
+  if (deck?.content) {
+    markdownContent = deck.content;
+    console.log('Markdown content loaded, length:', markdownContent.length);
+  } else {
+    console.error('No markdown content found for deck:', slideshow);
+    console.log('Available markdown decks:', Object.keys(markdownDecks));
+  }
 }
 ---
 
 {markdownContent ? (
-  <OneSlideDeck title={slideshow} description="">
-    <section data-markdown>
-      <script type="text/template">
-        {markdownContent}
-      </script>
-    </section>
-  </OneSlideDeck>
+  <MarkdownSlideDeck 
+    title={slideshow}
+    description=""
+    content={markdownContent}
+  />
 ) : slideshow in componentDecks ? (
   componentDecks[slideshow].component === 'SlideShowVariant1' ? (
     <OneSlideDeck title={title} description={description}>
