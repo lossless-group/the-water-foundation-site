@@ -35,6 +35,102 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 
 ***
 
+## 📝 Developing Slide Presentations
+
+This project uses Astro with RevealJS to create beautiful, interactive slide presentations. Here's how to create a new slide deck:
+
+### 1. Create a New Slide Deck
+
+1. **Create a new markdown file** in `src/content/slides/` with this structure:
+
+   ```markdown
+   ---
+   title: "Your Presentation Title"
+   description: "Brief description of your presentation"
+   theme: "water"  # or "default"
+   transition: "slide"  # or "fade", "none", etc.
+   tags: ["tag1", "tag2"]  # Optional tags
+   ---
+   
+   # Your First Slide
+   
+   Content goes here...
+   
+   ---
+   
+   ## Second Slide
+   
+   More content...
+   ```
+
+2. **Add your content** using Markdown syntax. Use `---` to separate slides.
+
+### 2. Register the Slide Deck
+
+1. Open `src/pages/slides/[...slug].astro`
+2. Add a new entry to the `getStaticPaths()` function:
+
+   ```javascript
+   {
+     params: { slug: 'your-presentation-slug' },
+     props: {
+       title: "Your Presentation Title",
+       description: "Brief description of your presentation",
+       slideshow: "your-presentation-slug"
+     }
+   }
+   ```
+
+3. Add a new condition to render your slides:
+
+   ```astro
+   {slideshow === 'your-presentation-slug' && (
+     <!-- Your slides go here -->
+     <section>
+       <h1>Your First Slide</h1>
+       <p>Content goes here...</p>
+     </section>
+     
+     <section>
+       <h2>Second Slide</h2>
+       <p>More content...</p>
+     </section>
+   )}
+   ```
+
+### 3. Add to the Presentations List
+
+1. Open `src/pages/slides/index.astro`
+2. Add a new entry to the `presentations` array:
+
+   ```javascript
+   {
+     title: "Your Presentation Title",
+     slug: "your-presentation-slug",
+     description: "Brief description of your presentation",
+     date: "YYYY-MM-DD",
+     icon: "🎯"  // Choose an appropriate emoji
+   }
+   ```
+
+### 4. Available Features
+
+- **Themes**: Use `theme: "water"` or `theme: "default"`
+- **Transitions**: Set `transition: "slide"`, `"fade"`, `"none"`, etc.
+- **Backgrounds**: Add `data-background-color` or `data-background-image` to sections
+- **Fragments**: Use `class="fragment"` for step-by-step animations
+- **Speaker Notes**: Add notes with `<!-- .element: class="notes" -->`
+
+### 5. Development Server
+
+Run the development server to see your changes:
+
+```bash
+pnpm dev
+```
+
+Then visit `http://localhost:4321/slides/your-presentation-slug`
+
 ## ✅ Implementation Status
 
 ### Theme & Mode System (v0.0.1.0)

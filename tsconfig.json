@@ -18,6 +18,7 @@
     "types": ["vite/client"]
   },
   "include": [
+    "src/types/**/*.d.ts",
     ".astro/types.d.ts",
     "**/*",
     "./node_modules/.pnpm/**/*.d.ts",

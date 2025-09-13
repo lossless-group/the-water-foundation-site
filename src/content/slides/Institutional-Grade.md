@@ -1,4 +1,3 @@
-
 ---
 title: "Institutional Grade Financial Instruments"
 description: "Building compliant, ethical, and legally sound financial instruments for water infrastructure"
