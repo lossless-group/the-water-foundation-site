@@ -5,13 +5,21 @@
  * Features: Split layout with water technology image and key statistics
  */
 
+import StatCard from '../../../../../components/infographic/StatCard.astro';
+
+interface StatisticItem {
+  title: string;
+  value: string;
+  description: string;
+}
+
 interface Props {
+  statistics?: StatisticItem[];
   sectionTitle?: string;
   year?: string;
   challengeTitle?: string;
   challengeSubtitle?: string;
   introText?: string;
-  statistics?: Array<string>;
   heroImage?: string;
 }
 
@@ -22,14 +30,33 @@ const {
   challengeSubtitle = "Water & the SDGs",
   introText = "Water is the foundation of our global economy and food systems, yet it faces a critical investment gap that threatens our future",
   statistics = [
-    "Water underpins 70% of global GDP and 100% of food production.",
-    "Yet it receives less than 1% of institutional capital.",
-    "The global water investment gap is $670B per year.",
-    "By 2030, 40% of the global population may face water scarcity.",
-    "Addressing water is critical to SDG 6, 13, 9, and 17."
+    {
+      title: "Global GDP & Food",
+      value: "70-100%",
+      description: "Water underpins 70% of global GDP and 100% of food production"
+    },
+    {
+      title: "Investment Gap",
+      value: "<1%",
+      description: "Receives less than 1% of institutional capital"
+    },
+    {
+      title: "Annual Shortfall",
+      value: "$670B",
+      description: "Global water investment gap per year"
+    },
+    {
+      title: "Water Scarcity",
+      value: "40%",
+      description: "Of global population may face water scarcity by 2030"
+    },
+    {
+      title: "SDG Impact",
+      value: "4+",
+      description: "SDGs directly impacted by water (6, 13, 9, 17)"
+    }
   ],
-  heroImage = "/images/water-technology-hero.jpg"
-} = Astro.props;
+} = Astro.props as Props;
 ---
 
 <section class="framing-challenge-slide" data-background-color="rgb(var(--color-primary-50))">
@@ -38,6 +65,9 @@ const {
     <div class="left-panel">
       <div class="section-title-container">
         <h1 class="section-title">{sectionTitle}</h1>
+        <h2 class="text-3xl font-bold text-white mt-8">{challengeTitle}</h2>
+        <h3 class="text-2xl text-blue-100 mb-8">{challengeSubtitle}</h3>
+        <p class="text-lg text-blue-50 mb-8">{introText}</p>
       </div>
       
       <div class="hero-image-container">
@@ -104,17 +134,79 @@ const {
         
         <p class="intro-text">{introText}</p>
         
-        <ul class="statistics-list">
-          {statistics.map(stat => (
-            <li class="statistic-item">{stat}</li>
+        <div class="stats-grid">
+          {statistics && statistics.map((stat, index) => (
+            <StatCard
+              value={stat.value}
+              title={stat.title}
+              description={stat.description}
+            />
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .stat-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0.5rem 0;
+  }
+
+  .stat-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+      padding: 1.25rem;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+    }
+  }
+
   .framing-challenge-slide {
     width: 100%;
     height: 100vh;
@@ -348,24 +440,18 @@ const {
   .statistics-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
   .statistic-item {
     font-size: 1rem;
     line-height: 1.6;
     color: rgb(var(--color-primary-800));
-    margin-bottom: 1rem;
     padding-left: 1.5rem;
     position: relative;
-  }
-
-  .statistic-item::before {
-    content: "•";
-    color: rgb(var(--color-accent-500));
-    font-weight: var(--font-weight-bold);
-    position: absolute;
-    left: 0;
   }
 
   /* Responsive Design */

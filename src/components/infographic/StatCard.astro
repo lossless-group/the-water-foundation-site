@@ -1,0 +1,55 @@
+---
+interface StatCardProps {
+  value?: string;
+  title?: string;
+  description?: string;
+  children?: any;
+}
+
+const { value, title, description, children } = Astro.props;
+---
+
+<div class="stat-card">
+  {value && <div class="stat-value">{value}</div>}
+  {title && <h3 class="stat-title">{title}</h3>}
+  {description && <p class="stat-description">{description}</p>}
+  {children}
+</div>
+
+<style>
+  .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .stat-value {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: rgb(147, 197, 253);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin: 0.5rem 0;
+  }
+
+  .stat-description {
+    color: rgba(191, 219, 254, 0.9);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>
