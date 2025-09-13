@@ -4,12 +4,14 @@
  * Displays team members in a grid layout
  */
 
+import SocialIcons, { type SocialLink } from '@components/ui/SocialIcons.astro';
+
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   bio: string;
-  socialLinks?: Array<{name: string; href: string; icon: string;}>;
+  socialLinks?: SocialLink[];
 }
 
 interface Props {
@@ -60,7 +62,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="our-team-slide">
+<section class="our-team-slide" data-background-color="rgb(var(--color-primary-50))">
   <div class="slide-container">
     <div class="slide-header">
       <h1 class="main-title">
@@ -87,20 +89,11 @@ const {
             <p class="member-role">{member.role}</p>
             <p class="member-bio">{member.bio}</p>
             {member.socialLinks && member.socialLinks.length > 0 && (
-              <div class="social-links">
-                {member.socialLinks.map(link => (
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="social-link"
-                    title={link.name}
-                  >
-                    <span class="sr-only">{link.name}</span>
-                    <span class="social-icon" data-icon={link.icon}></span>
-                  </a>
-                ))}
-              </div>
+              <SocialIcons 
+                socialLinks={member.socialLinks} 
+                className="mt-auto" 
+                iconSize="md"
+              />
             )}
           </div>
         </div>
@@ -112,12 +105,12 @@ const {
 <style>
   .our-team-slide {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(var(--color-primary-50));
     padding: 2rem;
+    color: #e2e8f0;
   }
 
   .slide-container {
@@ -134,18 +127,18 @@ const {
   .main-title {
     font-size: 3.5rem;
     margin: 0 0 1rem;
-    color: var(--slide-text-primary);
+    color: #f8fafc;
   }
 
   .title-our {
-    font-weight: var(--font-weight-normal);
-    color: var(--slide-accent-bright);
+    font-weight: 400;
+    color: #60a5fa;
     margin-right: 0.5rem;
   }
 
   .title-team {
-    font-weight: var(--font-weight-bold);
-    color: var(--slide-text-primary);
+    font-weight: 700;
+    color: #f8fafc;
   }
 
   .team-grid {
@@ -156,13 +149,13 @@ const {
   }
 
   .team-member {
-    background: rgba(var(--color-primary-900), 0.6);
-    border-radius: var(--border-radius-lg);
+    background: rgba(51, 65, 85, 0.8);
+    border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(var(--color-accent-500), 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .team-member:hover {
@@ -196,52 +189,26 @@ const {
 
   .member-name {
     font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--slide-text-primary);
+    font-weight: 700;
+    color: #f8fafc;
     margin: 0 0 0.5rem;
   }
 
   .member-role {
     font-size: 1rem;
-    color: var(--slide-accent);
+    color: #60a5fa;
     margin: 0 0 1rem;
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
   }
 
   .member-bio {
     font-size: 0.95rem;
-    color: var(--slide-text-secondary);
+    color: #cbd5e1;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     flex-grow: 1;
   }
 
-  .social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto;
-  }
-
-  .social-link {
-    color: var(--slide-accent-bright);
-    transition: color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(var(--color-accent-500), 0.1);
-  }
-
-  .social-link:hover {
-    color: var(--slide-accent);
-    background: rgba(var(--color-accent-500), 0.2);
-  }
-
-  .social-icon {
-    font-size: 1.2rem;
-  }
 
   @media (max-width: 768px) {
     .main-title {

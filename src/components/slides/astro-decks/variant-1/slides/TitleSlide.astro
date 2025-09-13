@@ -1,11 +1,13 @@
 ---
 /**
  * TitleSlide Component - Variant 1
- * Recreates the Water Fund presentation title slide design
- * Features: Split layout with water droplet image, social icons, and elegant typography
+ * Opening slide with title, description, and animated elements
+ * Features: Split layout with water droplet animation and content
  */
-import WaterDropletAnimation from '../../../../decorators/WaterDropletAnimation.astro';
-import DotsPattern from '../../../../decorators/DotsPattern.astro';
+
+import WaterDropletAnimation from '@components/decorators/WaterDropletAnimation.astro';
+import DotsPattern from '@components/decorators/DotsPattern.astro';
+import SiteBrandMarkModeWrapper from '@components/ui/SiteBrandMarkModeWrapper.astro';
 
 interface Props {
   title?: string;
@@ -17,11 +19,11 @@ interface Props {
 }
 
 const {
-  title = "The Water Fund",
+  title = "The Water Foundation",
   subtitle = "",
-  description = "A blended capital platform connecting systemic underinvestment in the world's most essential and overlooked resource — water",
-  date = "Date: 15/08/25",
-  website = "www.waterfund.com",
+  description = "A think tank creating a blended capital platform addressing systemic underinvestment in the world's most essential and overlooked resource — water",
+  date = "Date: September 13, 2025",
+  website = "https://the-water-foundation.org",
   year = "2025"
 } = Astro.props;
 ---
@@ -53,7 +55,7 @@ const {
       
       <!-- Water droplet animation -->
       <div class="image-container">
-        <WaterDropletAnimation width="300px" height="400px" />
+        <WaterDropletAnimation width="600px" height="800px" />
       </div>
     </div>
 
@@ -62,10 +64,9 @@ const {
       <div class="year-badge">{year}</div>
       
       <div class="title-content">
-        <h1 class="main-title">
-          <span class="title-the">The</span>
-          <span class="title-water">Water Fund</span>
-        </h1>
+        <div class="logo-container">
+          <SiteBrandMarkModeWrapper className="h-16 w-auto" />
+        </div>
         
         <p class="description">{description}</p>
         
@@ -160,6 +161,20 @@ const {
     justify-content: center;
     align-items: center;
   }
+
+  .title-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;  }
 
   .year-badge {
     position: absolute;

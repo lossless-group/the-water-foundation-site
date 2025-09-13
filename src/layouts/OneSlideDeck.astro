@@ -66,9 +66,11 @@ const { title = "Presentation", description } = Astro.props;
         width: 1600,
         height: 900,
         
-        // Make it responsive
+        // Preserve aspect ratio with better mobile handling
         disableLayout: false,
-        margin: 0.04,
+        margin: 0.15,      // 15% margin to ensure proper fit
+        minScale: 0.2,     // Allow scaling down to 20% for small screens
+        maxScale: 0.85,    // Scale down to 85% max to ensure fit on laptops
         
         // Enable four-direction navigation for nested slides
         navigationMode: 'grid',
@@ -178,6 +180,13 @@ const { title = "Presentation", description } = Astro.props;
       background: rgba(var(--color-primary-800), 0.6);
       padding: 0.25rem 0.5rem;
       border-radius: var(--radius-sm);
+    }
+
+    /* Laptop screen adjustments for better vertical fit */
+    @media (min-width: 1024px) and (max-height: 900px) {
+      .reveal .slides {
+        padding: 2vh 0;
+      }
     }
 
     /* Responsive design */

@@ -120,7 +120,8 @@ const {
 
   .blind-spot-slide {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,9 +132,10 @@ const {
     background-position: center;
     background-repeat: no-repeat;
     font-family: var(--font-family-primary);
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
     overflow: hidden;
     color: #e2e8f0;
+    box-sizing: border-box;
   }
 
   .slide-container {
@@ -164,19 +166,21 @@ const {
   .content-panel {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    padding: 3rem;
+    gap: 1.5rem;
+    padding: 2rem;
     background: rgba(15, 23, 42, 0.9);
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    max-width: 800px;
+    max-width: 700px;
     width: 90%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     position: relative;
     overflow: hidden;
     animation: fadeInUp 0.8s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
   .content-panel::before {
