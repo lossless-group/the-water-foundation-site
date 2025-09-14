@@ -1,0 +1,375 @@
+---
+/**
+ * FactsCarousel Component
+ * Reusable carousel for displaying facts with navigation
+ */
+
+import type { CollectionEntry } from 'astro:content';
+import FactCardWithImage from './FactCard--w-Image.astro';
+
+interface Props {
+  entries: CollectionEntry<'facts'>[];
+  title?: string;
+  subtitle?: string;
+  showHeader?: boolean;
+}
+
+const {
+  entries,
+  title = "Unconventional Water Facts",
+  subtitle = "Think outside the box with our unconventional water insights",
+  showHeader = true
+} = Astro.props;
+---
+
+<div class="facts-carousel-wrapper">
+  {showHeader && (
+    <div class="header-section">
+      <h1 class="main-title">{title}</h1>
+      <p class="subtitle">{subtitle}</p>
+    </div>
+  )}
+
+  <!-- Carousel Container -->
+  <div class="carousel-container">
+    <!-- Navigation Buttons -->
+    <button class="nav-button prev-button" id="prevBtn" aria-label="Previous fact">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <!-- Facts Carousel -->
+    <div class="facts-carousel" id="factsCarousel">
+      <div class="facts-track" id="factsTrack">
+        {entries.map((entry, index) => (
+          <div class="fact-card" data-index={index}>
+            <FactCardWithImage entry={entry} />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Next Button -->
+    <button class="nav-button next-button" id="nextBtn" aria-label="Next fact">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Carousel Indicators -->
+  <div class="carousel-indicators" id="carouselIndicators">
+    {entries.map((_, index) => (
+      <button 
+        class={`indicator ${index === 0 ? 'active' : ''}`}
+        data-index={index}
+        aria-label={`Go to fact ${index + 1}`}
+      ></button>
+    ))}
+  </div>
+
+  <!-- Progress Info -->
+  <div class="progress-info">
+    <span class="current-fact" id="currentFact">1</span>
+    <span class="divider">/</span>
+    <span class="total-facts">{entries.length}</span>
+  </div>
+</div>
+
+<style>
+  .facts-carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Header Section - matching FactsGrid styling */
+  .header-section {
+    text-align: center;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 0.75rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: 0.025em;
+    color: #67e8f9; /* cyan-300 - light color for dark mode */
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    margin: 0;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.625;
+    color: #dbeafe; /* blue-100 - light color for dark mode */
+  }
+
+  /* Carousel Container */
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .facts-carousel {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .facts-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .fact-card {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  /* Override FactCard styling to match dark blue design */
+  .fact-card :global(article) {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    color: white !important;
+  }
+
+  .fact-card :global(.text-foreground) {
+    color: white !important;
+  }
+
+  .fact-card :global(.text-foreground\/60) {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .fact-card :global(.text-foreground\/80) {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .fact-card :global(.border-border\/60) {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .fact-card :global(.text-primary\/90) {
+    color: #67e8f9 !important;
+  }
+
+  .fact-card :global(.hover\:text-primary:hover) {
+    color: #a5f3fc !important;
+  }
+
+  /* Navigation Buttons - using water theme colors */
+  .nav-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #67e8f9; /* text-cyan-300 */
+  }
+
+  .nav-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #a5f3fc; /* text-cyan-200 */
+    transform: scale(1.05);
+  }
+
+  .nav-button:active {
+    transform: scale(0.95);
+  }
+
+  .nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Carousel Indicators - using water theme colors */
+  .carousel-indicators {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(96, 165, 250, 0.3); /* bg-blue-400/30 */
+  }
+
+  .indicator:hover {
+    background: rgba(96, 165, 250, 0.5); /* bg-blue-400/50 */
+  }
+
+  .indicator.active {
+    transform: scale(1.2);
+    background: #22d3ee; /* bg-cyan-400 */
+  }
+
+  /* Progress Info - using water theme colors */
+  .progress-info {
+    font-size: 1rem;
+    color: #bfdbfe; /* text-blue-200 */
+  }
+
+  .current-fact {
+    font-weight: 600;
+    color: #67e8f9; /* text-cyan-300 */
+  }
+
+  .divider {
+    margin: 0 0.5rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 1.75rem;
+    }
+
+    .carousel-container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .nav-button {
+      width: 50px;
+      height: 50px;
+    }
+
+    .carousel-indicators {
+      order: -1;
+    }
+  }
+</style>
+
+<script>
+  interface FactsCarouselElements {
+    track: HTMLElement | null;
+    prevBtn: HTMLElement | null;
+    nextBtn: HTMLElement | null;
+    indicators: HTMLElement | null;
+    currentFactSpan: HTMLElement | null;
+  }
+
+  class FactsCarousel {
+    private track: HTMLElement | null;
+    private prevBtn: HTMLElement | null;
+    private nextBtn: HTMLElement | null;
+    private indicators: HTMLElement | null;
+    private currentFactSpan: HTMLElement | null;
+    private currentIndex: number;
+    private totalFacts: number;
+
+    constructor() {
+      this.track = document.getElementById('factsTrack');
+      this.prevBtn = document.getElementById('prevBtn');
+      this.nextBtn = document.getElementById('nextBtn');
+      this.indicators = document.getElementById('carouselIndicators');
+      this.currentFactSpan = document.getElementById('currentFact');
+      
+      this.currentIndex = 0;
+      this.totalFacts = this.track?.children.length || 0;
+      
+      this.init();
+    }
+
+    private init(): void {
+      if (!this.track) return;
+
+      // Add event listeners
+      this.prevBtn?.addEventListener('click', () => this.goToPrevious());
+      this.nextBtn?.addEventListener('click', () => this.goToNext());
+      
+      // Add indicator click handlers
+      this.indicators?.querySelectorAll('.indicator').forEach((indicator, index) => {
+        indicator.addEventListener('click', () => this.goToSlide(index));
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowLeft') this.goToPrevious();
+        if (e.key === 'ArrowRight') this.goToNext();
+      });
+
+      this.updateCarousel();
+    }
+
+    private goToPrevious(): void {
+      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.totalFacts - 1;
+      this.updateCarousel();
+    }
+
+    private goToNext(): void {
+      this.currentIndex = this.currentIndex < this.totalFacts - 1 ? this.currentIndex + 1 : 0;
+      this.updateCarousel();
+    }
+
+    private goToSlide(index: number): void {
+      this.currentIndex = index;
+      this.updateCarousel();
+    }
+
+    private updateCarousel(): void {
+      if (!this.track) return;
+
+      // Update track position
+      const translateX = -this.currentIndex * 100;
+      this.track.style.transform = `translateX(${translateX}%)`;
+
+      // Update indicators
+      this.indicators?.querySelectorAll('.indicator').forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === this.currentIndex);
+      });
+
+      // Update progress info
+      if (this.currentFactSpan) {
+        this.currentFactSpan.textContent = (this.currentIndex + 1).toString();
+      }
+
+      // Update button states
+      if (this.prevBtn) (this.prevBtn as HTMLButtonElement).disabled = false;
+      if (this.nextBtn) (this.nextBtn as HTMLButtonElement).disabled = false;
+    }
+  }
+
+  // Initialize carousel when DOM is loaded
+  function initializeCarousel(): void {
+    new FactsCarousel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCarousel);
+  } else {
+    initializeCarousel();
+  }
+</script>
