@@ -1,0 +1,322 @@
+---
+/**
+ * AtCrisisPoint Slide Component
+ * Adapted from AtCrisisPoint--Jumbo.astro for presentation format
+ * Highlights the critical resource crisis with visual impact
+ */
+
+interface Props {
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  indicatorText?: string;
+}
+
+const {
+  title = 'The Critical Resource Crisis',
+  titleHighlight = 'Resource',
+  description = 'Water is quickly becoming the world\'s most critical resource...',
+  indicatorText = 'Crisis Indicator'
+} = Astro.props;
+---
+
+<section 
+  class="slide-container" 
+  data-background-color="rgb(4, 31, 42)"
+  data-transition="slide"
+>
+  <div class="slide-content">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 z-0">
+      <!-- Warning/Crisis themed gradient orbs -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-red-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-orange-600/10 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-yellow-600/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      
+      <!-- Floating warning particles -->
+      <div class="absolute top-1/4 left-1/3 w-3 h-3 bg-red-400/40 rounded-full animate-float opacity-60"></div>
+      <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-orange-400/40 rounded-full animate-float-delay opacity-40"></div>
+      <div class="absolute bottom-1/3 left-1/2 w-4 h-4 bg-yellow-400/40 rounded-full animate-float-slow opacity-50"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-6xl mx-auto">
+      <!-- Main Content Grid -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Side - Text Content -->
+        <div class="text-center lg:text-left">
+          <!-- Main Title -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 animate-slide-up leading-tight text-cyan-200">
+            {title.split(titleHighlight)[0]}
+            {titleHighlight && <span class="text-red-400 drop-shadow-lg">{titleHighlight}</span>}
+            {title.split(titleHighlight)[1]}
+          </h1>
+          
+          <!-- Animated Divider -->
+          <div class="relative mb-6">
+            <div class="w-24 h-1 bg-gradient-to-r from-red-400 via-orange-500 to-yellow-600 mx-auto lg:mx-0 animate-expand rounded-full shadow-lg shadow-red-500/50"></div>
+            <div class="absolute inset-0 w-24 h-1 bg-gradient-to-r from-red-400/50 via-orange-500/50 to-yellow-600/50 mx-auto lg:mx-0 animate-pulse rounded-full blur-sm"></div>
+          </div>
+          
+          <!-- Description -->
+          <p class="text-xl md:text-2xl text-blue-100 leading-relaxed animate-fade-in-up font-medium">
+            {description}
+          </p>
+        </div>
+
+        <!-- Right Side - Crisis Indicator -->
+        <div class="flex justify-center animate-slide-up-delay">
+          <div class="relative">
+            <!-- Pulsing background ring -->
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full animate-ping"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full animate-pulse"></div>
+            
+            <!-- Main indicator container -->
+            <div class="relative bg-gradient-to-br from-red-500/25 to-orange-500/25 backdrop-blur-sm border border-red-400/40 rounded-full p-12 text-center shadow-2xl shadow-red-500/20">
+              <!-- Warning icon -->
+              <div class="text-8xl md:text-9xl font-black text-red-400 mb-4 animate-bounce-slow drop-shadow-2xl">
+                !
+              </div>
+              
+              <!-- Indicator text -->
+              <div class="text-lg md:text-xl font-bold text-red-200 uppercase tracking-wider">
+                {indicatorText}
+              </div>
+              
+              <!-- Additional visual elements -->
+              <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full animate-pulse opacity-75"></div>
+              <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-orange-500 rounded-full animate-pulse opacity-60"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom emphasis text -->
+      <div class="mt-12 text-center">
+        <div class="bg-gradient-to-r from-red-500/10 via-orange-500/10 to-yellow-500/10 backdrop-blur-sm border border-red-400/30 rounded-2xl p-6 max-w-4xl mx-auto">
+          <p class="text-lg text-red-200 font-medium">
+            The window for action is <span class="text-red-300 font-bold">rapidly closing</span>. 
+            Every day of delay compounds the crisis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slide-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* Animation Keyframes */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes expand {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 6rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(120deg);
+    }
+    66% {
+      transform: translateY(-10px) rotate(240deg);
+    }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-15px) rotate(120deg);
+    }
+    66% {
+      transform: translateY(-25px) rotate(240deg);
+    }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(180deg);
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-slide-up {
+    animation: slide-up 1.2s ease-out forwards;
+  }
+  
+  .animate-slide-up-delay {
+    animation: slide-up 1.2s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out 0.8s forwards;
+    opacity: 0;
+  }
+  
+  .animate-expand {
+    animation: expand 1.5s ease-out 1.2s forwards;
+    width: 0;
+    opacity: 0;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float-delay {
+    animation: float-delay 10s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 15s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 12s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 16s ease-in-out infinite;
+  }
+
+  /* Responsive adjustments for slide format */
+  @media (max-width: 1024px) {
+    .slide-content {
+      padding: 1.5rem;
+    }
+    
+    .grid {
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .slide-content {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 3rem !important;
+    }
+    
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .text-center.lg\\:text-left {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Initialize animations when slide becomes active
+  function initializeAtCrisisPointSlide() {
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-up, .animate-slide-up-delay');
+    animatedElements.forEach(function(element) {
+      observer.observe(element);
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAtCrisisPointSlide);
+  } else {
+    initializeAtCrisisPointSlide();
+  }
+</script>

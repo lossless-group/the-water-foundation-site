@@ -1,0 +1,184 @@
+---
+import BrandTableDisplay from '@layouts/sections/tables/BrandTableDisplay.astro';
+---
+
+<section 
+  class="slide-container" 
+  data-background-color="rgb(4, 31, 42)"
+  data-transition="slide"
+>
+  <div class="slide-content">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 z-0">
+      <!-- Gradient Orbs -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-teal-600/10 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-cyan-600/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+    </div>
+
+    <div class="relative z-10 w-full">
+      <!-- Slide Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent mb-4 animate-slide-up">
+          FIRST PRINCIPLES
+        </h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 mx-auto animate-expand rounded-full shadow-lg shadow-blue-500/50"></div>
+      </div>
+
+      <!-- Table Container with slide-appropriate styling -->
+      <div class="max-w-6xl mx-auto px-4">
+        <!-- Custom styled table for dark slide background -->
+        <div class="overflow-x-auto rounded-xl shadow-2xl ring-1 ring-cyan-400/30 bg-slate-900/60 backdrop-blur-lg border border-cyan-400/20">
+          <table class="min-w-full border-separate border-spacing-0 text-left">
+            <thead>
+              <tr class="bg-gradient-to-r from-blue-900/40 via-teal-900/40 to-cyan-900/40">
+                <th scope="col" class="sticky left-0 z-[1] bg-gradient-to-r from-blue-900/60 via-teal-900/60 to-cyan-900/60 px-4 py-3 text-sm font-semibold text-cyan-200 border-b border-cyan-400/30">First Principle</th>
+                <th scope="col" class="px-4 py-3 text-sm font-semibold text-blue-200 border-b border-cyan-400/30">Strategic Response</th>
+                <th scope="col" class="px-4 py-3 text-sm font-semibold text-teal-200 border-b border-cyan-400/30">Donor Example</th>
+                <th scope="col" class="px-4 py-3 text-sm font-semibold text-cyan-200 border-b border-cyan-400/30">Investor Example</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm leading-6">
+              <tr class="bg-slate-800/20 hover:bg-slate-700/30 transition-colors">
+                <th scope="row" class="sticky left-0 z-[1] bg-slate-800/40 px-4 py-3 font-semibold text-cyan-300 align-top border-b border-slate-600/30">1. Water is essential — but mispriced.</th>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-blue-100">Align capital with access and risk.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-teal-100">Fund women-led kiosks for clean water access in underserved regions.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-cyan-100">Invest in a digital water rights platform scaling across LATAM.</td>
+              </tr>
+              <tr class="bg-slate-800/10 hover:bg-slate-700/30 transition-colors">
+                <th scope="row" class="sticky left-0 z-[1] bg-slate-800/30 px-4 py-3 font-semibold text-cyan-300 align-top border-b border-slate-600/30">2. Resilience is the true return.</th>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-blue-100">Build for long-term, systemic stability.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-teal-100">Core support for water-health-data systems across rural zones.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-cyan-100">Growth equity in climate-smart irrigation with cross-border reach.</td>
+              </tr>
+              <tr class="bg-slate-800/20 hover:bg-slate-700/30 transition-colors">
+                <th scope="row" class="sticky left-0 z-[1] bg-slate-800/40 px-4 py-3 font-semibold text-cyan-300 align-top border-b border-slate-600/30">3. Complexity is the alpha.</th>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-blue-100">Step in where others hesitate.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-teal-100">De-risk blended municipal water reuse pilots in India.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-cyan-100">Structure SPV for desalination plant in MENA with ESG premiums.</td>
+              </tr>
+              <tr class="bg-slate-800/10 hover:bg-slate-700/30 transition-colors">
+                <th scope="row" class="sticky left-0 z-[1] bg-slate-800/30 px-4 py-3 font-semibold text-cyan-300 align-top border-b border-slate-600/30">4. Tech must meet governance.</th>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-blue-100">Fund tech + policy + community capacity.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-teal-100">Grants for soil-water-tech agroforestry in climate-hit Sahel.</td>
+                <td class="px-4 py-3 align-top border-b border-slate-600/30 text-cyan-100">Hybrid investment in leak detection SaaS + retrofitting ops.</td>
+              </tr>
+              <tr class="bg-slate-800/20 hover:bg-slate-700/30 transition-colors">
+                <th scope="row" class="sticky left-0 z-[1] bg-slate-800/40 px-4 py-3 font-semibold text-cyan-300 align-top">5. Value compounds across sectors.</th>
+                <td class="px-4 py-3 align-top text-blue-100">Track and multiply co-benefits.</td>
+                <td class="px-4 py-3 align-top text-teal-100">Cross-sector school WASH programs embedded in gender equity.</td>
+                <td class="px-4 py-3 align-top text-cyan-100">Carbon + biodiversity credits via blue-carbon mangrove assets.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slide-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* Animation Keyframes */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes expand {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 6rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-slide-up {
+    animation: slide-up 1.2s ease-out forwards;
+  }
+  
+  .animate-expand {
+    animation: expand 1.5s ease-out 0.8s forwards;
+    width: 0;
+    opacity: 0;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 12s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 16s ease-in-out infinite;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .slide-content {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem !important;
+    }
+    
+    table {
+      font-size: 0.75rem;
+    }
+    
+    th, td {
+      padding: 0.5rem !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem !important;
+    }
+    
+    table {
+      font-size: 0.7rem;
+    }
+  }
+</style>
