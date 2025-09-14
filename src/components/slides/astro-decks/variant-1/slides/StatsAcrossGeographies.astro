@@ -1,0 +1,267 @@
+---
+/**
+ * StatsAcrossGeographies Slide Component
+ * Displays water-related death statistics across different geographical regions
+ */
+---
+
+<section 
+  class="slide-container" 
+  data-background-color="rgb(4, 31, 42)"
+  data-transition="slide"
+>
+  <div class="slide-content">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-teal-600/10 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-cyan-600/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-black text-cyan-200 mb-6 animate-slide-up">
+          Across Geographies
+        </h1>
+        
+        <!-- Animated Divider -->
+        <div class="relative mb-6">
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 mx-auto animate-expand rounded-full shadow-lg shadow-blue-500/50"></div>
+          <div class="absolute inset-0 w-24 h-1 bg-gradient-to-r from-blue-400/50 via-blue-500/50 to-blue-700/50 mx-auto animate-pulse rounded-full blur-sm"></div>
+        </div>
+      </div>
+
+      <!-- Statistics Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Children Under 5 -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s;">
+          <div class="text-3xl md:text-4xl font-bold text-cyan-300 mb-2">300K</div>
+          <h3 class="text-lg font-semibold text-cyan-200 mb-3">Children Under 5</h3>
+          <p class="text-cyan-100 text-sm leading-relaxed">
+            Preventable deaths each year from diarrhoeal disease linked to unsafe water, sanitation, and hygiene (WHO/UNICEF JMP, 2023)
+          </p>
+        </div>
+
+        <!-- Sub-Saharan Africa -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.3s;">
+          <div class="text-3xl md:text-4xl font-bold text-blue-300 mb-2">500K</div>
+          <h3 class="text-lg font-semibold text-blue-200 mb-3">Sub-Saharan Africa</h3>
+          <p class="text-blue-100 text-sm leading-relaxed">
+            Highest burden, with unsafe water contributing to approximately 5% of all deaths — around 500,000 preventable deaths annually (WHO Africa, 2023)
+          </p>
+        </div>
+
+        <!-- South Asia -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s;">
+          <div class="text-3xl md:text-4xl font-bold text-teal-300 mb-2">700K</div>
+          <h3 class="text-lg font-semibold text-teal-200 mb-3">South Asia</h3>
+          <p class="text-teal-100 text-sm leading-relaxed">
+            Nearly 700,000 premature deaths annually due to poor water, sanitation, and hygiene (WHO Global Health Estimates, 2022)
+          </p>
+        </div>
+
+        <!-- Southeast Asia -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.5s;">
+          <div class="text-3xl md:text-4xl font-bold text-cyan-300 mb-2">200K</div>
+          <h3 class="text-lg font-semibold text-cyan-200 mb-3">Southeast Asia</h3>
+          <p class="text-cyan-100 text-sm leading-relaxed">
+            Around 200,000 preventable deaths each year related to unsafe water and inadequate sanitation (WHO/UNICEF JMP, 2023)
+          </p>
+        </div>
+
+        <!-- Middle East & North Africa -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.6s;">
+          <div class="text-3xl md:text-4xl font-bold text-blue-300 mb-2">150K</div>
+          <h3 class="text-lg font-semibold text-blue-200 mb-3">Middle East & North Africa</h3>
+          <p class="text-blue-100 text-sm leading-relaxed">
+            Approximately 150,000 preventable deaths annually, with fragile and conflict-affected states carrying the highest burden (UNICEF MENA, 2023)
+          </p>
+        </div>
+
+        <!-- Latin America -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.7s;">
+          <div class="text-3xl md:text-4xl font-bold text-teal-300 mb-2">100K</div>
+          <h3 class="text-lg font-semibold text-teal-200 mb-3">Latin America</h3>
+          <p class="text-teal-100 text-sm leading-relaxed">
+            Around 100,000 preventable deaths annually, disproportionately affecting poor and rural populations (PAHO/WHO, 2022)
+          </p>
+        </div>
+
+        <!-- Eastern Europe & Central Asia -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 animate-fade-in-up md:col-span-2 lg:col-span-1" style="animation-delay: 0.8s;">
+          <div class="text-3xl md:text-4xl font-bold text-cyan-300 mb-2">80K</div>
+          <h3 class="text-lg font-semibold text-cyan-200 mb-3">Eastern Europe & Central Asia</h3>
+          <p class="text-cyan-100 text-sm leading-relaxed">
+            Lower but still significant, with about 80,000 preventable deaths annually due to inadequate WASH services (WHO/UNICEF JMP, 2023)
+          </p>
+        </div>
+      </div>
+
+      <!-- Summary Statement -->
+      <div class="mt-12 text-center">
+        <div class="bg-gradient-to-r from-red-500/10 via-orange-500/10 to-yellow-500/10 backdrop-blur-sm border border-red-400/30 rounded-2xl p-6 max-w-4xl mx-auto">
+          <p class="text-xl text-red-200 font-medium">
+            Over <span class="text-red-300 font-bold text-2xl">2 million</span> preventable deaths annually across all regions. 
+            <span class="text-red-300 font-semibold">The crisis knows no borders.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slide-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* Animation Keyframes */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes expand {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 6rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-slide-up {
+    animation: slide-up 1.2s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-expand {
+    animation: expand 1.5s ease-out 1.2s forwards;
+    width: 0;
+    opacity: 0;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 12s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 16s ease-in-out infinite;
+  }
+
+  /* Responsive adjustments for slide format */
+  @media (max-width: 1024px) {
+    .slide-content {
+      padding: 1.5rem;
+    }
+    
+    .grid {
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .slide-content {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 3rem !important;
+    }
+    
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .text-3xl.md\\:text-4xl {
+      font-size: 2rem !important;
+    }
+  }
+</style>
+
+<script>
+  // Initialize animations when slide becomes active
+  function initializeStatsAcrossGeographiesSlide() {
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-up');
+    animatedElements.forEach(function(element) {
+      observer.observe(element);
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeStatsAcrossGeographiesSlide);
+  } else {
+    initializeStatsAcrossGeographiesSlide();
+  }
+</script>

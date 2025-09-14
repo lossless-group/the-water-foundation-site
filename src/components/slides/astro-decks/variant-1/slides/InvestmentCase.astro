@@ -1,0 +1,114 @@
+---
+/**
+ * InvestmentCase Slide Component
+ * Adapted from InnovationToScale--Jumbo.astro "The Investment Case" section
+ */
+---
+
+<section 
+  class="slide-container" 
+  data-background-color="rgb(4, 31, 42)"
+  data-transition="slide"
+>
+  <div class="slide-content">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-teal-600/10 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-6xl mx-auto text-center">
+      <!-- Header -->
+      <h1 class="text-5xl md:text-6xl font-black text-cyan-200 mb-8 animate-slide-up">
+        The Investment Case
+      </h1>
+      
+      <!-- Main Proposition -->
+      <p class="text-2xl md:text-3xl font-bold text-cyan-200 leading-relaxed mb-12 animate-fade-in-up">
+        Water is not only the world's most vital resource - it's also the one where capital can affect the most change.
+      </p>
+      
+      <!-- Investment Metrics Grid -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div class="text-2xl font-bold text-blue-300 mb-2">Highest Impact</div>
+          <div class="text-sm text-cyan-100">Multiple amongst natural resources</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div class="text-2xl font-bold text-teal-300 mb-2">Undervalued Asset</div>
+          <div class="text-sm text-cyan-100">Not effectively priced into financial systems</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div class="text-2xl font-bold text-cyan-300 mb-2">Future Capitalization</div>
+          <div class="text-sm text-cyan-100">Set to become most capitalized natural resource</div>
+        </div>
+      </div>
+      
+      <!-- Supporting Text -->
+      <p class="text-xl text-cyan-100 leading-relaxed mb-8">
+        It hasn't been effectively priced into our financial systems yet. Water is set to become the most capitalized asset class amongst natural resources. Investing in water also has the highest impact multiple amongst natural resources.
+      </p>
+      
+      <!-- Final Statement -->
+      <div class="p-6 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-xl border border-blue-400/30">
+        <p class="text-3xl font-bold text-cyan-100 leading-relaxed">
+          It's the last big scarcity play.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slide-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.1); }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(1.05); }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 1.2s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out 0.8s forwards;
+    opacity: 0;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 12s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 16s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 3rem !important; }
+    .grid { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>
