@@ -104,7 +104,13 @@ const { title = "Presentation", description } = Astro.props;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: var(--slide-bg-primary);
+      background: var(--slide-bg-primary) !important;
+    }
+
+    /* Force RevealJS background elements to use dark theme */
+    .reveal .slide-background,
+    .reveal .slide-background-content {
+      background: var(--slide-bg-primary) !important;
     }
 
     /* Container styling */

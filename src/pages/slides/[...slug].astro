@@ -4,6 +4,7 @@ import type { GetStaticPaths } from 'astro';
 import OneSlideDeck from '../../layouts/OneSlideDeck.astro';
 import MarkdownSlideDeck from '../../layouts/MarkdownSlideDeck.astro';
 import SlideShowVariant1 from '../../components/slides/astro-decks/variant-1/SlideShow--Variant-1.astro';
+import SlideShowMeetAt from '../../components/slides/astro-decks/meet-at/SlideShow--Meet-At.astro';
 import { componentDecks } from '../../data/componentDecks';
 import { markdownDecks, getMarkdownDeck } from '../../data/markdownDecks';
 
@@ -71,6 +72,14 @@ if (!isComponentDeck) {
   componentDecks[slideshow].component === 'SlideShowVariant1' ? (
     <OneSlideDeck title={title} description={description}>
       <SlideShowVariant1 
+        title={title}
+        subtitle={description}
+        author="The Water Fund Team"
+      />
+    </OneSlideDeck>
+  ) : componentDecks[slideshow].component === 'SlideShowMeetAt' ? (
+    <OneSlideDeck title={title} description={description}>
+      <SlideShowMeetAt 
         title={title}
         subtitle={description}
         author="The Water Fund Team"

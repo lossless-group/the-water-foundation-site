@@ -10,6 +10,11 @@ export const componentDecks: Record<string, ComponentDeck> = {
     description: 'Systemic Solutions for Global Water Security',
     component: 'SlideShowVariant1'
   },
+  'meet-at-the-drop': {
+    title: 'Meet The Water Foundation at The Drop',
+    description: 'An exclusive gathering of water innovation leaders, investors, and changemakers',
+    component: 'SlideShowMeetAt'
+  },
   'sample': {
     title: 'Sample Presentation',
     description: 'A sample slide deck to test the Water Theme integration',

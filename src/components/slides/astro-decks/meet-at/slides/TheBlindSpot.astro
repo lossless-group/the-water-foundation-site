@@ -1,0 +1,539 @@
+---
+/**
+ * TheBlindSpot Component - Variant 1
+ * Slide highlighting the water investment blind spot
+ * Features: Split layout with environmental contrast image and key insights
+ */
+
+interface StatisticItem {
+  value: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  mainTitle?: string;
+  titleHighlight?: string;
+  section1Title?: string;
+  section1Points?: Array<string>;
+  section2Title?: string;
+  section2Points?: Array<string>;
+  website?: string;
+  statistics?: StatisticItem[];
+}
+
+const {
+  mainTitle = "The Blind Spot of",
+  titleHighlight = "Humankind",
+  section1Title = "Hidden in Plain Sight",
+  section1Points = [
+    "Water is a critical system hiding in plain sight.",
+    "Despite its foundational role, water is undervalued, undercapitalized, and unprotected."
+  ],
+  section2Title = "Climate Finance Gap",
+  section2Points = [
+    "90% of climate adaptation needs are water-based, but less than 5% of climate finance flows there.",
+    "Those who act early to close this gap will unlock both impact and value."
+  ],
+  website = "www.waterfund.com",
+  statistics = []
+} = Astro.props;
+---
+
+<section class="blind-spot-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <div class="content-panel">
+      <div class="title-section">
+        <h1 class="main-title">{mainTitle}</h1>
+        <h1 class="title-highlight">{titleHighlight}</h1>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="insights-section">
+        <!-- Section 1: Hidden in Plain Sight -->
+        <div class="insight-block">
+          <div class="insight-header">
+            <div class="insight-icon">👁️</div>
+            <h2 class="insight-title">{section1Title}</h2>
+          </div>
+          <ul class="insight-list">
+            {section1Points.map((point, index) => (
+              <li class="insight-item" style={`--delay: ${index * 0.1}s`}>
+                <span class="bullet">•</span>
+                <span class="point-text">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Section 2: Climate Finance Gap -->
+        <div class="insight-block">
+          <div class="insight-header">
+            <div class="insight-icon">💰</div>
+            <h2 class="insight-title">{section2Title}</h2>
+          </div>
+          <ul class="insight-list">
+            {section2Points.map((point, index) => (
+              <li class="insight-item" style={`--delay: ${(index + section1Points.length) * 0.1}s`}>
+                <span class="bullet">•</span>
+                <span class="point-text">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="website-footer">
+        <a href={`https://${website}`} target="_blank" rel="noopener noreferrer" class="website-link">
+          {website}
+          <svg class="external-link-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+          <div class="water-droplet" style="--x: 50%; --y: 20%; --size: 6px; --delay: 1.5s;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .blind-spot-slide {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+      linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
+      url('/images/imageOf__Horizontal-River--Greyscale.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: var(--font-family-primary);
+    padding: 2rem 1rem;
+    overflow: hidden;
+    color: #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  .slide-container {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .image-panel {
+      order: -1;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  /* Content Panel Styling */
+  .content-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 700px;
+    width: 90%;
+    margin: 1rem auto;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .content-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+  }
+
+  .title-section {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .title-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .title-highlight {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #f8fafc;
+    margin: 0.5rem 0 0;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .insights-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+  }
+
+  .insight-block {
+    background: rgba(51, 65, 85, 0.5);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .insight-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .insight-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .insight-icon {
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .insight-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .insight-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    text-align: left;
+  }
+
+  .insight-item {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #e2e8f0;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    text-align: left;
+  }
+  
+  .insight-item .bullet {
+    color: #3b82f6;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 0.1em;
+  }
+  
+  .insight-item .point-text {
+    flex: 1;
+  }
+
+  .insight-item::before {
+    color: rgb(var(--color-accent-500));
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 0;
+  }
+
+  .website-footer {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(96, 165, 250, 0.1);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .website-link:hover {
+    background: rgba(96, 165, 250, 0.2);
+    border-color: rgba(96, 165, 250, 0.4);
+    transform: translateY(-1px);
+  }
+  
+  .external-link-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+  
+  .website-link:hover .external-link-icon {
+    transform: translate(2px, -2px);
+  }
+
+  /* Image Panel Styling */
+  .image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .environmental-contrast {
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(var(--color-primary-900), 0.15);
+  }
+
+  .landscape-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .sky-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, rgb(var(--color-accent-200)) 0%, rgb(var(--color-accent-100)) 100%);
+  }
+
+  /* Drought side (left) */
+  .drought-side {
+    position: absolute;
+    left: 0;
+    top: 60%;
+    width: 50%;
+    height: 40%;
+    background: linear-gradient(to bottom, #8B7355 0%, #6B5B47 100%);
+  }
+
+  .cracked-earth {
+    position: absolute;
+    inset: 0;
+  }
+
+  .crack {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1px;
+  }
+
+  .crack-1 { width: 60px; height: 2px; top: 20%; left: 10%; transform: rotate(15deg); }
+  .crack-2 { width: 40px; height: 2px; top: 40%; left: 30%; transform: rotate(-25deg); }
+  .crack-3 { width: 50px; height: 2px; top: 60%; left: 15%; transform: rotate(35deg); }
+  .crack-4 { width: 2px; height: 30px; top: 25%; left: 70%; }
+  .crack-5 { width: 35px; height: 2px; top: 75%; left: 45%; transform: rotate(-15deg); }
+
+  .dead-tree {
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    transform: translateX(-50%);
+  }
+
+  .trunk {
+    width: 8px;
+    height: 40px;
+    background: #4A4A4A;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .branch {
+    position: absolute;
+    background: #4A4A4A;
+    border-radius: 2px;
+  }
+
+  .branch-1 { width: 20px; height: 3px; top: 5px; left: 8px; transform: rotate(25deg); }
+  .branch-2 { width: 15px; height: 3px; top: 15px; left: -10px; transform: rotate(-35deg); }
+  .branch-3 { width: 18px; height: 3px; top: 10px; left: 8px; transform: rotate(45deg); }
+  .branch-4 { width: 12px; height: 3px; top: 25px; left: -8px; transform: rotate(-25deg); }
+
+  /* Green side (right) */
+  .green-side {
+    position: absolute;
+    right: 0;
+    top: 60%;
+    width: 50%;
+    height: 40%;
+  }
+
+  .grass-field {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(var(--color-accent-400)) 0%, rgb(var(--color-accent-500)) 100%);
+  }
+
+  .living-tree {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .trunk-green {
+    width: 10px;
+    height: 45px;
+    background: #8B4513;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .foliage {
+    position: absolute;
+    background: rgb(var(--color-accent-500));
+    border-radius: 50%;
+  }
+
+  .foliage-1 {
+    width: 40px;
+    height: 40px;
+    top: -15px;
+    left: -15px;
+  }
+
+  .foliage-2 {
+    width: 35px;
+    height: 35px;
+    top: -25px;
+    left: -10px;
+    background: rgb(var(--color-accent-400));
+  }
+
+  .foliage-3 {
+    width: 30px;
+    height: 30px;
+    top: -20px;
+    left: -5px;
+    background: rgb(var(--color-accent-300));
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      gap: 2rem;
+    }
+    
+    .environmental-contrast {
+      width: 350px;
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-title, .title-highlight {
+      font-size: 2.5rem;
+    }
+    
+    .insight-title {
+      font-size: 1.25rem;
+    }
+    
+    .insight-item {
+      font-size: 0.95rem;
+    }
+    
+    .environmental-contrast {
+      width: 300px;
+      height: 200px;
+    }
+    
+    .slide-container {
+      gap: 1rem;
+    }
+  }
+</style>

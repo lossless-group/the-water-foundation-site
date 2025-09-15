@@ -1,0 +1,278 @@
+---
+/**
+ * TitleSlide Component - Variant 1
+ * Opening slide with title, description, and animated elements
+ * Features: Split layout with water droplet animation and content
+ */
+
+import WaterDropletAnimation from '@components/decorators/WaterDropletAnimation.astro';
+import DotsPattern from '@components/decorators/DotsPattern.astro';
+import SiteBrandMarkModeWrapper from '@components/ui/SiteBrandMarkModeWrapper.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  date?: string;
+  website?: string;
+  year?: string;
+}
+
+const {
+  title = "The Water Foundation",
+  subtitle = "",
+  description = "A think tank creating a blended capital platform addressing systemic underinvestment in the world's most essential and overlooked resource — water",
+  date = "Date: September 13, 2025",
+  website = "https://the-water-foundation.org",
+  year = "2025"
+} = Astro.props;
+---
+
+<section class="title-slide" data-background-color="rgb(var(--color-primary-50))">
+  <div class="slide-container">
+    <!-- Left side with image and social icons -->
+    <div class="left-panel">
+      <div class="social-icons">
+        <div class="social-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="social-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+          </svg>
+        </div>
+        <div class="social-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12h8"/>
+            <path d="M12 8v8"/>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Water droplet animation -->
+      <div class="image-container">
+        <WaterDropletAnimation width="600px" height="800px" />
+      </div>
+    </div>
+
+    <!-- Right side with content -->
+    <div class="right-panel">
+      <div class="year-badge">{year}</div>
+      
+      <div class="title-content">
+        <div class="logo-container">
+          <SiteBrandMarkModeWrapper className="h-16 w-auto" />
+        </div>
+        
+        <p class="description">{description}</p>
+        
+        <div class="meta-info">
+          <p class="date">{date}</p>
+          <p class="website">{website}</p>
+        </div>
+      </div>
+      
+      <!-- Decorative dots pattern -->
+      <DotsPattern />
+    </div>
+  </div>
+</section>
+
+<style>
+  .title-slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--color-primary-50));
+    font-family: var(--font-family-primary);
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* Left Panel Styling */
+  .left-panel {
+    background: rgb(var(--color-primary-900));
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .social-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid rgb(var(--color-primary-300));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--color-primary-300));
+    transition: var(--transition-smooth);
+  }
+
+  .social-icon:hover {
+    background: rgb(var(--color-primary-300));
+    color: rgb(var(--color-primary-900));
+  }
+
+  .image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Image container styles */
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Right Panel Styling */
+  .right-panel {
+    background: rgb(var(--color-primary-50));
+    padding: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;  }
+
+  .year-badge {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    color: rgb(var(--color-primary-600));
+  }
+
+  .title-content {
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-title {
+    margin: 0 0 2rem 0;
+    line-height: 1.1;
+  }
+
+  .title-the {
+    display: block;
+    font-size: 4rem;
+    font-weight: var(--font-weight-normal);
+    color: rgb(var(--color-accent-500));
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .title-water {
+    display: block;
+    font-size: 5rem;
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--color-primary-900));
+    letter-spacing: -0.02em;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgb(var(--color-primary-700));
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .meta-info {
+    margin-bottom: 2rem;
+  }
+
+  .date, .website {
+    font-size: 0.95rem;
+    color: rgb(var(--color-primary-600));
+    margin: 0.5rem 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .slide-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    
+    .left-panel, .right-panel {
+      padding: 2rem;
+    }
+    
+    .title-the {
+      font-size: 3rem;
+    }
+    
+    .title-water {
+      font-size: 4rem;
+    }
+    
+    .water-droplet-bg {
+      width: 200px;
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .left-panel, .right-panel {
+      padding: 1.5rem;
+    }
+    
+    .title-the {
+      font-size: 2.5rem;
+    }
+    
+    .title-water {
+      font-size: 3rem;
+    }
+    
+    .description {
+      font-size: 1rem;
+    }
+  }
+</style>

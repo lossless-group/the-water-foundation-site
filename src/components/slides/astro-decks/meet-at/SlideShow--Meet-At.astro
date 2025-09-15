@@ -1,0 +1,159 @@
+---
+/**
+ * SlideShow--Variant-1 Component
+ * Complete Water Theme presentation slideshow
+ * Features: Full RevealJS integration with all variant-1 slide components
+ */
+
+import MeetAtTheDrop from './slides/MeetAtTheDrop.astro';
+import TitleSlide from './slides/TitleSlide.astro';
+import WelcomeMessage from './slides/WelcomeMessage.astro';
+import OurTeam from './slides/OurTeam.astro';
+import TheBlindSpot from './slides/TheBlindSpot.astro';
+import OurMission from './slides/OurMission.astro';
+import UnsiloedFinance from './slides/UnsiloedFinance.astro';
+import UnconventionalWaterFacts from './slides/UnconventionalWaterFacts.astro';
+import ThankYou from './slides/ThankYou.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  author?: string;
+  theme?: string;
+  transition?: string;
+  autoSlide?: number;
+}
+
+const {
+  title = "The Water Fund",
+  subtitle = "Systemic Solutions for Global Water Security",
+  author = "The Water Fund Team",
+  theme = "water",
+  transition = "slide",
+  autoSlide = 0
+} = Astro.props;
+---
+<!-- Slide 1: Meet at TheDrop -->
+    <MeetAtTheDrop 
+      eventName="TheDrop"
+      eventDate="December 2025"
+      eventLocation="Monaco"
+      eventDescription="Join us for an exclusive gathering of water innovation leaders, investors, and changemakers."
+      contactEmail="hello@the-water-foundation.org"
+      eventWebsite="https://the-water-foundation.org/events/thedrop"
+    />
+
+    <!-- Slide 2: Title Slide -->
+    <section data-transition="fade" data-background-color="rgb(var(--color-primary-950))">
+      <TitleSlide 
+        title={title}
+        subtitle={subtitle}
+        description="A think tank creating a blended capital platform addressing systemic underinvestment in the world's most essential and overlooked resource — water"
+        date="Date: September 13, 2025"
+        website="https://the-water-foundation.org"
+        year="2025"
+      />
+    </section>
+
+    <!-- Slide 3: Welcome Message -->
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <WelcomeMessage 
+        welcomeTitle="Welcome"
+        chairmanName="Christoph Schwager"
+        chairmanTitle="Chairman, The Water Foundation"
+        mainMessage="Thank you for joining us today as we explore innovative approaches to global water security challenges."
+        chairmanPhoto="/headshots/headshotOf__Christoph-Schwager.jpg"
+      />
+    </section>
+
+
+    <!-- Slide 4: The Blind Spot -->
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <TheBlindSpot 
+        mainTitle="The Blind Spot of"
+        titleHighlight="Humankind"
+        section1Title="Hidden in Plain Sight"
+        section1Points={[
+          "Water is a critical system hiding in plain sight.",
+          "Despite its foundational role, water is undervalued, undercapitalized, and unprotected."
+        ]}
+        section2Title="The Investment Gap"
+        section2Points={[
+          "Traditional funding models fail to address systemic water challenges",
+          "Fragmented approaches miss critical interconnections"
+        ]}
+      />
+    </section>
+
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <OurTeam />
+    </section>
+
+    <!-- Slide 5: Our Mission -->
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <OurMission 
+        mainTitle="Our"
+        titleHighlight="Mission"
+        subtitle="Our mission is built on three key pillars"
+        missionPoints={[
+          "We exist to solve humanity's most overlooked crisis at a global turning point.",
+          "Our mission is to mobilize blended capital, science, and local leadership to restore global water resilience.",
+          "We aim to close the water capital gap by building vehicles, alliances, and trust systems for lasting change."
+        ]}
+        panel1Text="Catalyze Innovation"
+        panel2Text="Build Resilience"
+      />
+    </section>
+
+
+
+
+
+
+    <!-- Slide 12: Unconventional Water Facts -->
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <UnconventionalWaterFacts />
+    </section>
+
+
+    <!-- Slide 6: Unsiloed Finance -->
+    <section data-transition="slide" data-background-color="rgb(var(--color-primary-950))">
+      <UnsiloedFinance />
+    </section>
+
+    <!-- Final slide: Thank You / Contact -->
+    <section data-transition="fade" data-background-color="rgb(var(--color-primary-950))">
+      <ThankYou />
+    </section>
+
+<style>  /* RevealJS Integration Styles */
+  .reveal .slides section {
+    padding: 0;
+    margin: 0;
+  }
+
+  .reveal .slides section > * {
+    margin: 0;
+  }
+
+  /* Ensure slides fill viewport */
+  .reveal .slides section[data-background-color] {
+    background-color: inherit !important;
+  }
+
+  /* Custom slide transitions */
+  .reveal .slides section.past {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .reveal .slides section.future {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .reveal .slides section.present {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
