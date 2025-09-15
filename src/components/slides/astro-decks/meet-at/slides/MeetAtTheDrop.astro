@@ -56,8 +56,8 @@ const {
       <!-- Right Side - Event Information -->
       <div class="space-y-8">
         <div class="space-y-6">
-          <h1 class="text-4xl md:text-5xl font-light text-white mb-6">
-            Meet us at <span class="text-cyan-300 font-normal">{eventName}</span>
+          <h1 class="text-4xl md:text-5xl font-light text-cyan-100 mb-6">
+            Meet us at <span class="text-cyan-400 font-normal">{eventName}</span>
           </h1>
           
           <p class="text-xl text-blue-100 leading-relaxed font-light">
@@ -84,7 +84,7 @@ const {
 
         <!-- Contact Information -->
         <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 space-y-4">
-          <h3 class="text-xl font-semibold text-white mb-4">Get in Touch</h3>
+          <h3 class="text-xl font-semibold text-cyan-400 mb-4">Get in Touch</h3>
           
           <div class="space-y-3">
             <div class="flex items-center space-x-3">
@@ -117,18 +117,6 @@ const {
           </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="pt-4">
-          <a 
-            href={`mailto:${contactEmail}?subject=TheDrop Event Inquiry`}
-            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-cyan-400/25"
-          >
-            Reserve Your Spot
-            <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
