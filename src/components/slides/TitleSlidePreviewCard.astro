@@ -6,6 +6,7 @@
  */
 
 import { formatDate } from '../../utils/date';
+import ShareButton from './ShareButton.astro';
 
 export interface Props {
   title: string;
@@ -13,6 +14,7 @@ export interface Props {
   slug: string;
   date?: string;
   icon?: string;
+  shareImage?: string;
   class?: string;
 }
 
@@ -22,11 +24,25 @@ const {
   slug, 
   date,
   icon = "📊",
+  shareImage,
   class: className = ""
 } = Astro.props;
+
+// Generate the full URL for sharing
+const slideUrl = `/slides/${slug}`;
+const fullUrl = new URL(slideUrl, Astro.site || 'https://thewaterfoundation.org').toString();
 ---
 
 <article class={`presentation-card ${className}`}>
+  {shareImage && (
+    <div class="card-image">
+      <img 
+        src={shareImage} 
+        alt={title}
+        class="w-full h-64 object-cover"
+      />
+    </div>
+  )}
   <div class="p-6">
     <div class="flex items-start gap-4 mb-4">
       <div class="text-3xl flex-shrink-0">{icon}</div>
@@ -42,7 +58,7 @@ const {
       </div>
     </div>
     
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-3">
       {date && (
         <time datetime={date} class="text-sm opacity-60">
           {formatDate(date)}
@@ -58,6 +74,13 @@ const {
         </svg>
       </a>
     </div>
+    
+    <ShareButton 
+      title={title}
+      description={description}
+      url={fullUrl}
+      image={shareImage}
+    />
   </div>
 </article>
 
@@ -125,5 +148,35 @@ const {
     color: rgba(255, 255, 255, 1);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .card-image img {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .presentation-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+  
+  /* Add overlay to image for better text readability */
+  .card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
   }
 </style>

@@ -15,14 +15,16 @@ const presentations = [
     slug: "water-fund-variant-1", 
     description: "Systemic Solutions for Global Water Security - Complete presentation showcasing our approach to water investment challenges",
     date: "2025-08-13",
-    icon: ""
+    icon: "",
+    shareImage: "/ogImageLandscape__The-Water-Foundation.jpg"
   },  
   {
     title: "Meet The Water Foundation at The Drop",
     slug: "meet-at-the-drop", 
     description: "An exclusive gathering of water innovation leaders, investors, and changemakers",
     date: "2025-12-20",
-    icon: ""
+    icon: "",
+    shareImage: "/share-banners/bannerImage--The-Water-Foundation-at-The-Drop.webp"
   }
 ];
 ---
@@ -42,7 +44,7 @@ const presentations = [
     </header>
 
     <main class="space-y-10">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
         {presentations.map((presentation) => (
           <TitleSlidePreviewCard 
             title={presentation.title}
@@ -50,6 +52,7 @@ const presentations = [
             slug={presentation.slug}
             date={presentation.date}
             icon={presentation.icon}
+            shareImage={presentation.shareImage}
           />
         ))}
       </div>
