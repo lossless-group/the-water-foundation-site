@@ -6,7 +6,7 @@ export interface ComponentDeck {
 
 export const componentDecks: Record<string, ComponentDeck> = {
   'water-fund-variant-1': {
-    title: 'The Water Fund',
+    title: 'The Water Foundation',
     description: 'Systemic Solutions for Global Water Security',
     component: 'SlideShowVariant1'
   },
