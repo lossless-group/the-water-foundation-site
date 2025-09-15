@@ -1,0 +1,131 @@
+---
+// KeyGlobalIndicators.astro
+// Displays key global water statistics in an engaging card layout
+
+interface Props {
+  transition?: string;
+  background?: string;
+}
+
+const { 
+  transition = 'slide',
+  background = 'bg-gradient-to-br from-blue-900 to-cyan-900'
+} = Astro.props;
+---
+
+<Fragment>
+  <!-- Background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-cyan-900/80"></div>
+    <div class="absolute inset-0 bg-[url('/backgrounds/water-texture.png')] opacity-10"></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-10 h-full w-full p-8 md:p-12 lg:p-16 flex flex-col">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Key Global Indicators
+      </h2>
+      <p class="text-xl text-blue-50">Critical data points driving water innovation investment</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 flex-grow">
+      <!-- Stat Card 1 -->
+      <div class="group cursor-pointer vertical-card">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-4">
+            <span class="px-3 py-1 text-sm font-semibold rounded-full border mb-3 inline-block bg-red-600/30 text-red-700 border-red-600/50">
+              Critical
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Access to Safe Drinking Water</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">2.2B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">people without access</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">UNICEF/WHO JMP, 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Card 2 -->
+      <div class="group cursor-pointer vertical-card">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-4">
+            <span class="px-3 py-1 text-sm font-semibold rounded-full border mb-3 inline-block bg-blue-600/30 text-blue-200 border-blue-600/50">
+              Urgent
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Water Scarcity</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">4B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">people experience severe water scarcity</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">UN Water, 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Card 3 -->
+      <div class="group cursor-pointer vertical-card">
+        <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6 h-full transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+          <div class="text-center mb-4">
+            <span class="px-3 py-1 text-sm font-semibold rounded-full border mb-3 inline-block bg-amber-600/30 text-amber-200 border-amber-600/50">
+              Growing
+            </span>
+            <h3 class="text-2xl font-bold text-white mb-2">Economic Impact</h3>
+          </div>
+          <div class="text-center mb-4">
+            <p class="text-4xl font-bold text-white mb-2">$260B</p>
+            <p class="text-blue-50 text-sm leading-relaxed">annual losses from water-related risks</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/30 text-center">
+            <p class="text-xs text-blue-50/80">World Bank, 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Fragment>
+
+<style>
+  /* Animation for cards */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .vertical-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .vertical-card:nth-child(1) { animation-delay: 0.2s; }
+  .vertical-card:nth-child(2) { animation-delay: 0.4s; }
+  .vertical-card:nth-child(3) { animation-delay: 0.6s; }
+
+  /* Smooth hover transitions */
+  .vertical-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Ensure text remains visible on hover */
+  .vertical-card h3,
+  .vertical-card p {
+    transition: color 0.3s ease;
+  }
+
+  .vertical-card:hover h3 {
+    color: white;
+  }
+</style>
