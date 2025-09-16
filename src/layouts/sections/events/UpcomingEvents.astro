@@ -1,0 +1,78 @@
+---
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
+import EventsListItem from '@components/events/EventsListItem.astro';
+import { getCollection } from 'astro:content';
+
+// Get all events from the collection
+const events = await getCollection('events');
+
+// Format event data for display
+const upcomingEvents = events.map(event => {
+  const { title, event_name, upcoming_dates, upcoming_location, twf_zinger, splash_page_path } = event.data;
+  
+  // Format dates for display
+  const dateRange = upcoming_dates.split('--');
+  const startDate = new Date(dateRange[0]);
+  const endDate = new Date(dateRange[1]);
+  
+  const displayDate = startDate.toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric' 
+  }) + (dateRange.length > 1 ? ' - ' + endDate.toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric' 
+  }) : '');
+
+  return {
+    title,
+    event_name,
+    location: upcoming_location,
+    date: displayDate,
+    description: twf_zinger,
+    link: splash_page_path || `/events/${event.slug}`,
+    slug: event.slug
+  };
+});
+---
+
+<section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-cyan-900 overflow-hidden">
+  <!-- Animated Water Background -->
+  <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+        Meet Us at Upcoming Events
+      </h2>
+      <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+        Join us at these key events where we'll be sharing insights on water innovation and sustainability
+      </p>
+    </div>
+
+    <!-- Events List -->
+    <div class="space-y-6 max-w-4xl mx-auto">
+      {upcomingEvents.map((event, index) => (
+        <EventsListItem event={event} index={index} />
+      ))}
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-12">
+      <p class="text-blue-200 mb-6">
+        Want to connect with us at any of these events?
+      </p>
+      <a 
+        href="mailto:dive.deep@the-water-foundation.com"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border border-cyan-400/50 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 font-medium rounded-xl transition-all duration-300 hover:bg-white/20"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+        </svg>
+        <span>Get in Touch</span>
+      </a>
+    </div>
+  </div>
+</section>

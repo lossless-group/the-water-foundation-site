@@ -1,0 +1,101 @@
+---
+import AnimatedWaterBackground from "@components/ui/AnimatedWaterBackground.astro";
+---
+
+    <!-- Upcoming Events Section -->
+    <section class="relative py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 overflow-hidden">
+        <!-- Animated Water Background -->
+        <AnimatedWaterBackground intensity="subtle" pattern="flowing" />
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+              Upcoming Events
+            </h2>
+            <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+              Mark your calendar for these exciting water innovation events
+            </p>
+          </div>
+  
+          <!-- Timeline of Events -->
+          <div class="space-y-8">
+            <!-- Event Timeline Item 1 -->
+            <div class="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-8 p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-sm border border-cyan-400/20 rounded-2xl">
+              <div class="flex-shrink-0">
+                <div class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold text-lg">MAR</span>
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-cyan-200 mb-2">Water Innovation Summit 2024</h3>
+                <p class="text-blue-100 mb-3">Join global leaders, innovators, and investors for three days of intensive networking, knowledge sharing, and collaboration opportunities in water technology.</p>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-cyan-300">
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    March 15-17, 2024
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    San Francisco, CA
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    3 Days
+                  </span>
+                </div>
+              </div>
+              <div class="flex-shrink-0">
+                <button class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+                  Register Now
+                </button>
+              </div>
+            </div>
+  
+            <!-- Event Timeline Item 2 -->
+            <div class="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-8 p-6 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 backdrop-blur-sm border border-indigo-400/20 rounded-2xl">
+              <div class="flex-shrink-0">
+                <div class="w-20 h-20 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold text-lg">APR</span>
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-indigo-200 mb-2">Community Water Workshop</h3>
+                <p class="text-blue-100 mb-3">Learn practical water conservation techniques and sustainable practices that you can implement in your home and community.</p>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-indigo-300">
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    April 22, 2024
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Virtual Event
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    2 Hours
+                  </span>
+                </div>
+              </div>
+              <div class="flex-shrink-0">
+                <button class="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+                  Join Workshop
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,143 @@
+---
+export interface Props {
+  event: {
+    title: string;
+    event_name: string;
+    location: string;
+    date: string;
+    description: string;
+    link: string;
+    slug: string;
+  };
+  index: number;
+}
+
+const { event, index } = Astro.props;
+
+// Define color progression with RGB values for CSS custom properties
+const colorSchemes = [
+  {
+    // Cyan to Blue (first event)
+    primary: '34, 211, 238', // cyan-400
+    secondary: '59, 130, 246', // blue-500
+    name: 'cyan'
+  },
+  {
+    // Blue to Indigo
+    primary: '59, 130, 246', // blue-400
+    secondary: '99, 102, 241', // indigo-500
+    name: 'blue'
+  },
+  {
+    // Indigo to Purple
+    primary: '129, 140, 248', // indigo-400
+    secondary: '168, 85, 247', // purple-500
+    name: 'indigo'
+  },
+  {
+    // Purple to Pink
+    primary: '196, 181, 253', // purple-400
+    secondary: '236, 72, 153', // pink-500
+    name: 'purple'
+  },
+  {
+    // Pink to Rose
+    primary: '244, 114, 182', // pink-400
+    secondary: '244, 63, 94', // rose-500
+    name: 'pink'
+  },
+  {
+    // Rose to Orange
+    primary: '251, 113, 133', // rose-400
+    secondary: '249, 115, 22', // orange-500
+    name: 'rose'
+  },
+  {
+    // Orange to Yellow
+    primary: '251, 146, 60', // orange-400
+    secondary: '234, 179, 8', // yellow-500
+    name: 'orange'
+  },
+  {
+    // Yellow to Green (cycles back)
+    primary: '250, 204, 21', // yellow-400
+    secondary: '34, 197, 94', // green-500
+    name: 'yellow'
+  }
+];
+
+// Get the color scheme for this event based on its index
+const colorScheme = colorSchemes[index % colorSchemes.length];
+---
+
+<div 
+  class="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border transition-all duration-300 hover:bg-white/10"
+  style={`
+    --primary-color: ${colorScheme.primary};
+    --secondary-color: ${colorScheme.secondary};
+    border-color: rgba(${colorScheme.primary}, 0.3);
+  `}
+>
+  <div class="p-6 md:p-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <!-- Event Info -->
+      <div class="flex-1">
+        <div class="flex items-center gap-3 mb-3">
+          <div 
+            class="w-10 h-10 rounded-full flex items-center justify-center"
+            style={`background: linear-gradient(to bottom right, rgb(${colorScheme.primary}), rgb(${colorScheme.secondary}));`}
+          >
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h3 
+              class="text-xl md:text-2xl font-semibold group-hover:text-cyan-300 transition-colors"
+              style={`color: rgba(${colorScheme.primary}, 0.9);`}
+            >
+              {event.event_name}
+            </h3>
+            <p class="text-sm text-blue-200">{event.location}</p>
+          </div>
+        </div>
+        
+        <p class="text-blue-100 leading-relaxed mb-4">
+          {event.description}
+        </p>
+        
+        <div class="flex items-center gap-4 text-sm">
+          <div class="flex items-center gap-2" style={`color: rgba(${colorScheme.primary}, 0.8);`}>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>{event.date}</span>
+          </div>
+          <div class="flex items-center gap-2" style={`color: rgba(${colorScheme.primary}, 0.8);`}>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+            <span>{event.location}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="md:ml-6">
+        <a 
+          href={event.link}
+          class="inline-flex items-center gap-2 px-6 py-3 text-white font-medium rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          style={`
+            background: linear-gradient(to right, rgb(${colorScheme.primary}), rgb(${colorScheme.secondary}));
+            box-shadow: 0 10px 25px rgba(${colorScheme.primary}, 0.25);
+          `}
+        >
+          <span>Learn More</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

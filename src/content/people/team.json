@@ -17,9 +17,10 @@
       "image": "/headshots/headshotOf__Verena-Sturm.jpeg",
       "bio": "Guiding the platform's capital formation, strategic partnerships, and policy engagement. Also Founding Partner of Green Vault Holding and Avestu Capital, advising high-net-worth individuals and corporates on impact-driven strategies. Her portfolio includes advising Siemens Financial Services on its Natural Emission Technologies fund. A Non-Resident Fellow at the Observer Research Foundation Middle East, she holds an honours degree in International Relations and is completing a PhD in Political Science on climate justice at LMU Munich.",
       "socialLinks": [
-        { "name": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
+        { "name": "Instagram", "href": "https://www.instagram.com/v_alice_sturm/", "icon": "instagram" },
         { "name": "LinkedIn", "href": "https://www.linkedin.com/in/verena-alice-sturm/", "icon": "linkedin" },
-        { "name": "GitHub", "href": "https://github.com", "icon": "github" }
+        { "name": "X", "href": "https://x.com/stormlady", "icon": "x" },
+        { "name": "GitHub", "href": "https://github.com/verenaalicesturm", "icon": "github" }
       ]
     },
     {
@@ -29,7 +30,6 @@
       "image": "/headshots/headshotOf__Christophe-C-Meeus.webp",
       "bio": "Managing Director, CFO, General Counsel, and Board Member with international executive experience. Specializes in providing comprehensive legal and financial guidance to international companies, with expertise in Company and Commercial Law, Employment Law, Mergers and Acquisitions, Computer Law, License Law, Copyright Law, and Unfair Competition.",
       "socialLinks": [
-        { "name": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
         { "name": "LinkedIn", "href": "https://www.linkedin.com/in/christophe-c-meeus-7031b1/", "icon": "linkedin" }
       ]
     },
@@ -73,9 +73,19 @@
       "image": "/headshots/headshotOf__Sarah-Beth-Brockley.jpeg",
       "bio": "Sarabeth Brockley is an international ESG and climate finance expert with a career spanning the United Nations and Nasdaq. At Nasdaq, she served as Head of Carbon Strategy and ESG Advisory, where she led initiatives to embed carbon procurement and climate risk into corporate value chains, and as Lead Advisor on Carbon Markets and ESG. Earlier, she was a Climate and Water Programme Officer at the United Nations Department of Economic and Social Affairs, advancing global work on water, energy, and capacity development.\n\nBuilding on this institutional foundation, Sarabeth has positioned herself at the frontier of climate innovation. She is a Partner at Wild Assets, an investor with Investors for Climate, and a Senior Advisor to several ventures, including Gigablue, Residual, Alcove, and BIOME. She also serves on the board of Sinkco Labs and advises Women and Climate.\n\nAs Director of Partnerships, ESG & Impact Strategy at the Water Foundation and General Partner of the Water Venture Fund, Sarabeth bridges institutional platforms and entrepreneurial ventures, leveraging her expertise in carbon markets, ESG integration, and impact investment to drive transformative solutions at the intersection of water, climate, and finance.",
       "socialLinks": [
-        { "name": "twitter", "href": "https://twitter.com", "icon": "twitter" },
-        { "name": "linkedin", "href": "https://www.linkedin.com/in/sarabethbrockley/", "icon": "linkedin" },
-        { "name": "github", "href": "https://github.com", "icon": "github" }
+        { "name": "twitter", "href": "https://x.com/sarabbrockley", "icon": "twitter" },
+        { "name": "linkedin", "href": "https://www.linkedin.com/in/sarabethbrockley/", "icon": "linkedin" }
+      ]
+    },
+    {
+      "name": "Laura Wasserson",
+      "role": "Head of Land-Based Strategies",
+      "classifiers": "Vertical Partner",
+      "image": "/headshots/headshotOf__Laura-Wasserson.jpeg",
+      "bio": "Laura Wasserson is a land-based strategies (agriculture, forestry, etc.) expert with a career spanning the United Nations and Nasdaq. At Nasdaq, she served as Head of Carbon Strategy and ESG Advisory, where she led initiatives to embed carbon procurement and climate risk into corporate value chains, and as Lead Advisor on Carbon Markets and ESG. Earlier, she was a Climate and Water Programme Officer at the United Nations Department of Economic and Social Affairs, advancing global work on water, energy, and capacity development.\n\nBuilding on this institutional foundation, Laura has positioned herself at the frontier of climate innovation. She is a Partner at Wild Assets, an investor with Investors for Climate, and a Senior Advisor to several ventures, including Gigablue, Residual, Alcove, and BIOME. She also serves on the board of Sinkco Labs and advises Women and Climate.\n\nAs Director of Partnerships, ESG & Impact Strategy at the Water Foundation and General Partner of the Water Venture Fund, Laura bridges institutional platforms and entrepreneurial ventures, leveraging her expertise in carbon markets, ESG integration, and impact investment to drive transformative solutions at the intersection of water, climate, and finance.",
+      "socialLinks": [
+        { "name": "twitter", "href": "https://x.com/LauraMetalplant", "icon": "twitter" },
+        { "name": "linkedin", "href": "https://www.linkedin.com/in/laurawasserson/", "icon": "linkedin" }
       ]
     },
     {

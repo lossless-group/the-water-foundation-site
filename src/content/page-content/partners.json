@@ -15,7 +15,22 @@
     ]
   },
   {
-    "logoLightMode": "/trademarks/trademark__Swiss-Impact-Office.png",
+    "logoLightMode": "/trademarks/trademark__Metalplant.svg",
+    "logoDarkMode": "/trademarks/trademark__Metalplant.svg",
+    "conventionalName": "Metalplant",
+    "officialName": "Metalplant",
+    "urlToPartnerSite": "https://metalplant.com/",
+    "blurbShortTxt": "Description of partnership and what they do.",
+    "listOfPeopleData": [
+      {
+        "name": "Laura Wasserson",
+        "role": "CEO",
+        "image": "/headshots/headshotOf__Laura-Wasserson.jpeg"
+      }
+    ]
+  },
+  {
+    "logoLightMode": "/trademarks/trademark__Swiss-Impact-Office--Visible.png",
     "logoDarkMode": "/trademarks/trademark__Swiss-Impact-Office--Visible.png",
     "conventionalName": "Swiss Impact Office",
     "officialName": "Swiss Impact Office",
