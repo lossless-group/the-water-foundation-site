@@ -1,0 +1,168 @@
+---
+import SocialIcons from '../ui/SocialIcons.astro';
+
+type SocialPlatform = 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'github';
+
+interface SocialLink {
+  name: string;
+  href: string;
+  icon: SocialPlatform;
+}
+
+interface PersonProps {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks?: Array<{
+    name: string;
+    href: string;
+    icon: SocialPlatform;
+  }>;
+  class?: string;
+  imageClass?: string;
+  maxWords?: number;
+}
+
+const { 
+  name, 
+  role, 
+  image, 
+  bio, 
+  socialLinks = [], 
+  class: className = '',
+  imageClass = '',
+  maxWords = 20
+} = Astro.props as PersonProps;
+
+// Truncate bio to specified number of words
+const truncateBio = (text: string, words: number) => {
+  const wordArray = text.split(' ');
+  if (wordArray.length <= words) return text;
+  return wordArray.slice(0, words).join(' ') + '...';
+};
+
+// Generate unique ID for this card
+const cardId = `person-card-${name.toLowerCase().replace(/\s+/g, '-')}`;
+---
+
+<article class={`bg-white/20 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/30 shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-white/25 flex flex-col h-full group ${className}`}>
+  <!-- Photo section -->
+  <div class={`relative overflow-hidden ${imageClass || 'aspect-square'}`}>
+    <img 
+      src={image} 
+      alt={`Portrait of ${name}`} 
+      class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+      loading="lazy"
+      width="300"
+      height="300"
+    />
+  </div>
+  
+  <!-- Essential content (always visible) -->
+  <div class="p-4 flex-1 flex flex-col">
+    <div class="mb-3">
+      <h3 class="text-lg font-semibold text-white text-center group-hover:text-blue-100 transition-colors duration-300">
+        {name}
+      </h3>
+    </div>
+    
+    <!-- Social icons and expand button row -->
+    <div class="mb-3 flex items-center justify-between">
+      <div class="flex-1">
+        {socialLinks.length > 0 && (
+          <SocialIcons socialLinks={socialLinks} class="justify-start" />
+        )}
+      </div>
+      
+      <!-- Expand/Collapse button -->
+      <button 
+        class="expand-btn text-blue-200/70 hover:text-blue-100 transition-colors duration-200 p-1"
+        data-target={cardId}
+        aria-label={`Show more details about ${name}`}
+      >
+        <svg class="w-4 h-4 transform transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Expandable details section -->
+    <div class="expandable-details" data-card-id={cardId}>
+      <div class="details-content hidden">
+        <div class="pt-3 border-t border-white/10">
+          <p class="text-blue-100/90 text-sm font-medium text-center mb-2">
+            {role}
+          </p>
+          <p class="text-blue-50/80 text-xs leading-relaxed text-center">
+            {truncateBio(bio, maxWords)}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script>
+  // Add click handlers for expand/collapse functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const expandButtons = document.querySelectorAll('.expand-btn');
+    
+    expandButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const card = document.querySelector(`[data-card-id="${targetId}"]`);
+        const content = card?.querySelector('.details-content');
+        const icon = this.querySelector('svg');
+        
+        if (content && icon) {
+          const isHidden = content.classList.contains('hidden');
+          
+          if (isHidden) {
+            // Show details
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+            this.setAttribute('aria-label', `Hide details about ${targetId.replace('person-card-', '').replace(/-/g, ' ')}`);
+          } else {
+            // Hide details
+            content.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+            this.setAttribute('aria-label', `Show more details about ${targetId.replace('person-card-', '').replace(/-/g, ' ')}`);
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Smooth transitions for the expandable content */
+  .details-content {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .details-content:not(.hidden) {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Hover effect for expand button */
+  .expand-btn:hover svg {
+    transform: scale(1.1);
+  }
+  
+  /* Ensure the button stays at the bottom */
+  .expandable-details {
+    margin-top: auto;
+  }
+</style>

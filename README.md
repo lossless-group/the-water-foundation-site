@@ -1,8 +1,54 @@
 # The Water Foundation Site
 
-![The Water Foundation Wordmark and Tagline](https://i.imgur.com/jur0e6z.png)
+![The Water Foundation Wordmark and Tagline](https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/ogImageLandscape__The-Water-Foundation.jpg?updatedAt=1758017379620)
 
-A modern web application built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com) for The Water Foundation.
+<p align="center">
+  <span style="font-size: 18px; font-weight: 500; color: #374151;">A modern web application built with</span>
+  <span style="font-size: 20px; color: #ef4444; margin: 0 4px;">❤️</span>
+  <span style="font-size: 18px; font-weight: 500; color: #374151;">by</span>
+  <br/>
+  <a href="https://lossless.group" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: center; margin: 8px 0;">
+    <img src="https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/trademark__The-Lossless-Group.svg?updatedAt=1758016855404" alt="The Lossless Group" height="24" style="margin-right: 8px;" />
+    <span style="font-size: 22px; font-weight: 600; color: #1f2937;">The Lossless Group</span>
+  </a>
+  <br/>
+  <span style="font-size: 14px; color: #6b7280; margin-top: 12px; display: block;">
+    SSG and Styles with 
+    <a href="https://astro.build" style="color: #7c3aed; text-decoration: none; font-weight: 500;">Astro</a> 
+    and 
+    <a href="https://tailwindcss.com" style="color: #0ea5e9; text-decoration: none; font-weight: 500;">Tailwind CSS v4</a> 
+    for <a href="https://the-water-foundation.org" style="color: #0ea5e9; text-decoration: none; font-weight: 500;">The Water Foundation</a>
+  </span>
+</p>
+
+## Table of Contents
+
+- [Stack](#stack)
+- [Content Authoring and Management Instructions](#content-authoring-and-management-instructions)
+  - [📝 Developing Slide Presentations](#-developing-slide-presentations)
+    - [1. Create a New Slide Deck](#1-create-a-new-slide-deck)
+    - [2. Register the Slide Deck](#2-register-the-slide-deck)
+    - [3. Add to the Presentations List](#3-add-to-the-presentations-list)
+    - [4. Available Features](#4-available-features)
+    - [5. Development Server](#5-development-server)
+  - [🎪 Event Management](#-event-management)
+    - [1. Create a New Event](#1-create-a-new-event)
+    - [2. Event Page Creation](#2-event-page-creation)
+    - [3. Event Fields Explained](#3-event-fields-explained)
+    - [4. Integration with Events Index](#4-integration-with-events-index)
+    - [5. Social Sharing Features](#5-social-sharing-features)
+    - [6. Development Workflow](#6-development-workflow)
+
+- [Site Development and Specifications](#site-development-and-specifications)
+  - [✅ Implementation Status](#-implementation-status)
+    - [Theme & Mode System (v0.0.1.0)](#theme--mode-system-v0010)
+    - [Responsive Framework (v1.0.0)](#responsive-framework-v100)
+    - [Key Features](#key-features)
+  - [🎨 Button Variants Framework](#-button-variants-framework)
+    - [Available Variants](#available-variants)
+    - [Sizes](#sizes)
+    - [Usage Example](#usage-example)
+  - [📦 Major Dependencies](#-major-dependencies)
 
 ***
 
@@ -14,17 +60,16 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
   </a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://revealjs.com" target="_blank" rel="noopener">
-    <img src="https://raw.githubusercontent.com/hakimel/reveal.js/master/css/themes/template/revealjs-badge.svg" alt="RevealJS" height="48" />
+    <img src="https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/trademark__Reveal--SizeMod--Light.svg?updatedAt=1758016291602" alt="RevealJS" height="48" />
   </a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://tailwindcss.com" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg" alt="Tailwind CSS" height="48" />
+    <img src="https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/trademark__TailwindCSS--Lighter.webp?updatedAt=1758016076289" height="42" />
   </a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://vitest.dev" target="_blank" rel="noopener">
     <span style="display:inline-flex;align-items:center;gap:8px">
-      <img src="https://vitest.dev/logo.svg" alt="Vitest" height="48" />
-      <span style="font-weight:600;font-size:16px">Vitest</span>
+      <img src="https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/trademark__Vitest.webp?updatedAt=1758016614303" alt="Vitest" height="48" />
     </span>
   </a>
 </p>
@@ -34,6 +79,8 @@ A modern web application built with [Astro](https://astro.build) and [Tailwind C
 </p>
 
 ***
+
+# Content Authoring and Management Instructions
 
 ## 📝 Developing Slide Presentations
 
@@ -131,6 +178,93 @@ pnpm dev
 
 Then visit `http://localhost:4321/slides/your-presentation-slug`
 
+## 🎪 Event Management
+
+This project includes a comprehensive event management system for creating splash pages and managing event information.
+
+![Example Event](https://i.imgur.com/S3Wg3PD.png)
+
+
+### 1. Create a New Event
+
+1. **Create a new markdown file** in `src/content/events/` using the event `slug` (the URL path desired that is unique to the event) as the filename (e.g., `event-slug.md` for `/events/event-slug`). 
+
+2. Add the event information to the markdown file with this structure:
+
+   ```markdown
+   ---
+   title: "Meet The Water Foundation at [Event Name]"
+   event_name: "EventName"
+   upcoming_dates: "2025-09-15--2025-09-18"
+   upcoming_location: "City, Country"
+   url: https://eventwebsite.com/
+   splash_page_path: /events/event-slug
+   twf_zinger: "The Water Foundation is a think tank and capital catalyst, assuring full-stack financial innovations are tackling the urgent challenge of our time."
+   invite_message: "Meet us at [Event Name], a gathering of water innovation leaders, investors, and changemakers."
+   share_image: /share-banners/bannerImage--Event-Name.webp
+   contact_email: "dive.deep@the-water-foundation.org"
+   contact_phone: "+49 177 4543720"
+   event_website: "https://eventwebsite.com/"
+   ---
+   ```
+
+ - **twf_zinger**: The current positioning statement of the The Water Foundation that is most relevant for this event.
+ - **invite_message**: The message you want to invite people to meet or join the team at the event.
+ - **share_image**: The banner image for the event splash page that will be used in open graph social media shares. 
+
+2. **Add the banner image** to `/public/share-banners/`
+
+
+### 2. Event Page Creation
+
+The system automatically creates event pages at `/events/[slug]` based on your markdown files. Each event page includes:
+
+- **Dynamic content** loaded from markdown frontmatter
+- **Social sharing** with LinkedIn and WhatsApp integration
+- **Open Graph meta tags** for proper social media previews
+- **Contact information** with email and phone links
+- **Event details** with formatted dates and location
+- **Responsive design** optimized for all devices
+
+### 3. Event Fields Explained
+
+- **`title`**: Page title and meta title for SEO
+- **`event_name`**: Display name of the event (e.g., "TheDrop")
+- **`upcoming_dates`**: Date range in format "YYYY-MM-DD--YYYY-MM-DD"
+- **`upcoming_location`**: City and country where event takes place
+- **`url`**: Official event website URL
+- **`splash_page_path`**: Internal path for the event page
+- **`twf_zinger`**: The Water Foundation's positioning statement
+- **`invite_message`**: Main invitation message for the event
+- **`share_image`**: Banner image for social media sharing (recommended: 1200x630px)
+- **`contact_email`**: Contact email for event inquiries
+- **`contact_phone`**: Contact phone number (optional)
+- **`event_website`**: Link to event's official website
+
+### 4. Integration with Events Index
+
+Events automatically appear on the main events page (`/events`) when:
+- The markdown file exists in `src/content/events/`
+- The event data matches the collection schema
+- The event is referenced in the events index page logic
+
+### 5. Social Sharing Features
+
+Each event page includes:
+- **LinkedIn sharing** with proper Open Graph tags
+- **WhatsApp sharing** with formatted message
+- **Custom banner images** for social media previews
+- **SEO optimization** with meta descriptions and titles
+
+### 6. Development Workflow
+
+1. Create the markdown file with event details
+2. Add the banner image to `/public/share-banners/`
+3. Test the page at `http://localhost:4321/events/[slug]`
+4. Verify social sharing previews work correctly
+
+# Site Development and Specifications
+
 ## ✅ Implementation Status
 
 ### Theme & Mode System (v0.0.1.0)
@@ -139,14 +273,14 @@ Then visit `http://localhost:4321/slides/your-presentation-slug`
 - [x] **State Persistence**: localStorage integration for user preferences
 - [x] **Component Integration**: Theme-aware components with semantic CSS classes
 - [x] **Event System**: Custom events for coordinated UI updates
-- [x] **Comprehensive Testing**: 51 unit and integration tests with 100% pass rate
+- [ ] **Comprehensive Testing**: 51 unit and integration tests with 100% pass rate
 
 ### Responsive Framework (v1.0.0)
 - [x] **Media Queries**: Mobile-first breakpoints for all device sizes
 - [x] **Container Queries**: Component-level responsive design
 - [x] **Utility Classes**: Comprehensive set of responsive utilities
 - [x] **Performance Optimized**: Efficient CSS with `contain` and `content-visibility`
-- [x] **Accessibility**: Responsive design that maintains accessibility
+- [ ] **Accessibility**: Responsive design that maintains accessibility
 
 ### Key Features
 - **Tailwind CSS v4**: Modern `@theme` directive with CSS custom properties
@@ -585,4 +719,8 @@ pnpm build
 
 ---
 
-Built with ❤️ using Astro
+Built by [The Lossless Group](https://lossless.group) with ❤️ using Astro
+
+<a href="https://lossless.group" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: center; margin: 8px 0;">
+  <img src="https://ik.imagekit.io/xvpgfijuw/uploads/lossless/trademarks/bannerImage__The-Lossless-Group.png?updatedAt=1758016899338" alt="The Lossless Group" width="100%" style="margin-right: 8px;" />
+</a>
