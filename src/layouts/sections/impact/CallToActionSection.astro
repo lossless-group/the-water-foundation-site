@@ -1,0 +1,39 @@
+---
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
+---
+
+<!-- Call to Action -->
+<section class="relative py-20 bg-gradient-to-br from-indigo-800 via-blue-800 to-cyan-800 overflow-hidden">
+  <!-- Animated Water Background -->
+  <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-cyan-100">
+      Ready to Make Waves? 🌊
+    </h2>
+    
+    <p class="text-xl text-blue-50 mb-8 leading-relaxed max-w-3xl mx-auto">
+      Join a community of visionaries, innovators, and changemakers who are reshaping the future of water. 
+      Whether you're an entrepreneur with breakthrough ideas, an investor seeking meaningful impact, 
+      or someone passionate about protecting our most precious resource, we want to hear from you.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+      <a href="/contact" class="inline-block">
+        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-lg">
+          Start Your Journey →
+        </div>
+      </a>
+      
+      <a href="/about" class="inline-block">
+        <div class="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/40 hover:to-indigo-500/40 text-cyan-100 hover:text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl border-2 border-cyan-300/50 hover:border-cyan-300 text-lg">
+          Explore Opportunities
+        </div>
+      </a>
+    </div>
+    
+    <p class="text-sm text-blue-200 mt-8 opacity-80">
+      🌊 Together, we're building a future where clean water flows freely for all
+    </p>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+// Shared styles for impact sections
+---
+
+<style>
+  /* Floating Animations for Hero Section */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(10px) rotate(-1deg);
+    }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-15px) rotate(-1deg);
+    }
+    66% {
+      transform: translateY(15px) rotate(1deg);
+    }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-30px) translateX(10px);
+    }
+  }
+  
+  @keyframes float-slow-2 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-25px) translateX(-15px);
+    }
+  }
+  
+  @keyframes float-delay-2 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-20px) translateX(20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delay {
+    animation: float-delay 8s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+  
+  .animate-float-slow-2 {
+    animation: float-slow-2 12s ease-in-out infinite;
+  }
+  
+  .animate-float-delay-2 {
+    animation: float-delay-2 9s ease-in-out infinite;
+  }
+</style>

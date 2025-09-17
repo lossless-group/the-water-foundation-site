@@ -267,4 +267,15 @@ const corinne = teamData.find(member => member.name === "Corinna Schwager");
     transform: scale(1.1);
     transition: transform 0.2s ease;
   }
+
+  /* Adjust Christoph's image to match others' framing */
+  .christoph-image img {
+    object-position: center top !important;
+    object-fit: cover !important;
+    transform: scale(0.6) translateY(10px) !important;
+  }
+
+  .group:hover .christoph-image img {
+    transform: scale(0.63) translateY(10px) !important;
+  }
 </style>

@@ -1,0 +1,137 @@
+---
+import AnimatedWaterBackground from '@components/ui/AnimatedWaterBackground.astro';
+---
+
+<!-- UN Sustainable Development Goals Section -->
+<section id="sdg-section" class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-800 overflow-hidden">
+  <!-- Animated Water Background -->
+  <AnimatedWaterBackground intensity="moderate" pattern="clustered" />
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-wide text-cyan-300">
+        Achieving the UN Sustainable Development Goals
+      </h2>
+      <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+        Our work directly contributes to multiple SDGs, creating a ripple effect across global development targets
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Concentric Circles Diagram -->
+      <div class="relative flex items-center justify-center">
+        <div class="relative w-80 h-80">
+          <!-- Outermost Circle - Dark Blue/Purple -->
+          <div class="absolute inset-0 w-80 h-80 bg-gradient-to-br from-blue-800/40 to-purple-900/40 rounded-full border-4 border-blue-600/60 animate-pulse-slow"></div>
+          
+          <!-- Third Circle - Blue -->
+          <div class="absolute inset-8 w-64 h-64 bg-gradient-to-br from-blue-600/40 to-indigo-700/40 rounded-full border-4 border-blue-500/60 animate-pulse-delay"></div>
+          
+          <!-- Second Circle - Indigo -->
+          <div class="absolute inset-16 w-48 h-48 bg-gradient-to-br from-indigo-400/40 to-indigo-500/40 rounded-full border-4 border-indigo-400/60 animate-pulse-slow-2"></div>
+          
+          <!-- Innermost Circle - Cyan -->
+          <div class="absolute inset-24 w-32 h-32 bg-gradient-to-br from-cyan-300/40 to-cyan-400/40 rounded-full border-4 border-cyan-500/60 animate-pulse"></div>
+          
+          <!-- Ripple Effects -->
+          <div class="absolute inset-0 w-80 h-80 rounded-full">
+            <!-- Ripple 1 -->
+            <div class="absolute inset-0 w-80 h-80 border-2 border-cyan-400/30 rounded-full animate-ripple-1"></div>
+            <!-- Ripple 2 -->
+            <div class="absolute inset-0 w-80 h-80 border-2 border-blue-400/30 rounded-full animate-ripple-2"></div>
+            <!-- Ripple 3 -->
+            <div class="absolute inset-0 w-80 h-80 border-2 border-indigo-400/30 rounded-full animate-ripple-3"></div>
+          </div>
+          
+          <!-- Center Icon -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SDG Descriptions -->
+      <div class="space-y-8">
+        <div class="bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-indigo-700/10 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-cyan-300 mb-3">Clean Water & Sanitation</h3>
+          <p class="text-blue-100 leading-relaxed">
+            Ensuring access to clean water and proper sanitation for communities worldwide through innovative technologies and infrastructure development.
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500/10 via-indigo-600/10 to-purple-700/10 backdrop-blur-xl border border-blue-400/30 rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-blue-300 mb-3">Sustainable Communities</h3>
+          <p class="text-blue-100 leading-relaxed">
+            Promoting sustainable development in local communities by building resilient water systems that support long-term growth and prosperity.
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-indigo-500/10 via-purple-600/10 to-cyan-700/10 backdrop-blur-xl border border-indigo-400/30 rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-indigo-300 mb-3">Climate Action</h3>
+          <p class="text-blue-100 leading-relaxed">
+            Addressing water-related impacts of climate change through adaptive technologies and resilient infrastructure that can withstand extreme weather events.
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500/10 via-cyan-600/10 to-blue-700/10 backdrop-blur-xl border border-purple-400/30 rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-purple-300 mb-3">Partnerships for the Goals</h3>
+          <p class="text-blue-100 leading-relaxed">
+            Fostering global collaboration to achieve the SDGs by bringing together governments, businesses, NGOs, and communities in coordinated water initiatives.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Ripple Animations */
+  @keyframes ripple-1 {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes ripple-2 {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes ripple-3 {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
+  }
+  
+  .animate-ripple-1 {
+    animation: ripple-1 3s ease-out infinite;
+  }
+  
+  .animate-ripple-2 {
+    animation: ripple-2 3s ease-out infinite 1s;
+  }
+  
+  .animate-ripple-3 {
+    animation: ripple-3 3s ease-out infinite 2s;
+  }
+</style>
