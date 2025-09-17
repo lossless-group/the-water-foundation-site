@@ -1,7 +1,7 @@
 ---
 title: "United Nations General Assembly"
 event_name: "UNGA"
-upcoming_dates: "2025-09-21--2025-09-25"
+upcoming_dates: "2025-09-22--2025-09-26"
 upcoming_location: "New York, USA"
 url: https://the-water-foundation.com
 splash_page_path: /events/unga

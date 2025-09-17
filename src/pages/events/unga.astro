@@ -52,9 +52,11 @@ const pageUrl = `${Astro.site}events/unga`;
 // Combine twf_zinger and invite_message for Open Graph description
 const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
 
-// Find Verena and Sarah from team data
+// Find team members from team data
 const verena = teamData.find(member => member.name === "Verena A. Sturm");
+const christoph = teamData.find(member => member.name === "Christoph Schwager");
 const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
+const corinne = teamData.find(member => member.name === "Corinna Schwager");
 ---
 
 <BaseThemeLayout
@@ -109,6 +111,37 @@ const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
               </p>
             </div>
 
+            <!-- Contact Information -->
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-cyan-400">Get in Touch</h3>
+                <div class="scale-75">
+                  <SocialIcons socialLinks={socialLinks} className="justify-end" />
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                  <a href={`mailto:${contact_email}`} class="text-blue-100 hover:text-cyan-300 transition-colors text-sm">
+                    {contact_email}
+                  </a>
+                </div>
+                
+                <div class="flex items-center space-x-3">
+                  <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.559-.499-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.559.499.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.497-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+                  </svg>
+                  <a href={event_website} target="_blank" rel="noopener noreferrer" class="text-blue-100 hover:text-cyan-300 transition-colors text-sm">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- Right Side - Event Information -->
@@ -146,6 +179,17 @@ const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
               <div class="space-y-6 mt-8">
                 <h3 class="text-2xl font-light text-cyan-100 mb-6">Who's here?</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {christoph && (
+                    <PersonCardEssentials
+                      name={christoph.name}
+                      role={christoph.role}
+                      image={christoph.image}
+                      bio={christoph.bio}
+                      socialLinks={christoph.socialLinks}
+                      imageClass="aspect-[4/3]"
+                      maxWords={25}
+                    />
+                  )}
                   {verena && (
                     <PersonCardEssentials
                       name={verena.name}
@@ -153,6 +197,17 @@ const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
                       image={verena.image}
                       bio={verena.bio}
                       socialLinks={verena.socialLinks}
+                      imageClass="aspect-[4/3]"
+                      maxWords={25}
+                    />
+                  )}
+                  {corinne && (
+                    <PersonCardEssentials
+                      name={corinne.name}
+                      role={corinne.role}
+                      image={corinne.image}
+                      bio={corinne.bio}
+                      socialLinks={corinne.socialLinks}
                       imageClass="aspect-[4/3]"
                       maxWords={25}
                     />
@@ -174,37 +229,6 @@ const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
                 {invite_message}
               </p>
 
-            </div>
-
-            <!-- Contact Information -->
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-semibold text-cyan-400">Get in Touch</h3>
-                <div class="scale-75">
-                  <SocialIcons socialLinks={socialLinks} className="justify-end" />
-                </div>
-              </div>
-              
-              <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                  <a href={`mailto:${contact_email}`} class="text-blue-100 hover:text-cyan-300 transition-colors text-sm">
-                    {contact_email}
-                  </a>
-                </div>
-                
-                <div class="flex items-center space-x-3">
-                  <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.559-.499-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.559.499.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.497-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
-                  </svg>
-                  <a href={event_website} target="_blank" rel="noopener noreferrer" class="text-blue-100 hover:text-cyan-300 transition-colors text-sm">
-                    Learn More
-                  </a>
-                </div>
-              </div>
             </div>
 
           </div>
