@@ -23,22 +23,22 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 			</div>
 
 			<!-- Progress Overview -->
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
 				<div class="bg-card border border-border rounded-xl p-6 text-center">
-					<div class="text-3xl font-bold text-green-600 mb-2">✅ 95%</div>
+					<div class="text-3xl font-bold text-green-600 mb-2">✅ 98%</div>
 					<div class="text-sm text-foreground/70">Core Features</div>
 				</div>
 				<div class="bg-card border border-border rounded-xl p-6 text-center">
 					<div class="text-3xl font-bold text-blue-600 mb-2">🎨 100%</div>
-					<div class="text-sm text-foreground/70">Theme System</div>
+					<div class="text-sm text-foreground/70">Design System</div>
 				</div>
 				<div class="bg-card border border-border rounded-xl p-6 text-center">
-					<div class="text-3xl font-bold text-purple-600 mb-2">📱 90%</div>
-					<div class="text-sm text-foreground/70">Responsive Design</div>
+					<div class="text-3xl font-bold text-purple-600 mb-2">🧩 95%</div>
+					<div class="text-sm text-foreground/70">Component Library</div>
 				</div>
 				<div class="bg-card border border-border rounded-xl p-6 text-center">
-					<div class="text-3xl font-bold text-purple-600 mb-2">📱 70%</div>
-					<div class="text-sm text-foreground/70">Messages Displayed</div>
+					<div class="text-3xl font-bold text-cyan-600 mb-2">📄 48</div>
+					<div class="text-sm text-foreground/70">Live Pages</div>
 				</div>
 			</div>
 
@@ -54,23 +54,37 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 						<div class="flex items-center justify-between p-3 bg-primary/5 border border-primary/10 rounded-lg">
 							<div>
 								<div class="font-medium text-foreground">Homepage</div>
-								<div class="text-sm text-foreground/60">Hero section with impact messaging</div>
+								<div class="text-sm text-foreground/60">Hero section with whale imagery & impact messaging</div>
 							</div>
 							<a href="/" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
 						</div>
 						<div class="flex items-center justify-between p-3 bg-secondary/5 border border-secondary/10 rounded-lg">
 							<div>
-								<div class="font-medium text-foreground">Team Page</div>
-								<div class="text-sm text-foreground/60">Team member profiles & bios</div>
+								<div class="font-medium text-foreground">Impact Dashboard</div>
+								<div class="text-sm text-foreground/60">Modular sections: Flywheel, SDGs, Circular Water</div>
 							</div>
-							<a href="/team" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
+							<a href="/impact" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
 						</div>
 						<div class="flex items-center justify-between p-3 bg-accent/5 border border-accent/10 rounded-lg">
 							<div>
-								<div class="font-medium text-foreground">Privacy Policy</div>
-								<div class="text-sm text-foreground/60">Legal documentation</div>
+								<div class="font-medium text-foreground">Team & People</div>
+								<div class="text-sm text-foreground/60">Team profiles, masonry layouts, variants</div>
 							</div>
-							<a href="/privacy" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
+							<a href="/team" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
+						</div>
+						<div class="flex items-center justify-between p-3 bg-green-500/5 border border-green-500/10 rounded-lg">
+							<div>
+								<div class="font-medium text-foreground">Events & UNGA</div>
+								<div class="text-sm text-foreground/60">Event pages with team cards & timelines</div>
+							</div>
+							<a href="/events/unga" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
+						</div>
+						<div class="flex items-center justify-between p-3 bg-blue-500/5 border border-blue-500/10 rounded-lg">
+							<div>
+								<div class="font-medium text-foreground">About & Mission</div>
+								<div class="text-sm text-foreground/60">Mission statements, beliefs, first principles</div>
+							</div>
+							<a href="/about" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
 						</div>
 					</div>
 				</div>
@@ -85,21 +99,21 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 						<div class="flex items-center justify-between p-3 bg-primary/5 border border-primary/10 rounded-lg">
 							<div>
 								<div class="font-medium text-foreground">Brand Kit</div>
-								<div class="text-sm text-foreground/60">Colors, typography, themes</div>
+								<div class="text-sm text-foreground/60">Colors, typography, themes, hero variants</div>
 							</div>
 							<a href="/brand-kit" class="text-primary hover:text-primary/80 font-medium text-sm">Explore →</a>
 						</div>
 						<div class="flex items-center justify-between p-3 bg-secondary/5 border border-secondary/10 rounded-lg">
 							<div>
-								<div class="font-medium text-foreground">Hero Options</div>
-								<div class="text-sm text-foreground/60">Multiple hero section styles</div>
+								<div class="font-medium text-foreground">Component Library</div>
+								<div class="text-sm text-foreground/60">45+ reusable sections & components</div>
 							</div>
-							<a href="/brand-kit/heros" class="text-primary hover:text-primary/80 font-medium text-sm">Preview →</a>
+							<a href="/design-system/component-library" class="text-primary hover:text-primary/80 font-medium text-sm">Browse →</a>
 						</div>
 						<div class="flex items-center justify-between p-3 bg-accent/5 border border-accent/10 rounded-lg">
 							<div>
-								<div class="font-medium text-foreground">Narrative Versions</div>
-								<div class="text-sm text-foreground/60">Different messaging approaches</div>
+								<div class="font-medium text-foreground">Modular Sections</div>
+								<div class="text-sm text-foreground/60">Core messages, facts, grids, who-we-are</div>
 							</div>
 							<div class="flex gap-2">
 								<a href="/features/why-us-now-v1" class="text-primary hover:text-primary/80 font-medium text-xs">V1</a>
@@ -109,10 +123,10 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 						</div>
 						<div class="flex items-center justify-between p-3 bg-green-500/5 border border-green-500/10 rounded-lg">
 							<div>
-								<div class="font-medium text-foreground">Component Library</div>
-								<div class="text-sm text-foreground/60">Reusable components & patterns</div>
+								<div class="font-medium text-foreground">Slide Presentations</div>
+								<div class="text-sm text-foreground/60">Dynamic markdown-based slide decks</div>
 							</div>
-							<a href="/components" class="text-primary hover:text-primary/80 font-medium text-sm">Browse →</a>
+							<a href="/slides" class="text-primary hover:text-primary/80 font-medium text-sm">View →</a>
 						</div>
 					</div>
 				</div>
@@ -128,25 +142,33 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 					<div class="flex items-start gap-4 p-4 bg-green-50 border border-green-200 rounded-lg">
 						<div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
 						<div>
-							<div class="font-medium text-green-900">Navigation Enhancement</div>
-							<div class="text-sm text-green-700 mt-1">Added gradient underline animations to navigation links with smooth right-to-left transitions</div>
-							<div class="text-xs text-green-600 mt-2">Just completed</div>
+							<div class="font-medium text-green-900">Impact Page Refactoring</div>
+							<div class="text-sm text-green-700 mt-1">Broke down 548-line impact page into 6 modular components: Hero, Flywheel, SDG, Circular Water, CTA sections</div>
+							<div class="text-xs text-green-600 mt-2">Just completed - September 2025</div>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
 						<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
 						<div>
-							<div class="font-medium text-blue-900">Theme System Integration</div>
-							<div class="text-sm text-blue-700 mt-1">Fixed logo switching, footer theming, and consistent light/dark mode support across all components</div>
+							<div class="font-medium text-blue-900">UNGA Event Page Enhancement</div>
+							<div class="text-sm text-blue-700 mt-1">Added team member cards with improved image handling, custom CSS for better visual consistency</div>
 							<div class="text-xs text-blue-600 mt-2">Recently completed</div>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
 						<div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
 						<div>
-							<div class="font-medium text-purple-900">Homepage Redesign</div>
-							<div class="text-sm text-purple-700 mt-1">Implemented impactful hero section with whale imagery and compelling water independence messaging</div>
-							<div class="text-xs text-purple-600 mt-2">Recently completed</div>
+							<div class="font-medium text-purple-900">Component Architecture</div>
+							<div class="text-sm text-purple-700 mt-1">Built comprehensive section library with 45+ reusable components across impact, events, core messages</div>
+							<div class="text-xs text-purple-600 mt-2">Ongoing development</div>
+						</div>
+					</div>
+					<div class="flex items-start gap-4 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+						<div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+						<div>
+							<div class="font-medium text-orange-900">Advanced Tech Stack</div>
+							<div class="text-sm text-orange-700 mt-1">Upgraded to Astro 5.12.9, Tailwind CSS 4.1.11, added Vitest testing framework and TypeScript support</div>
+							<div class="text-xs text-orange-600 mt-2">Recently updated</div>
 						</div>
 					</div>
 				</div>
@@ -155,26 +177,31 @@ import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
 			<!-- Technical Features -->
 			<div class="bg-card border border-border rounded-xl p-6">
 				<h2 class="text-2xl font-semibold text-foreground mb-6">🔧 Technical Implementation</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
 					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg text-center">
 						<div class="text-2xl mb-2">⚡</div>
-						<div class="font-medium text-foreground mb-1">Astro Framework</div>
+						<div class="font-medium text-foreground mb-1">Astro 5.12.9</div>
 						<div class="text-xs text-foreground/60">Static site generation</div>
 					</div>
 					<div class="p-4 bg-primary/5 border border-primary/10 rounded-lg text-center">
 						<div class="text-2xl mb-2">🎨</div>
-						<div class="font-medium text-foreground mb-1">Tailwind CSS v4</div>
+						<div class="font-medium text-foreground mb-1">Tailwind CSS 4.1.11</div>
 						<div class="text-xs text-foreground/60">Modern styling system</div>
 					</div>
 					<div class="p-4 bg-secondary/5 border border-secondary/10 rounded-lg text-center">
-						<div class="text-2xl mb-2">🌙</div>
-						<div class="font-medium text-foreground mb-1">Dark/Light Mode</div>
-						<div class="text-xs text-foreground/60">Automatic theme switching</div>
+						<div class="text-2xl mb-2">🧪</div>
+						<div class="font-medium text-foreground mb-1">Vitest Testing</div>
+						<div class="text-xs text-foreground/60">Modern test framework</div>
 					</div>
-					<div class="p-4 bg-accent/5 border border-accent/10 rounded-lg text-center">
-						<div class="text-2xl mb-2">📱</div>
-						<div class="font-medium text-foreground mb-1">Responsive</div>
-						<div class="text-xs text-foreground/60">Mobile-first design</div>
+					<div class="p-4 bg-green-500/5 border border-green-500/10 rounded-lg text-center">
+						<div class="text-2xl mb-2">📝</div>
+						<div class="font-medium text-foreground mb-1">TypeScript</div>
+						<div class="text-xs text-foreground/60">Type safety & IntelliSense</div>
+					</div>
+					<div class="p-4 bg-blue-500/5 border border-blue-500/10 rounded-lg text-center">
+						<div class="text-2xl mb-2">🧩</div>
+						<div class="font-medium text-foreground mb-1">Modular Architecture</div>
+						<div class="text-xs text-foreground/60">Component-based design</div>
 					</div>
 				</div>
 			</div>
