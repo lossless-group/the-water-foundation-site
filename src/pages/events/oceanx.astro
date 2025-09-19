@@ -10,14 +10,14 @@ import teamData from '../../content/people/team.json';
 
 // Get the event data from markdown
 const events = await getCollection('events');
-const eventData = events.find(event => event.slug === 'norrsken-impact-week');
+const eventData = events.find(event => event.slug === 'oceanx');
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-water-foundation/?viewAsMember=true', icon: 'linkedin' as const }
 ];
 
 if (!eventData) {
-  throw new Error('Norrsken Impact event data not found');
+  throw new Error('OceanX event data not found');
 }
 
 const {
@@ -47,7 +47,7 @@ const endDate = new Date(dateRange[1]).toLocaleDateString('en-US', {
 });
 const displayDate = `${startDate} - ${endDate}`;
 
-const pageUrl = `${Astro.site}events/norrsken-impact-week`;
+const pageUrl = `${Astro.site}events/oceanx`;
 
 // Combine twf_zinger and invite_message for Open Graph description
 const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
@@ -70,11 +70,11 @@ const verena = teamData.find(member => member.name === "Verena A. Sturm");
           
           <!-- Left Side - Event Visual & Logo -->
           <div class="text-center space-y-8">
-            <!-- The Norrsken Logo -->
+            <!-- OceanX Logo -->
             <div class="mb-8">
               <img 
-                src="/trademarks/trademark__Norrsken.svg" 
-                alt="The Norrsken Impact Week, 2025 in Barcelona, Spain" 
+                src="/trademarks/trademark__Ocean-X--Lighest.svg" 
+                alt="Ocean-X" 
                 class="w-full max-w-md mx-auto h-auto"
               />
             </div>
