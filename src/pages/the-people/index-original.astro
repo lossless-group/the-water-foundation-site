@@ -1,0 +1,109 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+import TeamGrid from '@components/team/TeamGrid.astro';
+import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
+import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
+
+// Import team members from JSON file
+import teamData from '../../content/people/team.json';
+
+const teamMembers = teamData;
+---
+
+<BaseThemeLayout
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+  title="The People of The Water Foundation"
+  description="Meet our friendly team members who are passionate about bringing water resilience to 1 billion people."
+>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 md:pt-24 md:pb-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 overflow-hidden">
+      <div class="relative z-10 container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider leading-tight">Our People</h1>
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8 opacity-60"></div>
+        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
+          Meet our friendly team members who are passionate about bringing water resilience to 1 billion people.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="pt-0 pb-12 md:pt-0 md:pb-16">
+      <TeamGrid teamMembers={teamMembers} />
+    </section>
+
+    <!-- Timeline -->
+    <WhoWeAreTimeline />
+
+    <!-- Propose Yourself -->
+    <ProposeYourself />
+
+
+  </main>
+</BaseThemeLayout>
+
+<style>
+  /* Water theme specific styles */
+  :global(html[data-theme="water"]) {
+    --color-primary: 14 116 144;  /* Cyan-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-background: 240 249 255;  /* Light blue-50 */
+    --color-foreground: 3 7 18;  /* Gray-950 */
+    --color-border: 224 242 254;  /* Light blue-100 */
+  }
+  
+  /* Dark mode overrides */
+  :global(html[data-theme="water"].dark) {
+    --color-primary: 8 145 178;  /* Cyan-600 */
+    --color-background: 8 47 73;  /* Dark blue-950 */
+    --color-foreground: 248 250 252;  /* Slate-50 */
+    --color-border: 30 58 138;  /* Blue-900 */
+  }
+
+  /* Animation keyframes for background elements */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-slow-2 {
+    0%, 100% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.08);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 4s ease-in-out infinite 1s;
+  }
+  
+  .animate-pulse-slow-2 {
+    animation: pulse-slow-2 4s ease-in-out infinite 2s;
+  }
+</style>
