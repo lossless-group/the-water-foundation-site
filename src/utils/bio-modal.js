@@ -30,7 +30,7 @@ function showBio(button) {
   bioContainer.style.cssText = `margin:0;line-height:1.7;font-size:1rem;color:rgb(${cardForeground});font-weight:400;letter-spacing:0.01em;font-family:var(--font-family-primary, 'Inter', sans-serif)`;
   
   // Split bio by double line breaks to create paragraphs
-  const paragraphs = bio.split('\\n\\n').filter(p => p.trim() !== '');
+  const paragraphs = bio.split('\n\n').filter(p => p.trim() !== '');
   
   paragraphs.forEach((paragraph, index) => {
     const p = document.createElement('p');
