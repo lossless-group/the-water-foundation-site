@@ -125,11 +125,7 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
               // Team members
               ...sectionMembers.map((member) => (
                 <div class="masonry-item">
-                  {section.useSmallCard ? (
-                    <PersonCardSmall {...member} maxWords={15} />
-                  ) : (
-                    <PersonCard {...member} />
-                  )}
+                  <PersonCard {...member} />
                 </div>
               ))
             ];
