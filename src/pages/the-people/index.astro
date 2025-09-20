@@ -94,13 +94,58 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
 >
   <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
     <!-- Hero Section -->
-    <section class="relative pt-20 pb-16 md:pt-24 md:pb-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 overflow-hidden">
-      <div class="relative z-10 container mx-auto px-4 text-center">
-        <h1 class="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider leading-tight">Our People</h1>
-        <div class="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8 opacity-60"></div>
-        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
-          Meet the passionate individuals working tirelessly to bring water resilience to 1 billion people.
-        </p>
+    <section class="relative py-20 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-teal-900 overflow-hidden">
+      <!-- Animated Background Elements -->
+      <div class="absolute inset-0">
+        <!-- Gradient Orbs with Blur -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-teal-600/15 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-cyan-600/10 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+      </div>
+
+      <!-- Animated Grid Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="w-full h-full" style="background-image: linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+
+      <!-- Floating Water Droplets -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+        <div class="absolute top-1/4 left-1/3 w-4 h-4 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-full animate-float-bounce" style="animation-delay: 0s;"></div>
+        <div class="absolute top-2/3 left-1/4 w-3 h-3 bg-gradient-to-br from-blue-300 to-teal-400 rounded-full animate-float-spin" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-5 h-5 bg-gradient-to-br from-teal-300 to-cyan-400 rounded-full animate-float-drift" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-2 h-2 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full animate-float-pulse" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-1/2 left-1/5 w-3 h-3 bg-gradient-to-br from-indigo-300 to-purple-400 rounded-full animate-float-wave" style="animation-delay: 3s;"></div>
+        <div class="absolute bottom-1/4 left-2/3 w-4 h-4 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full animate-float-bounce" style="animation-delay: 1.5s;"></div>
+        <div class="absolute top-3/4 right-1/5 w-2 h-2 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full animate-float-spin" style="animation-delay: 2.5s;"></div>
+      </div>
+
+      <!-- Animated Circle Effects -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+        <div class="absolute top-1/3 left-1/2 w-32 h-32 border border-cyan-400 rounded-full animate-circle-gentle" style="animation-delay: 0s;"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-24 h-24 border border-blue-400 rounded-full animate-circle-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute top-2/3 left-1/4 w-40 h-40 border border-teal-400 rounded-full animate-circle-drift" style="animation-delay: 1s;"></div>
+      </div>
+
+      <!-- Floating Particles -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-15">
+        <div class="absolute top-1/5 left-1/6 w-1 h-1 bg-white rounded-full animate-particle-float" style="animation-delay: 0s;"></div>
+        <div class="absolute top-3/5 left-3/4 w-1 h-1 bg-cyan-200 rounded-full animate-particle-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/5 right-1/6 w-1 h-1 bg-blue-200 rounded-full animate-particle-float" style="animation-delay: 2s;"></div>
+        <div class="absolute top-2/5 right-2/3 w-1 h-1 bg-teal-200 rounded-full animate-particle-float" style="animation-delay: 3s;"></div>
+        <div class="absolute bottom-2/5 left-1/2 w-1 h-1 bg-indigo-200 rounded-full animate-particle-float" style="animation-delay: 1.5s;"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <!-- Header -->
+        <div class="mb-16">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 tracking-wide animate-fade-in-up">
+            Our <span class="text-cyan-300 font-normal">People</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up-delay">
+            Meet the passionate individuals dedicated to securing water independence for 1 billion+ people by 2035.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -258,5 +303,268 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
   /* Smooth scrolling for section headers */
   h2 {
     scroll-margin-top: 2rem;
+  }
+
+  /* Hero Animation Styles */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px);
+    }
+    75% {
+      transform: translateY(-15px) translateX(3px);
+    }
+  }
+
+  @keyframes float-bounce {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-15px) scale(1.1);
+    }
+    50% {
+      transform: translateY(-8px) scale(0.95);
+    }
+    75% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  @keyframes float-spin {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(270deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(360deg);
+    }
+  }
+
+  @keyframes float-drift {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    33% {
+      transform: translateY(-12px) translateX(15px);
+    }
+    66% {
+      transform: translateY(-8px) translateX(-10px);
+    }
+  }
+
+  @keyframes float-pulse {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-10px) scale(1.3);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float-wave {
+    0%, 100% {
+      transform: translateY(0px) skew(0deg);
+    }
+    25% {
+      transform: translateY(-8px) skew(5deg);
+    }
+    50% {
+      transform: translateY(-15px) skew(0deg);
+    }
+    75% {
+      transform: translateY(-8px) skew(-5deg);
+    }
+  }
+
+  @keyframes circle-gentle {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1) rotate(180deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes circle-slow {
+    0%, 100% {
+      transform: scale(0.9) translateX(0px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.2) translateX(10px);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes circle-drift {
+    0%, 100% {
+      transform: scale(1) translateY(0px);
+      opacity: 0.4;
+    }
+    33% {
+      transform: scale(0.8) translateY(-15px);
+      opacity: 0.6;
+    }
+    66% {
+      transform: scale(1.1) translateY(5px);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes particle-float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(-30px) translateX(10px);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-60px) translateX(-5px);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-40px) translateX(15px);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0 0 5px rgba(103, 232, 249, 0.5);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(103, 232, 249, 0.8), 0 0 30px rgba(103, 232, 249, 0.6);
+    }
+  }
+
+  @keyframes expand {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+    100% {
+      width: 8rem;
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-bounce {
+    animation: float-bounce 7s ease-in-out infinite;
+  }
+
+  .animate-float-spin {
+    animation: float-spin 8s linear infinite;
+  }
+
+  .animate-float-drift {
+    animation: float-drift 9s ease-in-out infinite;
+  }
+
+  .animate-float-pulse {
+    animation: float-pulse 5s ease-in-out infinite;
+  }
+
+  .animate-float-wave {
+    animation: float-wave 6s ease-in-out infinite;
+  }
+
+  .animate-circle-gentle {
+    animation: circle-gentle 8s ease-in-out infinite;
+  }
+
+  .animate-circle-slow {
+    animation: circle-slow 10s ease-in-out infinite;
+  }
+
+  .animate-circle-drift {
+    animation: circle-drift 12s ease-in-out infinite;
+  }
+
+  .animate-particle-float {
+    animation: particle-float 12s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+  }
+
+  .animate-fade-in-up-delay {
+    animation: fade-in-up 1s ease-out 0.5s forwards;
+    opacity: 0;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .animate-expand {
+    animation: expand 1.5s ease-out 1s forwards;
+    width: 0;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 5s ease-in-out infinite 1s;
   }
 </style>
