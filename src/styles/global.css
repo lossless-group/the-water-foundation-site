@@ -588,8 +588,8 @@ a, button, input, textarea, select, .transition-colors {
 
 /* Water-Inspired Header Styles - Global */
 @layer components {
-  /* Standard water-inspired headers (h1, h2, h3) */
-  .water-header, h1:not(.no-water), h2:not(.no-water), h3:not(.no-water) {
+  /* Standard water-inspired headers - opt-in only */
+  .water-header {
     position: relative;
     background: linear-gradient(135deg, #0891b2 0%, var(--color-foreground) 100%);
     background-clip: text;
@@ -601,7 +601,7 @@ a, button, input, textarea, select, .transition-colors {
     margin-left: 0;
   }
   
-  .water-header:after, h1:not(.no-water):after, h2:not(.no-water):after, h3:not(.no-water):after {
+  .water-header:after {
     content: '';
     position: absolute;
     bottom: -0.5rem;
