@@ -6,6 +6,7 @@ import PersonCard from '@components/team/PersonCard.astro';
 import PersonCardSmall from '@components/team/PersonCardSmall.astro';
 import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
 import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
+import "@styles/team-spans.css";
 
 // 2. Type Definitions
 interface TeamMember {
@@ -74,9 +75,15 @@ if (import.meta.env.DEV && teamMembers.length === 0) {
 
 // 5. Helper Functions
 function groupByClassifier(members: TeamMember[], classifier: string): TeamMember[] {
-  return members.filter(member => 
-    member.classifiers && member.classifiers.includes(classifier)
-  );
+  return members.filter(member => {
+    if (!member.classifiers) return false;
+    
+    // Split classifiers by comma and trim whitespace
+    const classifierList = member.classifiers.split(',').map(c => c.trim());
+    
+    // Check for exact match
+    return classifierList.includes(classifier);
+  });
 }
 ---
 
@@ -126,9 +133,9 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
             // Section header (skip for Team section since we use the big header)
             if (section.title !== "Team") {
               elements.push(
-                <h2 class="water-header">
+                <h1 class="role-header">
                   {section.title}
-                </h2>
+                </h1>
               );
             }
             

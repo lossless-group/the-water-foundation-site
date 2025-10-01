@@ -4,11 +4,39 @@
   page-break-inside: avoid;
 }
 
-.role-header {
-  font-size: 1.5rem;
-  margin: 2rem 0 1rem 0;
-  color: var(--color-foreground);
+h1.role-header {
+  font-size: 2.5rem !important;
+  font-weight: 300 !important;
+  margin: 2rem 0 1rem 0 !important;
+  color: var(--color-foreground) !important;
   width: 100%;
+  position: relative;
+  background: linear-gradient(135deg, #0891b2 0%, var(--color-foreground) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-left: 4px solid #0891b2 !important;
+  padding-left: 1rem !important;
+  margin-left: 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: normal !important;
+}
+
+h1.role-header:after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 1rem;
+  width: 4rem;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    #0891b2 0%, 
+    rgba(8, 145, 178, 0.6) 50%,
+    transparent 100%
+  );
+  border-radius: 1px;
+  animation: gentleFlow 3s ease-in-out infinite;
+  transform-origin: left center;
 }
 
 .team-span:first-child .role-header {
