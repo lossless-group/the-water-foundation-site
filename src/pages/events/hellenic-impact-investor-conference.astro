@@ -56,6 +56,7 @@ const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
 const verena = teamData.find(member => member.name === "Verena A. Sturm");
 const christoph = teamData.find(member => member.name === "Christoph Schwager");
 const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
+const nicolai = teamData.find(member => member.name === "Nicolai Bode")
 ---
 
 <BaseThemeLayout
@@ -176,6 +177,17 @@ const sarah = teamData.find(member => member.name === "Sarabeth Brockley");
                       image={sarah.image}
                       bio={sarah.bio}
                       socialLinks={sarah.socialLinks}
+                      imageClass="aspect-[4/3]"
+                      maxWords={25}
+                    />
+                  )}
+                  {nicolai && (
+                    <PersonCardEssentials
+                      name={nicolai.name}
+                      role={nicolai.role}
+                      image={nicolai.image}
+                      bio={nicolai.bio}
+                      socialLinks={nicolai.socialLinks}
                       imageClass="aspect-[4/3]"
                       maxWords={25}
                     />
