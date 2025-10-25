@@ -1,5 +1,5 @@
 ---
-title: "Meet The Water Foundation at TheDrop"
+title: "Meet The Water Foundation at The Leaders Collaboration Forum"
 event_name: "BMW Foundation, The Leaders Collaboration Forum"
 upcoming_dates: "2025-10-23--2025-10-25"
 upcoming_location: "EUREF CAMPUS, Berlin"
