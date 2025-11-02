@@ -1,0 +1,103 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout
+  title="X Water Prize | The Water Foundation"
+  description="Recognizing innovative solutions for water security and resilience."
+  themeClass="theme-water"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-blue-900">
+    <section class="relative py-20 md:py-32 overflow-hidden">
+      <!-- Subtle Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+      
+      <!-- Animated Gradient Orbs -->
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-indigo-600/15 to-transparent rounded-full blur-3xl animate-pulse-delay"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-light text-white mb-8 tracking-wide">
+          X Water <span class="text-purple-300 font-normal">Prize</span>
+        </h1>
+        <p class="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed mb-12">
+          Recognizing exceptional innovation in water security and resilience solutions
+        </p>
+        
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-12 max-w-4xl mx-auto">
+          <p class="text-lg text-white/90 leading-relaxed mb-8">
+            The X Water Prize celebrates breakthrough innovations that address the world's most pressing 
+            water challenges. This prestigious recognition highlights solutions that combine technical 
+            excellence, scalable impact, and transformative potential.
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div>
+              <h3 class="text-xl font-semibold text-purple-300 mb-4">Categories</h3>
+              <ul class="space-y-2 text-white/80">
+                <li>• Water Treatment Innovation</li>
+                <li>• Conservation & Efficiency</li>
+                <li>• Infrastructure & Distribution</li>
+                <li>• Monitoring & Management</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-indigo-300 mb-4">Judging Criteria</h3>
+              <ul class="space-y-2 text-white/80">
+                <li>• Technical Innovation</li>
+                <li>• Scalability & Impact</li>
+                <li>• Sustainability</li>
+                <li>• Market Viability</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-12 pt-8 border-t border-white/20 text-center">
+            <p class="text-white/70 mb-6">More information coming soon</p>
+            <a href="/contact" class="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105">
+              Get Notified
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse-delay {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animate-pulse-delay {
+    animation: pulse-delay 5s ease-in-out infinite 1s;
+  }
+</style>

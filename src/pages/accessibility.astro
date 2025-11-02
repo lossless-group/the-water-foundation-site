@@ -1,0 +1,67 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout
+  title="Accessibility | The Water Foundation"
+  description="The Water Foundation's commitment to website accessibility and inclusive design."
+  themeClass="theme-water"
+  containerClass="max-w-4xl mx-auto"
+>
+  <main class="min-h-screen" style="background-color: var(--color-background);">
+    <div class="max-w-4xl mx-auto px-6 py-16">
+      
+      <section class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-12">
+        <h1 class="text-4xl font-light text-gray-900 mb-8 border-b border-gray-200 pb-4">
+          Accessibility
+        </h1>
+        
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Commitment</h2>
+            <p class="text-gray-700 leading-relaxed">
+              The Water Foundation is committed to ensuring digital accessibility for people with disabilities. We are continually 
+              improving the user experience for everyone and applying the relevant accessibility standards.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Conformance Status</h2>
+            <p class="text-gray-700 leading-relaxed">
+              We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. This means we strive 
+              to meet or exceed established accessibility standards for web content.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Feedback</h2>
+            <p class="text-gray-700 leading-relaxed">
+              We welcome your feedback on the accessibility of The Water Foundation website. If you encounter accessibility 
+              barriers, please contact us:
+            </p>
+            <div class="mt-4 bg-gray-50 rounded-lg p-4">
+              <p class="text-gray-900 mb-2"><strong>Email:</strong></p>
+              <a href="mailto:accessibility@the-water-foundation.com" class="text-blue-600 hover:text-blue-800">
+                accessibility@the-water-foundation.com
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-gray-200">
+            <p class="text-gray-600 text-sm">
+              Last updated: January 2025
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseThemeLayout>
+
+<style>
+  a {
+    transition: color 0.2s ease;
+  }
+</style>
+

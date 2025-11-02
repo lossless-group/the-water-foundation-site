@@ -1,0 +1,12 @@
+---
+// Redirect to the for-profit-non-profit pattern breaker page
+import { redirect } from 'astro/server';
+---
+
+<Fragment set:html={`
+  <meta http-equiv="refresh" content="0; url=/beliefs/forprofit-non-forprofit">
+  <script>
+    window.location.href = '/beliefs/forprofit-non-forprofit';
+  </script>
+`} />
+

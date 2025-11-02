@@ -1,0 +1,82 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout
+  title="Whistleblowing | The Water Foundation"
+  description="Our Speak-Up Office ensures everyone feels safe at our workplaces and events."
+  themeClass="theme-water"
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <main class="min-h-screen" style="background-color: var(--color-background);">
+    <div class="max-w-4xl mx-auto px-6 py-16">
+      
+      <section class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-12">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-px bg-black mr-3"></div>
+          <span class="text-sm font-medium uppercase tracking-wider text-black">WHISTLEBLOWING</span>
+        </div>
+        
+        <h1 class="text-4xl font-light text-gray-900 mb-8 border-b border-gray-200 pb-4">
+          Our Speak-Up Office
+        </h1>
+        
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Commitment</h2>
+            <p class="text-gray-700 leading-relaxed">
+              It is important to us that everyone feels safe, whether at our workplaces or at our events. 
+              We are committed to maintaining an environment where concerns can be raised without fear of 
+              retaliation or discrimination.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">How It Works</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Our Speak-Up Office provides a confidential, secure channel for reporting concerns about:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Misconduct, harassment, or discrimination</li>
+              <li>Violations of policies or procedures</li>
+              <li>Ethical concerns</li>
+              <li>Any other issues affecting workplace safety or integrity</li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-50 to-teal-50 rounded-lg p-6 border border-blue-100">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Confidential Reporting</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              All reports are handled with the utmost confidentiality. Your identity will be protected 
+              throughout the investigation process to the fullest extent possible.
+            </p>
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:whistleblowing@the-water-foundation.com" class="text-blue-600 hover:text-blue-800">
+                whistleblowing@the-water-foundation.com
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">No Retaliation Policy</h2>
+            <p class="text-gray-700 leading-relaxed">
+              The Water Foundation strictly prohibits retaliation against anyone who reports concerns in 
+              good faith. We are committed to protecting those who speak up and ensuring appropriate action 
+              is taken on all reports.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center">
+        <a href="/howwework" class="text-blue-600 hover:text-blue-800 transition-colors">
+          ← Back to How We Work
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseThemeLayout>
