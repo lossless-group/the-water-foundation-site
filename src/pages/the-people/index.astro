@@ -6,6 +6,7 @@ import PersonCard from '@components/team/PersonCard.astro';
 import PersonCardSmall from '@components/team/PersonCardSmall.astro';
 import WhoWeAreTimeline from '@layouts/sections/who-we-are/WhoWeAreTimeline.astro';
 import ProposeYourself from '@layouts/sections/propose-yourself/ProposeYourself.astro';
+import "@styles/team-spans.css";
 
 // 2. Type Definitions
 interface TeamMember {
@@ -30,22 +31,17 @@ interface TeamSection {
 // 3. Team Data
 const teamSections: TeamSection[] = [
   { 
-    title: "Managing Partners", 
-    classifier: "Managing Partner",
+    title: "Founding Partners", 
+    classifier: "Founding Principal",
     useSmallCard: false
   },
   { 
-    title: "Founding Team", 
-    classifier: "Founding Principal",
+    title: "Team", 
+    classifier: "Team",
     useSmallCard: true
   },
   { 
-    title: "Advisory Board", 
-    classifier: "Founding Advisor",
-    useSmallCard: true
-  },
-  { 
-    title: "Vertical Partners", 
+    title: "Heads of our Verticals", 
     classifier: "Vertical Partner",
     useSmallCard: true
   },
@@ -79,9 +75,15 @@ if (import.meta.env.DEV && teamMembers.length === 0) {
 
 // 5. Helper Functions
 function groupByClassifier(members: TeamMember[], classifier: string): TeamMember[] {
-  return members.filter(member => 
-    member.classifiers && member.classifiers.includes(classifier)
-  );
+  return members.filter(member => {
+    if (!member.classifiers) return false;
+    
+    // Split classifiers by comma and trim whitespace
+    const classifierList = member.classifiers.split(',').map(c => c.trim());
+    
+    // Check for exact match
+    return classifierList.includes(classifier);
+  });
 }
 ---
 
@@ -157,24 +159,122 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
             <div class="masonry-item w-full text-center py-8">
               <p class="text-gray-500">No team members found.</p>
             </div>
-          ) : teamSections.flatMap((section) => {
+          ) : teamSections.flatMap((section, index) => {
             
             const sectionMembers = groupByClassifier(teamMembers, section.classifier);
             if (sectionMembers.length === 0) return [];
             
-            return [
-              // Section header
-              <h2 class="masonry-header">
-                {section.title}
-              </h2>,
-              // Team members
+            const elements = [];
+            
+            // Add "Team" header before Team section (but not for the Team section itself)
+            if (index === 1) { // Team section is now index 1
+              elements.push(
+                <h1 class="water-header-team">
+                  Team
+                </h1>
+              );
+            }
+            
+            // Section header (skip for Team section since we use the big header)
+            if (section.title !== "Team") {
+              elements.push(
+                <h1 class="role-header">
+                  {section.title}
+                </h1>
+              );
+            }
+            
+            // Team members
+            elements.push(
               ...sectionMembers.map((member) => (
                 <div class="masonry-item">
                   <PersonCard {...member} />
                 </div>
               ))
-            ];
+            );
+            
+            return elements;
           })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Boards Section -->
+    <section class="py-16 bg-gradient-to-b from-background/50 to-background">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h1 class="water-header-team mb-8">Our Boards</h1>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Our governance structure includes specialized boards that provide strategic oversight, 
+            ethical guidance, and expert counsel across all aspects of our mission.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <!-- Tech Board -->
+          <a href="/boards/tech" class="board-card group">
+            <div class="board-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+              </svg>
+            </div>
+            <h3 class="board-title">Tech Board</h3>
+            <p class="board-description">
+              Technology strategy, innovation oversight, and technical governance for our water solutions.
+            </p>
+          </a>
+
+          <!-- Ethics Board -->
+          <a href="/boards/ethics" class="board-card group">
+            <div class="board-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="board-title">Ethics Board</h3>
+            <p class="board-description">
+              Ensuring ethical practices, responsible innovation, and sustainable impact across all initiatives.
+            </p>
+          </a>
+
+          <!-- Donor Board -->
+          <a href="/boards/donor" class="board-card group">
+            <div class="board-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <h3 class="board-title">Donor Board</h3>
+            <p class="board-description">
+              Philanthropic strategy, donor relations, and charitable giving oversight for maximum impact.
+            </p>
+          </a>
+
+          <!-- Foundation Board -->
+          <a href="/boards/foundation" class="board-card group">
+            <div class="board-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <h3 class="board-title">Foundation Board</h3>
+            <p class="board-description">
+              Strategic governance, mission alignment, and organizational oversight for the foundation.
+            </p>
+          </a>
+
+          <!-- Investor Board -->
+          <a href="/boards/investor" class="board-card group">
+            <div class="board-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <h3 class="board-title">Investor Board</h3>
+            <p class="board-description">
+              Investment strategy, portfolio oversight, and financial governance for sustainable returns.
+            </p>
+          </a>
         </div>
       </div>
     </section>
@@ -234,15 +334,88 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
         object-fit: cover;
       }
       
+      /* Team main header */
+      .masonry-team-header {
+        grid-column: 1 / -1;
+        margin: 5rem 0 4rem;
+        font-size: 3.5rem;
+        font-weight: 100;
+        text-align: left;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        border-left: 6px solid var(--color-primary);
+        padding: 1rem 0 1rem 2rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-foreground) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        box-shadow: -6px 0 0 rgba(var(--color-primary), 0.1);
+      }
+      
+      .masonry-team-header:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -6px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+          rgba(var(--color-primary), 0.05) 0%,
+          rgba(var(--color-primary), 0.02) 20%,
+          transparent 40%
+        );
+        z-index: -1;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .masonry-team-header:after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 2rem;
+        width: 12rem;
+        height: 4px;
+        background: linear-gradient(90deg, 
+          var(--color-primary) 0%, 
+          rgba(var(--color-primary), 0.9) 25%,
+          rgba(var(--color-primary), 0.6) 50%,
+          rgba(var(--color-primary), 0.3) 75%,
+          transparent 100%
+        );
+        border-radius: 2px;
+        animation: teamWaterFlow 5s ease-in-out infinite;
+        transform-origin: left center;
+      }
+      
+      @keyframes teamWaterFlow {
+        0%, 100% { 
+          transform: scaleX(1);
+          opacity: 0.8;
+        }
+        33% { 
+          transform: scaleX(1.15);
+          opacity: 1;
+        }
+        66% { 
+          transform: scaleX(0.95);
+          opacity: 0.9;
+        }
+      }
+      
       /* Section headers */
       .masonry-header {
         grid-column: 1 / -1;
         margin: 3rem 0 1rem;
-        color: var(--color-foreground);
         font-size: 1.75rem;
         font-weight: 300;
         padding-bottom: 0.5rem;
         position: relative;
+        text-align: left;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-foreground) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       
       .masonry-header:first-child {
@@ -254,9 +427,79 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 3rem;
+        width: 4rem;
         height: 2px;
-        background: linear-gradient(90deg, var(--color-primary), transparent);
+        background: linear-gradient(90deg, 
+          var(--color-primary) 0%, 
+          rgba(var(--color-primary), 0.6) 50%,
+          transparent 100%
+        );
+        border-radius: 1px;
+        animation: gentleFlow 3s ease-in-out infinite;
+        transform-origin: left center;
+      }
+      
+      @keyframes gentleFlow {
+        0%, 100% { 
+          transform: scaleX(1);
+          opacity: 0.7;
+        }
+        50% { 
+          transform: scaleX(1.05);
+          opacity: 0.9;
+        }
+      }
+      
+      /* Board Cards Styling */
+      .board-card {
+        display: block;
+        padding: 2rem;
+        background: var(--color-card, #fff);
+        border-radius: 1rem;
+        border: 1px solid var(--color-border);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      
+      .board-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: var(--color-primary);
+      }
+      
+      .board-icon {
+        width: 4rem;
+        height: 4rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+      
+      .board-card:hover .board-icon {
+        transform: scale(1.1);
+      }
+      
+      .board-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-foreground);
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-foreground) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .board-description {
+        color: var(--color-muted-foreground);
+        line-height: 1.6;
+        font-size: 0.95rem;
       }
       
       /* Responsive columns */

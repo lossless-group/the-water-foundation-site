@@ -1,0 +1,79 @@
+---
+import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
+---
+
+<BaseThemeLayout
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+  title="Tech Board - The Water Foundation"
+  description="Technology strategy, innovation oversight, and technical governance for our water solutions."
+>
+  <main class="min-h-screen bg-gradient-to-b from-background to-background/50">
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 md:pt-24 md:pb-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 overflow-hidden">
+      <div class="relative z-10 container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider leading-tight">Tech Board</h1>
+        <div class="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8 opacity-60"></div>
+        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
+          Technology strategy, innovation oversight, and technical governance for our water solutions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="prose prose-lg mx-auto">
+          <h2 class="water-header">Mission & Scope</h2>
+          <p>
+            The Tech Board provides strategic oversight for all technology initiatives within The Water Foundation. 
+            We ensure that our technological solutions are innovative, scalable, and aligned with our mission to 
+            bring water resilience to 1 billion people.
+          </p>
+
+          <h2 class="water-header">Key Responsibilities</h2>
+          <ul>
+            <li>Technology strategy development and implementation</li>
+            <li>Innovation pipeline oversight and evaluation</li>
+            <li>Technical due diligence for investments</li>
+            <li>Standards and best practices governance</li>
+            <li>Emerging technology assessment and adoption</li>
+            <li>Technical risk management and mitigation</li>
+          </ul>
+
+          <h2 class="water-header">Focus Areas</h2>
+          <div class="grid md:grid-cols-2 gap-6 not-prose">
+            <div class="bg-card p-6 rounded-lg border">
+              <h3 class="text-xl font-semibold mb-3 text-primary">Water Treatment Technology</h3>
+              <p class="text-muted-foreground">Advanced filtration, purification, and treatment systems for various water sources.</p>
+            </div>
+            <div class="bg-card p-6 rounded-lg border">
+              <h3 class="text-xl font-semibold mb-3 text-primary">IoT & Monitoring</h3>
+              <p class="text-muted-foreground">Smart sensors, data collection, and real-time monitoring systems for water infrastructure.</p>
+            </div>
+            <div class="bg-card p-6 rounded-lg border">
+              <h3 class="text-xl font-semibold mb-3 text-primary">AI & Predictive Analytics</h3>
+              <p class="text-muted-foreground">Machine learning applications for water management, demand forecasting, and optimization.</p>
+            </div>
+            <div class="bg-card p-6 rounded-lg border">
+              <h3 class="text-xl font-semibold mb-3 text-primary">Blockchain & Transparency</h3>
+              <p class="text-muted-foreground">Distributed ledger technologies for supply chain transparency and impact tracking.</p>
+            </div>
+          </div>
+
+          <h2 class="water-header">Board Composition</h2>
+          <p>
+            Our Tech Board consists of leading technologists, researchers, and innovators from the water technology sector. 
+            Members are selected based on their expertise, track record, and commitment to our mission.
+          </p>
+          
+          <div class="bg-muted/50 p-6 rounded-lg">
+            <p class="text-center text-muted-foreground italic">
+              Board member profiles and detailed information will be available soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseThemeLayout>

@@ -6,7 +6,6 @@
       "image": "/headshots/headshotOf__Christoph-Schwager.jpg",
       "bio": "Strategic leader with deep expertise in operational, financial, and technological domains, shaped by an extensive career across global corporate, management consulting, and digital start-up ecosystems.\n\n He is a passionate creator of new ways forward and a strong catalyst for moving people and organisations. \n\n With over 30 years in finance, transactions, and audit, including roles as Chief Risk Officer Airbus, EY Partner and PwC. Under his leadership, Airbus made significant progress towards a more resilient business model, cultivating high-performance cultures.\n\nChristoph is also a serial entrepreneur, including co-founder of the think tank beyondRM.org. \n\nHe holds a Diplom-Kaufmann (MBA equivalent) from the University of Augsburg and is a Certified Public Accountant.",
       "socialLinks": [
-        { "name": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
         { "name": "LinkedIn", "href": "https://www.linkedin.com/in/christophschwager/", "icon": "linkedin" }
       ]
     },
@@ -36,11 +35,11 @@
     {
       "name": "Felix Famira",
       "role": "Co-Founder & Director of Operations",
-      "classifiers": "Founding Advisor",
+      "classifiers": "Founding Principal",
       "image": "/headshots/headshotOf__Felix-Famira.png",
       "bio": "Over the past years, Felix Famira has been actively investing in numerous companies and venture capital funds, making him a seasoned VC expert with deep insights into early‑stage growth, financing strategies, and scaling innovative business models. Leveraging his broad network of founders, investors, and industry executives, he supports high‑impact ventures and drives transformative, tech‑enabled innovation across multiple sectors.\n\nFelix is also the Chief Financial Officer and Co‑Founder of Gradient Zero, an advisory firm specializing in guiding businesses through the adoption of artificial intelligence solutions (gradient0.com). Based in Vienna, Austria, he brings extensive expertise in business development, sales management, and leadership. At Gradient Zero, he plays a pivotal role in shaping financial strategy, operational execution, and market expansion.",
       "socialLinks": [
-        { "name": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" }
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/felix-famira-a2059087/", "icon": "linkedin" }
       ]
     },
     {
@@ -57,11 +56,11 @@
       "name": "David Schwager",
       "role": "Co-Founder & Chief Solutions Strategist",
       "image": "/headshots/headshotOf__David-Schwager.jpeg",
-      "classifiers": "Founding Advisor",
-      "bio": "David Schwager is a pioneering technologist and entrepreneur specializing in water-tech systems and solutions. He coordinates top-tier experts in developing cutting-edge innovations to advance clean water access worldwide.\n\nIn his  role as Managing Director at Rotreat and Aqua Predict— leaders in sustainable, AI-powered water treatment and disinfection systems and groundwater prediction—David contributes to delivering efficient, eco-friendly water management solutions that enhance operational resilience and industry performance.\n\nBringing together scientific rigor and entrepreneurial insight, David designs and implements scalable strategies that address water scarcity with resilient infrastructure. His leadership extends across the entire ecosystem of The Water Foundation, ensuring measurable impact in sustainable water infrastructure, technology innovation, and ecosystem resilience.",
+      "classifiers": "Founding Principal",
+      "bio": "David Schwager is a pioneering technologist and entrepreneur specializing in water-tech systems and solutions. He coordinates top-tier experts in developing cutting-edge innovations to advance clean water access worldwide.\n\nIn his role as Managing Director at Rotreat and Aqua Predict -— leaders in sustainable, AI-powered water treatment and disinfection systems and groundwater prediction —- David contributes to delivering efficient, eco-friendly water management solutions that enhance operational resilience and industry performance.\n\nBringing together scientific rigor and entrepreneurial insight, David designs and implements scalable strategies that address water scarcity with resilient infrastructure. His leadership extends across the entire ecosystem of The Water Foundation, ensuring measurable impact in sustainable water infrastructure, technology innovation, and ecosystem resilience.",
       "socialLinks": [
         { "name": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
-        { "name": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" }
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/david-schwager-01a700124/", "icon": "linkedin" }
       ]
     },
     {
@@ -69,7 +68,7 @@
       "role": "Director of Partnerships, Head of VC Strategies",
       "classifiers": "Vertical Partner",
       "image": "/headshots/headshotOf__Sarah-Beth-Brockley.jpeg",
-      "bio": "Sarabeth Brockley is an international ESG and climate finance expert with a career spanning the United Nations and Nasdaq. At Nasdaq, she served as Head of Carbon Strategy and ESG Advisory, where she led initiatives to embed carbon procurement and climate risk into corporate value chains, and as Lead Advisor on Carbon Markets and ESG. Earlier, she was a Climate and Water Programme Officer at the United Nations Department of Economic and Social Affairs, advancing global work on water, energy, and capacity development.\n\nBuilding on this institutional foundation, Sarabeth has positioned herself at the frontier of climate innovation. She is a Partner at Wild Assets, an investor with Investors for Climate, and a Senior Advisor to several ventures, including Gigablue, Residual, Alcove, and BIOME. She also serves on the board of Sinkco Labs and advises Women and Climate.\n\nAs Director of Partnerships, ESG & Impact Strategy at the Water Foundation and General Partner of the Water Venture Fund, Sarabeth bridges institutional platforms and entrepreneurial ventures, leveraging her expertise in carbon markets, ESG integration, and impact investment to drive transformative solutions at the intersection of water, climate, and finance.",
+      "bio": "Sarabeth Brockley is an international ESG and climate finance expert with a career spanning the United Nations and Nasdaq. \n\nAt Nasdaq, she served as Head of Carbon Strategy and ESG Advisory, where she led initiatives to embed carbon procurement and climate risk into corporate value chains, and as Lead Advisor on Carbon Markets and ESG. \n\nPreviously, she was a Climate and Water Programme Officer at the United Nations Department of Economic and Social Affairs, advancing global work on water, energy, and capacity development.\n\nBuilding on this institutional foundation, Sarabeth has positioned herself at the frontier of climate innovation. She is a Partner at Wild Assets, an investor with Investors for Climate, and a Senior Advisor to several ventures, including Gigablue, Residual, Alcove, and BIOME. She also serves on the board of Sinkco Labs and advises Women and Climate.\n\nAs Director of Partnerships, ESG & Impact Strategy at the Water Foundation and General Partner of the Water Venture Fund, Sarabeth bridges institutional platforms and entrepreneurial ventures, leveraging her expertise in carbon markets, ESG integration, and impact investment to drive transformative solutions at the intersection of water, climate, and finance.",
       "socialLinks": [
         { "name": "twitter", "href": "https://x.com/sarabbrockley", "icon": "twitter" },
         { "name": "linkedin", "href": "https://www.linkedin.com/in/sarabethbrockley/", "icon": "linkedin" }
@@ -89,7 +88,7 @@
     {
       "name": "Michael Jackson",
       "role": "Advisor of Deep Tech Investment & Venture Capital Strategies",
-      "classifiers": "Founding Advisor",
+      "classifiers": "Founding Advisor, Team",
       "image": "/headshots/headshotOf_Michael-Jackson.jpeg",
       "bio": "Michael Jackson is an American entrepreneur-turned-investor and one of Europe's most followed and respected voices in venture capital and deep tech innovation. As Head of Deep Tech Investment and Venture Capital Strategy at The Water Foundation, he co-strategises and oversees the design and execution of our investment approach, ensuring that capital is deployed strategically and responsibly - giving investors confidence that their funds are protected, impact-driven, and positioned for long-term success.\n\nBased in Paris, Michael is Venture Partner at Multiple Capital and Wilbe, Advisory Board Member and Investment Committee member at QAI Ventures and Redstone Quantum, and part of the European Defense Investor Network. Over his 25-year career, he has supported and scaled hundreds of startups through leading accelerators such as Seedcamp, Startup Bootcamp, Wayra, Techstars, and Le Camping. He also sits on the boards of venture funds, non-profits, educational institutions, a private bank, and numerous high-growth companies.\n\nBeyond his investment leadership, Michael is a recognised thought leader whose perspectives on the European and global innovation landscape influence founders, investors, and policymakers alike.",
       "socialLinks": [
@@ -100,7 +99,7 @@
     {
       "name": "Martin Klässner",
       "role": "Head of Venture Building Strategies",
-      "classifiers": "Vertical Partner",
+      "classifiers": "Vertical Partner, Team",
       "image": "/headshots/headshotOf_Martin-Klaessner2.jpeg",
       "bio": "Martin Klässner is an entrepreneur and investor best known for achieving the largest startup exit in Austria. As Co-Founder and CEO of has·to·be, an e-mobility software company acquired by ChargePoint in 2021 for more than €250 million, he scaled the business from inception into a European market leader in EV charging solutions.  Today, Martin is CEO of make visions capital gmbh and GrowthSquare GmbH, where he invests in and supports high-growth companies across MedTech, Life Sciences, Energy, and Robotics – always with a strong focus on software. Beyond his CEO roles, he serves on multiple boards, primarily in the startup ecosystem, shaping strategy and scaling innovation-driven ventures.  In his role as Head of Venture Builder at The Water Foundation (Water Strategies platform) and General Partner of the Water Venture Builder, Martin applies his proven capacity to build and scale transformative companies to the water sector, driving the creation and growth of ventures that address systemic challenges in water infrastructure, technology, and sustainability.",
       "socialLinks": [
@@ -111,7 +110,7 @@
     {
       "name": "Michael P. Staton",
       "role": "Founding Advisor, Trustee of Fund of Funds and Venture Capital strategies.",
-      "classifiers": "Founding Trustee",
+      "classifiers": "Trustee",
       "image": "/headshots/headshotOf__Michael-Staton.jpeg",
       "bio": "Advising the Fund of Funds portion of The Water Foundations integrated Blended Finance Strategy. Maintaing a cutting edge tech stack for us all.",
       "socialLinks": [
@@ -132,7 +131,7 @@
     {
       "name": "Lisa Niedenfuehr",
       "role": "Director PR & Co-Director of Philanthropies",
-      "classifiers": "Philanthropies",
+      "classifiers": "Philanthropies, Team",
       "image": "/headshots/headshotOf__Lisa-Niedenfuehr.jpeg",
       "bio": "Building strong relationships with communities and partners to maximize our impact.",
       "socialLinks": [
@@ -143,7 +142,7 @@
     {
       "name": "Nick Stübbe",
       "role": "Head of Government Relations, Water Foundation",
-      "classifiers": "Founding Advisor",
+      "classifiers": "Founding Advisor, Team",
       "image": "/headshots/headshotOf_Nick-Stuebbe.jpg",
       "bio": "Nick Stübbe is Co-Founder and Head of Strategy and Finance at Hydreatio GmbH, \n\na Munich-based water management technology company developing circular water recycling systems for industry and the public sector. He is also Co-Founder of Aquapredict, an AI-driven firm for water and climate prediction, founded together with colleagues and former employers from Gradient Zero in Vienna, where he previously led the sales department.\n\nNick's background in financial relations and advertising includes five years of work with the Republic of Maldives, where he gained first-hand experience navigating government partnerships, international communications, and climate resilience priorities. This grounding in small island state diplomacy and finance underpins his role as Head of Government Relations at the Water Foundation, bridging innovation, policy, and global climate agendas.",
       "socialLinks": [
@@ -165,7 +164,7 @@
     {
       "name": "Tilman Griesel",
       "role": "Product & Technology Strategist",
-      "classifiers": "Founding Advisor",
+      "classifiers": "Founding Advisor, Team",
       "image": "/headshots/headshotOf_Tilman-Griesel.jpeg",
       "bio": "Tilman Griesel is a seasoned product and technology strategist with over a decade of experience in building scalable, cross-platform communication systems and leading product design innovation. Currently at alfaview® Video Conferencing Systems, he drives product development initiatives and oversees the creation of seamless meeting experiences through user-centric design and agile methodologies.\n\nPreviously, Tilman played a key role in shaping alfaview's client architecture and leading the development of a reusable, cross-platform UI framework that has supported the company's growth to more than 70 team members. Before joining alfaview, he served as Lead Software Engineer at dozeo, where he helped develop a web-based video conferencing solution that was later acquired by one of Germany's largest education providers.\n\nWith a strong background in software architecture, product design, and UX strategy, Tilman combines technical expertise with a passion for creating scalable solutions that drive innovation and enhance user experiences.",
       "socialLinks": [
