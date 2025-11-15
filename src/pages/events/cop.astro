@@ -68,11 +68,16 @@ const verena = teamData.find(member => member.name === "Verena A. Sturm");
           <div class="text-center space-y-8">
             <!-- The Norrsken Logo -->
             <div class="mb-8">
-              <img 
-                src="/trademarks/trademark__COP30.png" 
-                alt="COP 30, 2025 in Belém, Brazil" 
-                class="w-full max-w-md mx-auto h-auto"
-              />
+              <div class="w-full max-w-[320px] mx-auto aspect-[3/4]">
+                <img 
+                  src="/trademarks/trademark__COP30.webp" 
+                  alt="COP 30, 2025 in Belém, Brazil" 
+                  class="w-full h-full object-contain"
+                  loading="eager"
+                  decoding="async"
+                  style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
+                />
+              </div>
             </div>
 
             <!-- Event Details -->

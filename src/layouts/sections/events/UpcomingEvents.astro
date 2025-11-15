@@ -25,6 +25,8 @@ const upcomingEvents = events.map(event => {
     year: 'numeric' 
   }) : '');
 
+  const isCop = event.slug.startsWith('cop') || (event_name || '').toUpperCase().startsWith('COP');
+  const linkPath = isCop ? '/events/cop' : (splash_page_path || `/events/${event.slug}`);
   return {
     title,
     event_name,
@@ -32,7 +34,7 @@ const upcomingEvents = events.map(event => {
     date: displayDate,
     startTs: startDate.getTime(),
     description: twf_zinger,
-    link: splash_page_path || `/events/${event.slug}`,
+    link: linkPath,
     slug: event.slug
   };
 }).sort((a, b) => b.startTs - a.startTs);
