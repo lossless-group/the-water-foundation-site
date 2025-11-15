@@ -40,10 +40,11 @@ export type NormalizedPhoto = {
 const UNSPLASH_BASE = 'https://api.unsplash.com';
 
 function requireEnv(name: string): string {
-  const v = import.meta.env[name as keyof ImportMetaEnv] as unknown as string | undefined;
+  const envAny = import.meta.env as Record<string, string | undefined>;
+  const v = envAny[name] ?? process.env[name];
   if (!v) {
     console.warn(`Missing environment variable ${name}, using fallback`);
-    return 'demo-key'; // Fallback for build environments
+    return 'demo-key';
   }
   return v;
 }
