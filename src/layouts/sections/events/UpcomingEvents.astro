@@ -30,11 +30,12 @@ const upcomingEvents = events.map(event => {
     event_name,
     location: upcoming_location,
     date: displayDate,
+    startTs: startDate.getTime(),
     description: twf_zinger,
     link: splash_page_path || `/events/${event.slug}`,
     slug: event.slug
   };
-});
+}).sort((a, b) => b.startTs - a.startTs);
 ---
 
 <section class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-800 to-cyan-900 overflow-hidden">
