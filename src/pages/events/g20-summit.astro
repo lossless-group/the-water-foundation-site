@@ -1,23 +1,26 @@
 ---
 import BaseThemeLayout from '@layouts/BaseThemeLayout.astro';
-import ShareButton from '@components/slides/ShareButton.astro';
 import PersonCardEssentials from '@components/team/PersonCard--Essentials.astro';
 import SocialIcons from '@components/ui/SocialIcons.astro';
 import { getCollection } from 'astro:content';
-
-// Import team data
 import teamData from '../../content/people/team.json';
 
-// Get the event data from markdown
 const events = await getCollection('events');
-const eventData = events.find(event => event.slug === 'oceanx');
+const g20Events = events.filter(e => e.slug.startsWith('g20') || (e.data.event_name || '').toUpperCase().startsWith('G20'));
+const pickLatest = (items: typeof events) => {
+  return items
+    .map(e => ({ entry: e, start: new Date((e.data.upcoming_dates || '').split('--')[0]).getTime() }))
+    .filter(x => !isNaN(x.start))
+    .sort((a, b) => b.start - a.start)[0]?.entry;
+};
+const eventData = pickLatest(g20Events);
 
 const socialLinks = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-water-foundation/?viewAsMember=true', icon: 'linkedin' as const }
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-water-foundation/', icon: 'linkedin' as const }
 ];
 
 if (!eventData) {
-  throw new Error('OceanX event data not found');
+  throw new Error('G20 event data not found');
 }
 
 const {
@@ -33,27 +36,16 @@ const {
   event_website
 } = eventData.data;
 
-// Format dates for display
 const dateRange = upcoming_dates.split('--');
-const startDate = new Date(dateRange[0]).toLocaleDateString('en-US', { 
-  month: 'long', 
-  day: 'numeric', 
-  year: 'numeric' 
-});
-const endDate = new Date(dateRange[1]).toLocaleDateString('en-US', { 
-  month: 'long', 
-  day: 'numeric', 
-  year: 'numeric' 
-});
+const startDate = new Date(dateRange[0]).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const endDate = new Date(dateRange[1]).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const displayDate = `${startDate} - ${endDate}`;
 
-const pageUrl = `${Astro.site}events/oceanx`;
+const pageUrl = `${Astro.site}events/${eventData.slug}`;
 
-// Combine twf_zinger and invite_message for Open Graph description
 const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
 
 const verena = teamData.find(member => member.name === "Verena A. Sturm");
-const christoph = teamData.find(member => member.name === "Christoph Schwager");
 const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-forum-monaco-2025.jpg';
 ---
 
@@ -68,36 +60,19 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
     <section class="relative py-20">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-start">
-          
-          <!-- Left Side - Event Visual & Logo -->
           <div class="text-center space-y-8">
-            <!-- OceanX Logo -->
             <div class="mb-8">
-              <img 
-                src="/trademarks/trademark__Ocean-X--Lighest.svg" 
-                alt="Ocean-X" 
-                class="w-full max-w-md mx-auto h-auto"
-              />
+              <div class="w-full mx-auto">
+                <img 
+                  src="/trademarks/trademark__G20-South-Africa--Brand.webp"
+                  alt={event_name}
+                  class="w-full h-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
             </div>
 
-            <!-- Event Details -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-              <div class="flex items-center space-x-3">
-                <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                </svg>
-                <span class="text-blue-100">{displayDate}</span>
-              </div>
-              
-              <div class="flex items-center space-x-3">
-                <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                </svg>
-                <span class="text-blue-100">{upcoming_location}</span>
-              </div>
-            </div>
-            
-            <!-- Event Photo -->
             <div class="relative group mb-8">
               <img 
                 src={teamPhoto} 
@@ -105,20 +80,33 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                 class="w-full max-w-lg mx-auto h-auto rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-blue-400/50 transition-all duration-300"
               />
               <p class="text-lg text-blue-200 mt-4 font-light italic">
-                Christoph Schwager and Verena Sturm representing The Water Foundation.
+                Representing The Water Foundation.
               </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+              <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-blue-100">{displayDate}</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-blue-100">{upcoming_location}</span>
+              </div>
             </div>
 
           </div>
 
-          <!-- Right Side - Event Information -->
           <div class="space-y-8">
             <div class="space-y-6">
               <div class="flex items-start justify-between">
                 <h1 class="text-4xl md:text-5xl font-light text-cyan-100 mb-6 flex-1">
                   Meet us at <span class="text-cyan-400 font-normal">{event_name}</span>
                 </h1>
-                <!-- Compact Share Section -->
                 <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2 ml-4">
                   <div class="flex items-center gap-3">
                     <span class="text-xs text-blue-200">Share:</span>
@@ -137,12 +125,11 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                   </div>
                 </div>
               </div>
-              
+
               <p class="text-lg text-cyan-200 leading-relaxed font-light">
                 {twf_zinger}
               </p>
 
-              <!-- Team Members -->
               <div class="space-y-6 mt-8">
                 <h3 class="text-2xl font-light text-cyan-100 mb-6">Who's here?</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -157,26 +144,13 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                       maxWords={25}
                     />
                   )}
-                  {christoph && (
-                    <PersonCardEssentials
-                      name={christoph.name}
-                      role={christoph.role}
-                      image={christoph.image}
-                      bio={christoph.bio}
-                      socialLinks={christoph.socialLinks}
-                      imageClass="aspect-[4/3]"
-                      maxWords={25}
-                    />
-                  )}
                 </div>
               </div>
               <p class="text-xl text-blue-100 leading-relaxed font-light mb-4">
                 {invite_message}
               </p>
-
             </div>
 
-            <!-- Contact Information -->
             <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-semibold text-cyan-400">Get in Touch</h3>
@@ -184,7 +158,6 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                   <SocialIcons socialLinks={socialLinks} className="justify-end" />
                 </div>
               </div>
-              
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                   <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
@@ -195,7 +168,6 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                     {contact_email}
                   </a>
                 </div>
-                
                 <div class="flex items-center space-x-3">
                   <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.559-.499-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.559.499.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.497-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
@@ -206,41 +178,9 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
   </main>
 </BaseThemeLayout>
-
-<style>
-  /* Animation for entrance effects */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Staggered animations */
-  .space-y-8 > * {
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  .space-y-8 > *:nth-child(1) { animation-delay: 0.2s; }
-  .space-y-8 > *:nth-child(2) { animation-delay: 0.4s; }
-  .space-y-8 > *:nth-child(3) { animation-delay: 0.6s; }
-  .space-y-8 > *:nth-child(4) { animation-delay: 0.8s; }
-
-  /* Hover effects for contact links */
-  a:hover svg {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-  }
-</style>

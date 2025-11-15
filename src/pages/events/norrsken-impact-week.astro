@@ -52,8 +52,8 @@ const pageUrl = `${Astro.site}events/norrsken-impact-week`;
 // Combine twf_zinger and invite_message for Open Graph description
 const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
 
-// Find Verena and Sarah from team data
 const verena = teamData.find(member => member.name === "Verena A. Sturm");
+const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-forum-monaco-2025.jpg';
 ---
 
 <BaseThemeLayout
@@ -99,8 +99,8 @@ const verena = teamData.find(member => member.name === "Verena A. Sturm");
             <!-- Event Photo -->
             <div class="relative group mb-8">
               <img 
-                src="/headshots/blue-economy-forum-monaco-2025.jpg" 
-                alt="Christoph Schwager and Verena Sturm at the Blue Economy & Finance Forum Monaco 2025" 
+                src={teamPhoto} 
+                alt="The Water Foundation team" 
                 class="w-full max-w-lg mx-auto h-auto rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-blue-400/50 transition-all duration-300"
               />
               <p class="text-lg text-blue-200 mt-4 font-light italic">

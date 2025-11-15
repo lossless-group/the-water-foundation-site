@@ -13,6 +13,7 @@ export const eventsCollection = defineCollection({
     twf_zinger: z.string(),
     invite_message: z.string(),
     share_image: z.string(),
+    fun_team_photo: z.string().optional(),
     contact_email: z.string().email(),
     contact_phone: z.string().optional(),
     event_website: z.string().url(),
