@@ -6,16 +6,16 @@ import { getCollection } from 'astro:content';
 import teamData from '../../content/people/team.json';
 
 const events = await getCollection('events');
-const forumEvents = events.filter(e =>
-  e.slug.includes('global-majors-water-futures-forum') ||
-  (e.data.splash_page_path || '').includes('/events/water-futures-forum') ||
-  (e.data.event_name || '').toLowerCase().includes('water futures forum')
+const targetEvents = events.filter(e =>
+  e.slug.includes('twf-water-resilient-cities-forum') ||
+  (e.data.splash_page_path || '').includes('/events/twf-water-resilient-cities-forum') ||
+  (e.data.event_name || '').toLowerCase().includes('water resilient cities')
 );
 
-const eventData = forumEvents[0];
+const eventData = targetEvents[0];
 
 if (!eventData) {
-  throw new Error('Global Majors Water Futures Forum event data not found');
+  throw new Error('TWF Water Resilient Cities Forum event data not found');
 }
 
 const {
@@ -82,7 +82,7 @@ const teamPhoto = eventData.data.fun_team_photo ?? '/headshots/blue-economy-foru
                 class="w-full max-w-lg mx-auto h-auto rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-blue-400/50 transition-all duration-300"
               />
               <p class="text-lg text-blue-200 mt-4 font-light italic">
-                We enjoy meeting up at events!  Meet Cofounders Christoph Schwager and Verena Sturm representing The Water Foundation. 
+                Representing The Water Foundation.
               </p>
             </div>
 

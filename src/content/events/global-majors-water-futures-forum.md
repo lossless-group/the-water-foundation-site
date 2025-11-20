@@ -6,7 +6,7 @@ upcoming_location: "Johannesburg, South Africa"
 url: https://the-water-foundation.com
 splash_page_path: /events/water-futures-forum
 twf_zinger: "The Water Foundation is a think tank and capital catalyst, assuring full-stack financial innovations are tackling the urgent challenge of our time."
-invite_message: "Meet us at Global Majors Water Futures Forum. This is a side event to the Group of Twenty (G20). G20 is an international forum of both developing and developed countries which seeks to find solutions to global economic and financial issues."
+invite_message: "Meet us at the Global Majors Water Futures Forum, The Water Foundation’s flagship forum for the Global Majors Water-Resilient Cities Leadership Alliance.\n\nHosted in Cape Town on 21 November 2025 on the eve of G20, the Forum brings together mayors, city leaders and capital providers to explore how cities can strengthen water resilience, from governance and infrastructure to innovative finance.\n\nWater infrastructure and innovation ecosystems have always determined both the limits and possibilities of water resilience, from Roman aqueducts to the water systems of the Indus and Mayan civilisations, and this Forum is designed to translate that historic lesson into practical cooperation and capacity building for today’s urban systems."
 share_image: /share-banners/shareBanner__The-Water-Resilient-Cities-Forum.jpeg
 contact_email: "dive.deep@the-water-foundation.com"
 contact_phone: "+49 177 4543720"
