@@ -1,6 +1,6 @@
 ---
 title: "TWF Water Resilient Cities Forum"
-event_name: "Water Resilient Cities Forum"
+event_name: "The TWF Water Resilient Cities Forum - Cape Town Edition"
 upcoming_dates: "2025-11-21--2025-11-21"
 upcoming_location: "Johannesburg, South Africa"
 url: https://the-water-foundation.com
