@@ -27,6 +27,12 @@ export default defineConfig({
         '@infographic': path.resolve('./src/components/infographic'),
         '@core-messages': path.resolve('./src/layouts/sections/core-messages')
       }
+    },
+    server: {
+      fs: {
+        // Allow serving files from the monorepo root (for hoisted pnpm dependencies)
+        allow: ['../..']
+      }
     }
   }
 });
