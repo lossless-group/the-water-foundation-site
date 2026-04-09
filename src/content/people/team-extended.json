@@ -191,6 +191,7 @@
       "image": "",
       "bio": "",
       "socialLinks": [
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/thomas-bella-munich/", "icon": "linkedin" }
       ]
     },
     {
@@ -198,8 +199,9 @@
       "role": "TWF Institute Partner — DACH Desk",
       "classifiers": "Institute",
       "image": "",
-      "bio": "",
+      "bio": "Robert Schiele is a strategic leader and transformation specialist working at the intersection of the energy transition, industrial decarbonisation, and investment strategy. With more than two decades of experience bridging finance, strategy, and technology, he supports investors and management teams in building resilient, net-zero-aligned businesses in complex, capital-intensive environments.\n\nHis expertise spans hydrogen, CCUS, decarbonising heat, and sustainable industrial assets, with a focus on turning transition ambition into actionable growth and value-creation plans. As a non-executive board director and interim executive, he helps organizations navigate inflection points—aligning capital, technology, and teams to deliver measurable performance improvements, manage risk, and execute transformation.",
       "socialLinks": [
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/robert-schiele-a126a2158/", "icon": "linkedin" }
       ]
     },
     {
