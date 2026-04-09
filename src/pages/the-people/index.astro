@@ -12,7 +12,7 @@ import "@styles/team-spans.css";
 interface TeamMember {
   name: string;
   role: string;
-  classifiers: string;
+  classifiers: string[] | string;
   image: string;
   bio: string;
   socialLinks: Array<{
@@ -34,6 +34,11 @@ const teamSections: TeamSection[] = [
     title: "Founding Partners", 
     classifier: "Founding Principal",
     useSmallCard: false
+  },
+  { 
+    title: "TWF Institute",
+    classifier: "Institute",
+    useSmallCard: true
   },
   { 
     title: "Team", 
@@ -77,12 +82,13 @@ if (import.meta.env.DEV && teamMembers.length === 0) {
 function groupByClassifier(members: TeamMember[], classifier: string): TeamMember[] {
   return members.filter(member => {
     if (!member.classifiers) return false;
-    
-    // Split classifiers by comma and trim whitespace
-    const classifierList = member.classifiers.split(',').map(c => c.trim());
-    
-    // Check for exact match
-    return classifierList.includes(classifier);
+
+    const classifierList = Array.isArray(member.classifiers)
+      ? member.classifiers
+      : member.classifiers.split(',');
+
+    const normalized = classifierList.map(c => String(c).trim().toLowerCase());
+    return normalized.includes(String(classifier).trim().toLowerCase());
   });
 }
 ---
@@ -166,8 +172,8 @@ function groupByClassifier(members: TeamMember[], classifier: string): TeamMembe
             
             const elements = [];
             
-            // Add "Team" header before Team section (but not for the Team section itself)
-            if (index === 1) { // Team section is now index 1
+            // Add "Team" header before the Team section
+            if (section.classifier === 'Team') {
               elements.push(
                 <h1 class="water-header-team">
                   Team
