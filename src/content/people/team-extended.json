@@ -135,39 +135,18 @@
     },
     {
       "name": "Corinna Schwager",
-      "role": "Co-Director of Philanthropies",
+      "role": "Chief of Staff",
       "classifiers": "Philanthropies",
       "image": "/headshots/headshotOf__Corinna-Schwager.JPG",
       "bio": "Corinna Schwager is a Co-Director of Philanthropies at The Water Foundation. She is responsible for leading the development and implementation of The Water Foundation's philanthropic initiatives.",
       "socialLinks": [
       ]
     },
-    {
-      "name": "Lisa Niedenfuehr",
-      "role": "Director PR & Co-Director of Philanthropies",
-      "classifiers": "Philanthropies",
-      "image": "/headshots/headshotOf__Lisa-Niedenfuehr.jpeg",
-      "bio": "Building strong relationships with communities and partners to maximize our impact.",
-      "socialLinks": [
-        { "name": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
-        { "name": "Instagram", "href": "https://instagram.com", "icon": "instagram" }
-      ]
-    },
-    {
-      "name": "Nick Stübbe",
-      "role": "Head of Government Relations, Water Foundation",
-      "classifiers": "Founding Advisor",
-      "image": "/headshots/headshotOf_Nick-Stuebbe.jpg",
-      "bio": "Nick Stübbe is Co-Founder and Head of Strategy and Finance at Hydreatio GmbH, a Munich-based water management technology company developing circular water recycling systems for industry and the public sector. He is also Co-Founder of Aquapredict, an AI-driven firm for water and climate prediction, founded together with colleagues and former employers from Gradient Zero in Vienna, where he previously led the sales department.\n\nNick's background in financial relations and advertising includes five years of work with the Republic of Maldives, where he gained first-hand experience navigating government partnerships, international communications, and climate resilience priorities. This grounding in small island state diplomacy and finance underpins his role as Head of Government Relations at the Water Foundation, bridging innovation, policy, and global climate agendas.",
-      "socialLinks": [
-        { "name": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" }
-      ]
-    },
-  
+    
     {
       "name": "Divyakshi Nath",
-      "role": "Impact Operations",
-      "classifiers": "Visiting Fellow",
+      "role": "Analyst",
+      "classifiers": "Team",
       "image": "/headshots/headshotOf__Divyakshi-Nath.png",
       "bio": "Helping build The Water Fund, Divyaksshi is an Analyst in the Water Strategy, Tech and Policy arena, focusing on the complexities of international security and geopolitics, particularly in the area of water resilience and the contribution of emerging technologies to this. With a Dual Masters—an MA and an MBA —she brings a well-rounded perspective to her work. Her experience spans significant contributions, from legal capacity building in 7 African countries with UNODC Kenya, building out the ORF Middle East office in Dubai to engaging in the negotiations of the Cybercrime Convention at UNODC New York and representing India at the UN Human Rights Council in Geneva. Her multilingual capabilities and editorial experience with the UBC Journal of International Affairs in Vancouver have refined her analytical skills, shaping multicultural discussions on global issues. Off the clock, Divyaksshi is passionate about learning new dancing styles, cricket matches, meditation, and equestrian. She loves making lists of things to do in a new country and in her free time, she's on a perpetual quest to discover the best food spots in all the 10 cities she has called home.",
       "socialLinks": [
@@ -184,5 +163,15 @@
       "socialLinks": [
         { "name": "LinkedIn", "href": "https://www.linkedin.com/in/griesel/?originalSubdomain=de", "icon": "linkedin" }
       ]
+    },
+    {
+      "name": "Gerelmaa Georgina Batchuluun",
+      "role": "TWF Strategy Institute Partner Singapore | South Asia Desk",
+      "classifiers": "Institute",
+      "image": "/headshots/headshotOf__Georgina-Batchuluun.jpeg",
+      "bio": "Gerelmaa Georgina Batchuluun is a founder, investor, and cross-sector strategist working at the intersection of applied AI, climate intelligence, and economic development. She has been building in the startup ecosystem since 2013, as a founder and operator across technology and emerging-market initiatives.\n\nShe is the Founder & CEO of Orda, a climate intelligence technology company building natural asset intelligence and decision-ready infrastructure for emerging markets—turning fragmented climate, water, and economic signals into actionable intelligence products for institutions.\n\nHer background spans policy, venture investing, and ecosystem building. She has worked with the Republic of Korea’s Ministry of SMEs and Startups on startup and innovation ecosystem initiatives, and advised Mongolia’s Standing Committee on Digital Policy and Innovation during its evolution into a dedicated ministry-level function. She previously worked with the Business and Industry Advisory Committee to the OECD.",
+      "socialLinks": [
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/gerelmaa/", "icon": "linkedin" }
+      ]
     }
-]
+  ]
