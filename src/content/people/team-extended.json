@@ -173,5 +173,43 @@
       "socialLinks": [
         { "name": "LinkedIn", "href": "https://www.linkedin.com/in/gerelmaa/", "icon": "linkedin" }
       ]
+    },
+    {
+      "name": "Onchinsuren Dendevsambuu",
+      "role": "Ambassador for Mongolia | TWF Institute Partner — Mongolia Desk",
+      "classifiers": "Institute",
+      "image": "/headshots/headshotOf__Onchinsuren-Dendevsambuu.jpeg",
+      "bio": "Onchinsuren Dendevsambuu is the founder of Onch & Company and a leading figure in Mongolia’s professional services ecosystem. He founded Onch Audit in 2004 and grew it from a small audit practice into a nationally recognized firm serving leading domestic and multinational clients across audit, tax, and advisory services.\n\nIn 2012, the firm joined Deloitte as Deloitte Onch, bringing global standards and international expertise to the Mongolian market. Following Deloitte’s exit from Mongolia in 2022, he led the organization through its next chapter as an independent Mongolian firm operating today as Onch & Company, continuing to serve major businesses and institutions with a commitment to quality, integrity, and international best practices.\n\nHe is actively involved in Mongolia’s business and policy community, contributing to tax reform initiatives and industry working groups, and holds leadership and board roles including co-chairing the Mongolia chapter of Women Corporate Directors, serving on the board of the American Chamber of Commerce in Mongolia, and being a founding member of the Ulaanbaatar City Investor Council.",
+      "socialLinks": [
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/onch-dendev/", "icon": "linkedin" }
+      ]
+    },
+    {
+      "name": "Thomas Bella",
+      "role": "TWF Institute Partner — DACH Desk",
+      "classifiers": "Institute",
+      "image": "",
+      "bio": "",
+      "socialLinks": [
+      ]
+    },
+    {
+      "name": "Robert Schiele",
+      "role": "TWF Institute Partner — DACH Desk",
+      "classifiers": "Institute",
+      "image": "",
+      "bio": "",
+      "socialLinks": [
+      ]
+    },
+    {
+      "name": "Ineeleng Molete",
+      "role": "",
+      "classifiers": "Institute",
+      "image": "/headshots/headshotOf__Ineeleng-Molete.jpeg",
+      "bio": "Ineeleng Molete is an operations and strategic management leader with more than 15 years of experience across training and development, policy development, and organizational performance management. Her background includes a decade of work within the ETDPSETA, with demonstrated expertise in project management, budgeting, quality assurance, monitoring and evaluation, and strategic leadership.\n\nShe has managed budgets up to R45 million and led financial and performance reporting processes with a strong track record in audit readiness and governance. She holds an honours degree in Public Administration with a specialization in Human Resources Management.\n\nIn her current role within the Energy and Water SETA, she leads the operations function across strategic management and leadership, policy development, performance and financial reporting, monitoring and evaluation, and operations management.",
+      "socialLinks": [
+        { "name": "LinkedIn", "href": "https://www.linkedin.com/in/ineeleng-molete-a5078992/", "icon": "linkedin" }
+      ]
     }
   ]
