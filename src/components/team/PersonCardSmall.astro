@@ -39,7 +39,7 @@ const truncateBio = (text: string, words: number) => {
   if (wordArray.length <= words) return text;
   return wordArray.slice(0, words).join(' ') + '...';
 };
---->
+---
 
 <article class={`bg-white/20 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/30 shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-white/25 flex flex-col h-full group ${className}`}>
   <!-- Photo section -->
@@ -73,7 +73,7 @@ const truncateBio = (text: string, words: number) => {
     
     {socialLinks.length > 0 && (
       <div class="mt-auto pt-2 border-t border-white/10">
-        <SocialIcons socialLinks={socialLinks} class="justify-center" />
+        <SocialIcons socialLinks={socialLinks} className="justify-center" />
       </div>
     )}
   </div>

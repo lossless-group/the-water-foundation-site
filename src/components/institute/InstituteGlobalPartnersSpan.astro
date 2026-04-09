@@ -1,0 +1,49 @@
+---
+import PersonCardSmall from '../team/PersonCardSmall.astro';
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks?: Array<{ name: string; href: string; icon: string }>;
+}
+
+import teamData from '../../content/people/team.json';
+
+const globalPartnerNames = [
+  'Verena A. Sturm',
+  'Christoph Schwager',
+  'Robert Schiele',
+  'Thomas Bella',
+];
+
+const globalPartners = globalPartnerNames
+  .map((name) => (teamData as TeamMember[]).find((m) => m.name === name))
+  .filter(Boolean) as TeamMember[];
+
+if (import.meta.env.DEV) {
+  const missing = globalPartnerNames.filter(
+    (name) => !(teamData as TeamMember[]).some((m) => m.name === name)
+  );
+  if (missing.length > 0) {
+    console.warn(
+      `[InstituteGlobalPartnersSpan] Missing team entries for: ${missing.join(', ')}`
+    );
+  }
+}
+---
+
+<div class="flex flex-row flex-nowrap gap-6 overflow-x-auto pb-2 lg:flex-wrap lg:overflow-visible">
+  {globalPartners.map((member) => (
+    <div class="min-w-[220px] sm:min-w-[240px] lg:min-w-0 lg:flex-1">
+      <PersonCardSmall
+        name={member.name}
+        role={member.role}
+        image={member.image}
+        bio={member.bio}
+        socialLinks={member.socialLinks}
+      />
+    </div>
+  ))}
+</div>
