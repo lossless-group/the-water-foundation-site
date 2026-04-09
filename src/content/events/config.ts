@@ -11,6 +11,7 @@ export const eventsCollection = defineCollection({
     upcoming_location: z.string(),
     url: z.string().url(),
     splash_page_path: z.string(),
+    organizer: z.string().optional(),
     twf_zinger: z.string(),
     invite_message: z.string(),
     share_image: z.string(),
