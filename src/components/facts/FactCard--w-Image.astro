@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 import { findFirstNormalized } from '../../lib/api/unsplash';
 import WaterLink from '../basics/links/WaterLink--Default.astro';
 
@@ -18,7 +18,7 @@ const effectiveSources: SourceItem[] = entry.data.sources?.length
     : [];
 
 const displayTitle = entry.data.title ?? entry.data.zinger ?? `Fact ${entry.data.index}`;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const rawImgUrl = entry.data.companion_image_url;
 const imgAlt = `${displayTitle}`;
 

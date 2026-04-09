@@ -10,7 +10,8 @@ import teamData from '../../content/people/team.json';
 
 // Get the event data from markdown
 const events = await getCollection('events');
-const eventData = events.find(event => event.slug === 'hellenic-impact-investor-conference');
+const getEventSlug = (event: any) => (event.slug ?? event.id?.replace(/\.md$/, ''));
+const eventData = events.find(event => getEventSlug(event) === 'hellenic-impact-investor-conference');
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-water-foundation/', icon: 'linkedin' as const }

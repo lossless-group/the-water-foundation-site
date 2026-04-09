@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 export const factsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[!_]*.md', base: './src/content/facts' }),
   schema: z.object({
     index: z.number(),
     title: z.string().optional(),     // if you use `zinger`, make it optional here or restructure

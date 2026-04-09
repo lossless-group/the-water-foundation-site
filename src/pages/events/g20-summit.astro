@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 import teamData from '../../content/people/team.json';
 
 const events = await getCollection('events');
-const g20Events = events.filter(e => e.slug.startsWith('g20') || (e.data.event_name || '').toUpperCase().startsWith('G20'));
+const getEventSlug = (event: any) => (event.slug ?? event.id?.replace(/\.md$/, ''));
+const g20Events = events.filter(e => String(getEventSlug(e) || '').startsWith('g20') || (e.data.event_name || '').toUpperCase().startsWith('G20'));
 const pickLatest = (items: typeof events) => {
   return items
     .map(e => ({ entry: e, start: new Date((e.data.upcoming_dates || '').split('--')[0]).getTime() }))
@@ -41,7 +42,7 @@ const startDate = new Date(dateRange[0]).toLocaleDateString('en-US', { month: 'l
 const endDate = new Date(dateRange[1]).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const displayDate = `${startDate} - ${endDate}`;
 
-const pageUrl = `${Astro.site}events/${eventData.slug}`;
+const pageUrl = `${Astro.site}events/${getEventSlug(eventData)}`;
 
 const combinedDescription = `${twf_zinger}\n\n${invite_message}`;
 

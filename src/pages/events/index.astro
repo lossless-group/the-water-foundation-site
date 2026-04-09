@@ -8,7 +8,8 @@ import { getCollection } from 'astro:content';
 
 // Get events data
 const events = await getCollection('events');
-const theDropEvent = events.find(event => event.slug === 'thedrop');
+const getEventSlug = (event: any) => (event.slug ?? event.id?.replace(/\.md$/, ''));
+const theDropEvent = events.find(event => getEventSlug(event) === 'thedrop');
 ---
 
 <BaseThemeLayout title="Events - The Water Foundation">

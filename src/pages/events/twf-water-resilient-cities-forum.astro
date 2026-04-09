@@ -6,8 +6,9 @@ import { getCollection } from 'astro:content';
 import teamData from '../../content/people/team.json';
 
 const events = await getCollection('events');
+const getEventSlug = (event: any) => (event.slug ?? event.id?.replace(/\.md$/, ''));
 const targetEvents = events.filter(e =>
-  e.slug.includes('twf-water-resilient-cities-forum') ||
+  String(getEventSlug(e) || '').includes('twf-water-resilient-cities-forum') ||
   (e.data.splash_page_path || '').includes('/events/twf-water-resilient-cities-forum') ||
   (e.data.event_name || '').toLowerCase().includes('water resilient cities')
 );
@@ -37,7 +38,7 @@ const startDate = new Date(dateRange[0]).toLocaleDateString('en-US', { month: 'l
 const endDate = new Date(dateRange[1] || dateRange[0]).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const displayDate = `${startDate}${dateRange[1] ? ` - ${endDate}` : ''}`;
 
-const pageUrl = `${Astro.site}${(splash_page_path || `/events/${eventData.slug}`).replace(/^\//, '')}`;
+const pageUrl = `${Astro.site}${(splash_page_path || `/events/${getEventSlug(eventData)}`).replace(/^\//, '')}`;
 
 const normalizedInvite = String(invite_message || '').replace(/\\n/g, '\n');
 const inviteParagraphs = normalizedInvite

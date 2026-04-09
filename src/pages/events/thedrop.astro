@@ -10,7 +10,8 @@ import teamData from '../../content/people/team.json';
 
 // Get the event data from markdown
 const events = await getCollection('events');
-const eventData = events.find(event => event.slug === 'thedrop');
+const getEventSlug = (event: any) => (event.slug ?? event.id?.replace(/\.md$/, ''));
+const eventData = events.find(event => getEventSlug(event) === 'thedrop');
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-water-foundation/?viewAsMember=true', icon: 'linkedin' as const }

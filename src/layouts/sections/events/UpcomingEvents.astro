@@ -8,6 +8,7 @@ const events = await getCollection('events');
 
 // Format event data for display
 const upcomingEvents = events.map(event => {
+  const slug = (event as any).slug ?? (event as any).id?.replace(/\.md$/, '');
   const { title, event_name, upcoming_dates, upcoming_location, twf_zinger, splash_page_path } = event.data;
   
   // Format dates for display
@@ -25,8 +26,8 @@ const upcomingEvents = events.map(event => {
     year: 'numeric' 
   }) : '');
 
-  const isCop = event.slug.startsWith('cop') || (event_name || '').toUpperCase().startsWith('COP');
-  const linkPath = isCop ? '/events/cop' : (splash_page_path || `/events/${event.slug}`);
+  const isCop = String(slug || '').startsWith('cop') || (event_name || '').toUpperCase().startsWith('COP');
+  const linkPath = isCop ? '/events/cop' : (splash_page_path || `/events/${slug}`);
   return {
     title,
     event_name,
@@ -35,7 +36,7 @@ const upcomingEvents = events.map(event => {
     startTs: startDate.getTime(),
     description: twf_zinger,
     link: linkPath,
-    slug: event.slug
+    slug
   };
 }).sort((a, b) => b.startTs - a.startTs);
 ---
