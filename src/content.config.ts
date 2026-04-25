@@ -17,6 +17,18 @@ const eventOrganizers = defineCollection({
   }),
 });
 
+const strategies = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/strategies' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    author: z.string().optional(),
+    date: z.coerce.date().optional(),
+    image: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
 const slides = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/slides' }),
   schema: z.object({
@@ -31,6 +43,7 @@ const slides = defineCollection({
 });
 
 export const collections = {
+  strategies,
   slides,
   facts: factsCollection,
   events: eventsCollection,

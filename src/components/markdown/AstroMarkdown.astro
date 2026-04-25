@@ -1,0 +1,326 @@
+---
+import type { Root, Content, Heading, List, ListItem, Link, Image, Code, InlineCode, Paragraph, Blockquote } from "mdast";
+import { toString } from "mdast-util-to-string";
+import CodeBlock from "./CodeBlock.astro";
+import Callout from "./Callout.astro";
+import MarkdownImage from "./MarkdownImage.astro";
+
+export interface Props {
+  node: Root | Content;
+  data?: any;
+}
+
+const { node, data } = Astro.props as Props;
+const type = (node as any)?.type ?? "root";
+
+function childrenOf(n: any): any[] {
+  return Array.isArray(n?.children) ? n.children : [];
+}
+---
+
+{type === "root" && (
+  <>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </>
+)}
+
+{type === "paragraph" && (
+  <p>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </p>
+)}
+
+{type === "text" && <>{(node as any).value}</>}
+
+{type === "strong" && (
+  <strong>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </strong>
+)}
+
+{type === "emphasis" && (
+  <em>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </em>
+)}
+
+{type === "heading" && (() => {
+  const heading = node as Heading;
+  const text = toString(heading);
+  const id = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+
+  const level = heading.depth ?? 1;
+
+  if (level === 1) {
+    return (
+      <h1 id={id}>
+        {childrenOf(node).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </h1>
+    );
+  }
+
+  if (level === 2) {
+    return (
+      <h2 id={id}>
+        {childrenOf(node).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </h2>
+    );
+  }
+
+  if (level === 3) {
+    return (
+      <h3 id={id}>
+        {childrenOf(node).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </h3>
+    );
+  }
+
+  if (level === 4) {
+    return (
+      <h4 id={id}>
+        {childrenOf(node).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </h4>
+    );
+  }
+
+  if (level === 5) {
+    return (
+      <h5 id={id}>
+        {childrenOf(node).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </h5>
+    );
+  }
+
+  return (
+    <h6 id={id}>
+      {childrenOf(node).map((child) => (
+        <Astro.self node={child} data={data} />
+      ))}
+    </h6>
+  );
+})()}
+
+{type === "list" && (() => {
+  const list = node as List;
+  const Tag = list.ordered ? "ol" : "ul";
+  return (
+    <Tag>
+      {childrenOf(list).map((child) => (
+        <Astro.self node={child} data={data} />
+      ))}
+    </Tag>
+  );
+})()}
+
+{type === "listItem" && (
+  <li>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </li>
+)}
+
+{type === "link" && (() => {
+  const link = node as Link;
+  const isExternal = link.url?.startsWith('http');
+  return (
+    <a
+      href={link.url}
+      title={link.title ?? undefined}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {childrenOf(link).map((child) => (
+        <Astro.self node={child} data={data} />
+      ))}
+    </a>
+  );
+})()}
+
+{type === "image" && (() => {
+  const img = node as Image;
+  return <img src={img.url} alt={img.alt ?? ""} title={img.title ?? undefined} loading="lazy" />;
+})()}
+
+{type === "code" && (() => {
+  const code = node as Code;
+  return <CodeBlock language={code.lang ?? undefined} code={code.value} meta={code.meta ?? undefined} />;
+})()}
+
+{type === "inlineCode" && (() => {
+  const inline = node as InlineCode;
+  return <code>{inline.value}</code>;
+})()}
+
+{type === "blockquote" && (() => {
+  const block = node as Blockquote;
+  return (
+    <blockquote>
+      {childrenOf(block).map((child) => (
+        <Astro.self node={child} data={data} />
+      ))}
+    </blockquote>
+  );
+})()}
+
+{type === "thematicBreak" && <hr />}
+
+{type === "table" && (
+  <div class="ak-table-wrap">
+    <table>
+      {childrenOf(node).map((child, idx) => {
+        if (idx === 0) {
+          return (
+            <thead>
+              <Astro.self node={child} data={data} />
+            </thead>
+          );
+        }
+        return null;
+      })}
+      <tbody>
+        {childrenOf(node).slice(1).map((child) => (
+          <Astro.self node={child} data={data} />
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+{type === "tableRow" && (
+  <tr>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </tr>
+)}
+
+{type === "tableCell" && (
+  <td>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </td>
+)}
+
+{type === "delete" && (
+  <del>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </del>
+)}
+
+{type === "html" && <Fragment set:html={(node as any).value} />}
+
+{type === "break" && <br />}
+
+{type === "footnoteReference" && (() => {
+  const ref: any = node;
+  const index = ref.data?.citationIndex ?? ref.identifier;
+  const hex = ref.data?.citationHex ?? ref.identifier;
+  return (
+    <sup class="citation-marker">
+      <a href={`#source-${hex}`} title={`Citation ${index}`}>[{index}]</a>
+    </sup>
+  );
+})()}
+
+{type === "footnoteDefinition" && null}
+
+{/* Directive handling: callout + badge */}
+{["leafDirective", "containerDirective"].includes(type) && (() => {
+  const directive: any = node;
+  if (directive.name === "callout") {
+    return <Callout node={directive} data={data} />;
+  }
+  if (directive.name === "image") {
+    return <MarkdownImage node={directive} data={data} />;
+  }
+  // Fallback: render children as-is
+  return (
+    <div>
+      {childrenOf(directive).map((child) => (
+        <Astro.self node={child} data={data} />
+      ))}
+    </div>
+  );
+})()}
+
+{type === "textDirective" && (() => {
+  const directive: any = node;
+  if (directive.name === "badge") {
+    return <span class="ak-badge">{childrenOf(directive).map((child) => toString(child))}</span>;
+  }
+  // Fallback: just render inner text
+  return <>{childrenOf(directive).map((child) => toString(child))}</>;
+})()}
+
+{/* Fallback for unhandled node types: render children only */}
+{![
+  "root",
+  "paragraph",
+  "text",
+  "strong",
+  "emphasis",
+  "heading",
+  "list",
+  "listItem",
+  "link",
+  "image",
+  "code",
+  "inlineCode",
+  "blockquote",
+  "thematicBreak",
+  "table",
+  "tableRow",
+  "tableCell",
+  "delete",
+  "html",
+  "break",
+  "leafDirective",
+  "containerDirective",
+  "textDirective",
+  "footnoteReference",
+  "footnoteDefinition",
+].includes(type) && (
+  <>
+    {childrenOf(node).map((child) => (
+      <Astro.self node={child} data={data} />
+    ))}
+  </>
+)}
+
+<style>
+  .ak-badge {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(59, 130, 246, 0.1);
+    color: rgb(96, 165, 250);
+  }
+</style>

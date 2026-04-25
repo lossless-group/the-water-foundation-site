@@ -1,0 +1,235 @@
+---
+interface Props {
+  node: any;
+  data?: any;
+}
+
+const { node } = Astro.props;
+const attrs = node.attributes || {};
+
+const src = attrs.src || '';
+const alt = attrs.alt || '';
+const float = attrs.float as 'left' | 'right' | undefined;
+const width = attrs.width || (float ? '40%' : '100%');
+const minWidth = attrs['min-width'] || undefined;
+const maxHeight = attrs['max-height'] || undefined;
+const caption = attrs.caption || undefined;
+const source = attrs.source || undefined;
+const sourceUrl = attrs['source-url'] || undefined;
+const captionWidthAttr = attrs['caption-width'] || '33%';
+const sourcePositionAttr = attrs['source-position'] as 'top' | 'bottom' | undefined;
+const captionPositionAttr = attrs['caption-position'] as 'bottom' | 'top' | 'side' | undefined;
+
+// Auto-layout logic
+let captionPosition: 'bottom' | 'top' | 'side';
+if (captionPositionAttr) {
+  captionPosition = captionPositionAttr;
+} else if (float) {
+  captionPosition = 'side';
+} else {
+  captionPosition = 'bottom';
+}
+
+let sourcePosition: 'top' | 'bottom';
+if (sourcePositionAttr) {
+  sourcePosition = sourcePositionAttr;
+} else if (captionPosition === 'bottom' && caption) {
+  sourcePosition = 'top';
+} else {
+  sourcePosition = 'bottom';
+}
+
+// Caption side: left of image when float-right, right of image when float-left
+const captionSide = float === 'right' ? 'left' : 'right';
+
+const isSideCaption = captionPosition === 'side' && caption;
+const imageWidthInFigure = isSideCaption ? `calc(100% - ${captionWidthAttr})` : '100%';
+
+// Build figure CSS custom properties for responsive behavior
+const figureStyle = [
+  `--figure-width: ${width}`,
+  minWidth ? `--figure-min-width: ${minWidth}` : null,
+  float ? `--figure-float: ${float}` : null,
+].filter(Boolean).join('; ');
+
+const imgStyle = [
+  maxHeight ? `max-height: ${maxHeight}; width: auto; object-fit: contain;` : null,
+].filter(Boolean).join(' ');
+---
+
+<figure
+  class:list={[
+    'md-image',
+    float && 'md-image--float',
+    float === 'left' && 'md-image--float-left',
+    float === 'right' && 'md-image--float-right',
+    isSideCaption && 'md-image--side-caption',
+    isSideCaption && captionSide === 'left' && 'md-image--caption-left',
+  ]}
+  style={figureStyle}
+>
+  {source && sourcePosition === 'top' && (
+    <div class="md-image__source md-image__source--top">
+      Source: {sourceUrl
+        ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{source}</a>
+        : source
+      }
+    </div>
+  )}
+
+  <div class:list={['md-image__body', isSideCaption && 'md-image__body--side']}>
+    {isSideCaption && captionSide === 'left' && caption && (
+      <figcaption class="md-image__caption md-image__caption--side" style={`--caption-width: ${captionWidthAttr}`}>
+        {caption}
+      </figcaption>
+    )}
+
+    <div class="md-image__img-wrap" style={isSideCaption ? `width: ${imageWidthInFigure}` : undefined}>
+      <img src={src} alt={alt} loading="lazy" style={imgStyle || undefined} />
+    </div>
+
+    {isSideCaption && captionSide === 'right' && caption && (
+      <figcaption class="md-image__caption md-image__caption--side" style={`--caption-width: ${captionWidthAttr}`}>
+        {caption}
+      </figcaption>
+    )}
+  </div>
+
+  {caption && captionPosition === 'top' && (
+    <figcaption class="md-image__caption md-image__caption--top">{caption}</figcaption>
+  )}
+
+  {caption && captionPosition === 'bottom' && (
+    <figcaption class="md-image__caption md-image__caption--bottom">{caption}</figcaption>
+  )}
+
+  {source && sourcePosition === 'bottom' && (
+    <div class="md-image__source md-image__source--bottom">
+      Source: {sourceUrl
+        ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{source}</a>
+        : source
+      }
+    </div>
+  )}
+</figure>
+
+<style>
+  /* Base figure */
+  .md-image {
+    container-type: inline-size;
+    margin: 1.5rem 0;
+    width: var(--figure-width, 100%);
+  }
+
+  .md-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+  }
+
+  /* Float behavior */
+  .md-image--float-left {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .md-image--float-right {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Side caption layout */
+  .md-image__body--side {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .md-image__caption--side {
+    width: var(--caption-width, 33%);
+    flex-shrink: 0;
+  }
+
+  .md-image__img-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Caption styling */
+  .md-image__caption {
+    font-size: clamp(8pt, 2cqi, 14pt);
+    color: var(--muted-foreground, #888);
+    line-height: 1.4;
+  }
+
+  .md-image__caption--bottom {
+    margin-top: 0.5rem;
+  }
+
+  .md-image__caption--top {
+    margin-bottom: 0.5rem;
+  }
+
+  .md-image__caption--side {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+  }
+
+  /* Source attribution */
+  .md-image__source {
+    font-size: clamp(7pt, 1.5cqi, 11pt);
+    color: var(--muted-foreground, #888);
+    opacity: 0.75;
+  }
+
+  .md-image__source--top {
+    margin-bottom: 0.375rem;
+  }
+
+  .md-image__source--bottom {
+    margin-top: 0.375rem;
+  }
+
+  .md-image__source a {
+    color: var(--primary, #3b82f6);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .md-image__source a:hover {
+    opacity: 0.8;
+  }
+
+  /* Responsive: unfloat when container is too narrow */
+  @container (max-width: 500px) {
+    .md-image--float {
+      float: none;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .md-image__body--side {
+      flex-direction: column;
+    }
+
+    .md-image__caption--side {
+      width: 100%;
+    }
+
+    .md-image__img-wrap {
+      width: 100% !important;
+    }
+  }
+
+  /* Respect min-width breakpoint */
+  @supports (container-type: inline-size) {
+    .md-image--float {
+      container-type: inline-size;
+    }
+  }
+</style>

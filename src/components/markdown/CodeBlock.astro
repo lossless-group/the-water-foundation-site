@@ -1,0 +1,53 @@
+---
+export interface Props {
+  language?: string;
+  code: string;
+  meta?: string;
+}
+
+const { language, code } = Astro.props as Props;
+
+const langLabel = language ? language.toUpperCase() : undefined;
+---
+
+<div class="ak-codeblock-wrap">
+  {langLabel && <div class="ak-codeblock-lang">{langLabel}</div>}
+  <pre class="ak-codeblock"><code>{code}</code></pre>
+</div>
+
+<style>
+  .ak-codeblock-wrap {
+    position: relative;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .ak-codeblock-lang {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    pointer-events: none;
+  }
+
+  .ak-codeblock {
+    padding: 1rem;
+    background: #0f172a;
+    color: #e2e8f0;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ak-codeblock code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+</style>

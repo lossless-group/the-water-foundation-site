@@ -1,0 +1,204 @@
+---
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import { getCollection } from 'astro:content';
+
+const strategies = await getCollection('strategies');
+---
+
+<BaseThemeLayout
+  title="Strategies | The Water Foundation"
+  description="Strategic insights and perspectives from The Water Foundation."
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+>
+  <section class="strategies-hero">
+    <div class="strategies-hero-inner">
+      <h1>Strategies</h1>
+      <p class="strategies-subtitle">
+        Strategic insights and perspectives on water resilience, finance, and global impact.
+      </p>
+    </div>
+  </section>
+
+  <section class="strategies-grid-section">
+    <div class="strategies-grid">
+      {strategies.map((entry) => (
+        <a href={`/strategies/${entry.id}`} class="strategy-card">
+          {entry.data.image && (
+            <div class="strategy-card-image">
+              <img src={entry.data.image} alt={entry.data.title} loading="lazy" />
+            </div>
+          )}
+          <div class="strategy-card-body">
+            <h2 class="strategy-card-title">{entry.data.title}</h2>
+            {entry.data.description && (
+              <p class="strategy-card-description">{entry.data.description}</p>
+            )}
+            <div class="strategy-card-meta">
+              {entry.data.author && (
+                <span class="strategy-card-author">{entry.data.author}</span>
+              )}
+              {entry.data.date && (
+                <time datetime={entry.data.date.toISOString()}>
+                  {entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              )}
+            </div>
+            {entry.data.tags && entry.data.tags.length > 0 && (
+              <div class="strategy-card-tags">
+                {entry.data.tags.map((tag: string) => (
+                  <span class="strategy-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div class="strategy-card-cta">
+            <span>Read more &rarr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {strategies.length === 0 && (
+      <p class="no-strategies">No strategies published yet. Check back soon.</p>
+    )}
+  </section>
+</BaseThemeLayout>
+
+<style>
+  .strategies-hero {
+    padding: 4rem 1.5rem 2rem;
+    text-align: center;
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--color-primary-950)),
+      rgb(var(--color-primary-900))
+    );
+    color: rgb(var(--color-primary-50));
+  }
+
+  .strategies-hero-inner {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .strategies-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .strategies-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+
+  .strategies-grid-section {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .strategy-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(var(--color-primary-200, 200 200 200));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    background: rgb(var(--color-primary-50, 255 255 255));
+  }
+
+  .strategy-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .strategy-card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .strategy-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .strategy-card-body {
+    flex: 1;
+    padding: 1.5rem;
+  }
+
+  .strategy-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: rgb(var(--color-primary-900, 20 20 20));
+  }
+
+  .strategy-card-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgb(var(--color-primary-700, 80 80 80));
+    margin-bottom: 0.75rem;
+  }
+
+  .strategy-card-meta {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: rgb(var(--color-primary-500, 120 120 120));
+  }
+
+  .strategy-card-author {
+    font-weight: 500;
+  }
+
+  .strategy-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.75rem;
+  }
+
+  .strategy-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgb(var(--color-primary-100, 230 230 230));
+    color: rgb(var(--color-primary-700, 80 80 80));
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .strategy-card-cta {
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgb(var(--color-primary-100, 230 230 230));
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(var(--color-primary-600, 60 60 60));
+  }
+
+  .strategy-card:hover .strategy-card-cta {
+    color: rgb(var(--color-primary-800, 30 30 30));
+  }
+
+  .no-strategies {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgb(var(--color-primary-500, 120 120 120));
+    font-size: 1.1rem;
+  }
+</style>

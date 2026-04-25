@@ -1,0 +1,217 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseThemeLayout from '../../layouts/BaseThemeLayout.astro';
+import AstroMarkdown from '../../components/markdown/AstroMarkdown.astro';
+import Sources from '../../components/markdown/Sources.astro';
+import { getCollection } from 'astro:content';
+import { parseContent } from '../../lib/parse-content';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const strategies = await getCollection('strategies');
+  return strategies.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const { tree, citations } = await parseContent(entry.body!);
+---
+
+<BaseThemeLayout
+  title={`${entry.data.title} | The Water Foundation`}
+  description={entry.data.description}
+  ogImage="/ogImageLandscape__The-Water-Foundation.jpg"
+  ogImagePortrait="/ogImagePortrait__The-Water-Foundation.jpg"
+  ogType="article"
+>
+  <article class="strategy-article">
+    <header class="strategy-header">
+      <div class="strategy-header-inner">
+        <a href="/strategies" class="strategy-back">&larr; All Strategies</a>
+        <h1>{entry.data.title}</h1>
+        {entry.data.description && (
+          <p class="strategy-description">{entry.data.description}</p>
+        )}
+        <div class="strategy-meta">
+          {entry.data.author && (
+            <span class="strategy-author">By {entry.data.author}</span>
+          )}
+          {entry.data.date && (
+            <time datetime={entry.data.date.toISOString()}>
+              {entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          )}
+        </div>
+        {entry.data.tags && entry.data.tags.length > 0 && (
+          <div class="strategy-tags">
+            {entry.data.tags.map((tag: string) => (
+              <span class="strategy-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <div class="strategy-content">
+      <AstroMarkdown node={tree} />
+    </div>
+
+    {citations.length > 0 && (
+      <div class="strategy-sources">
+        <Sources citations={citations} />
+      </div>
+    )}
+  </article>
+</BaseThemeLayout>
+
+<style>
+  .strategy-article {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .strategy-header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid rgb(var(--color-primary-200, 200 200 200));
+    margin-bottom: 2rem;
+  }
+
+  .strategy-header-inner {
+    max-width: 100%;
+  }
+
+  .strategy-back {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: rgb(var(--color-primary-600, 100 100 100));
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .strategy-back:hover {
+    color: rgb(var(--color-primary-800, 30 30 30));
+    text-decoration: underline;
+  }
+
+  .strategy-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: rgb(var(--color-primary-900, 20 20 20));
+  }
+
+  .strategy-description {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: rgb(var(--color-primary-700, 80 80 80));
+    margin-bottom: 1rem;
+  }
+
+  .strategy-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: rgb(var(--color-primary-500, 120 120 120));
+  }
+
+  .strategy-author {
+    font-weight: 500;
+  }
+
+  .strategy-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 1rem;
+  }
+
+  .strategy-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgb(var(--color-primary-100, 230 230 230));
+    color: rgb(var(--color-primary-700, 80 80 80));
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .strategy-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgb(var(--color-primary-800, 40 40 40));
+  }
+
+  .strategy-content :global(h1) {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .strategy-content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .strategy-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .strategy-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .strategy-content :global(ul),
+  .strategy-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .strategy-content :global(li) {
+    margin-bottom: 0.375rem;
+  }
+
+  .strategy-content :global(a) {
+    color: rgb(var(--color-primary-600, 60 60 200));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .strategy-content :global(a:hover) {
+    color: rgb(var(--color-primary-800, 30 30 30));
+  }
+
+  .strategy-content :global(blockquote) {
+    border-left: 3px solid rgb(var(--color-primary-300, 180 180 180));
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: rgb(var(--color-primary-600, 100 100 100));
+    font-style: italic;
+  }
+
+  .strategy-content :global(code) {
+    font-size: 0.9em;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    background: rgb(var(--color-primary-100, 240 240 240));
+  }
+
+  .strategy-content :global(hr) {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid rgb(var(--color-primary-200, 200 200 200));
+  }
+
+  .strategy-sources {
+    margin-top: 3rem;
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+interface Citation {
+  identifier: string;
+  hex: string;
+  index: number;
+  title?: string;
+  url?: string;
+  source?: string;
+  publishedDate?: string;
+  updatedDate?: string;
+  raw: string;
+  parsed: boolean;
+}
+
+interface Props {
+  citations: Citation[];
+}
+
+const { citations } = Astro.props;
+const sorted = [...citations].sort((a, b) => a.index - b.index);
+---
+
+{sorted.length > 0 && (
+  <section class="sources-section">
+    <h2 class="sources-title">Sources</h2>
+    <ol class="sources-list">
+      {sorted.map(citation => (
+        <li class="source-item" id={`source-${citation.hex}`}>
+          <span class="source-index">[{citation.index}]</span>
+          <div class="source-content">
+            {citation.parsed && citation.title ? (
+              <>
+                {citation.url ? (
+                  <a href={citation.url} target="_blank" rel="noopener noreferrer" class="source-title">
+                    {citation.title}
+                  </a>
+                ) : (
+                  <span class="source-title">{citation.title}</span>
+                )}
+                {citation.source && (
+                  <span class="source-publication">{citation.source}</span>
+                )}
+                {citation.publishedDate && (
+                  <span class="source-date">Published: {citation.publishedDate}</span>
+                )}
+              </>
+            ) : (
+              <span class="source-raw">{citation.raw}</span>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+
+<style>
+  .sources-section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border, #333);
+  }
+
+  .sources-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--foreground, #e5e5e5);
+  }
+
+  .sources-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .source-item {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .source-index {
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--primary, #3b82f6);
+    min-width: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .source-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .source-title {
+    color: var(--foreground, #e5e5e5);
+    text-decoration: none;
+  }
+
+  a.source-title:hover {
+    text-decoration: underline;
+    color: var(--primary, #3b82f6);
+  }
+
+  .source-publication {
+    color: var(--muted-foreground, #888);
+    font-size: 0.8rem;
+  }
+
+  .source-date {
+    color: var(--muted-foreground, #888);
+    font-size: 0.75rem;
+  }
+
+  .source-raw {
+    color: var(--muted-foreground, #888);
+  }
+</style>
