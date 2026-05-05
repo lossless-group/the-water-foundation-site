@@ -13,10 +13,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@lossless-group/lfm": "^0.1.3",
+    "@lossless-group/lfm": "npm:@jsr/lossless-group__lfm@^0.2.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
-    "dev": "^0.1.3",
     "masonry-layout": "^4.2.2",
     "mdast-util-to-string": "^4.0.0",
     "tailwindcss": "^4.2.2",
