@@ -1,6 +1,7 @@
 ---
 import BaseThemeLayout from './BaseThemeLayout.astro';
 import OneSlideDeck from './OneSlideDeck.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -118,6 +119,7 @@ const htmlContent = markdownToHtml(content);
       opacity: 0.9;
     }
   </style>
+  <Analytics />
 </head>
 <body>
   <BaseThemeLayout title={title} description={description}>

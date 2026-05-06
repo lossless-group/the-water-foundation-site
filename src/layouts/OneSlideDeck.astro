@@ -6,6 +6,7 @@
  */
 
 import SlidesControlButtons from '../components/slides/SlidesControlButtons.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title?: string;
@@ -28,6 +29,7 @@ const { title = "Presentation", description } = Astro.props;
   
   <!-- RevealJS Core Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
+  <Analytics />
 </head>
 
 <body>

@@ -1,5 +1,6 @@
 ---
 import OpenGraph from '../components/seo/OpenGraph.astro';
+import Analytics from '../components/Analytics.astro';
 
 export interface Props {
   title: string;
@@ -53,6 +54,7 @@ const initialTheme = 'dark'; // Default to dark theme
 		<!-- GSAP & ScrollTrigger -->
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+		<Analytics />
 	</head>
 	<body>
 		<slot />
