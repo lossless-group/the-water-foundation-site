@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
 // https://astro.build/config
@@ -15,7 +16,20 @@ export default defineConfig({
   // - 'always': Always use trailing slashes
   // - 'never': Never use trailing slashes
   trailingSlash: 'ignore',
-  
+
+  integrations: [
+    // @astrojs/sitemap auto-generates sitemap-index.xml + sitemap-0.xml from
+    // every prerendered page Astro emits. Filter excludes the llms.txt
+    // endpoints (those serve LLMs, not search engines) and the 404 page.
+    sitemap({
+      filter: (page) =>
+        !page.includes('/llms.txt') &&
+        !page.includes('/llms-full.txt') &&
+        !page.endsWith('/404/') &&
+        !page.endsWith('/404'),
+    }),
+  ],
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
