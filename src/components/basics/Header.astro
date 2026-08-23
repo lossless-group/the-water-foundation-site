@@ -37,6 +37,12 @@ const {
   class: className = ''
 } = Astro.props as Props;
 
+// The logo has two resting poses: a tall drop-in container on the desktop
+// homepage, and a normal in-header mark everywhere else. Which one applies is
+// known at build time, so it is rendered as markup + CSS rather than corrected
+// by JS after load — that after-load correction was the visible page flash.
+const isIndexPage = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
+
 // Mobile menu toggle logic will be handled in the client-side script
 ---
 
@@ -47,7 +53,7 @@ const {
     <div class="flex items-center">
       <a href="/" class="flex items-center gap-2">
         <div class="h-10 w-auto flex items-center relative" id="logo-container">
-          <div class="bg-[#042632] rounded-2xl p-8 flex items-center justify-center transition-all duration-300 absolute" id="logo-wrapper" style="top: 4rem; left: 0;">
+          <div class:list={['flex items-center justify-center', isIndexPage && 'logo-wrapper--index']} id="logo-wrapper">
             <div id="logo" class="flex items-center">
               <SiteBrandMarkModeWrapper className="h-full" />
             </div>
@@ -192,28 +198,10 @@ const {
     // Check if mobile/tablet using matchMedia to match Tailwind's breakpoints
     const isMobileOrTablet = window.matchMedia('(max-width: 1023px)').matches;
     
-    if (!isIndexPage || isMobileOrTablet) {
-      // For non-index pages or mobile/tablet devices: Set logo to normal header position
-      if (logoWrapper && logo) {
-        logoWrapper.style.position = 'relative';
-        logoWrapper.style.top = '0';
-        logoWrapper.style.left = '0';
-        logoWrapper.style.width = 'auto';
-        logoWrapper.style.height = 'auto';
-        logoWrapper.style.padding = '0.25rem';
-        logoWrapper.style.background = 'transparent';
-        logoWrapper.style.borderRadius = '0.25rem';
-        logoWrapper.style.zIndex = 'auto';
-        logoWrapper.style.transform = 'none';
-        logo.style.position = 'static';
-        logo.style.top = 'auto';
-        logo.style.left = 'auto';
-        logo.style.marginTop = '0';
-        logo.style.width = '11.7rem';
-        logo.style.height = 'auto';
-      }
-      return;
-    }
+    // Non-index pages and mobile/tablet already render the resting pose from CSS,
+    // so there is nothing to correct here. Rewriting these styles on load is what
+    // made the logo visibly slide and shrink on every page view.
+    if (!isIndexPage || isMobileOrTablet) return;
     
     function updateLogoContainer() {
       if (!logo || !logoWrapper || !header) return;
@@ -371,6 +359,52 @@ const {
 </script>
 
 <style>
+  /* Logo resting pose — the default for every page and every viewport. This is
+     the exact end-state the load-time JS used to animate toward; rendering it
+     up front means there is nothing to animate. */
+  #logo-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 0.25rem;
+    background: transparent;
+    border-radius: 0.25rem;
+    z-index: auto;
+  }
+
+  #logo-wrapper #logo {
+    position: static;
+    margin-top: 0;
+    width: 11.7rem;
+    height: auto;
+  }
+
+  /* Homepage, desktop only — the tall drop-in container the scroll animation
+     starts from. Applied at paint time so the homepage lands in this pose
+     rather than transitioning into it. Selectors are ID-anchored to outrank
+     the resting pose above. */
+  @media (min-width: 1024px) {
+    #logo-wrapper.logo-wrapper--index {
+      position: fixed;
+      top: 0;
+      left: 12rem;
+      width: 26rem;
+      height: 15rem;
+      padding: 3rem;
+      background: #042632;
+      border-radius: 0 0 1.5rem 1.5rem;
+      z-index: 1000;
+      transition: all 300ms ease;
+    }
+
+    #logo-wrapper.logo-wrapper--index #logo {
+      margin-top: 5rem;
+      width: 20rem;
+    }
+  }
+
   /* Mobile menu animation classes */
   .mobile-menu-enter {
     opacity: 0;

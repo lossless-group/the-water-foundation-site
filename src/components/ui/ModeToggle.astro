@@ -51,14 +51,13 @@
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
-    let modeSwitcher = window.modeSwitcher;
+    // The base layout loads the mode switcher as a bundled module script, which
+    // runs before DOMContentLoaded, so window.modeSwitcher is set by now. The old
+    // fallback here dynamically imported '/src/utils/mode-switcher.js' — a raw
+    // dev-server path that 404s in production, so it never actually recovered.
+    const modeSwitcher = window.modeSwitcher;
     if (!modeSwitcher) {
-      try {
-        const mod = await import('/src/utils/mode-switcher.js');
-        modeSwitcher = window.modeSwitcher || mod.modeSwitcher;
-      } catch (e) {
-        console.warn('Mode switcher module failed to load', e);
-      }
+      console.warn('Mode switcher unavailable; mode toggle will not respond.');
     }
     // Initialize button state from utility
     if (modeSwitcher) {

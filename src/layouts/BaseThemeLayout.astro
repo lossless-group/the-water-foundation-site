@@ -63,8 +63,11 @@ import '../styles/global.css';
 			border-radius: var(--border-radius-sm);
 		}
 		
-		/* Smooth transitions for theme changes */
-		html, body, button, input, select, textarea {
+		/* Smooth transitions for theme changes.
+		   html/body are deliberately excluded: transitioning them meant every
+		   mode application cross-faded the whole page over 300ms instead of
+		   swapping instantly, which is what made the load flash so visible. */
+		button, input, select, textarea {
 			transition: var(--transition-smooth, all 0.3s ease);
 		}
 	</style>
@@ -76,5 +79,4 @@ import '../styles/global.css';
 		</main>
 		<Footer className="w-full" />
 	</div>
-	<script type="module" src="/src/utils/bio-modal.js"></script>
 </BoilerPlateHTML>

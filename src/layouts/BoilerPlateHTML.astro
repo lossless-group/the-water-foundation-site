@@ -30,6 +30,36 @@ const initialTheme = 'dark'; // Default to dark theme
 <html lang="en" class={themeClass} data-mode={initialTheme}>
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			// Mode application. This MUST stay in <head>, before any content, so the
+			// stored preference lands on <html> before first paint. It previously sat at
+			// the end of <body>, which meant the page painted in the default mode and
+			// then repainted. Do not write to localStorage here.
+			(function() {
+				const savedMode = localStorage.getItem('mode');
+				const mode = savedMode || 'dark';
+				const html = document.documentElement;
+				if (mode === 'dark') {
+					html.setAttribute('data-mode', 'dark');
+					html.classList.add('dark');
+				} else {
+					html.removeAttribute('data-mode');
+					html.classList.remove('dark');
+				}
+				// React to system changes only when no stored preference exists.
+				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+					if (!localStorage.getItem('mode')) {
+						if (e.matches) {
+							html.setAttribute('data-mode', 'dark');
+							html.classList.add('dark');
+						} else {
+							html.removeAttribute('data-mode');
+							html.classList.remove('dark');
+						}
+					}
+				});
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href={favicon || "/favicon.svg"} />
 		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 		<link rel="alternate" type="text/markdown" href="/llms.txt" title="llms.txt for this site" />
@@ -61,37 +91,10 @@ const initialTheme = 'dark'; // Default to dark theme
 	<body>
 		<slot />
 
-    <script is:inline>
-      // Early mode application to avoid FOUC; do not write to localStorage here.
-      (function() {
-        const savedMode = localStorage.getItem('mode');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const mode = savedMode || 'dark';
-        const html = document.documentElement;
-        if (mode === 'dark') {
-          html.setAttribute('data-mode', 'dark');
-          html.classList.add('dark');
-        } else {
-          html.removeAttribute('data-mode');
-          html.classList.remove('dark');
-        }
-        // React to system changes only when no stored preference exists.
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-          if (!localStorage.getItem('mode')) {
-            const newMode = e.matches ? 'dark' : 'light';
-            if (newMode === 'dark') {
-              html.setAttribute('data-mode', 'dark');
-              html.classList.add('dark');
-            } else {
-              html.removeAttribute('data-mode');
-              html.classList.remove('dark');
-            }
-          }
-        });
-      })();
-    </script>
-    <script type="module">
-      import '/src/utils/mode-switcher.js';
+    <script>
+      // Bundled by Astro. This was previously `src="/src/utils/mode-switcher.js"`,
+      // a raw dev-server path that 404s in the production build.
+      import '../utils/mode-switcher.js';
     </script>
 	</body>
 </html>

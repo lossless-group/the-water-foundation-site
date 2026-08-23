@@ -108,13 +108,10 @@ export class ModeSwitcher {
 // Create a global instance
 export const modeSwitcher = new ModeSwitcher();
 
-// Auto-initialize on DOM content loaded
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    // Apply the stored mode or default to dark
-    modeSwitcher.applyMode(modeSwitcher.getStoredMode() || 'dark');
-  });
-}
+// NOTE: no DOMContentLoaded re-application here. The inline script in <head>
+// applies the mode before first paint and the ModeSwitcher constructor applies it
+// again at module load. A third pass ran with initialLoad defaulting to false,
+// which wrote to localStorage and re-triggered the theme transition on every load.
 
 // Expose globally so components can access without ESM imports
 if (typeof window !== 'undefined') {
