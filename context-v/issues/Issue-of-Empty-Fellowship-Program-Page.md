@@ -15,6 +15,7 @@ tags:
 lede: "`/our-fellowship-program` builds to a zero-byte HTML file — the route ships, but there is nothing in it."
 summary: "Found incidentally while auditing the production build during the page-load flash investigation on 2026-08-23. `pnpm build` emits dist/our-fellowship-program/index.html at 0 bytes, so the route resolves but serves an empty document. The build reports no error and the page is counted among the 80 built pages, which is why this went unnoticed. Not investigated — parked as low priority."
 publish: false
+type: Issues
 ---
 
 ## What was observed

@@ -18,6 +18,7 @@ tags:
 lede: "twf-next's typography and spacing take over twf_site; twf-next's dark palette becomes twf_site's dark mode; a new vibrant mode lays our gradients, glows and glass over that dark blue. Light mode is still an open design decision."
 summary: "Plan for restyling the live site, the-water-foundation.com, with the design system of its replacement build, twf-next, without porting twf-next itself. Step 0 repairs the existing mode and token wiring. Several parts of it do not work today: semantic tokens generate no utilities, dark: follows the OS rather than the toggle, and the brand typography never reaches <html>. The later steps add the new tokens, switch the type over, and convert the components from hard-coded Tailwind palette classes. Grounded in a read-only audit of both repos on 2026-10-14."
 publish: false
+type: Specs
 ---
 
 # Adopt twf-next's Type and Spacing, and a Three-Mode Theme

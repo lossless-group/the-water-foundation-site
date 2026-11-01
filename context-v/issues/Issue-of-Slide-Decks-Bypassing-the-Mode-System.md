@@ -15,6 +15,7 @@ tags:
 lede: "The two slide-deck layouts declare their own `<html>` and never set `data-mode`, so the eight `/slides/*` pages ignore light/dark entirely."
 summary: "Found while moving the anti-FOUC mode script into <head> on 2026-08-23. MarkdownSlideDeck.astro and OneSlideDeck.astro each open their own <html> element rather than going through BoilerPlateHTML.astro, so they never receive the mode script, never carry data-mode, and do not respond to the mode toggle. Pre-existing and unrelated to the flash fix. Parked as low priority — decks are visually self-contained and currently look intentional."
 publish: false
+type: Issues
 ---
 
 ## What was observed
