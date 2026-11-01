@@ -3,11 +3,13 @@ site_uuid: 8aa92e35-4c93-4884-aa81-8cd46495bdf5
 hex_code: s60059
 title: Issue of Empty Fellowship Program Page
 date_created: 2026-08-23
+date_modified: 2026-08-23
 date_authored_initial_draft: 2026-08-23
 date_authored_current_draft: 2026-08-23
 authors:
   - Michael Staton
 at_semantic_version: 0.0.1.0
+status: Open
 tags:
   - Issue
   - Build

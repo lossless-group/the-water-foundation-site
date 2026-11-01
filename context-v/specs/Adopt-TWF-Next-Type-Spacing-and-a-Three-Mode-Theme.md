@@ -3,6 +3,7 @@ site_uuid: f0f131ad-7271-484c-a804-e956d0d2b5ce
 hex_code: yhjk17
 title: Adopt twf-next's Type and Spacing, and a Three-Mode Theme
 date_created: 2026-10-14
+date_modified: 2026-10-29
 date_authored_initial_draft: 2026-10-14
 date_authored_current_draft: 2026-10-14
 authors:

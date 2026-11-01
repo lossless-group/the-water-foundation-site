@@ -3,11 +3,13 @@ site_uuid: a6dd96f6-996a-4f2b-b513-b4f08ad268e7
 hex_code: 3dpmz1
 title: Issue of Slide Decks Bypassing the Mode System
 date_created: 2026-08-23
+date_modified: 2026-08-23
 date_authored_initial_draft: 2026-08-23
 date_authored_current_draft: 2026-08-23
 authors:
   - Michael Staton
 at_semantic_version: 0.0.1.0
+status: Open
 tags:
   - Issue
   - Theme-System
