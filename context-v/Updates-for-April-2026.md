@@ -14,6 +14,8 @@ tags:
 lede: "April punch list for the-water-foundation.com: Carinna to Chief of Staff, new team members, LinkedIn off Events, a TWF Institute section."
 summary: "Unchecked task list captured for the-water-foundation.com in April 2026, covering team-page corrections, an events change, and a new TWF Institute section with named people. Verify each item against the live site before acting; nothing here was marked done."
 publish: false
+status: Partially-Shipped
+date_first_published: 2026-04-09
 ---
 
 
